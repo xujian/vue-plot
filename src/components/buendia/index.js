@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import PaButton from './Button'
+import PaBuendia from './Buendia'
 
 const Plugin = {
   install (Vue) {
-    Vue.component(PaButton)
+    Vue.component(PaBuendia)
   }
 }
 
@@ -12,5 +12,5 @@ Vue.use(Plugin)
 export default Plugin
 
 export {
-  PaButton
+  PaBuendia
 }

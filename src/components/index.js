@@ -1,5 +1,5 @@
-import PaButton from './button'
+import PaBuendia from './buendia'
 
 export {
-  PaButton
+  PaBuendia
 }
