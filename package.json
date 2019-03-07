@@ -4,13 +4,13 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build:lib": "vue-cli-service build --taget lib",
-    "build:docs": "vue-cli-service build --taget docs",
+    "build:lib": "vue-cli-service build --target lib --name vue-chartlib ./src/index.js",
+    "build:docs": "vue-cli-service build --target app ./docs/main.ts",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
-  "main": "dist/vue-chartlib.js",
+  "main": "dist/vue-chartlib.common.js",
   "types": "types/index.d.js",
   "files": [
     "dist",
