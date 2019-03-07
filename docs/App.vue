@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <div class="logo"><img alt="Vue logo" src="./assets/logo.png"></div>
+    <h1>Chartlib Docs</h1>
+
   </div>
 </template>
 

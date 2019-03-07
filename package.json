@@ -4,11 +4,19 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build:lib": "vue-cli-service build --taget lib",
+    "build:docs": "vue-cli-service build --taget docs",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
+  "main": "dist/vue-chartlib.js",
+  "types": "types/index.d.js",
+  "files": [
+    "dist",
+    "src",
+    "types/*.d.ts"
+  ],
   "dependencies": {
     "echarts": "^4.1.0",
     "vue": "^2.6.8",
