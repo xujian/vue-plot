@@ -1,5 +1,4 @@
 import { configure, addParameters } from '@storybook/vue'
-import { themes } from '@storybook/theming'
 import Vue from 'vue'
 import Vuex from 'vuex'
 import options from './options'

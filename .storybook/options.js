@@ -1,39 +1,27 @@
+import themes from './themes'
+
 export default {
-  /**
-   * name to display in the top left corner
-   * @type {String}
-   */
   name: 'Chartlib',
-  /**
-   * URL for name in top left corner to link to
-   * @type {String}
-   */
-  url: '#',
   /**
    * show story component as full screen
    * @type {Boolean}
    */
-  goFullScreen: false,
+  isFullScreen: false,
   /**
    * display panel that shows a list of stories
    * @type {Boolean}
    */
-  showStoriesPanel: true,
+  showNav: true,
   /**
    * display panel that shows addon configurations
    * @type {Boolean}
    */
-  showAddonPanel: true,
+  showPanel: true,
   /**
-   * display floating search box to search through stories
-   * @type {Boolean}
+   * where to show the addon panel
+   * @type {String}
    */
-  showSearchBox: false,
-  /**
-   * show addon panel as a vertical panel on the right
-   * @type {Boolean}
-   */
-  addonPanelInRight: true,
+  panelPosition: 'bottom',
   /**
    * sorts stories
    * @type {Boolean}
@@ -48,7 +36,7 @@ export default {
    *   /\/|\./ - split by `/` or `.`
    * @type {Regex}
    */
-  hierarchySeparator: null,
+  hierarchySeparator: /\/|\./,
   /**
    * regex for finding the hierarchy root separator
    * @example:
@@ -56,20 +44,16 @@ export default {
    *   /\|/ - split by `|`
    * @type {Regex}
    */
-  hierarchyRootSeparator: null,
+  hierarchyRootSeparator: /\|/,
   /**
    * sidebar tree animations
    * @type {Boolean}
    */
   sidebarAnimations: true,
   /**
-   * id to select an addon panel
-   * @type {String}
-   */
-  selectedPanel: undefined, // The order of addons in the "Addon panel" is the same as you import them in 'addons.js'. The first panel will be opened by default as you run Storybook
-  /**
    * enable/disable shortcuts
    * @type {Boolean}
    */
-  enableShortcuts: false // true by default
+  enableShortcuts: true,
+  theme: themes.dark,
 }
