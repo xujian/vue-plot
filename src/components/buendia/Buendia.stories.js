@@ -3,20 +3,19 @@ import { withKnobs, boolean, text } from '@storybook/addon-knobs'
 import PaBuendia from './Buendia'
 
 let stories = storiesOf('Components/Buendia', module)
-console.log('sotries---', stories)
 stories.addDecorator(withKnobs)
 
 let states = [
   {
     name: 'Normal',
     template: `<pa-buendia
-    :round="roundProp"
+    :round="round"
     >Sample buendia</pa-buendia>`
   },
   {
     name: 'With color',
     template: `<pa-buendia
-    :round="roundProp"
+    :round="round"
     color="primary"
     >Sample buendia</pa-buendia>`
   }
@@ -24,8 +23,10 @@ let states = [
 
 // 代入动态story template
 stories.addDecorator((storyFn, context) => {
+  console.log('addDecorator storyFn', storyFn(), context)
   let story = storyFn()
-  let sourceFn = withStorySource(story.template)
+  let sourceFn = withStorySource('<h1>Demo</h1>')
+  console.log('withStorySource ---------------', withStorySource)
   return sourceFn(storyFn, context)
 })
 
@@ -34,11 +35,11 @@ states.forEach(s => {
     return {
       components: { PaBuendia },
       props: {
-        roundProp: {
+        round: {
           type: Boolean,
           default: boolean('round', false)
         },
-        textProp: {
+        text: {
           type: String,
           default: text('text', 'Sample buendia')
         }
