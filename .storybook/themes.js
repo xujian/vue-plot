@@ -8,7 +8,7 @@ const dark = create({
 
   appBg: '#333',
   appContentBg: '#222',
-  appBorderColor: 'rgba(0,0,0,.1)',
+  appBorderColor: 'rgba(255,255,255,.1)',
   appBorderRadius: 0,
 
   fontBase: '"Helvetica", Arial, sans-serif',
