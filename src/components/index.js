@@ -1,4 +1,4 @@
-import PaBuendia from './buendia'
+import { PaBuendia } from './buendia'
 
 export {
   PaBuendia
