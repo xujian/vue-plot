@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   chainWebpack: config => {
   },
@@ -9,6 +11,11 @@ module.exports = {
     },
     optimization: {
       splitChunks: false
+    },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, 'src')
+      }
     }
   },
   filenameHashing: false
