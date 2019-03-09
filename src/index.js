@@ -1,5 +1,5 @@
 import * as charts from './charts'
-import config, { setOptions } from './utils/config'
+import config, { setOptions } from './core/utils/config'
 
 const Chartlib = {
   install (Vue, options = {}) {
