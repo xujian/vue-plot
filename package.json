@@ -19,7 +19,6 @@
     "types/*.d.ts"
   ],
   "dependencies": {
-    "@types/vue": "^2.0.0",
     "echarts": "^4.1.0",
     "vue": "^2.6.8",
     "vue-class-component": "^6.0.0",
