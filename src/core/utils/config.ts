@@ -31,6 +31,6 @@ let config = {
 
 export default config
 
-export const setOptions = options => {
+export const setOptions = (options: any) => {
   config = options
 }

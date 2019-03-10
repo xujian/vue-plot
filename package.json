@@ -11,7 +11,7 @@
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "main": "dist/vue-chartlib.common.js",
-  "module": "src/index.js",
+  "module": "src/index.ts",
   "types": "types/index.d.js",
   "files": [
     "dist",

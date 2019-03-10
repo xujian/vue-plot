@@ -41,12 +41,16 @@ export default class PaChart extends Vue {
 
   }
 
-  private makeChart () {
+  protected  appendOptions (): void {
+    
+  }
+
+  private draw () {
     // 计算最终的 options
     let options = processSlots(<any[]>this.$slots.default)
     options = Object.assign({}, this.options, options)
-    let chart = new Provider(this.$refs.chart)
-    chart.draw({
+    let privider = new Provider(this.$refs.chart)
+    privider.draw({
       data: this.data,
       props: {},
       options
@@ -72,6 +76,6 @@ export default class PaChart extends Vue {
   }
 
   mounted () {
-    this.makeChart()
+    this.draw()
   }
 }
