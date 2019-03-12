@@ -10,7 +10,7 @@ export const defaultProviderOptions = {
   },
   xAxis: {
     type: 'category',
-    data: ['A', 'B', 'C', 'D', 'E']
+    data: []
   },
   yAxis: [
     {
@@ -32,15 +32,25 @@ export function makeProviderOptions (input: {
   let __options: any = {}
   if (input.data) {
     __options.series = input.data.map(d => ({
-      type: 'bar',
+      type: input.props.type || 'bar',
       data: d
     }))
   }
-  if (input.props && input.props.x) {
+  if (input.props.x) {
     __options.xAxis = {
       type: 'category',
       data: input.props.x
     }
+  }
+  if (input.props.y) {
+    __options.yAxis = {
+      type: 'value',
+      data: input.props.y
+    }
+  }
+  if (input.props.type === 'pie') {
+    __options.xAxis = false
+    __options.yAxis = false
   }
   return Object.assign({}, defaultProviderOptions, __options)
 }

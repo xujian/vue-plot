@@ -2,9 +2,26 @@ import Vue, { CreateElement } from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 import { processSlots } from '../../core/accessories/slots'
 import Provider from '../../core/providers/echarts'
+import { ChartDataTypes } from '../data'
+import { Axis } from '../../core/accessories/axises'
 
 @Component
 export default class PaChart extends Vue {
+
+  @Prop({
+    default: ''
+  })
+  title: string | undefined
+
+  private __type: string = 'bar'
+
+  get type () {
+    return this.__type
+  }
+
+  set type (val) {
+    this.__type = val
+  }
 
   @Prop({
     default: () => []
@@ -14,7 +31,12 @@ export default class PaChart extends Vue {
   @Prop({
     default: () => []
   })
-  axises: any[] | undefined
+  x: string[] | undefined
+
+  @Prop({
+    default: () => []
+  })
+  y: string[] | undefined
 
   @Prop({
     default: () => {}
@@ -24,7 +46,7 @@ export default class PaChart extends Vue {
   @Prop({
     default: () => []
   })
-  data: any[] | undefined
+  data: any
 
   /**
    * Add new layer to chart
@@ -38,7 +60,6 @@ export default class PaChart extends Vue {
   }
 
   applyOptions (options: any) {
-
   }
 
   protected  appendOptions (): void {
@@ -52,7 +73,12 @@ export default class PaChart extends Vue {
     let privider = new Provider(this.$refs.chart)
     privider.draw({
       data: this.data,
-      props: {},
+      props: {
+        title: this.title,
+        type: this.type,
+        x: this.x,
+        y: this.y
+      },
       options
     })
   }
@@ -73,6 +99,11 @@ export default class PaChart extends Vue {
         ])
       ])
     ])
+  }
+
+  constructor (options: any) {
+    super()
+    this.__type = 'bar'
   }
 
   mounted () {
