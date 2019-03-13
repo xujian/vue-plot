@@ -3,7 +3,6 @@ import { charts, plugins } from './charts'
 import PaChart from './core/chart'
 import ChartFactory from './core/chart/Factory'
 import globalConfigs, { setGlobalConfigs } from './core/utils/configs'
-import { config } from '@vue/test-utils';
 
 function initGlobalObject(Vue: typeof __Vue__) {
   let chartlib = new Vue({
