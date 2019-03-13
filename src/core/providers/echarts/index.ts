@@ -9,18 +9,10 @@ class Provider {
     this.container = container
   }
 
-  draw(input: {
-    data: any,
-    props?: any,
-    options?: any
-  }): void {
-    console.log('Provider.ts 0-------draw--------', this.container.clientHeight)
+  draw(props: any): void {
+    console.log('Provider.ts 0-------draw---props-----', props)
     let chart = echarts.init(this.container, 'dark')
-    let providerOptions = makeProviderOptions({
-      data: input.data,
-      props: input.props,
-      options: input.options
-    })
+    let providerOptions = makeProviderOptions(props)
     console.log('============== final provider options', providerOptions)
     chart.setOption(providerOptions)
   }

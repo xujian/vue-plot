@@ -1,4 +1,5 @@
-import PaChart from './Chart';
+import PaChart from './Chart'
+import PaBarChart from '../../charts/bar/Bar'
 import { charts } from '../../charts'
 
 /**
@@ -7,13 +8,13 @@ import { charts } from '../../charts'
 class ChartFactory {
   static make<T extends PaChart> (
     name: string,
-    options: any
+    props: any
   ): T {
     let chart = null
     for (let k in charts) {
       if (k === name) {
-        let chartClass = charts[k]
-        chart = new chartClass(options)
+        let chartClass = Reflect.get(charts, k)
+        chart = chartClass.create(props)
       }
     }
     return chart

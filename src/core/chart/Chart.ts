@@ -8,20 +8,12 @@ import { Axis } from '../../core/accessories/axises'
 @Component
 export default class PaChart extends Vue {
 
+  protected type: string = ''
+
   @Prop({
     default: ''
   })
   title: string | undefined
-
-  private __type: string = 'bar'
-
-  get type () {
-    return this.__type
-  }
-
-  set type (val) {
-    this.__type = val
-  }
 
   @Prop({
     default: () => []
@@ -48,65 +40,73 @@ export default class PaChart extends Vue {
   })
   data: any
 
+  constructor() {
+    super()
+    this.type = ''
+  }
+
+  /**
+   * 拿到所有chart specified props
+   * 用于生成 echart options
+   */
+  public get props(): Partial<PaChart> {
+    let pa = {
+      ...this.$props
+    }
+    pa.type = this.type
+    return pa
+  }
+
   /**
    * Add new layer to chart
    */
-  addLayer () {
+  addLayer() {}
 
-  }
+  addAxis() {}
 
-  addAxis () {
+  applyOptions(options: any) {}
 
-  }
+  protected appendOptions(): void {}
 
-  applyOptions (options: any) {
-  }
-
-  protected  appendOptions (): void {
-    
-  }
-
-  private draw () {
+  private draw() {
     // 计算最终的 options
     let options = processSlots(<any[]>this.$slots.default)
-    options = Object.assign({}, this.options, options)
     let privider = new Provider(this.$refs.chart)
     privider.draw({
-      data: this.data,
-      props: {
-        title: this.title,
-        type: this.type,
-        x: this.x,
-        y: this.y
-      },
-      options
+      ...this.props,
+      ...options
     })
   }
 
   render(h: CreateElement) {
-    return h('div', {
-      'class': 'chart-container'
-    }, [
-      h('div', {
-        'class': 'chart',
-        ref: 'chart'
-      }, [
-        h('div', {
-          'class': 'chart-slot',
-          ref: 'slot'
-        }, [
-          h('slot')
-        ])
-      ])
-    ])
+    return h(
+      'div',
+      {
+        class: 'chart-container'
+      },
+      [
+        h(
+          'div',
+          {
+            class: 'chart',
+            ref: 'chart'
+          },
+          [
+            h(
+              'div',
+              {
+                class: 'chart-slot',
+                ref: 'slot'
+              },
+              [h('slot')]
+            )
+          ]
+        )
+      ]
+    )
   }
 
-  constructor (options: any) {
-    super()
-    this.__type = 'bar'
-  }
-
-  mounted () {
+  mounted() {
     this.draw()
   }
 }

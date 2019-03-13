@@ -1,3 +1,5 @@
+import { makeSeries } from './series';
+
 /**
  * 负责组装echarts原生配置项
  */
@@ -24,31 +26,25 @@ declare type ProviderOptions = {
   data: any[]
 }
 
-export function makeProviderOptions (input: {
-  data: any[],
-  props:any,
-  options:any
-}): any {
+export function makeProviderOptions(props: any): any {
+  console.log('options.ts -------------- ', props)
   let __options: any = {}
-  if (input.data) {
-    __options.series = input.data.map(d => ({
-      type: input.props.type || 'bar',
-      data: d
-    }))
+  if (props.data) {
+    __options.series = makeSeries(props)
   }
-  if (input.props.x) {
+  if (props.x) {
     __options.xAxis = {
       type: 'category',
-      data: input.props.x
+      data: props.x
     }
   }
-  if (input.props.y) {
+  if (props.y) {
     __options.yAxis = {
       type: 'value',
-      data: input.props.y
+      data: props.y
     }
   }
-  if (input.props.type === 'pie') {
+  if (props.type === 'pie') {
     __options.xAxis = false
     __options.yAxis = false
   }
