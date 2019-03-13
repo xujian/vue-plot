@@ -26,9 +26,6 @@ export default class PaLineChart extends PaChart {
   })
   stack: string | undefined
 
-  /**
-   * 平滑线条
-   */
   @Prop({
     default: false
   })
