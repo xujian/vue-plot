@@ -38,7 +38,9 @@ export default class PaChart extends Vue {
   @Prop({
     default: () => []
   })
-  data: any
+  data: any[] = []
+
+  private __data: any[] = []
 
   constructor() {
     super()

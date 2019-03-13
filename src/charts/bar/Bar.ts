@@ -23,18 +23,23 @@ export default class PaBarChart extends PaChart {
   @Prop({default: '1%'})
   public barGap: string = '1%'
 
-  @Prop({default: [[100, 200, 300, 400, 500]]})
-  data: ChartDataTypes.BarChartData | undefined
+  /**
+   * 是否堆叠
+   */
+  @Prop({
+  })
+  stack: string | undefined
+
+  @Prop({default: () => [[100, 200, 300, 400, 500]]})
+  data: ChartDataTypes.BarChartData
 
   constructor() {
     super()
     this.type = 'bar'
+    this.data = []
   }
 
-  static create(
-    props: Pick<PaBarChart,
-    'barWidth' | 'barGap' | 'round'>
-    ):PaBarChart {
+  static create(props: any): PaBarChart {
     let chart = new PaBarChart()
     Object.assign(chart, props)
     return chart

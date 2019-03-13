@@ -1,5 +1,5 @@
 import echarts from 'echarts'
-import { makeProviderOptions } from './options'
+import options from './options'
 
 class Provider {
 
@@ -10,11 +10,10 @@ class Provider {
   }
 
   draw(props: any): void {
-    console.log('Provider.ts 0-------draw---props-----', props)
     let chart = echarts.init(this.container, 'dark')
-    let providerOptions = makeProviderOptions(props)
-    console.log('============== final provider options', providerOptions)
-    chart.setOption(providerOptions)
+    let final = options.make(props)
+    console.log('============== final provider options', final)
+    chart.setOption(final)
   }
 
   make(options: any): void {

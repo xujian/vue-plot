@@ -5,22 +5,41 @@ import { LineChartData } from '@/core/data/ChartDataTypes'
 
 @Component
 export default class PaLineChart extends PaChart {
-
   @Prop({
-    default: []
+    default: () => []
   })
-  data: LineChartData | undefined
+  data: LineChartData
 
   /**
-   *  Bar条宽度(pixel)
+   *  线条宽度(pixel)
    */
   @Prop({
     default: 2
   })
   lineWidth: number = 2
 
-  constructor (options: any) {
+  /**
+   * 是否堆叠
+   */
+  @Prop({
+    default: undefined
+  })
+  stack: string | undefined
+
+  @Prop({
+    default: false
+  })
+  smooth: boolean = false
+
+  constructor() {
     super()
     this.type = 'line'
+    this.data = []
+  }
+
+  static create(props: any): PaLineChart {
+    let chart = new PaLineChart()
+    Object.assign(chart, props)
+    return chart
   }
 }

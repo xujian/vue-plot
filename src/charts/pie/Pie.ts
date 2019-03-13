@@ -5,7 +5,6 @@ import { ChartDataTypes } from '@/core/data';
 
 @Component
 export default class PaPieChart extends PaChart {
-
   /**
    *  设定圆环宽度
    */
@@ -15,14 +14,19 @@ export default class PaPieChart extends PaChart {
   radius: [number, number] | [string, string] = ['0%', '100%']
 
   @Prop({
-    default: []
+    default: () => []
   })
-  data: ChartDataTypes.PieChartData | undefined
+  data: ChartDataTypes.PieChartData
 
-  constructor (options: any) {
-    super(options)
+  constructor() {
+    super()
     this.type = 'pie'
+    this.data = []
   }
 
-
+  static create(props: any): PaPieChart {
+    let chart = new PaPieChart()
+    Object.assign(chart, props)
+    return chart
+  }
 }
