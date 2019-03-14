@@ -10,7 +10,7 @@ class Provider {
   }
 
   draw(props: any): void {
-    let chart = echarts.init(this.container, 'dark')
+    let chart = echarts.init(this.container, 'cold')
     let final = options.make(props)
     console.log('============== final provider options', final)
     chart.setOption(final)

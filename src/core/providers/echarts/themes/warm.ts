@@ -31,13 +31,12 @@ var axisCommon = function () {
 };
 
 var colorPalette = [
-  '#A0CE3A',
-  '#31C5C0',
-  '#1E9BD1',
-  '#0F347B',
-  '#585247',
-  '#7F6AAD',
-  '#009D85'
+  '#9b8bba',
+  '#e098c7',
+  '#8fd3e8',
+  '#71669e',
+  '#cc70af',
+  '#7cb4cc'
 ]
 var theme = {
   color: colorPalette,
