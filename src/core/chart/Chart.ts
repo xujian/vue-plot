@@ -4,11 +4,14 @@ import { processSlots } from '../../core/accessories/slots'
 import Provider from '../../core/providers/echarts'
 import { ChartDataTypes } from '../data'
 import { Axis } from '../../core/accessories/axises'
+import Bus from '../../core/utils/events/bus'
 
 @Component
 export default class PaChart extends Vue {
 
   protected type: string = ''
+
+  private canvas: any = null
 
   @Prop({
     default: ''
@@ -73,11 +76,16 @@ export default class PaChart extends Vue {
   private draw() {
     // 计算最终的 options
     let options = processSlots(<any[]>this.$slots.default)
-    let privider = new Provider(this.$refs.chart)
-    privider.draw({
+    let provider = new Provider(this.$refs.chart)
+    this.canvas = provider.draw({
       ...this.props,
       ...options
     })
+  }
+
+  public repaint () {
+    this.canvas.dispose()
+    this.draw()
   }
 
   render(h: CreateElement) {
@@ -110,5 +118,8 @@ export default class PaChart extends Vue {
 
   mounted() {
     this.draw()
+    Bus.on('theme.changed', (payload: any) => {
+      this.repaint()
+    })
   }
 }

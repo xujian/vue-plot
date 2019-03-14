@@ -4,6 +4,7 @@ import PaChart from './core/chart'
 import ChartFactory from './core/chart/Factory'
 import globalConfigs, { setGlobalConfigs } from './core/utils/configs'
 import ThemeManager from './core/providers/echarts/themes'
+import Bus from './core/utils/events/bus'
 
 function initGlobalObject(Vue: typeof __Vue__) {
   let chartlib = new Vue({
@@ -24,7 +25,7 @@ function initGlobalObject(Vue: typeof __Vue__) {
         set: function(theme: string) {
           globalConfigs.theme = theme
           setGlobalConfigs(globalConfigs)
-          this.$bus.emit('theme.changed', {
+          Bus.emit('theme.changed', {
             theme: theme
           })
         }
