@@ -10,7 +10,8 @@ const common = {
     top: '10%',
     left: '10%',
     right: '10%',
-    bottom: '10%'
+    bottom: '10%',
+    containLabel: true
   },
   xAxis: {
     type: 'category',

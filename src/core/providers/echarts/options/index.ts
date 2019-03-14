@@ -23,6 +23,19 @@ let OptionsManager = {
       __options.xAxis = false
       __options.yAxis = false
     }
+    if (props.type === 'scatter') {
+      __options.xAxis = [{
+        type: 'value',
+        scale: true,
+        axisLabel: {
+          formatter: '{value} cm'
+        }
+      }]
+      __options.yAxis = [{
+        type: 'value',
+        scale: true
+      }]
+    }
     return Object.assign({}, common, __options)
   }
 }

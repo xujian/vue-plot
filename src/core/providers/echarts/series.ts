@@ -30,6 +30,11 @@ export function makeSeries (props: any): any[] {
         areaStyle: {}
       }
     }
+    if (props.type === 'scatter') {
+      forTyped = {
+        name: d.name
+      }
+    }
     return ({
       ...basicSettings,
       ...forTyped
