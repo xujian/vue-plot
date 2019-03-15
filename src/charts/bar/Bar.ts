@@ -9,19 +9,19 @@ export default class PaBarChart extends PaChart {
    *  Bar条为圆角
    */
   @Prop({default: false})
-  public round: boolean = false
+  public round: boolean | undefined
 
   /**
    * Bar条宽度(pixel)
    */
   @Prop({default: 10})
-  public barWidth: number = 10
+  public barWidth: number | undefined
 
   /**
    * 组间距
    */
   @Prop({default: '1%'})
-  public barGap: string = '1%'
+  public barGap: string | undefined
 
   /**
    * 是否堆叠
@@ -30,13 +30,12 @@ export default class PaBarChart extends PaChart {
   })
   stack: string | undefined
 
-  @Prop({default: () => [[100, 200, 300, 400, 500]]})
-  data: ChartDataTypes.BarChartData
+  @Prop(Array)
+  data: ChartDataTypes.BarChartData[] | undefined
 
   constructor() {
     super()
     this.type = 'bar'
-    this.data = []
   }
 
   static create(props: any): PaBarChart {
