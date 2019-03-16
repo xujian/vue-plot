@@ -10,6 +10,16 @@ export default class PaScatterChart extends PaChart {
   })
   data: ChartDataTypes.ScatterChartData[]
 
+  private __symbol: number | string | undefined
+
+  /**
+   * 散点形状
+   */
+  @Prop({
+    default: 10
+  })
+  symbol: number | string | object | undefined
+
   constructor() {
     super()
     this.type = 'scatter'

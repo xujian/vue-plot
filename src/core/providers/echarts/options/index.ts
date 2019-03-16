@@ -24,6 +24,20 @@ let OptionsManager = {
       __options.yAxis = false
     }
     if (props.type === 'scatter') {
+      if (props.symbol) {
+        let t = props.symbol.constructor.name
+        if(t === 'String') {
+          __options.symbol = props.symbol
+        }
+        if (t === 'Number') {
+          __options.symbol = 'circle'
+          __options.symbolSize = props.symbol
+        }
+        if (t === 'Object') {
+          __options.symbol = props.symbol.shape
+          __options.symbol = props.symbol.size
+        }
+      }
       __options.xAxis = [{
         type: 'value',
         scale: true,

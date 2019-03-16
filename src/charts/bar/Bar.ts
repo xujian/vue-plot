@@ -14,20 +14,19 @@ export default class PaBarChart extends PaChart {
   /**
    * Bar条宽度(pixel)
    */
-  @Prop({default: 10})
+  @Prop({ default: 10 })
   public barWidth: number | undefined
 
   /**
    * 组间距
    */
-  @Prop({default: '1%'})
+  @Prop({ default: '1%' })
   public barGap: string | undefined
 
   /**
    * 是否堆叠
    */
-  @Prop({
-  })
+  @Prop({ default: false })
   stack: string | undefined
 
   @Prop(Array)
