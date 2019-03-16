@@ -4,6 +4,7 @@
 export function processSlots (slots: any[]) {
   let result: any[] = []
   if (slots) {
+    console.log('slots.ts--------/////////slots/////', slots)
     slots.forEach (s => {
       if (s.tag === 'pa-axis') {
         result.push({

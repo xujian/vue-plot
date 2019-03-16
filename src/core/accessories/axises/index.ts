@@ -1,5 +1,5 @@
-import Axis from './Axis'
+import PaAxis from './Axis'
 
 export {
-  Axis
+  PaAxis
 }
