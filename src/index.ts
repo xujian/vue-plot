@@ -6,40 +6,17 @@ import ChartFactory from './core/chart/Factory'
 import globalConfigs, { setGlobalConfigs } from './core/utils/configs'
 import ThemeManager from './core/providers/echarts/themes'
 import Bus from './core/utils/events/bus'
+import $chartlib from './$chartlib'
+import mocks from './mocks'
 
-function initGlobalObject(Vue: typeof __Vue__) {
-  let chartlib = new Vue({
-    computed: {
-      configs: {
-        get: () => globalConfigs,
-        set: function (configs: any) {
-          setGlobalConfigs(configs)
-          this.$emit('configs.changed', {
-            configs
-          })
-        }
-      },
-      theme: {
-        get: function() {
-          return globalConfigs.theme
-        },
-        set: function(theme: string) {
-          globalConfigs.theme = theme
-          setGlobalConfigs(globalConfigs)
-          Bus.emit('theme.changed', {
-            theme: theme
-          })
-        }
-      }
-    }
-  })
+function initGlobalObject (Vue: typeof __Vue__) {
   Object.assign(Vue.prototype, {
-    $chartlib: chartlib
+    $chartlib: $chartlib
   })
 }
 
 const Chartlib = {
-  install(Vue: typeof __Vue__, configs = {}) {
+  install (Vue: typeof __Vue__, configs = {}) {
     setGlobalConfigs(configs)
     ThemeManager.registerPresetThemes()
     for (let k in plugins) {
@@ -49,13 +26,14 @@ const Chartlib = {
       let a = accessories[t]
       Vue.component(a.name, a)
     }
-    initGlobalObject(Vue)
+    Vue.prototype['$chartlib'] = $chartlib
   }
 }
 
 export {
   PaChart,
-  ChartFactory
+  ChartFactory,
+  mocks
 }
 
 // useage: Vue.use(ChartLib)
