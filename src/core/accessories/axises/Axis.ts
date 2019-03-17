@@ -1,5 +1,5 @@
-import Vue from 'vue'
 import { Prop, Component } from 'vue-property-decorator'
+import PaAccessory from '../Accessory';
 
 /**
  * 表现X或Y坐标轴
@@ -8,9 +8,7 @@ import { Prop, Component } from 'vue-property-decorator'
 @Component({
   template: ''
 })
-export default class PaAxis extends Vue {
-  name: string | undefined
-
+export default class PaAxis extends PaAccessory {
   @Prop({
     type: String,
     default: 'right'

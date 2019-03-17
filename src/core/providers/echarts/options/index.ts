@@ -19,6 +19,13 @@ let OptionsManager = {
         data: props.y
       }
     }
+    if (props.tooltip) {
+      __options.tooltip = {
+        show: true,
+        positon: props.positon,
+        // backgroundColor: props.style.backgroundColor || ''
+      }
+    }
     if (props.type === 'pie') {
       __options.xAxis = false
       __options.yAxis = false

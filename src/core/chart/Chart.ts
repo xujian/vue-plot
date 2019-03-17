@@ -73,12 +73,17 @@ export default class PaChart extends Vue {
 
   private draw () {
     // 计算最终的 options
-    let options = processSlots(<any[]>this.$slots.default)
-    console.log('Chart.ts---------<<<<<<<<<<<<<<<<<<after slots', options)
+    let slots = processSlots(<any[]>this.$slots.default)
+    let props: {[key: string]: any} = []
+    slots.forEach(s => {
+      let name = s.name.replace(/^pa-/, '')
+      props[name] = s.props
+    })
+    console.log('Chart.ts---------<<<<<<<<<<<<<<<<<<after slots', props)
     let provider = new Provider(this.$refs.chart)
     this.canvas = provider.draw({
       ...this.props,
-      ...options
+      ...props
     })
   }
 

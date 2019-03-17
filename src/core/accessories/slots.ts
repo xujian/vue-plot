@@ -6,13 +6,11 @@ export function processSlots (slots: any[]) {
   if (slots) {
     console.log('slots.ts--------/////////slots/////', slots)
     slots.forEach (s => {
-      if (s.tag === 'pa-axis'
-        || s.componentOptions.tag === 'pa-axis') {
-        result.push({
-          name: 'axis',
-          data: {}
-        })
-      }
+    let props = s.componentOptions.propsData
+      result.push({
+        name: s.componentOptions.tag || s.tag,
+        props
+      })
     })
   }
   return result
