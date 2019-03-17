@@ -1,61 +1,22 @@
 import common from './common'
-import { makeSeries } from '../series';
+import { makeSeries } from '../series'
+import handler from './handler'
 
+/**
+ *  从 chart props 计算最终的 echarts 配置项
+ */
 let OptionsManager = {
   make(props: any): any {
     let __options: any = {}
+    // 转换规则按字段集中在 rules 目录
+    // 文件名为字段名
+    Object.keys(props).forEach((k: string) => {
+      let output = handler.do(k, props)
+      Object.assign(__options, output)
+    })
+    // 从 data 计算出最终的 series
     if (props.data) {
       __options.series = makeSeries(props)
-    }
-    if (props.x) {
-      __options.xAxis = {
-        type: 'category',
-        data: props.x
-      }
-    }
-    if (props.y) {
-      __options.yAxis = {
-        type: 'value',
-        data: props.y
-      }
-    }
-    if (props.tooltip) {
-      __options.tooltip = {
-        show: true,
-        positon: props.positon,
-        // backgroundColor: props.style.backgroundColor || ''
-      }
-    }
-    if (props.type === 'pie') {
-      __options.xAxis = false
-      __options.yAxis = false
-    }
-    if (props.type === 'scatter') {
-      if (props.symbol) {
-        let t = props.symbol.constructor.name
-        if(t === 'String') {
-          __options.symbol = props.symbol
-        }
-        if (t === 'Number') {
-          __options.symbol = 'circle'
-          __options.symbolSize = props.symbol
-        }
-        if (t === 'Object') {
-          __options.symbol = props.symbol.shape
-          __options.symbol = props.symbol.size
-        }
-      }
-      __options.xAxis = [{
-        type: 'value',
-        scale: true,
-        axisLabel: {
-          formatter: '{value} cm'
-        }
-      }]
-      __options.yAxis = [{
-        type: 'value',
-        scale: true
-      }]
     }
     return Object.assign({}, common, __options)
   }
