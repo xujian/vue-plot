@@ -9,12 +9,6 @@ import Bus from './core/utils/events/bus'
 import $chartlib from './$chartlib'
 import mocks from './mocks'
 
-function initGlobalObject (Vue: typeof __Vue__) {
-  Object.assign(Vue.prototype, {
-    $chartlib: $chartlib
-  })
-}
-
 const Chartlib = {
   install (Vue: typeof __Vue__, configs = {}) {
     setGlobalConfigs(configs)

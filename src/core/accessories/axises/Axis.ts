@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { Prop, Component } from 'vue-property-decorator';
+import { Prop, Component } from 'vue-property-decorator'
 
 /**
  * 表现X或Y坐标轴
@@ -9,7 +9,6 @@ import { Prop, Component } from 'vue-property-decorator';
   template: ''
 })
 export default class PaAxis extends Vue {
-
   name: string | undefined
 
   @Prop({

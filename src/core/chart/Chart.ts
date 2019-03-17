@@ -1,4 +1,4 @@
-import Vue, { CreateElement } from 'vue'
+import Vue, { VNode } from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 import { processSlots } from '../../core/accessories/slots'
 import Provider from '../../core/providers/echarts'
@@ -8,9 +8,7 @@ import Bus from '../../core/utils/events/bus'
 
 @Component
 export default class PaChart extends Vue {
-
   protected type: string = ''
-
   private canvas: any = null
 
   @Prop({
@@ -45,7 +43,7 @@ export default class PaChart extends Vue {
 
   private __data: any[] = []
 
-  constructor() {
+  constructor () {
     super()
     this.type = ''
   }
@@ -54,7 +52,7 @@ export default class PaChart extends Vue {
    * 拿到所有chart specified props
    * 用于生成 echart options
    */
-  public get props(): Partial<PaChart> {
+  public get props (): Partial<PaChart> {
     let pa = {
       ...this.$props
     }
@@ -65,17 +63,18 @@ export default class PaChart extends Vue {
   /**
    * Add new layer to chart
    */
-  addLayer() {}
+  addLayer () {}
 
-  addAxis() {}
+  addAxis () {}
 
-  applyOptions(options: any) {}
+  applyOptions (options: any) {}
 
   protected appendOptions(): void {}
 
-  private draw() {
+  private draw () {
     // 计算最终的 options
     let options = processSlots(<any[]>this.$slots.default)
+    console.log('Chart.ts---------<<<<<<<<<<<<<<<<<<after slots', options)
     let provider = new Provider(this.$refs.chart)
     this.canvas = provider.draw({
       ...this.props,
@@ -88,27 +87,17 @@ export default class PaChart extends Vue {
     this.draw()
   }
 
-  render(h: CreateElement) {
-    return h(
-      'div',
-      {
-        class: 'chart-container'
-      },
-      [
-        h(
-          'div',
-          {
-            class: 'chart',
+  render (h): VNode {
+    return h('div', {
+        'class': 'chart-container'
+      }, [
+        h('div', {
+            'class': 'chart',
             ref: 'chart'
-          },
-          [
-            h(
-              'div',
-              {
-                class: 'chart-slot',
+          }, [h('div', {
+                'class': 'chart-slot',
                 ref: 'slot'
-              },
-              [h('slot')]
+              }, [h('slot')]
             )
           ]
         )
@@ -116,7 +105,7 @@ export default class PaChart extends Vue {
     )
   }
 
-  mounted() {
+  mounted () {
     this.draw()
     Bus.on('theme.changed', (payload: any) => {
       this.repaint()
