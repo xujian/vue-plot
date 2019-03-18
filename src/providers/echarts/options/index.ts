@@ -1,5 +1,5 @@
 import common from './common'
-import { makeSeries } from '../series'
+import { makeSeries } from './series'
 import handler from './handler'
 
 /**

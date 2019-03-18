@@ -1,6 +1,6 @@
 let types: { [name: string]: any } = {}
 let requires: { [name: string]: any }
-  = require.context('./options/types/', true, /.ts$/)
+  = require.context('./types/', true, /.ts$/)
 requires.keys().forEach((p: string) => {
   let name = (p.match(/\.\/(\w+)\.ts$/) || ['', 'null'])[1]
   types[name] = requires(p)['default']
