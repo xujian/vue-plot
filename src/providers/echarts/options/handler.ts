@@ -1,10 +1,11 @@
-const requires: {[name: string]: any} = 
+let requires: {[name: string]: any} = 
   require.context('./rules/', true, /.ts$/)
 let rules: {[name: string]: any} = {}
 requires.keys().forEach((p: string) => {
   let name = (p.match(/\.\/(\w+)\.ts$/) || ['', 'null'])[1]
   rules[name] = requires(p)['default']
 })
+
 console.log('Handler.ts-------------------rules,', rules)
 
 /**

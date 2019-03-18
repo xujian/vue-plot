@@ -1,3 +1,11 @@
+let types: { [name: string]: any } = {}
+let requires: { [name: string]: any }
+  = require.context('./options/types/', true, /.ts$/)
+requires.keys().forEach((p: string) => {
+  let name = (p.match(/\.\/(\w+)\.ts$/) || ['', 'null'])[1]
+  types[name] = requires(p)['default']
+})
+
 export function makeSeries (props: any): any[] {
   let series: any[] = props.data.map(d => {
     // 合并: 给定配置项 ➡️ 缺省配置项 ➡️ 固有配置项
@@ -6,45 +14,21 @@ export function makeSeries (props: any): any[] {
       data: d.constructor.name === 'Array'
         ? d: d.value
     }
-    // 添加指定类型的图表配置项
-    let forTyped = {}
-    if (props.type === 'bar') {
-      forTyped = {
-        barWidth: props.barWidth,
-        stack: props.stacked,
-        barGap: props.barGap
-      }
-    }
-    if (props.type === 'pie') {
-      forTyped = {
-        barWidth: props.barWidth,
-        stack: props.stack,
-        barGap: props.barGap
-      }
-    }
-    if (props.type === 'line') {
-      let areaStyle = undefined
-      if (props.area === true) {
-        areaStyle = {}
-      } else if (props.area) {
-        areaStyle = props.area
-      }
-      forTyped = {
-        name: d.name,
-        stack: props.stack,
-        smooth: props.smooth,
-        areaStyle: areaStyle
-      }
-    }
-    if (props.type === 'scatter') {
-      forTyped = {
-        name: d.name
-      }
-    }
     return ({
-      ...basicSettings,
-      ...forTyped
+      ...basicSettings
     })
   })
+
+  let extra: any[] = []
+  Object.keys(types).forEach((t: string) => {
+    if (t === props.type) {
+      extra = types[t].call(null, props)
+    }
+  })
+
+  series = series.map((s: any, i: number) =>
+    Object.assign({}, s, extra[i])
+  )
+
   return series
 }
