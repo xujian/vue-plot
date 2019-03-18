@@ -2,6 +2,14 @@ import common from './common'
 import { makeSeries } from './series'
 import handler from './handler'
 
+let inherents: any = {}
+let requires: { [name: string]: any } = require.context(
+  './inherents/', true, /.ts$/)
+requires.keys().forEach((p: string) => {
+  let name = (p.match(/\.\/(\w+)\.ts$/) || ['', 'null'])[1]
+  inherents[name] = requires(p)['default']
+})
+
 /**
  *  从 chart props 计算最终的 echarts 配置项
  */
@@ -29,7 +37,11 @@ let OptionsManager = {
         ...layerSeries
       )
     }
-    return Object.assign({}, common, __options)
+    let final = Object.assign({},
+      common,
+      inherents[props.type],
+      __options)
+    return final
   }
 }
 
