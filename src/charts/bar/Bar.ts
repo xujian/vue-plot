@@ -3,7 +3,7 @@ import { Component, Prop } from 'vue-property-decorator'
 import PaChart from '../../core/chart'
 import { ChartDataTypes } from '@/core/data'
 
-@Component
+@Component({})
 export default class PaBarChart extends PaChart {
   /**
    *  Bar条为圆角

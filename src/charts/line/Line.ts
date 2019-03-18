@@ -3,12 +3,10 @@ import { Component, Prop } from 'vue-property-decorator'
 import PaChart from '../../core/chart'
 import { LineChartData } from '../../core/data/ChartDataTypes'
 
-@Component
+@Component({})
 export default class PaLineChart extends PaChart {
-  @Prop({
-    default: () => []
-  })
-  data: LineChartData
+  @Prop({ default: () => [] })
+  data: LineChartData | undefined
 
   /**
    *  线条宽度(pixel)
@@ -34,15 +32,17 @@ export default class PaLineChart extends PaChart {
   })
   smooth: boolean = false
 
-  constructor() {
-    super()
-    this.type = 'line'
-    this.data = []
-  }
+  @Prop([Boolean, Object])
+  area: boolean | {} | undefined
 
   static create(props: any): PaLineChart {
     let chart = new PaLineChart()
     Object.assign(chart, props)
     return chart
+  }
+
+  constructor () {
+    super()
+    this.type = 'line'
   }
 }

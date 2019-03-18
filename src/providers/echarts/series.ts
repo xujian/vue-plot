@@ -23,11 +23,17 @@ export function makeSeries (props: any): any[] {
       }
     }
     if (props.type === 'line') {
+      let areaStyle = undefined
+      if (props.area === true) {
+        areaStyle = {}
+      } else if (props.area) {
+        areaStyle = props.area
+      }
       forTyped = {
         name: d.name,
         stack: props.stack,
         smooth: props.smooth,
-        areaStyle: {}
+        areaStyle: areaStyle
       }
     }
     if (props.type === 'scatter') {
