@@ -1,7 +1,7 @@
 import Vue, { VNode } from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 import { processSlots } from '../../core/accessories/slots'
-import Provider from '../../core/providers/echarts'
+import Provider from '../../providers/echarts'
 import { ChartDataTypes } from '../data'
 import Bus from '../../core/utils/events/bus'
 import ChartStyle from './ChartStyle'

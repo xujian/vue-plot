@@ -1,6 +1,6 @@
 import echarts from 'echarts'
 import options from './options'
-import globalConfigs, { setGlobalConfigs } from '../../../core/utils/configs'
+import globalConfigs, { setGlobalConfigs } from '../../core/utils/configs'
 
 class Provider {
 
