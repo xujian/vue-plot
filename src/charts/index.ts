@@ -3,7 +3,7 @@ import PaPieChartPlugin, { PaPieChart } from './pie'
 import PaLineChartPlugin, { PaLineChart } from './line'
 import PaScatterChartPlugin, { PaScatterChart } from './scatter'
 
-let plugins = {
+let plugins: {[name: string]: any} = {
   PaBarChartPlugin,
   PaPieChartPlugin,
   PaLineChartPlugin,

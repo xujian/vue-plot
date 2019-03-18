@@ -3,47 +3,41 @@ import { Component, Prop } from 'vue-property-decorator'
 import { processSlots } from '../../core/accessories/slots'
 import Provider from '../../core/providers/echarts'
 import { ChartDataTypes } from '../data'
-import { Axis } from '../../core/accessories/axises'
 import Bus from '../../core/utils/events/bus'
+import ChartStyle from './ChartStyle'
 
-@Component
+@Component({})
 export default class PaChart extends Vue {
   protected type: string = ''
   private canvas: any = null
 
-  @Prop({
-    default: ''
-  })
+  @Prop({ default: '' })
   title: string | undefined
 
-  @Prop({
-    default: () => []
-  })
+  @Prop({ default: () => [] })
   layers: any[] | undefined
 
-  @Prop({
-    default: () => []
-  })
+  @Prop({ default: () => [] })
   x: string[] | undefined
 
-  @Prop({
-    default: () => []
-  })
+  @Prop({ default: () => [] })
   y: string[] | undefined
 
-  @Prop({
-    default: () => {}
-  })
+  @Prop({ default: () => {} })
   options: any
 
-  @Prop({
-    default: () => []
-  })
+  @Prop(String)
+  theme: string | undefined
+
+  @Prop({ default: () => {} })
+  styles: ChartStyle | undefined
+
+  @Prop({ default: () => [] })
   data: any[] | undefined
 
   private __data: any[] = []
 
-  constructor () {
+  constructor() {
     super()
     this.type = ''
   }
@@ -52,7 +46,7 @@ export default class PaChart extends Vue {
    * 拿到所有chart specified props
    * 用于生成 echart options
    */
-  public get props (): Partial<PaChart> {
+  public get props(): Partial<PaChart> {
     let pa = {
       ...this.$props
     }
@@ -63,46 +57,65 @@ export default class PaChart extends Vue {
   /**
    * Add new layer to chart
    */
-  addLayer () {}
+  addLayer() {}
 
-  addAxis () {}
+  addAxis() {}
 
-  applyOptions (options: any) {}
+  applyOptions(options: any) {}
 
   protected appendOptions(): void {}
 
-  private draw () {
-    // 计算最终的 options
+  protected preProcessProps () {
+    if (this.styles) {
+
+    }
+  }
+
+  private draw() {
+    this.preProcessProps()
+    // 计算最终的 options 并交给 echart 绘图
+    let props: { [key: string]: any } = []
+    // 将 slot 里面的 accessory 处理为 props
     let slots = processSlots(<any[]>this.$slots.default)
-    let props: {[key: string]: any} = []
     slots.forEach(s => {
       let name = s.name.replace(/^pa-/, '')
       props[name] = s.props
     })
     console.log('Chart.ts---------<<<<<<<<<<<<<<<<<<after slots', props)
     let provider = new Provider(this.$refs.chart)
+    // 合并固有 props 与 accessories props
     this.canvas = provider.draw({
       ...this.props,
       ...props
     })
   }
 
-  public repaint () {
+  public repaint() {
     this.canvas.dispose()
     this.draw()
   }
 
-  render (h): VNode {
-    return h('div', {
-        'class': 'chart-container'
-      }, [
-        h('div', {
-            'class': 'chart',
+  render(h: (...arg: any[]) => VNode): VNode {
+    return h(
+      'div',
+      {
+        class: 'chart-container'
+      },
+      [
+        h(
+          'div',
+          {
+            class: 'chart',
             ref: 'chart'
-          }, [h('div', {
-                'class': 'chart-slot',
+          },
+          [
+            h(
+              'div',
+              {
+                class: 'chart-slot',
                 ref: 'slot'
-              }, [h('slot')]
+              },
+              [h('slot')]
             )
           ]
         )
@@ -110,7 +123,7 @@ export default class PaChart extends Vue {
     )
   }
 
-  mounted () {
+  mounted() {
     this.draw()
     Bus.on('theme.changed', (payload: any) => {
       this.repaint()

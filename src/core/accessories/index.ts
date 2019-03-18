@@ -1,7 +1,9 @@
 import { PaAxis } from './axises'
 import { PaTooltip } from './tooltips'
 
-export {
+let accessories: {[name: string]: any} = {
   PaAxis,
   PaTooltip
 }
+
+export default accessories

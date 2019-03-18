@@ -1,6 +1,6 @@
 import __Vue__ from 'vue'
 import { charts, plugins } from './charts'
-import * as accessories from './core/accessories'
+import accessories from './core/accessories'
 import PaChart from './core/chart'
 import ChartFactory from './core/chart/Factory'
 import globalConfigs, { setGlobalConfigs } from './core/utils/configs'
