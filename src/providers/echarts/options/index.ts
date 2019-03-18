@@ -41,6 +41,11 @@ let OptionsManager = {
       common,
       inherents[props.type],
       __options)
+    if (props.type === 'map') {
+      Reflect.deleteProperty(final, 'xAxis')
+      Reflect.deleteProperty(final, 'yAxis')
+      Reflect.deleteProperty(final, 'grid')
+    }
     return final
   }
 }
