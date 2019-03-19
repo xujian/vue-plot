@@ -138,7 +138,7 @@ let options = {
           "featureType": "label",
           "elementType": "all",
           "stylers": {
-            "visibility": "on"
+            "visibility": "off"
           }
         }
       ]

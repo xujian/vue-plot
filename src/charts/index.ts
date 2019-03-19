@@ -2,14 +2,14 @@ import PaBarChartPlugin, { PaBarChart } from './bar'
 import PaPieChartPlugin, { PaPieChart } from './pie'
 import PaLineChartPlugin, { PaLineChart } from './line'
 import PaScatterChartPlugin, { PaScatterChart } from './scatter'
-import PaMapChartPlugin, { PaMapChart } from './map'
+import PaMapPlugin, { PaMap, PaBaiduMap } from './map'
 
 let plugins: {[name: string]: any} = {
   PaBarChartPlugin,
   PaPieChartPlugin,
   PaLineChartPlugin,
   PaScatterChartPlugin,
-  PaMapChartPlugin
+  PaMapPlugin
 }
 
 let charts = {
@@ -17,7 +17,8 @@ let charts = {
   PaPieChart,
   PaLineChart,
   PaScatterChart,
-  PaMapChart
+  PaMap,
+  PaBaiduMap
 }
 
 export {

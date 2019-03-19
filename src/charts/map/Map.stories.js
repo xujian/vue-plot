@@ -8,10 +8,8 @@ stories.addDecorator(withKnobs)
 let states = [
   {
     name: 'Normal',
-    template: `<pa-bar-chart
-    :round="round"
-    :bar-width="barWidth"
-    ></pa-bar-chart>`
+    template: `<pa-map
+    ></pa-map>`
   }
 ]
 

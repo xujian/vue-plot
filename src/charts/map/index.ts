@@ -1,10 +1,12 @@
 import Vue from 'vue'
-import PaMapChart from './Map'
+import PaMap from './Map'
+import PaBaiduMap from './BaiduMap'
 import { VueClass } from 'vue-class-component/lib/declarations';
 
 const Plugin = {
   install (Vue: VueClass<Vue>) {
-    Vue.component(PaMapChart.name, PaMapChart)
+    Vue.component(PaMap.name, PaMap)
+    Vue.component(PaBaiduMap.name, PaBaiduMap)
   }
 }
 
@@ -12,4 +14,4 @@ const Plugin = {
 
 export default Plugin
 
-export { PaMapChart }
+export { PaMap, PaBaiduMap }

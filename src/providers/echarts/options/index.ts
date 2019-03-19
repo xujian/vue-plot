@@ -6,7 +6,7 @@ let inherents: any = {}
 let requires: { [name: string]: any } = require.context(
   './inherents/', true, /.ts$/)
 requires.keys().forEach((p: string) => {
-  let name = (p.match(/\.\/(\w+)\.ts$/) || ['', 'null'])[1]
+  let name = (p.match(/\.\/([\w\-]+)\.ts$/) || ['', 'null'])[1]
   inherents[name] = requires(p)['default']
 })
 
@@ -15,7 +15,7 @@ requires.keys().forEach((p: string) => {
  */
 let OptionsManager = {
   make(props: any): any {
-    console.log('OptionsManager.ts--------/////////////', props)
+    console.log('OptionsManager.ts--------/////////////', props, inherents)
     let __options: any = {}
     // 转换规则按字段集中在 rules 目录
     // 文件名为字段名
@@ -41,7 +41,7 @@ let OptionsManager = {
       common,
       inherents[props.type],
       __options)
-    if (props.type === 'map') {
+    if (props.type === 'baidu-map') {
       Reflect.deleteProperty(final, 'xAxis')
       Reflect.deleteProperty(final, 'yAxis')
       Reflect.deleteProperty(final, 'grid')

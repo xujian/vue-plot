@@ -12,3 +12,5 @@ export declare type ScatterChartData = {
   name: string,
   value: number[][]
 }
+
+export declare type MapData = number[]

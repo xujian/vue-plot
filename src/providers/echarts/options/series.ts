@@ -2,7 +2,7 @@ let types: { [name: string]: any } = {}
 let requires: { [name: string]: any }
   = require.context('./types/', true, /.ts$/)
 requires.keys().forEach((p: string) => {
-  let name = (p.match(/\.\/(\w+)\.ts$/) || ['', 'null'])[1]
+  let name = (p.match(/\.\/([\w\-]+)\.ts$/) || ['', 'null'])[1]
   types[name] = requires(p)['default']
 })
 
@@ -21,11 +21,15 @@ export function makeSeries (props: any): any[] {
 
   let extra: any[] = []
   Object.keys(types).forEach((t: string) => {
+    console.log('makeSeries=====', t, '=', props.type)
     if (t === props.type) {
       extra = types[t].call(null, props)
     }
   })
 
+  console.log('makeSeries////////+++++++++', extra, series)
+
+  // 逐项合并
   series = series.map((s: any, i: number) =>
     Object.assign({}, s, extra[i])
   )

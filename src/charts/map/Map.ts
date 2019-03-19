@@ -3,17 +3,17 @@ import PaChart from '../../core/chart'
 import { ChartDataTypes } from '@/core/data'
 
 @Component({})
-export default class PaMapChart extends PaChart {
+export default class PaMap extends PaChart {
   @Prop(Array)
-  data: ChartDataTypes.BarChartData[] | undefined
+  data: ChartDataTypes.MapData[] | undefined
 
   constructor() {
     super()
     this.type = 'map'
   }
 
-  static create(props: any): PaMapChart {
-    let chart = new PaMapChart()
+  static create(props: any): PaMap {
+    let chart = new PaMap()
     console.log('Bar.ts--------------------------create,', props)
     Object.assign(chart, props)
     return chart
