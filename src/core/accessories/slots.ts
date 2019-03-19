@@ -41,7 +41,8 @@ function processLayer (chartType: string, props: any) {
   // 将 slot 内嵌入的子图表处理成 series
   let chartFromTypes: {[key: string]: string} = {
     'bar': 'PaBarChart',
-    'line': 'PaLineChart'
+    'line': 'PaLineChart',
+    'scatter': 'PaScatterChart'
   }
   props.type = chartType
   let className = chartFromTypes[chartType]

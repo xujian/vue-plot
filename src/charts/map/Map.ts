@@ -14,7 +14,6 @@ export default class PaMap extends PaChart {
 
   static create(props: any): PaMap {
     let chart = new PaMap()
-    console.log('Bar.ts--------------------------create,', props)
     Object.assign(chart, props)
     return chart
   }

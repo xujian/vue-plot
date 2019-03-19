@@ -6,6 +6,13 @@ import { ChartDataTypes } from '../data'
 import Bus from '../../core/utils/events/bus'
 import ChartStyle from './ChartStyle'
 
+/**
+ * 定义 chart 的 props 组
+ */
+export declare type Props = {
+  [key: string]: any
+}
+
 @Component({})
 export default class PaChart extends Vue {
   protected type: string = ''
@@ -71,10 +78,8 @@ export default class PaChart extends Vue {
     }
   }
 
-  private draw() {
-    this.preProcessProps()
-    // 计算最终的 options 并交给 echart 绘图
-    let props: { [key: string]: any } = {layers: []}
+  protected processSlots () {
+    let props: ChartProp = { layers: [] }
     // 将 slot 里面的 accessory 处理为 props
     let slots = processSlots(<any[]>this.$slots.default)
     slots.forEach(s => {
@@ -86,7 +91,22 @@ export default class PaChart extends Vue {
         props[name] = s.props
       }
     })
+    return props
+  }
+
+  /**
+   * slot 之后的特别处理, 由子类实现
+   * @param props 输入的 props 项目 
+   */
+  protected postProcessSlots(props: Props): ChartProps {
+    return props
+  }
+
+  private draw() {
+    // 计算最终的 options 并交给 echart 绘图
+    let props: Props = this.processSlots()
     console.log('Chart.ts---------<<<<<<<<<<<<<<<<<<after slots', props)
+    props = this.postProcessSlots(props)
     let provider = new Provider(this.$refs.chart)
     // 合并固有 props 与 accessories props
     this.canvas = provider.draw({

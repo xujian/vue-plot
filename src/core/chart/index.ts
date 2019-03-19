@@ -1,8 +1,9 @@
-import PaChart from './Chart'
+import PaChart, { Props } from './Chart'
 import ChartStyle from './ChartStyle'
 
 export default PaChart
 
 export {
-  ChartStyle
+  ChartStyle,
+  Props
 }

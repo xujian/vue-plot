@@ -24,9 +24,9 @@ let OptionsManager = {
       Object.assign(__options, output)
     })
     // 从 data 计算出最终的 series
-    if (props.data) {
-      __options.series = makeSeries(props)
-    }
+    __options.series = props.data
+      ? makeSeries(props)
+      : []
     // 先前已将 slot 内的 pa-x-chart 转换为 layer
     if (props.layers) {
       let layerSeries: any[] =
