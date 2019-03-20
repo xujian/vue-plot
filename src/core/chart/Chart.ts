@@ -94,13 +94,14 @@ export default class PaChart extends Vue {
   }
 
   protected processSlots () {
-    let props: Props = { layers: [] }
+    let props: Props = {}
     // 将 slot 里面的 accessory 处理为 props
     let slots = resolveSlot(<any[]>this.$slots.default)
     slots.forEach(s => {
       // 处理 layers
       let name = s.name.replace(/^pa-/, '')
       if (name === 'layers') {
+        props.layers = props.layers || []
         props.layers.push(s.props)
       } else {
         props[name] = s.props
@@ -120,7 +121,7 @@ export default class PaChart extends Vue {
   private draw () {
     // 计算最终的 options 并交给 echart 绘图
     let props: Props = this.processSlots()
-    console.log('Chart.ts---------<<<<<<<<<<<<<<<<<<after slots', props)
+    console.log('Chart.ts---------<<<<<<<<<<<<<<<<<<after slots', this.props, props)
     props = this.postProcessSlots(props)
     let provider = new Provider(this.$refs.chart)
     // 合并固有 props 与 accessories props
