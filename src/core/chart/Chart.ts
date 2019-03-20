@@ -138,7 +138,9 @@ export default class PaChart extends Vue {
 
   mounted () {
     console.log('///////////Chart.ts mounted', this.props)
-    this.draw()
+    this.$nextTick(() => {
+      this.draw()
+    })
     Bus.on('theme.changed', (payload: any) => {
       this.repaint()
     })
