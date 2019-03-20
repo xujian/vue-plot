@@ -1,6 +1,7 @@
 let options = {
   xAxis: false,
   yAxis: false,
+  grid: false,
   tooltip: {
     trigger: 'item'
   },
