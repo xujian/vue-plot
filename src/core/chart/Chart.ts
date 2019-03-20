@@ -13,7 +13,14 @@ export declare type Props = {
   [key: string]: any
 }
 
-@Component({})
+@Component({
+  template: `
+  <div class="chart-container">
+    <div class="chart" ref="chart">
+      <slot></slot>
+    </div>
+  </div>`
+})
 export default class PaChart extends Vue {
   protected type: string = ''
   private canvas: any = null
@@ -118,34 +125,6 @@ export default class PaChart extends Vue {
   public repaint() {
     this.canvas.dispose()
     this.draw()
-  }
-
-  render(h: (...arg: any[]) => VNode): VNode {
-    return h(
-      'div',
-      {
-        class: 'chart-container'
-      },
-      [
-        h(
-          'div',
-          {
-            class: 'chart',
-            ref: 'chart'
-          },
-          [
-            h(
-              'div',
-              {
-                class: 'chart-slot',
-                ref: 'slot'
-              },
-              [h('slot')]
-            )
-          ]
-        )
-      ]
-    )
   }
 
   mounted() {
