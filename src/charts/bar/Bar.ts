@@ -1,6 +1,5 @@
-import Vue from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
-import PaChart from '../../core/chart'
+import PaChart, { Props } from '../../core/chart'
 import { ChartDataTypes } from '@/core/data'
 
 @Component({})
@@ -32,16 +31,10 @@ export default class PaBarChart extends PaChart {
   @Prop(Array)
   data: ChartDataTypes.BarChartData[] | undefined
 
-  constructor() {
+  constructor(props: Props) {
     super()
+    Object.assign(this, props)
     this.type = 'bar'
-  }
-
-  static create(props: any): PaBarChart {
-    let chart = new PaBarChart()
-    console.log('Bar.ts--------------------------create,', props)
-    Object.assign(chart, props)
-    return chart
   }
 
   onBarClick(): void {

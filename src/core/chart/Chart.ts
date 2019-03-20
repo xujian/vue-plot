@@ -57,6 +57,14 @@ export default class PaChart extends Vue {
   }
 
   /**
+   * Custom hook, called when props set
+   * in Factory.ts
+   */
+  afterCreate () {
+    console.log('///////////Chart.ts afterCreate', this.props)
+  }
+
+  /**
    * 拿到所有chart specified props
    * 用于生成 echart options
    */
@@ -86,7 +94,7 @@ export default class PaChart extends Vue {
   }
 
   protected processSlots () {
-    let props: ChartProp = { layers: [] }
+    let props: Props = { layers: [] }
     // 将 slot 里面的 accessory 处理为 props
     let slots = processSlots(<any[]>this.$slots.default)
     slots.forEach(s => {
@@ -128,6 +136,7 @@ export default class PaChart extends Vue {
   }
 
   mounted() {
+    console.log('///////////Chart.ts mounted', this.props)
     this.draw()
     Bus.on('theme.changed', (payload: any) => {
       this.repaint()

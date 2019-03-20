@@ -1,9 +1,8 @@
-import Vue from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 import PaChart from '../../core/chart'
 import { ChartDataTypes } from '../../core/data';
 
-@Component
+@Component({})
 export default class PaScatterChart extends PaChart {
   @Prop({
     default: () => []
@@ -24,11 +23,5 @@ export default class PaScatterChart extends PaChart {
     super()
     this.type = 'scatter'
     this.data = []
-  }
-
-  static create(props: any): PaScatterChart {
-    let chart = new PaScatterChart()
-    Object.assign(chart, props)
-    return chart
   }
 }

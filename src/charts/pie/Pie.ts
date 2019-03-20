@@ -1,9 +1,8 @@
-import Vue from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 import PaChart from '../../core/chart'
 import { ChartDataTypes } from '../../core/data';
 
-@Component
+@Component({})
 export default class PaPieChart extends PaChart {
   /**
    *  设定圆环宽度
@@ -22,11 +21,5 @@ export default class PaPieChart extends PaChart {
     super()
     this.type = 'pie'
     this.data = []
-  }
-
-  static create(props: any): PaPieChart {
-    let chart = new PaPieChart()
-    Object.assign(chart, props)
-    return chart
   }
 }

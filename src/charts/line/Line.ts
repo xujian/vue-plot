@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 import PaChart from '../../core/chart'
 import { LineChartData } from '../../core/data/ChartDataTypes'
@@ -34,12 +33,6 @@ export default class PaLineChart extends PaChart {
 
   @Prop([Boolean, Object])
   area: boolean | {} | undefined
-
-  static create(props: any): PaLineChart {
-    let chart = new PaLineChart()
-    Object.assign(chart, props)
-    return chart
-  }
 
   constructor () {
     super()

@@ -1,5 +1,4 @@
-import PaChart from './Chart'
-import PaBarChart from '../../charts/bar/Bar'
+import PaChart, { Props } from './Chart'
 import { charts } from '../../charts'
 
 /**
@@ -14,7 +13,9 @@ class ChartFactory {
     for (let k in charts) {
       if (k === name) {
         let chartClass = Reflect.get(charts, k)
-        chart = chartClass.create(props)
+        chart = new chartClass()
+        Object.assign(chart, props)
+        chart.afterCreate()
       }
     }
     return chart
