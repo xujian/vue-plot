@@ -13,6 +13,13 @@ export default class PaBaiduMap extends PaMap {
     this.type = 'baidu-map'
   }
 
+  afterCreate () {
+    Object.assign(this, {
+      x: false,
+      y: false
+    })
+  }
+
   protected postProcessSlots (props: Props): Props {
     Object.keys(props).forEach((p: string) => {
       if (p === 'layers') {

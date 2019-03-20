@@ -1,6 +1,6 @@
 import Vue, { VNode } from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
-import { processSlots } from '../../core/accessories/slots'
+import { resolveSlot } from '../../core/accessories/slots'
 import Provider from '../../providers/echarts'
 import { ChartDataTypes } from '../data'
 import Bus from '../../core/utils/events/bus'
@@ -51,7 +51,7 @@ export default class PaChart extends Vue {
 
   private __data: any[] = []
 
-  constructor() {
+  constructor () {
     super()
     this.type = ''
   }
@@ -68,7 +68,7 @@ export default class PaChart extends Vue {
    * 拿到所有chart specified props
    * 用于生成 echart options
    */
-  public get props(): Partial<PaChart> {
+  public get props (): Partial<PaChart> {
     let pa = {
       ...this.$props
     }
@@ -79,13 +79,13 @@ export default class PaChart extends Vue {
   /**
    * Add new layer to chart
    */
-  addLayer() {}
+  addLayer () {}
 
-  addAxis() {}
+  addAxis () {}
 
-  applyOptions(options: any) {}
+  applyOptions (options: any) {}
 
-  protected appendOptions(): void {}
+  protected appendOptions (): void {}
 
   protected preProcessProps () {
     if (this.styles) {
@@ -96,7 +96,7 @@ export default class PaChart extends Vue {
   protected processSlots () {
     let props: Props = { layers: [] }
     // 将 slot 里面的 accessory 处理为 props
-    let slots = processSlots(<any[]>this.$slots.default)
+    let slots = resolveSlot(<any[]>this.$slots.default)
     slots.forEach(s => {
       // 处理 layers
       let name = s.name.replace(/^pa-/, '')
@@ -113,11 +113,11 @@ export default class PaChart extends Vue {
    * slot 之后的特别处理, 由子类实现
    * @param props 输入的 props 项目 
    */
-  protected postProcessSlots(props: Props): ChartProps {
+  protected postProcessSlots (props: Props): ChartProps {
     return props
   }
 
-  private draw() {
+  private draw () {
     // 计算最终的 options 并交给 echart 绘图
     let props: Props = this.processSlots()
     console.log('Chart.ts---------<<<<<<<<<<<<<<<<<<after slots', props)
@@ -130,12 +130,12 @@ export default class PaChart extends Vue {
     })
   }
 
-  public repaint() {
+  public repaint () {
     this.canvas.dispose()
     this.draw()
   }
 
-  mounted() {
+  mounted () {
     console.log('///////////Chart.ts mounted', this.props)
     this.draw()
     Bus.on('theme.changed', (payload: any) => {

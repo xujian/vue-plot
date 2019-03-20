@@ -7,14 +7,13 @@ export default class PaMap extends PaChart {
   @Prop(Array)
   data: ChartDataTypes.MapData[] | undefined
 
+  @Prop({ default: () => false })
+  x: string[] | undefined
+
+  @Prop({ default: () => false })
+  y: string[] | undefined
   constructor() {
     super()
     this.type = 'map'
-  }
-
-  static create(props: any): PaMap {
-    let chart = new PaMap()
-    Object.assign(chart, props)
-    return chart
   }
 }

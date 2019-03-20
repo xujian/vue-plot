@@ -7,7 +7,7 @@ export default class PaScatterChart extends PaChart {
   @Prop({
     default: () => []
   })
-  data: ChartDataTypes.ScatterChartData[]
+  data: ChartDataTypes.ScatterChartData[] | undefined
 
   private __symbol: number | string | undefined
 
@@ -19,9 +19,8 @@ export default class PaScatterChart extends PaChart {
   })
   symbol: number | string | object | undefined
 
-  constructor() {
+  constructor () {
     super()
     this.type = 'scatter'
-    this.data = []
   }
 }

@@ -2,7 +2,6 @@ export default function (props: any) {
   let x = props.x
   if (x === false) {
     return {
-      xAxis: false
     }
   }
   let x1: any = {}
