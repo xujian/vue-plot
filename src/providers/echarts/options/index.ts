@@ -2,20 +2,25 @@ import common from './common'
 import { makeSeries } from './series'
 import handler from './handler'
 
-let inherents: any = {}
+let defaults: any = {}
 let requires: { [name: string]: any } = require.context(
-  './inherents/', true, /.ts$/)
+  './defaults/', true, /.ts$/)
 requires.keys().forEach((p: string) => {
   let name = (p.match(/\.\/([\w\-]+)\.ts$/) || ['', 'null'])[1]
-  inherents[name] = requires(p)['default']
+  defaults[name] = requires(p)['default']
 })
 
 /**
  *  从 chart props 计算最终的 echarts 配置项
  */
 let OptionsManager = {
-  make(props: any): any {
-    console.log('OptionsManager.ts--------/////////////', props, inherents)
+  make (props: any): any {
+    /**
+     * 步骤：
+     * 1. defaults
+     * 2. rules
+     * 3. series
+     */
     let __options: any = {}
     // 转换规则按字段集中在 rules 目录
     // 文件名为字段名
@@ -39,13 +44,8 @@ let OptionsManager = {
     }
     let final = Object.assign({},
       common,
-      inherents[props.type],
+      defaults[props.type],
       __options)
-    if (props.type === 'baidu-map') {
-      Reflect.deleteProperty(final, 'xAxis')
-      Reflect.deleteProperty(final, 'yAxis')
-      Reflect.deleteProperty(final, 'grid')
-    }
     return final
   }
 }

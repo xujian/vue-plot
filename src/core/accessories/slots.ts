@@ -2,9 +2,9 @@ import PaChart from '../chart';
 import ChartFactory from '../chart/Factory';
 
 /**
- * 将 <chart>内slot包含的内容转化为标准选项
+ * 将 <chart>内slot包含的内容转化为标准选项或layer
  */
-export function processSlots (slots: any[]) {
+export function resolveSlot (slots: any[]) {
   let result: any[] = []
   if (slots) {
     console.log('slots.ts--------/////////slots/////', slots)
