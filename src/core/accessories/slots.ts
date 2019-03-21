@@ -17,7 +17,7 @@ export function resolveSlot (slots: any[]) {
         let chartType = tag.match(/pa\-(\w+)\-chart/)[1]
         let layerProps = processLayer(chartType, props)
         result.push({
-          name: 'layers',
+          name: 'layer',
           props: layerProps
         })
       } else {

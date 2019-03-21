@@ -49,7 +49,7 @@ export default class PaChart extends Vue {
   @Prop({ default: () => [] })
   data: any[] | undefined
 
-  private __data: any[] = []
+  public accessories: any = {}
 
   constructor () {
     super()
@@ -69,11 +69,12 @@ export default class PaChart extends Vue {
    * 用于生成 echart options
    */
   public get props (): Partial<PaChart> {
-    let pa = {
+    let props = {
       ...this.$props
     }
-    pa.type = this.type
-    return pa
+    props.type = this.type
+    props.accessories = this.accessories
+    return props
   }
 
   /**
@@ -100,13 +101,16 @@ export default class PaChart extends Vue {
     slots.forEach(s => {
       // 处理 layers
       let name = s.name.replace(/^pa-/, '')
-      if (name === 'layers') {
+      if (name === 'layer') {
         props.layers = props.layers || []
         props.layers.push(s.props)
       } else {
+        // 处理 props
+        this.accessories[name] = s.props
         props[name] = s.props
       }
     })
+    console.log('Chart.ts ----after processSlots----', props)
     return props
   }
 
@@ -121,13 +125,13 @@ export default class PaChart extends Vue {
   private draw () {
     // 计算最终的 options 并交给 echart 绘图
     let props: Props = this.processSlots()
-    console.log('Chart.ts---------<<<<<<<<<<<<<<<<<<after slots', this.props, props)
+    console.log('Chart.ts---------<<<<<<<<<<<<<<<<<<after slots', this.props, props, this.type)
     props = this.postProcessSlots(props)
     let provider = new Provider(this.$refs.chart)
     // 合并固有 props 与 accessories props
     this.canvas = provider.draw({
       ...this.props,
-      ...props
+      ...this.accessories
     })
   }
 
@@ -135,12 +139,18 @@ export default class PaChart extends Vue {
     this.canvas.dispose()
     this.draw()
   }
+  
+  created() {
+    console.log('/////8888888888//////Chart.ts created', 
+      JSON.stringify(this.props))
+  }
 
   mounted () {
     console.log('///////////Chart.ts mounted', this.props)
-    this.$nextTick(() => {
-      this.draw()
-    })
+    // this.$nextTick(() => {
+    //   this.draw()
+    // })
+    this.draw()
     Bus.on('theme.changed', (payload: any) => {
       this.repaint()
     })

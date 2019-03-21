@@ -1,12 +1,17 @@
 import Vue from 'vue'
-import { Prop } from 'vue-property-decorator';
+import { Prop, Component } from 'vue-property-decorator'
 import { Style } from '../../core/utils/styles'
+import PaChart from '../chart'
+import { PaMap } from '@/charts/map'
+
+declare type AccessoryHost = PaChart | PaMap | null
 
 /**
- * 表现X或Y坐标轴
- * 覆盖默认配置
+ * Base class for chart accessories
  */
+@Component({template: ''})
 export default class PaAccessory extends Vue {
+  private __parent: AccessoryHost = null
 
   @Prop({
     default: 'dark'
@@ -14,5 +19,25 @@ export default class PaAccessory extends Vue {
   theme: string | undefined
 
   @Prop(Object)
-  style: Style | undefined
+  styles: Style | undefined
+
+  get props () {
+    return this.$prop
+  }
+
+  get parent () {
+    return this.__parent
+  }
+
+  set parent(parent: AccessoryHost) {
+    this.__parent = parent
+  }
+
+  public apply (): any {
+    return null
+  }
+
+  render (h: () => void) {
+    return h('div')
+  }
 }

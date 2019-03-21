@@ -14,10 +14,12 @@ export function makeSeries (
     props: any,
     type?: string | string[]
   ): any[] {
-  let series: any[] = props.data.map(d => {
+  let __props = {...props, ...props.accessories}
+  console.log('series.ts##################makeSeries, __props', __props)
+  let series: any[] = __props.data.map(d => {
     // 合并: 给定配置项 ➡️ 缺省配置项 ➡️ 固有配置项
     let basicSettings = {
-      type: props.type || 'bar',
+      type: __props.type || 'bar',
       data: d.constructor.name === 'Array'
         ? d: d.value
     }
@@ -30,8 +32,8 @@ export function makeSeries (
    */
   let extra: any[] = []
   Object.keys(types).forEach((t: string) => {
-    if (t === props.type) {
-      extra = types[t].call(null, props)
+    if (t === __props.type) {
+      extra = types[t].call(null, __props)
     }
   })
 
