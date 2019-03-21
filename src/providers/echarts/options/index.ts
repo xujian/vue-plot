@@ -28,6 +28,9 @@ let OptionsManager = {
       let output = handler.do(k, props)
       Object.assign(__options, output)
     })
+    Object.keys(props.accessories).forEach((k: string) => {
+      handler.take(k, props, __options)
+    })
     // 从 data 计算出最终的 series
     __options.series = props.data
       ? makeSeries(props)
