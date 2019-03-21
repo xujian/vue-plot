@@ -29,7 +29,7 @@ export default class PaLineChart extends PaChart {
   @Prop({
     default: false
   })
-  smooth: boolean = false
+  smooth: boolean | undefined
 
   @Prop([Boolean, Object])
   area: boolean | {} | undefined
