@@ -5,7 +5,6 @@ export default function (props: any) {
   } else if (props.area) {
     areaStyle = props.area
   }
-  console.log('series/line.ts$$$$$$$$$$$$$$$$$$$$$$$4', props)
   return props.data.map((d: any) => {
     let item: any = {
       name: d.name,
@@ -13,8 +12,8 @@ export default function (props: any) {
       smooth: props.smooth,
       areaStyle: areaStyle
     }
-    if (props.marks) {
-      if (props.marks.type === 'max-min') {
+    if (props.accessories.marks) {
+      if (props.accessories.marks.type === 'max-min') {
         item.markPoint = {
           data: [{
             type: 'max',

@@ -7,11 +7,11 @@ import ChartFactory from '../chart/Factory';
 export function resolveSlot (slots: any[]) {
   let result: any[] = []
   if (slots) {
-    console.log('slots.ts--------/////////slots/////', slots)
+    // console.log('slots.ts--------/////////slots/////', slots)
     slots.forEach (s => {
       let tag = s.componentOptions.tag || s.tag
+      let props = s.componentInstance.props
       let name: string = tag
-      let props = s.componentOptions.propsData
       if (tag.endsWith('-chart')) {
         // 嵌入的 chart
         let chartType = tag.match(/pa\-(\w+)\-chart/)[1]
@@ -28,7 +28,7 @@ export function resolveSlot (slots: any[]) {
       }
     })
   }
-  console.log('slots.ts--------/////////slots result/////', result)
+  // console.log('slots.ts--------/////////slots result/////', result)
   return result
 }
 
@@ -38,14 +38,6 @@ export function resolveSlot (slots: any[]) {
  * @param props 
  */
 function processLayer (chartType: string, props: any) {
-  // 将 slot 内嵌入的子图表处理成 series
-  let chartFromTypes: {[key: string]: string} = {
-    'bar': 'PaBarChart',
-    'line': 'PaLineChart',
-    'scatter': 'PaScatterChart'
-  }
   props.type = chartType
-  let className = chartFromTypes[chartType]
-  let chart = ChartFactory.make(className, props)
-  return chart.props
+  return props
 }

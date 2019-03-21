@@ -15,7 +15,7 @@ export function makeSeries (
     type?: string | string[]
   ): any[] {
   let __props = {...props, ...props.accessories}
-  console.log('series.ts##################makeSeries, __props', __props)
+  // console.log('series.ts##################makeSeries, __props', __props)
   let series: any[] = __props.data.map(d => {
     // 合并: 给定配置项 ➡️ 缺省配置项 ➡️ 固有配置项
     let basicSettings = {

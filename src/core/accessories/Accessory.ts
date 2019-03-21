@@ -22,7 +22,7 @@ export default class PaAccessory extends Vue {
   styles: Style | undefined
 
   get props () {
-    return this.$prop
+    return this.$props
   }
 
   get parent () {

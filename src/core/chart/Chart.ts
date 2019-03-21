@@ -61,7 +61,7 @@ export default class PaChart extends Vue {
    * in Factory.ts
    */
   afterCreate () {
-    console.log('///////////Chart.ts afterCreate', this.props)
+    // console.log('///////////Chart.ts afterCreate', this.props)
   }
 
   /**
@@ -110,7 +110,7 @@ export default class PaChart extends Vue {
         props[name] = s.props
       }
     })
-    console.log('Chart.ts ----after processSlots----', props)
+    // console.log('Chart.ts ----after processSlots----', props)
     return props
   }
 
@@ -125,12 +125,14 @@ export default class PaChart extends Vue {
   private draw () {
     // 计算最终的 options 并交给 echart 绘图
     let props: Props = this.processSlots()
-    console.log('Chart.ts---------<<<<<<<<<<<<<<<<<<after slots', this.props, props, this.type)
+    // console.log('Chart.ts---------<<<<<<<<<<<<<<<<<<after slots',
+      // this.props, props, this.type)
     props = this.postProcessSlots(props)
     let provider = new Provider(this.$refs.chart)
     // 合并固有 props 与 accessories props
     this.canvas = provider.draw({
       ...this.props,
+      ...props,
       ...this.accessories
     })
   }
@@ -141,16 +143,12 @@ export default class PaChart extends Vue {
   }
   
   created() {
-    console.log('/////8888888888//////Chart.ts created', 
-      JSON.stringify(this.props))
   }
 
   mounted () {
-    console.log('///////////Chart.ts mounted', this.props)
-    // this.$nextTick(() => {
-    //   this.draw()
-    // })
-    this.draw()
+    this.$nextTick(() => {
+      this.draw()
+    })
     Bus.on('theme.changed', (payload: any) => {
       this.repaint()
     })

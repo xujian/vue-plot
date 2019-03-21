@@ -34,12 +34,11 @@ let OptionsManager = {
       : []
     // 先前已将 slot 内的 pa-x-chart 转换为 layer
     if (props.layers && props.layers.length) {
-      console.log('OptionsManager///////', props.layers)
+      // console.log('OptionsManager///////', props.layers)
       let layerSeries: any[] =
         props.layers.map((l: any) =>
           makeSeries(l)
         )
-      console.log('OptionsManager///////layerSeries+++++++', layerSeries)
       __options.series = __options.series.concat(
         ...layerSeries
       )
