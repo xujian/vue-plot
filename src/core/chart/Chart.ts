@@ -37,6 +37,9 @@ export default class PaChart extends Vue {
   @Prop({ default: () => [] })
   y: string[] | undefined
 
+  @Prop({ default: () => 0 })
+  axis: ['left', 'right', 0, 1] | undefined
+
   @Prop({ default: () => {} })
   options: any
 
