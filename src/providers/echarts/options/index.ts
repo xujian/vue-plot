@@ -10,6 +10,8 @@ requires.keys().forEach((p: string) => {
   defaults[name] = requires(p)['default']
 })
 
+function buildRules
+
 /**
  *  从 chart props 计算最终的 echarts 配置项
  */
@@ -19,7 +21,8 @@ let OptionsManager = {
      * 步骤：
      * 1. defaults
      * 2. rules
-     * 3. series
+     * 3. accessories
+     * 4. series
      */
     let __options: any = {}
     // 转换规则按字段集中在 rules 目录

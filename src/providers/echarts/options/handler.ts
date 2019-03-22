@@ -1,5 +1,5 @@
 let requires: {[name: string]: any} = 
-  require.context('./rules/', true, /.ts$/)
+  require.context('./props/', true, /.ts$/)
 let rules: {[name: string]: any} = {}
 requires.keys().forEach((p: string) => {
   let name = (p.match(/\.\/(\w+)\.ts$/) || ['', 'null'])[1]
@@ -15,7 +15,7 @@ requires.keys().forEach((p: string) => {
 console.log('Handler.ts-------------------rules, accessories', rules, accessories)
 
 /**
- * 将 chart props 转换为
+ * 将 chart props 转换为 echart 原生配置项
  */
 const handler = {
   do (key: string, props: any): any {
