@@ -3,7 +3,7 @@ import { Component, Prop } from 'vue-property-decorator'
 import { resolveSlot } from '../../core/accessories/slots'
 import Provider from '../../providers/echarts'
 import { ChartDataTypes } from '../data'
-import Bus from '../../core/utils/events/bus'
+import Bus from '../../core/shared/events/bus'
 import ChartStyle from './ChartStyle'
 
 /**

@@ -7,7 +7,7 @@ import ChartFactory from '../chart/Factory';
 export function resolveSlot (slots: any[]) {
   let result: any[] = []
   if (slots) {
-    // console.log('slots.ts--------/////////slots/////', slots)
+    console.log('slots.ts--------/////////slots/////', slots)
     slots.forEach (s => {
       let tag = s.componentOptions.tag || s.tag
       let props = s.componentInstance.props

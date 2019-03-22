@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import globalConfigs, { setGlobalConfigs } from './core/utils/configs'
-import Bus from './core/utils/events/bus'
+import globalConfigs, { setGlobalConfigs } from './core/shared/configs'
+import Bus from './core/shared/events/bus'
 
 let $chartlib = new Vue({
   computed: {

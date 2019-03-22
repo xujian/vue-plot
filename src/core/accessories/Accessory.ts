@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { Prop, Component } from 'vue-property-decorator'
-import { Style } from '../../core/utils/styles'
+import { Style } from '../../core/shared/styles'
 import PaChart from '../chart'
 import { PaMap } from '@/charts/map'
 
