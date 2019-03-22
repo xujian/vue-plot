@@ -25,11 +25,15 @@ export default class PaChart extends Vue {
   protected type: string = ''
   private canvas: any = null
 
+  /**
+   * 渲染模式 layer 为不可见
+   */
+  mode: 'chart' | 'layer' = 'chart'
+
   @Prop({ default: '' })
   title: string | undefined
 
-  @Prop({ default: () => [] })
-  layers: any[] | undefined
+  layers: any[] = []
 
   @Prop({ default: () => [] })
   x: string[] | undefined
@@ -72,12 +76,12 @@ export default class PaChart extends Vue {
    * 用于生成 echart options
    */
   public get props (): Partial<PaChart> {
-    let props = {
-      ...this.$props
+    return {
+      ...this.$props,
+      type: this.type,
+      layers: this.layers,
+      accessories: this.accessories
     }
-    props.type = this.type
-    props.accessories = this.accessories
-    return props
   }
 
   /**
@@ -105,8 +109,8 @@ export default class PaChart extends Vue {
       // 处理 layers
       let name = s.name.replace(/^pa-/, '')
       if (name === 'layer') {
-        props.layers = props.layers || []
-        props.layers.push(s.props)
+        console.log('processSlo**************', s.component)
+        this.layers.push(s.component)
       } else {
         // 处理 props
         this.accessories[name] = s.props
@@ -129,8 +133,10 @@ export default class PaChart extends Vue {
     // 计算最终的 options 并交给 echart 绘图
     let props: Props = this.processSlots()
     // console.log('Chart.ts---------<<<<<<<<<<<<<<<<<<after slots',
-      // this.props, props, this.type)
+    // this.props, props, this.type)
+    console.log('-3-draw----------', this.type)
     props = this.postProcessSlots(props)
+    if (this.mode === 'layer') return
     let provider = new Provider(this.$refs.chart)
     // 合并固有 props 与 accessories props
     this.canvas = provider.draw({
@@ -149,6 +155,7 @@ export default class PaChart extends Vue {
   }
 
   mounted () {
+    console.log('-2-mounted----------', this.type)
     this.$nextTick(() => {
       this.draw()
     })

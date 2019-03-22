@@ -1,4 +1,4 @@
-let mocks: any[] = []
+let mocks: {} = {}
 const requires = require.context('./chart', true, /.ts$/)
 
 requires.keys().forEach((k: string) => {

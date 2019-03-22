@@ -40,7 +40,7 @@ let OptionsManager = {
       // console.log('OptionsManager///////', props.layers)
       let layerSeries: any[] =
         props.layers.map((l: any) =>
-          makeSeries(l)
+          makeSeries(l.props)
         )
       __options.series = __options.series.concat(
         ...layerSeries

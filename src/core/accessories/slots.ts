@@ -10,15 +10,16 @@ export function resolveSlot (slots: any[]) {
     console.log('slots.ts--------/////////slots/////', slots)
     slots.forEach (s => {
       let tag = s.componentOptions.tag || s.tag
-      let props = s.componentInstance.props
+      let component = s.componentInstance
+      let props = component.props
       let name: string = tag
       if (tag.endsWith('-chart')) {
         // 嵌入的 chart
         let chartType = tag.match(/pa\-(\w+)\-chart/)[1]
-        let layerProps = processLayer(chartType, props)
+        component = processLayer(chartType, component)
         result.push({
           name: 'layer',
-          props: layerProps
+          component
         })
       } else {
         result.push({
@@ -37,7 +38,8 @@ export function resolveSlot (slots: any[]) {
  * @param chartType 
  * @param props 
  */
-function processLayer (chartType: string, props: any) {
-  props.type = chartType
-  return props
+function processLayer (chartType: string, component: any) {
+  console.log('-1-processLayer----------', component.type)
+  component.mode = 'layer'
+  return component
 }
