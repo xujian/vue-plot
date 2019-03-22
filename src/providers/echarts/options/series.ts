@@ -1,6 +1,6 @@
 let types: { [name: string]: any } = {}
 let requires: { [name: string]: any }
-  = require.context('./series/', true, /.ts$/)
+  = require.context('./series/types', true, /.ts$/)
 requires.keys().forEach((p: string) => {
   let name = (p.match(/\.\/([\w\-]+)\.ts$/) || ['', 'null'])[1]
   types[name] = requires(p)['default']
