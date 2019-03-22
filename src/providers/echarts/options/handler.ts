@@ -18,7 +18,7 @@ console.log('Handler.ts-------------------rules, accessories', rules, accessorie
  * 将 chart props 转换为 echart 原生配置项
  */
 const handler = {
-  do (key: string, props: any): any {
+  translate (key: string, props: any): any {
     let rule = rules[key]
     if (rule) {
       if (typeof rule === 'function') {
