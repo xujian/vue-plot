@@ -39,7 +39,5 @@ export function resolveSlot (slots: any[]) {
  * @param props 
  */
 function processLayer (chartType: string, component: any) {
-  console.log('-1-processLayer----------', component.type)
-  component.mode = 'layer'
   return component
 }

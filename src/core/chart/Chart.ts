@@ -155,7 +155,10 @@ export default class PaChart extends Vue {
   }
 
   mounted () {
-    console.log('-2-mounted----------', this.type)
+    // determin mode by parent
+    // to prevent layer chart to draw
+    this.mode = this.$parent instanceof PaChart
+      ? 'layer' : 'chart'
     this.$nextTick(() => {
       this.draw()
     })
