@@ -3,7 +3,7 @@ import { makeSeries } from './series'
 import handler from './handler'
 
 let defaults: any = {}
-let requires: { [name: string]: any } = require.context(
+let requires = require.context(
   './defaults/', true, /.ts$/)
 requires.keys().forEach((p: string) => {
   let name = (p.match(/\.\/([\w\-]+)\.ts$/) || ['', 'null'])[1]
@@ -43,6 +43,16 @@ function buildLayers (props: any) {
   return series
 }
 
+function integrate (options: any) {
+  // 将 legend 内的文本写入到 series 的 name
+  let legend = options.legend
+  if (legend && legend.data) {
+    options.series.forEach((s: any, i: number) => {
+      s.name = options.legend.data[i]
+    })
+  }
+}
+
 /**
  *  从 chart props 计算最终的 echarts 配置项
  */
@@ -60,6 +70,7 @@ let OptionsManager = {
     options.series = buildSeries(props)
     let layerAccessories = buildLayers(props)
     options.series = options.series.concat(...layerAccessories)
+    integrate(options)
     let final = Object.assign({},
       common,
       defaults[props.type],

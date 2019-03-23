@@ -3,13 +3,11 @@
  * 使用 require.context
  * @param dir 目录位置
  */
-const requireContext = require.context
-
 function pack (dir: string): {
     [key: string]: any
   } {
   let result: { [name: string]: any } = {}
-  let requires = requireContext(dir, true, /.ts$/)
+  let requires = require.context(dir, true, /.ts$/)
   requires.keys().forEach((p: string) => {
     let name = (p.match(/\.\/(\w+)\.ts$/) || ['', 'null'])[1]
     result[name] = requires(p)['default']

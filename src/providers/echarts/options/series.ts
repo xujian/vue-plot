@@ -10,7 +10,7 @@ requires.keys().forEach((p: string) => {
 
 function buildExtra (props: any) {
   let features = []
-  // 查找某一图标类型的字段定义
+  // 查找某一图表类型的字段定义
   let spec = specs.find(s => s.type === props.type)
   if (spec) {
     features = spec.features.map(f => {
@@ -42,17 +42,17 @@ export function makeSeries (props: any): any[] {
   /**
    * 依据 type 组装进特殊定义
    */
-  let typedSeries: any[] = []
+  let typedSettings: any[] = []
   let type = Reflect.get(types, __props.type)
-  if (type) typedSeries = type.call(null, __props)
+  if (type) typedSettings = type.call(null, __props)
 
-  let extraSeries = buildExtra(__props)
+  let extraSettings = buildExtra(__props)
 
   series = series.map((s: any, i: number) =>
     Object.assign({}, 
       s,
-      typedSeries[i],
-      ...extraSeries)
+      typedSettings[i],
+      ...extraSettings)
   )
 
   return series

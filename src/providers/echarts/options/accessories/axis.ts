@@ -1,5 +1,3 @@
-import x from '../rules/x';
-
 export default (props: any, providerOptions: any) => {
   let output: any = {} 
   let axis: {[key: string]: any} = props.axis
