@@ -32,8 +32,7 @@ export function makeSeries (props: any): any[] {
     // 合并: 给定配置项 ➡️ 缺省配置项 ➡️ 固有配置项
     let basicSettings = {
       type: __props.type || 'bar',
-      data: d.constructor.name === 'Array'
-        ? d: d.value
+      data: d
     }
     return ({
       ...basicSettings

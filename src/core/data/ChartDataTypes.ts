@@ -14,3 +14,10 @@ export declare type ScatterChartData = {
 }
 
 export declare type MapData = number[]
+
+export declare type TreeChartData = {
+  name: string,
+  children: [
+    TreeChartData | {name: string, value: number}
+  ]
+}

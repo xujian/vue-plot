@@ -15,11 +15,10 @@ export default class PaPieChart extends PaChart {
   @Prop({
     default: () => []
   })
-  data: ChartDataTypes.PieChartData
+  data: ChartDataTypes.PieChartData | undefined
 
   constructor() {
     super()
     this.type = 'pie'
-    this.data = []
   }
 }
