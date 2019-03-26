@@ -5,6 +5,7 @@ import Provider from '../../providers/echarts'
 import { ChartDataTypes } from '../data'
 import Bus from '../../core/shared/events/bus'
 import ChartStyle from './ChartStyle'
+import Drawer from './Drawer'
 
 /**
  * 定义 chart 的 props 组
@@ -53,8 +54,8 @@ export default class PaChart extends Vue {
   @Prop({ default: () => {} })
   styles: ChartStyle | undefined
 
-  @Prop({ default: () => [] })
-  data: any[] | undefined
+  @Prop({ default: () => '' })
+  data: string | undefined
 
   public accessories: any = {}
 
@@ -129,21 +130,30 @@ export default class PaChart extends Vue {
     return props
   }
 
+  private init () {
+    this.draw()
+  }
+
   private draw () {
     // 计算最终的 options 并交给 echart 绘图
     let props: Props = this.processSlots()
     // console.log('Chart.ts---------<<<<<<<<<<<<<<<<<<after slots',
     // this.props, props, this.type)
     console.log('-3-draw----------', this.type)
-    props = this.postProcessSlots(props)
     if (this.mode === 'layer') return
-    let provider = new Provider(this.$refs.chart)
-    // 合并固有 props 与 accessories props
-    this.canvas = provider.draw({
-      ...this.props,
-      ...props,
-      ...this.accessories
-    })
+    props = this.postProcessSlots(props)
+    if (typeof this.props.data === 'string') {
+      Drawer.get(this.props.data).then((data: any) => {
+        let provider = new Provider(this.$refs.chart)
+        // 合并固有 props 与 accessories props
+        this.canvas = provider.draw({
+          ...this.props,
+          ...props,
+          ...this.accessories,
+          data
+        })
+      })
+    }
   }
 
   public repaint () {
@@ -160,7 +170,7 @@ export default class PaChart extends Vue {
     this.mode = this.$parent instanceof PaChart
       ? 'layer' : 'chart'
     this.$nextTick(() => {
-      this.draw()
+      this.init()
     })
     Bus.on('theme.changed', (payload: any) => {
       this.repaint()
