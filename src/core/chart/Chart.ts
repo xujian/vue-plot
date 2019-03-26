@@ -54,6 +54,8 @@ export default class PaChart extends Vue {
   @Prop({ default: () => {} })
   styles: ChartStyle | undefined
 
+  private __data: any[] = []
+
   @Prop({ default: () => '' })
   data: string | undefined
 
@@ -130,29 +132,32 @@ export default class PaChart extends Vue {
     return props
   }
 
-  private init () {
-    this.draw()
-  }
-
   private draw () {
     // 计算最终的 options 并交给 echart 绘图
     let props: Props = this.processSlots()
+    props = this.postProcessSlots(props)
+    if (this.mode === 'layer') return
+    let provider = new Provider(this.$refs.chart)
+    // 合并固有 props 与 accessories props
+    this.canvas = provider.draw({
+      ...this.props,
+      ...props,
+      ...this.accessories,
+      data: this.__data
+    })
+  }
+
+  private init () {
     // console.log('Chart.ts---------<<<<<<<<<<<<<<<<<<after slots',
     // this.props, props, this.type)
-    console.log('-3-draw----------', this.type)
-    if (this.mode === 'layer') return
-    props = this.postProcessSlots(props)
     if (typeof this.props.data === 'string') {
-      Drawer.get(this.props.data).then((data: any) => {
-        let provider = new Provider(this.$refs.chart)
-        // 合并固有 props 与 accessories props
-        this.canvas = provider.draw({
-          ...this.props,
-          ...props,
-          ...this.accessories,
-          data
-        })
+      Drawer.get(this.props.data)
+      .then((data: any) => {
+        this.__data = data
+        this.draw()
       })
+    } else {
+      this.draw()
     }
   }
 
@@ -167,6 +172,7 @@ export default class PaChart extends Vue {
   mounted () {
     // determin mode by parent
     // to prevent layer chart to draw
+    console.log('Chart.ts$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$=====mounted')
     this.mode = this.$parent instanceof PaChart
       ? 'layer' : 'chart'
     this.$nextTick(() => {

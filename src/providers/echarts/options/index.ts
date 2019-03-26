@@ -68,7 +68,7 @@ let OptionsManager = {
     let options = buildProps(props)
     options = buildAccessories(props, options)
     options.series = buildSeries(props)
-    let layerAccessories = buildLayers(props)
+    let layerAccessories = [] // buildLayers(props)
     options.series = options.series.concat(...layerAccessories)
     integrate(options)
     let final = Object.assign({},
