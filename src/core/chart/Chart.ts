@@ -139,10 +139,12 @@ export default class PaChart extends Vue {
     if (this.mode === 'layer') return
     let provider = new Provider(this.$refs.chart)
     // 合并固有 props 与 accessories props
-    this.canvas = provider.draw({
+    provider.draw({
       ...this.props,
       ...props,
       ...this.accessories
+    }).then(chart => {
+      this.canvas = chart
     })
   }
 
