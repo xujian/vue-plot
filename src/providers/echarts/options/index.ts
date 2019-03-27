@@ -28,19 +28,8 @@ function buildAccessories (props: any, options: any) {
   return options
 }
 
-function buildSeries (props: any) {
-  let series = props.data
-    ? makeSeries(props)
-    : []
-  return series
-}
-
-function buildLayers (props: any) {
-  let series: any[] =
-    props.layers.map((l: any) =>
-      makeSeries(l.props)
-    )
-  return series
+function buildSeries (props: any): Promise<any[]> {
+  return makeSeries([props, ...props.layers])
 }
 
 function integrate (options: any) {
@@ -57,7 +46,7 @@ function integrate (options: any) {
  *  从 chart props 计算最终的 echarts 配置项
  */
 let OptionsManager = {
-  make (props: any): any {
+  make (props: any): Promise<any> {
     /**
      * 步骤：
      * 1. defaults
@@ -67,15 +56,18 @@ let OptionsManager = {
      */
     let options = buildProps(props)
     options = buildAccessories(props, options)
-    options.series = buildSeries(props)
-    let layerAccessories = [] // buildLayers(props)
-    options.series = options.series.concat(...layerAccessories)
-    integrate(options)
-    let final = Object.assign({},
-      common,
-      defaults[props.type],
-      options)
-    return final
+    options.series = []
+    return new Promise<any>((resolve, reject) => {
+      buildSeries(props).then(series => {
+        options.series = options.series.concat(...series)
+        integrate(options)
+        let final = Object.assign({},
+          common,
+          defaults[props.type],
+          options)
+        resolve(final)
+      })
+    })
   }
 }
 

@@ -1,4 +1,5 @@
 import specs from './series/specs'
+import Drawer from '../../../core/chart/Drawer';
 
 let types: { [name: string]: () => any } = {}
 let requires 
@@ -25,34 +26,42 @@ function buildExtra (props: any) {
  * 将 data 组装为 series
  * @param props 
  */
-export function makeSeries (props: any): any[] {
-  let __props = {data: [], ...props, ...props.accessories}
-  // console.log('series.ts##################makeSeries, __props', __props)
-  let series: any[] = __props.data.map(d => {
-    // 合并: 给定配置项 ➡️ 缺省配置项 ➡️ 固有配置项
-    let basicSettings = {
-      type: __props.type || 'bar',
-      data: d
-    }
-    return ({
-      ...basicSettings
+export function makeSeries (layers: any[]): Promise<any[]> {
+  // 输入的是多套 props/data 外层以及layers合并而来
+  let promises: Promise<any[]>[] = layers.map(layer => {
+    let props = { ...layer, ...layer.accessories }
+    return Drawer.get(props.data || []) // 返回的是 data[]
+  })
+  return new Promise<any[]>((resolve, reject) => {
+    Promise.all(promises).then(
+      (layersOfLiveData: any[]) => {
+      let final: any[] = []
+        layersOfLiveData.forEach((liveData: any, layerIndex: number) => {
+        let layerSeries: any[] = []
+        liveData.forEach((d: any, dataIndex: number) => {
+          // 合并: 给定配置项 ➡️ 缺省配置项 ➡️ 固有配置项
+          let thisLayer = layers[layerIndex]
+          let basicSettings = {
+            type: thisLayer.type || 'bar',
+            data: d
+          }
+          let type = Reflect.get(types, thisLayer.type)
+          let typedSettings = type
+            ? type.call(null, thisLayer)
+            : []
+          let extraSettings = buildExtra(thisLayer)
+          layerSeries.push(
+            Object.assign(
+              {},
+              basicSettings,
+              typedSettings[dataIndex],
+              ...extraSettings
+            )
+          )
+        })
+        final.push(layerSeries)
+      }) // 1 forEach
+      resolve(final)
     })
   })
-  /**
-   * 依据 type 组装进特殊定义
-   */
-  let typedSettings: any[] = []
-  let type = Reflect.get(types, __props.type)
-  if (type) typedSettings = type.call(null, __props)
-
-  let extraSettings = buildExtra(__props)
-
-  series = series.map((s: any, i: number) =>
-    Object.assign({}, 
-      s,
-      typedSettings[i],
-      ...extraSettings)
-  )
-
-  return series
 }
