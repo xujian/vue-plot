@@ -2,7 +2,7 @@ import specs from './series/specs'
 import Drawer from '../../../core/chart/Drawer';
 
 let types: { [name: string]: () => any } = {}
-let requires 
+let requires
   = require.context('./series/types', true, /.ts$/)
 requires.keys().forEach((p: string) => {
   let name = (p.match(/\.\/([\w\-]+)\.ts$/) || ['', 'null'])[1]
@@ -34,32 +34,33 @@ export function makeSeries (layers: any[]): Promise<any[]> {
   })
   return new Promise<any[]>((resolve, reject) => {
     Promise.all(promises).then(
-      (layersOfLiveData: any[]) => {
+      (layersOfSeriesData: any[]) => {
       let final: any[] = []
-        layersOfLiveData.forEach((liveData: any, layerIndex: number) => {
-        let layerSeries: any[] = []
-        liveData.forEach((d: any, dataIndex: number) => {
-          // 合并: 给定配置项 ➡️ 缺省配置项 ➡️ 固有配置项
-          let thisLayer = layers[layerIndex]
-          let basicSettings = {
-            type: thisLayer.type || 'bar',
-            data: d
-          }
-          let type = Reflect.get(types, thisLayer.type)
-          let typedSettings = type
-            ? type.call(null, thisLayer)
-            : []
-          let extraSettings = buildExtra(thisLayer)
-          layerSeries.push(
-            Object.assign(
-              {},
-              basicSettings,
-              typedSettings[dataIndex],
-              ...extraSettings
+        layersOfSeriesData.forEach(
+          (series: any, layerIndex: number) => {
+          let seriesOfThisLayer: any[] = []
+          series.forEach((d: any, dataIndex: number) => {
+            // 合并: 给定配置项 ➡️ 缺省配置项 ➡️ 固有配置项
+            let thisLayer = layers[layerIndex]
+            let basicSettings = {
+              type: thisLayer.type || 'bar',
+              data: d
+            }
+            let type = Reflect.get(types, thisLayer.type)
+            let typedSettings = type
+              ? type.call(null, {...thisLayer, data: d})
+              : []
+            let extraSettings = buildExtra(thisLayer)
+            seriesOfThisLayer.push(
+              Object.assign(
+                {},
+                basicSettings,
+                typedSettings[dataIndex],
+                ...extraSettings
+              )
             )
-          )
         })
-        final.push(layerSeries)
+        final.push(seriesOfThisLayer)
       }) // 1 forEach
       resolve(final)
     })

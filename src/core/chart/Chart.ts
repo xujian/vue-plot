@@ -142,23 +142,23 @@ export default class PaChart extends Vue {
     this.canvas = provider.draw({
       ...this.props,
       ...props,
-      ...this.accessories,
-      data: this.__data
+      ...this.accessories
     })
   }
 
   private init () {
     // console.log('Chart.ts---------<<<<<<<<<<<<<<<<<<after slots',
     // this.props, props, this.type)
-    if (typeof this.props.data === 'string') {
-      Drawer.get(this.props.data)
-      .then((data: any) => {
-        this.__data = data
-        this.draw()
-      })
-    } else {
-      this.draw()
-    }
+    this.draw()
+    // if (typeof this.props.data === 'string') {
+    //   Drawer.get(this.props.data)
+    //   .then((data: any) => {
+    //     this.__data = data
+    //     this.draw()
+    //   })
+    // } else {
+    //   this.draw()
+    // }
   }
 
   public repaint () {

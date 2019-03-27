@@ -398,4 +398,4 @@ var convertData = function(data) {
   return res
 }
 
-export default convertData(data)
+export default [[convertData(data)]]

@@ -29,7 +29,8 @@ function buildAccessories (props: any, options: any) {
 }
 
 function buildSeries (props: any): Promise<any[]> {
-  return makeSeries([props, ...props.layers])
+  let layers = props.layers.map((l: any) => l.props)
+  return makeSeries([props, ...layers])
 }
 
 function integrate (options: any) {
