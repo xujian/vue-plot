@@ -1,7 +1,16 @@
 export default function (props: any) {  
-  return props.data.map((d: any) => ({
-    barWidth: props.barWidth,
-    stack: props.stacked,
-    barGap: props.barGap
-  }))
+  let series = props.data.map((d: any) => {
+    let item: any = {
+      barWidth: props.barWidth,
+      stack: props.stacked,
+      barGap: props.barGap
+    }
+    if (props.round) {
+      item.itemStyle = {
+        barBorderRadius: props.barWidth / 2
+      }
+    }
+    return item
+  })
+  return series
 }
