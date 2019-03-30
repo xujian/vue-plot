@@ -16,7 +16,7 @@ function buildExtra (props: any) {
   if (spec) {
     features = spec.features.map(f => {
       let feature = require(`./series/features/${f}`).default
-      return f = feature.call(this, props)
+      return f = feature.call(null, props)
     })
   }
   return features

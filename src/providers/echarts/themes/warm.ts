@@ -128,6 +128,5 @@ var theme = {
     }
   }
 }
-theme.categoryAxis.splitLine.show = false
 
 export default theme

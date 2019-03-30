@@ -1,4 +1,4 @@
-var data = [
+var data: any[] = [
   { name: '海门', value: 9 },
   { name: '鄂尔多斯', value: 12 },
   { name: '招远', value: 12 },
@@ -191,7 +191,7 @@ var data = [
   { name: '大庆', value: 279 }
 ]
 
-var geoCoordMap = {
+var geoCoordMap: any = {
   海门: [121.15, 31.89],
   鄂尔多斯: [109.781327, 39.608266],
   招远: [120.38, 37.35],
@@ -384,7 +384,7 @@ var geoCoordMap = {
   大庆: [125.03, 46.58]
 }
 
-var convertData = function(data) {
+var convertData = function(data: any[]) {
   var res = []
   for (var i = 0; i < data.length; i++) {
     var geoCoord = geoCoordMap[data[i].name]

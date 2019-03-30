@@ -2,10 +2,8 @@ import Vue, { VNode } from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 import { resolveSlot } from '../../core/accessories/slots'
 import Provider from '../../providers/echarts'
-import { ChartDataTypes } from '../data'
 import Bus from '../../core/shared/events/bus'
 import ChartStyle from './ChartStyle'
-import Drawer from './Drawer'
 
 /**
  * 定义 chart 的 props 组
@@ -57,7 +55,7 @@ export default class PaChart extends Vue {
   private __data: any[] = []
 
   @Prop({ default: () => '' })
-  data: string | undefined
+  data: string | any[] | undefined
 
   public accessories: any = {}
 
@@ -78,7 +76,7 @@ export default class PaChart extends Vue {
    * 拿到所有chart specified props
    * 用于生成 echart options
    */
-  public get props (): Partial<PaChart> {
+  public get props (): any {
     return {
       ...this.$props,
       type: this.type,

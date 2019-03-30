@@ -14,9 +14,4 @@ export default class PaTooltip extends PaAccessory {
     default: [10, 10]
   })
   position: [string, string] | [number, number] | string | undefined
-
-  @Prop({
-    default: undefined
-  })
-  formatter: (val: any) => string | undefined
 }

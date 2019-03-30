@@ -3,13 +3,13 @@ let requires: {[name: string]: any} =
 let rules: {[name: string]: any} = {}
 requires.keys().forEach((p: string) => {
   let name = (p.match(/\.\/(\w+)\.ts$/) || ['', 'null'])[1]
-  rules[name] = requires(p)['default']
+  rules[name] = (requires as (p: string) => any)(p)['default']
 })
 let accessories: {[name: string]: any} = {}
 requires = require.context('./accessories/', true, /.ts$/)
 requires.keys().forEach((p: string) => {
   let name = (p.match(/\.\/(\w+)\.ts$/) || ['', 'null'])[1]
-  accessories[name] = requires(p)['default']
+  accessories[name] = (requires as (p: string) => any)(p)['default']
 })
 
 console.log('Handler.ts-------------------rules, accessories', rules, accessories)

@@ -2,17 +2,17 @@ import Vue from 'vue'
 
 const Bus = new Vue({
   methods: {
-    emit (event, ...args) {
+    emit (event: string, ...args: any) {
       this.$emit(event, ...args)
     },
-    on (event, callback) {
-      this.$on(event, callback)
+    on (event: string, ...args: any) {
+      this.$on(event, args)
     },
-    off (event, callback) {
-      this.$off(event, callback)
+    off (event: string, ...args: any) {
+      this.$off(event, args)
     },
-    once (event, callback) {
-      this.$once(event, callback)
+    once (event: string, ...args: any) {
+      this.$once(event, args)
     }
   }
 })

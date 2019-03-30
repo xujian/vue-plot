@@ -1,5 +1,5 @@
 import { Component, Prop } from 'vue-property-decorator'
-import PaChart, { Props } from '../../core/chart'
+import PaChart, { Props } from '@/core/chart'
 import { ChartDataTypes } from '@/core/data'
 
 @Component({})
@@ -29,11 +29,10 @@ export default class PaBarChart extends PaChart {
   stack: string | undefined
 
   @Prop(Array)
-  data: ChartDataTypes.BarChartData[] | undefined
+  data: string | ChartDataTypes.BarChartData[] | undefined
 
-  constructor(props: Props) {
+  constructor() {
     super()
-    Object.assign(this, props)
     this.type = 'bar'
   }
 

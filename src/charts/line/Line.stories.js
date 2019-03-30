@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/vue'
 import { withKnobs, boolean, text } from '@storybook/addon-knobs'
-import PaLineChart from './Line'
+import PaLineChart from './Line.ts'
 
 let stories = storiesOf('Components|Charts|LineChart', module)
 stories.addDecorator(withKnobs)

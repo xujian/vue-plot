@@ -36,8 +36,4 @@ export default class PaAccessory extends Vue {
   public apply (): any {
     return null
   }
-
-  render (h: () => void) {
-    return h('div')
-  }
 }

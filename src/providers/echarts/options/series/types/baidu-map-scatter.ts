@@ -6,7 +6,7 @@ export default function (props: any) {
     type: 'scatter',
     coordinateSystem: 'bmap',
     data: d,
-    symbolSize: function (val) {
+    symbolSize: function (val: number[]) {
       return val[2] / 10;
     },
     itemStyle: {

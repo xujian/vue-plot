@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/vue'
 import { withKnobs, boolean, text } from '@storybook/addon-knobs'
-import PaPieChart from './Pie'
+import PaPieChart from './Pie.ts'
 
 let stories = storiesOf('Components|Charts|BarChart', module)
 stories.addDecorator(withKnobs)

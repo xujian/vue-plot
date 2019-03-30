@@ -2,6 +2,9 @@ const path = require('path')
 
 module.exports = {
   chainWebpack: config => {
+    config.resolve.alias
+      .delete('vue$')
+      .set('vue$', '../designer/node_modules/vue/dist/vue.runtime.esm.js')
   },
   configureWebpack: {
     output: {
@@ -13,10 +16,9 @@ module.exports = {
       splitChunks: false
     },
     resolve: {
-      fallback: [path.join(__dirname, '../node_modules')],
       alias: {
-        vue$: '../node_modules/vue/dist/vue.esm.js',
-        '@': path.resolve(__dirname, 'src')
+        '@': path.resolve(__dirname, './src'),
+        'vue$': '../designer/node_modules/vue/dist/vue.runtime.esm.js'
       }
     }
   },

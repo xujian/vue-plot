@@ -1,9 +1,6 @@
 import { configure, addParameters } from '@storybook/vue'
-import Vue from 'vue'
-import Vuex from 'vuex'
 import options from './options'
 
-Vue.use(Vuex)
 
 // Option defaults:
 addParameters({
@@ -13,7 +10,7 @@ addParameters({
 function loadStories() {
   require('../src/stories')
   const req = require.context(
-  '../src/components',
+  '../src/charts',
   true, /.stories.js$/)
   req.keys().forEach(
     filename => req(filename))
