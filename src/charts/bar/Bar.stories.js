@@ -1,16 +1,21 @@
 import { storiesOf } from '@storybook/vue'
 import { withKnobs, boolean, text } from '@storybook/addon-knobs'
+import { withStorySource } from '@storybook/addon-storysource'
 import PaBarChart from './Bar.ts'
 
-let stories = storiesOf('Components|Charts|BarChart', module)
+let stories = storiesOf('Components|BarChart', module)
 stories.addDecorator(withKnobs)
 
 let states = [
   {
-    name: 'Normal',
+    name: 'Simple',
     template: `<pa-bar-chart
     :round="round"
     :bar-width="barWidth"
+    :data="[
+      [100, 150, 500, 250, 400],
+      [47, 100, 100, 430, 210]
+    ]"
     ></pa-bar-chart>`
   }
 ]
@@ -18,6 +23,7 @@ let states = [
 // 代入动态story template
 stories.addDecorator((storyFn, context) => {
   let story = storyFn()
+  console.log('story.addDecorator--------------------------', story, context)
   let sourceFn = withStorySource('<h1>Demo</h1>')
   return sourceFn(storyFn, context)
 })

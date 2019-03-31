@@ -11,11 +11,16 @@ module.exports = async ({ config, mode }) => {
     test: /\.scss$/,
     loaders: ['style-loader', 'css-loader', 'sass-loader'], 
     include: path.resolve(__dirname, '../'),
-  },{
+  }, {
     test: /\.(ts|tsx)$/,
     use: [{
       loader: require.resolve('awesome-typescript-loader'),
+      options: { parser: 'typescript' },
     }]
+  }, {
+    test: /\.stories\.jsx?$/,
+    loaders: [require.resolve('@storybook/addon-storysource/loader')],
+    enforce: 'pre',
   });
   config.resolve.alias['@'] = path.resolve(__dirname,
   '../src')
