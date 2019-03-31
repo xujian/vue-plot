@@ -1,6 +1,6 @@
 import { Component, Prop } from 'vue-property-decorator'
-import PaChart from '@/core/chart'
-import { ChartDataTypes } from '@/core/data';
+import PaChart from '../../core/chart'
+import { ChartDataTypes } from '../../core/data'
 
 @Component({})
 export default class PaPieChart extends PaChart {
