@@ -1,6 +1,6 @@
 import { configure, addParameters } from '@storybook/vue'
 import options from './options'
-
+import './global.css'
 
 // Option defaults:
 addParameters({
