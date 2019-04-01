@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/vue'
 import { withKnobs, boolean, text } from '@storybook/addon-knobs'
-import { withStorySource } from '@storybook/addon-storysource'
+import { withCode } from 'storybook-addon-chartlib'
 import PaBarChart from './Bar.ts'
 
 let stories = storiesOf('Components|BarChart', module)
@@ -24,7 +24,7 @@ let states = [
 stories.addDecorator((storyFn, context) => {
   let story = storyFn()
   console.log('story.addDecorator--------------------------', story, context)
-  let sourceFn = withStorySource('<h1>Demo</h1>')
+  let sourceFn = withCode('<h1>Demo</h1>')
   return sourceFn(storyFn, context)
 })
 

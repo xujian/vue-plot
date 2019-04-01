@@ -17,10 +17,10 @@ module.exports = async ({ config, mode }) => {
       loader: require.resolve('awesome-typescript-loader'),
       options: { parser: 'typescript' },
     }]
-  }, {
-    test: /\.stories\.jsx?$/,
-    loaders: [require.resolve('@storybook/addon-storysource/loader')],
-    enforce: 'pre',
+  // }, {
+  //   test: /\.stories\.jsx?$/,
+  //   loaders: [require.resolve('storybook-addon-chartlib/loader')],
+  //   enforce: 'pre',
   });
   config.resolve.alias['@'] = path.resolve(__dirname,
   '../src')
