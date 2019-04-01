@@ -20,11 +20,17 @@ let states = [
   }
 ]
 
-// 代入动态story template
 stories.addDecorator((storyFn, context) => {
   let story = storyFn()
-  console.log('story.addDecorator--------------------------', story, context)
-  let sourceFn = withCode('<h1>Demo</h1>')
+  let storyComponent = new story()
+  console.log('Bar.story.js----------------------------', storyComponent)
+  let code = 'Loading source...'
+  try {
+    code = storyComponent.$options.STORYBOOK_WRAPS.extendOptions.template
+  } catch (e) {
+    console.info('Get template error', e.message)
+  }
+  let sourceFn = withCode(code)
   return sourceFn(storyFn, context)
 })
 
