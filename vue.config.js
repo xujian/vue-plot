@@ -7,8 +7,7 @@ module.exports = {
       .set('vue$', '../designer/node_modules/vue/dist/vue.runtime.esm.js')
   },
   configureWebpack: {
-    output: {
-    },
+    output: {},
     externals: {
       vue: 'Vue'
     },
@@ -18,7 +17,8 @@ module.exports = {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
-        'vue$': '../designer/node_modules/vue/dist/vue.runtime.esm.js'
+        '@storybook': path.resolve(__dirname, './.storybook'),
+        vue$: '../designer/node_modules/vue/dist/vue.runtime.esm.js'
       }
     }
   },

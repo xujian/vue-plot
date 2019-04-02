@@ -13,20 +13,14 @@ let states = [
   }
 ]
 
-// 代入动态story template
-stories.addDecorator((storyFn, context) => {
-  let story = storyFn()
-  let sourceFn = withStorySource(story.template)
-  return sourceFn(storyFn, context)
-})
-
 states.forEach(s => {
   stories.add(s.name, () => {
     return {
       components: { PaLineChart },
-      props: {
-      },
+      props: {},
       template: s.template
     }
   })
 })
+
+export default stories
