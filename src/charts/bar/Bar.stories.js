@@ -5,6 +5,18 @@ import PaBarChart from './Bar.ts'
 let stories = storiesOf('Components|BarChart', module)
 stories.addDecorator(withKnobs)
 
+let props = {
+  round: {
+    default: boolean('round', false)
+  },
+  barWidth: {
+    default: number('barWidth', 10)
+  },
+  barGap: {
+    default: text('barGap', '1%')
+  }
+}
+
 let states = [
   {
     name: 'Simple',
@@ -20,14 +32,16 @@ let states = [
       ]"
       ></pa-bar-chart>
       <button @click="$refs.chart.repaint()">Repaint</button>
-    </div>`
+    </div>`,
+    props,
+    components: { PaBarChart }
   }
 ]
 
 states.forEach(s => {
   stories.add(s.name, () => {
     return {
-      components: { PaBarChart },
+      components: s.components,
       props: {
         round: {
           type: Boolean,

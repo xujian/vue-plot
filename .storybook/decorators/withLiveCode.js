@@ -3,7 +3,6 @@ import { withCode } from 'storybook-addon-chartlib'
 export default (storyFn, context) => {
   let Story = storyFn()
   let storyComponent = new Story()
-  console.log('withLiveCode....-----------', context)
   let code = '正在加载'
   try {
     code = storyComponent.$options.STORYBOOK_WRAPS.extendOptions.template

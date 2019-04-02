@@ -151,6 +151,7 @@ export default class PaChart extends Vue {
     // this.props, props, this.type)
     Object.keys(this.props).forEach((p: string) => {
       this.$watch(p, () => {
+        console.log('............Chart.ts---props watch')
         this.repaint()
       })
     })
