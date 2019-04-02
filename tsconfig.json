@@ -19,6 +19,9 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "@sb/*": [
+        ".storybook/*"
       ] ,
       "vue": [
         "../designer/node_modules/vue"

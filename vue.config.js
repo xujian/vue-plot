@@ -17,7 +17,7 @@ module.exports = {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
-        '@storybook': path.resolve(__dirname, './.storybook'),
+        '@sb': path.resolve(__dirname, './.storybook'),
         vue$: '../designer/node_modules/vue/dist/vue.runtime.esm.js'
       }
     }

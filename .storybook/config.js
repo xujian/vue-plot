@@ -1,7 +1,6 @@
 import { configure, addParameters } from '@storybook/vue'
 import options from './options'
 import './global.css'
-import withLiveCode from './decorators/withLiveCode'
 
 // Option defaults:
 addParameters({
@@ -16,7 +15,6 @@ function loadStories() {
   let stories = req.keys().forEach(
     filename => {
       let stories = req(filename).default
-      stories.addDecorator(withLiveCode)
       return stories
     }
   )
