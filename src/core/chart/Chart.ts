@@ -4,6 +4,7 @@ import { resolveSlot } from '../../core/accessories/slots'
 import Provider from '../../providers/echarts'
 import Bus from '../../core/shared/events/bus'
 import ChartStyle from './ChartStyle'
+import { PresetManager } from '../shared/presets'
 
 /**
  * 定义 chart 的 props 组
@@ -14,11 +15,12 @@ export declare type Props = {
 
 @Component({
   template: `
-  <div class="chart-container">
-    <div class="chart" ref="chart">
-      <slot></slot>
+    <div class="chart-container">
+      <div class="chart" ref="chart">
+        <slot></slot>
+      </div>
     </div>
-  </div>`
+  `
 })
 export default class PaChart extends Vue {
   protected type: string = ''
@@ -47,6 +49,9 @@ export default class PaChart extends Vue {
   options: any
 
   @Prop(String)
+  preset: string | undefined
+
+  @Prop(String)
   theme: string | undefined
 
   @Prop({ default: () => {} })
@@ -59,7 +64,7 @@ export default class PaChart extends Vue {
 
   public accessories: any = {}
 
-  constructor () {
+  constructor() {
     super()
     this.type = ''
   }
@@ -68,7 +73,7 @@ export default class PaChart extends Vue {
    * Custom hook, called when props set
    * in Factory.ts
    */
-  afterCreate () {
+  afterCreate() {
     // console.log('///////////Chart.ts afterCreate', this.props)
   }
 
@@ -76,7 +81,8 @@ export default class PaChart extends Vue {
    * 拿到所有chart specified props
    * 用于生成 echart options
    */
-  public get props (): any {
+  public get props(): any {
+    console.log('Chart.ts get props---$$$$$$$$$$$$$$4', this)
     return {
       ...this.$props,
       type: this.type,
@@ -88,21 +94,20 @@ export default class PaChart extends Vue {
   /**
    * Add new layer to chart
    */
-  addLayer () {}
+  addLayer() {}
 
-  addAxis () {}
+  addAxis() {}
 
-  applyOptions (options: any) {}
+  applyOptions(options: any) {}
 
-  protected appendOptions (): void {}
+  protected appendOptions(): void {}
 
-  protected preProcessProps () {
+  protected preProcessProps() {
     if (this.styles) {
-
     }
   }
 
-  protected processSlots () {
+  protected processSlots() {
     let props: Props = {}
     // 将 slot 里面的 accessory 处理为 props
     let slots = resolveSlot(<any[]>this.$slots.default)
@@ -129,29 +134,34 @@ export default class PaChart extends Vue {
 
   /**
    * slot 之后的特别处理, 由子类实现
-   * @param props 输入的 props 项目 
+   * @param props 输入的 props 项目
    */
-  protected postProcessSlots (props: Props): ChartProps {
+  protected postProcessSlots(props: Props): ChartProps {
     return props
   }
 
-  private draw () {
+  private draw() {
     // 计算最终的 options 并交给 echart 绘图
-    let props: Props = this.processSlots()
-    props = this.postProcessSlots(props)
+    let preset = PresetManager.get(this.preset)
+    console.log('Chart.ts----------^^^^^^^^^^^^^^preset', this.preset, preset)
+    let slotProps: Props = this.processSlots()
+    slotProps = this.postProcessSlots(slotProps)
     if (this.mode === 'layer') return
     let provider = new Provider(this.$refs.chart)
     // 合并固有 props 与 accessories props
-    provider.draw({
-      ...this.props,
-      ...props,
-      ...this.accessories
-    }).then(chart => {
-      this.canvas = chart
-    })
+    provider
+      .draw({ // 覆盖顺序
+        ...preset.props, // preset props
+        ...this.props, // props assigned
+        ...slotProps, // props from slots
+        ...this.accessories // props from accessories
+      })
+      .then(chart => {
+        this.canvas = chart
+      })
   }
 
-  private init () {
+  private init() {
     console.log('Chart.ts---------<<<<<<<<<<<<<<<<<<init')
     this.draw()
     // watch 放在draw后面 不然会引起死循环
@@ -161,32 +171,24 @@ export default class PaChart extends Vue {
         this.repaint()
       })
     })
-    // if (typeof this.props.data === 'string') {
-    //   Drawer.get(this.props.data)
-    //   .then((data: any) => {
-    //     this.__data = data
-    //     this.draw()
-    //   })
-    // } else {
-    //   this.draw()
-    // }
   }
 
-  public repaint () {
+  public repaint() {
     console.log('Chart.ts~~~~~~~~~~~~~~~~~~~~~~~~`repaint')
     this.canvas && this.canvas.dispose()
     this.draw()
   }
-  
+
   created() {
   }
 
-  mounted () {
+  mounted() {
     // determin mode by parent
     // to prevent layer chart to draw
-    console.log('Chart.ts$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$=====mounted')
-    this.mode = this.$parent instanceof PaChart
-      ? 'layer' : 'chart'
+    console.log(
+      'Chart.ts$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$=====mounted'
+    )
+    this.mode = this.$parent instanceof PaChart ? 'layer' : 'chart'
     this.$nextTick(() => {
       this.init()
     })

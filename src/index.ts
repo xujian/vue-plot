@@ -8,7 +8,7 @@ import $chartlib from './$chartlib'
 export const Chartlib = {
   install (Vue: typeof __Vue__, configs = {}) {
     setGlobalConfigs(configs)
-    ThemeManager.registerPresetThemes()
+    ThemeManager.init()
     for (let k in plugins) {
       Vue.use(plugins[k])
     }
