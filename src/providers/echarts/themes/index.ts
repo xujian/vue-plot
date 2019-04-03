@@ -19,7 +19,7 @@ const themes = [
 ]
 
 class ThemeManager {
-  static registerPresetThemes () {
+  static init () {
     themes.forEach(t => {
       echarts.registerTheme(t['name'], t['theme'])
     })

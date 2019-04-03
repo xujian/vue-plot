@@ -42,6 +42,16 @@ let states = [
           ]"
         ></pa-line-chart>
       </pa-bar-chart>`
+  },
+  {
+    name: 'Using preset',
+    template: `<pa-bar-chart
+      :preset="'gdp-by-years'"
+      :data="[
+        [100, 150, 500, 250, 400],
+        [47, 100, 100, 430, 210]
+      ]">
+      </pa-bar-chart>`
   }
 ]
 
