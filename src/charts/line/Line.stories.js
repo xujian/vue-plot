@@ -1,40 +1,36 @@
 import { storiesOf } from '@storybook/vue'
 import withLiveCode from '../../../.storybook/decorators/withLiveCode'
 import { withKnobs, boolean, number, text } from '@storybook/addon-knobs'
-import PaBarChart from './Bar.ts'
+import PaLineChart from './Line.ts'
 
-let stories = storiesOf('Charts|Bar', module)
+let stories = storiesOf('Charts|Line', module)
 stories.addDecorator(withKnobs)
 stories.addDecorator(withLiveCode)
 
 let states = [
   {
     name: 'Simple',
-    template: `<pa-bar-chart
-      :round="round"
-      :bar-width="barWidth"
-      :bar-gap="barGap"
+    template: `<pa-line-chart
+      :smooth="smooth"
+      :line-width="lineWidth"
       :data="[
         [100, 150, 500, 250, 400],
         [47, 100, 100, 430, 210]
       ]"
-      ></pa-bar-chart>`
+      ></pa-line-chart>`
   }
 ]
 
 states.forEach(s => {
   stories.add(s.name, () => ({
-    components: { PaBarChart },
+    components: { PaLineChart },
     template: s.template,
     props: {
-      round: {
-        default: boolean('round', false)
+      smooth: {
+        default: boolean('smooth', false)
       },
-      barWidth: {
-        default: number('barWidth', 10)
-      },
-      barGap: {
-        default: text('barGap', '1%')
+      lineWidth: {
+        default: number('lineWidth', 4)
       }
     }
   }))

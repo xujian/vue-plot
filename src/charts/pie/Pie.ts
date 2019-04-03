@@ -10,7 +10,7 @@ export default class PaPieChart extends PaChart {
   @Prop({
     default: () => ['0%', '100%']
   })
-  radius: [number, number] | [string, string] = ['0%', '100%']
+  radius: [number, number] | [string, string] | undefined
 
   @Prop({
     default: () => []

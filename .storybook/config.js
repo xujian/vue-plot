@@ -12,11 +12,8 @@ function loadStories() {
   const req = require.context(
   '../src/charts',
   true, /.stories.js$/)
-  let stories = req.keys().forEach(
-    filename => {
-      let stories = req(filename).default
-      return stories
-    }
+  let stories = req.keys().map(
+    filename => req(filename).default
   )
   return stories
 }
