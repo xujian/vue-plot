@@ -9,7 +9,7 @@ declare type AccessoryHost = PaChart | PaMap | null
 /**
  * Base class for chart accessories
  */
-@Component({template: ''})
+@Component({template: '<div></div>'})
 export default class PaAccessory extends Vue {
   private __parent: AccessoryHost = null
 

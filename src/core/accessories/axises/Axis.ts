@@ -6,7 +6,6 @@ import PaAccessory from '../Accessory';
  * 覆盖默认配置
  */
 @Component({
-  template: ''
 })
 export default class PaAxis extends PaAccessory {
   @Prop({
