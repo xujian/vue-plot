@@ -11,14 +11,37 @@ let states = [
   {
     name: 'Simple',
     template: `<pa-bar-chart
+    :round="round"
+    :bar-width="barWidth"
+    :bar-gap="barGap"
+    :data="[
+      [100, 150, 500, 250, 400],
+      [47, 100, 100, 430, 210]
+    ]"
+    ></pa-bar-chart>`
+  },
+  {
+    name: 'With line',
+    template: `<pa-bar-chart
       :round="round"
       :bar-width="barWidth"
       :bar-gap="barGap"
       :data="[
         [100, 150, 500, 250, 400],
         [47, 100, 100, 430, 210]
-      ]"
-      ></pa-bar-chart>`
+      ]">
+        <pa-axis
+          position="right"
+          :label="'Y'"
+          :data="['A', 'B', 'C', 'D', 'E']"></pa-axis>
+        <pa-line-chart
+          :axis="'right'"
+          :data="[
+            [0.87, 0.60, 0.76, 0.49, 0.89],
+            [0.56, 0.23, 0.45, 0.78, 0.38]
+          ]"
+        ></pa-line-chart>
+      </pa-bar-chart>`
   }
 ]
 
