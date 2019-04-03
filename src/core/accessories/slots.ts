@@ -9,23 +9,25 @@ export function resolveSlot (slots: any[]) {
   if (slots) {
     console.log('slots.ts--------/////////slots/////', slots)
     slots.forEach (s => {
-      let tag = s.componentOptions.tag || s.tag
-      let component = s.componentInstance
-      let props = component.props
-      let name: string = tag
-      if (tag.endsWith('-chart')) {
-        // 嵌入的 chart
-        let chartType = tag.match(/pa\-(\w+)\-chart/)[1]
-        component = processLayer(chartType, component)
-        result.push({
-          name: 'layer',
-          component
-        })
-      } else {
-        result.push({
-          name: name,
-          props
-        })
+      if (s.tag) {
+        let tag = s.componentOptions.tag || s.tag
+        let component = s.componentInstance
+        let props = component.props
+        let name: string = tag
+        if (tag.endsWith('-chart')) {
+          // 嵌入的 chart
+          let chartType = tag.match(/pa\-(\w+)\-chart/)[1]
+          component = processLayer(chartType, component)
+          result.push({
+            name: 'layer',
+            component
+          })
+        } else {
+          result.push({
+            name: name,
+            props
+          })
+        }
       }
     })
   }
