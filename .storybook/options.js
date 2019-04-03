@@ -21,7 +21,7 @@ export default {
    * where to show the addon panel
    * @type {String}
    */
-  panelPosition: 'bottom',
+  panelPosition: 'right',
   /**
    * sorts stories
    * @type {Boolean}
@@ -36,7 +36,7 @@ export default {
    *   /\/|\./ - split by `/` or `.`
    * @type {Regex}
    */
-  hierarchySeparator: /\/|\./,
+  hierarchySeparator: /\/\./,
   /**
    * regex for finding the hierarchy root separator
    * @example:
