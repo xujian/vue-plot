@@ -4,34 +4,28 @@ import { LineChartData } from '../../core/data/ChartDataTypes'
 
 @Component({})
 export default class PaLineChart extends PaChart {
-  @Prop({ default: () => [] })
+  @Prop({})
   data: LineChartData | undefined
 
   /**
    *  线条宽度(pixel)
    */
-  @Prop({
-    default: 2
-  })
+  @Prop({})
   lineWidth: number = 2
 
   /**
    * 是否堆叠
    */
-  @Prop({
-    default: undefined
-  })
+  @Prop({})
   stack: string | undefined
 
   /**
    * 平滑线条
    */
-  @Prop({
-    default: false
-  })
+  @Prop({})
   smooth: boolean | undefined
 
-  @Prop([Boolean, Object])
+  @Prop()
   area: boolean | {} | undefined
 
   constructor () {

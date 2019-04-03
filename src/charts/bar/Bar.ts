@@ -1,4 +1,5 @@
-import { Component, Prop } from 'vue-property-decorator'
+import { Component } from 'vue-property-decorator'
+import Prop from '../../core/decorators/Prop'
 import PaChart, { Props } from '../../core/chart'
 import { ChartDataTypes } from '../../core/data'
 
@@ -7,28 +8,30 @@ export default class PaBarChart extends PaChart {
   /**
    *  Bar条为圆角
    */
-  @Prop({default: false})
+  @Prop({})
   public round: boolean | undefined
 
   /**
    * Bar条宽度(pixel)
    */
-  @Prop({ default: 10 })
+  @Prop({})
   public barWidth: number | undefined
 
   /**
    * 组间距
    */
-  @Prop({ default: '1%' })
+  @Prop({})
   public barGap: string | undefined
 
   /**
    * 是否堆叠
    */
-  @Prop({ default: false })
+  @Prop({})
   stack: string | undefined
 
-  @Prop(Array)
+  @Prop({
+    type: [String, Array]
+  })
   data: string | ChartDataTypes.BarChartData[] | undefined
 
   constructor() {

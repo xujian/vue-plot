@@ -1,9 +1,10 @@
 export default function (props: any) {
-  let x = props.x
+  let x = props.x 
   if (x === false) {
     return {
     }
   }
+  x = x || []
   let x1: any = {}
   if (x.constructor.name === 'Array') {
     x1 = {

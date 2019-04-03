@@ -7,14 +7,10 @@ export default class PaPieChart extends PaChart {
   /**
    *  设定圆环宽度
    */
-  @Prop({
-    default: () => ['0%', '100%']
-  })
+  @Prop({})
   radius: [number, number] | [string, string] | undefined
 
-  @Prop({
-    default: () => []
-  })
+  @Prop({})
   data: string | ChartDataTypes.PieChartData | undefined
 
   constructor() {

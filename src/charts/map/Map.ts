@@ -4,13 +4,13 @@ import { ChartDataTypes } from '@/core/data'
 
 @Component({})
 export default class PaMap extends PaChart {
-  @Prop(Array)
+  @Prop({})
   data: ChartDataTypes.MapData[] | undefined
 
-  @Prop({ default: () => false })
+  @Prop({})
   x: string[] | undefined
 
-  @Prop({ default: () => false })
+  @Prop({})
   y: string[] | undefined
   constructor() {
     super()

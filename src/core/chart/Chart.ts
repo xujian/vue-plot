@@ -32,21 +32,21 @@ export default class PaChart extends Vue {
    */
   mode: 'chart' | 'layer' = 'chart'
 
-  @Prop({ default: '' })
+  @Prop({})
   title: string | undefined
 
   layers: any[] = []
 
-  @Prop({ default: () => [] })
+  @Prop({})
   x: string[] | undefined
 
-  @Prop({ default: () => [] })
+  @Prop({})
   y: string[] | undefined
 
-  @Prop({ default: () => 0 })
+  @Prop({})
   axis: ['left', 'right', 0, 1] | undefined
 
-  @Prop({ default: () => {} })
+  @Prop({})
   options: any
 
   @Prop({})
@@ -55,12 +55,12 @@ export default class PaChart extends Vue {
   @Prop({})
   theme: string | undefined
 
-  @Prop({ default: () => {} })
+  @Prop({})
   styles: ChartStyle | undefined
 
   private __data: any[] = []
 
-  @Prop({ default: () => '' })
+  @Prop({})
   data: string | any[] | undefined
 
   public accessories: any = {}
@@ -144,16 +144,21 @@ export default class PaChart extends Vue {
   private draw() {
     // 计算最终的 options 并交给 echart 绘图
     let preset = PresetManager.get(this.preset)
-    console.log('Chart.ts----------^^^^^^^^^^^^^^preset', this.preset, preset)
     let slotProps: Props = this.processSlots()
     slotProps = this.postProcessSlots(slotProps)
     if (this.mode === 'layer') return
     let provider = new Provider(this.$refs.chart)
+    let assignedProps: {[key: string]: any} = {}
+    Object.keys(this.props).forEach(p => {
+      if (this.props[p]) {
+        assignedProps[p] = this.props[p]
+      }
+    })
     // 合并固有 props 与 accessories props
     provider
       .draw({ // 覆盖顺序
         ...preset.props, // preset props
-        ...this.props, // props assigned
+        ...assignedProps, // props assigned
         ...slotProps, // props from slots
         ...this.accessories // props from accessories
       })
