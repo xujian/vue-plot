@@ -106,18 +106,23 @@ export default class PaChart extends Vue {
     let props: Props = {}
     // 将 slot 里面的 accessory 处理为 props
     let slots = resolveSlot(<any[]>this.$slots.default)
-    slots.forEach(s => {
-      // 处理 layers
-      let name = s.name.replace(/^pa-/, '')
-      if (name === 'layer') {
-        console.log('processSlo**************', s.component)
-        this.layers.push(s.component)
-      } else {
-        // 处理 props
-        this.accessories[name] = s.props
-        props[name] = s.props
-      }
-    })
+    console.log('processSlots**************', slots)
+    if (slots.length) {
+      let layers: any[] = []
+      slots.forEach(s => {
+        // 处理 layers
+        let name = s.name.replace(/^pa-/, '')
+        if (name === 'layer') {
+          console.log('...processSlots**************', s)
+          layers.push(s.component)
+        } else {
+          // 处理 props
+          this.accessories[name] = s.props
+          props[name] = s.props
+        }
+      })
+      this.layers = layers
+    }
     // console.log('Chart.ts ----after processSlots----', props)
     return props
   }
@@ -147,15 +152,15 @@ export default class PaChart extends Vue {
   }
 
   private init () {
-    // console.log('Chart.ts---------<<<<<<<<<<<<<<<<<<after slots',
-    // this.props, props, this.type)
+    console.log('Chart.ts---------<<<<<<<<<<<<<<<<<<init')
+    this.draw()
+    // watch 放在draw后面 不然会引起死循环
     Object.keys(this.props).forEach((p: string) => {
       this.$watch(p, () => {
-        console.log('............Chart.ts---props watch')
+        console.log('............Chart.ts---props watch-->repaint', p)
         this.repaint()
       })
     })
-    this.draw()
     // if (typeof this.props.data === 'string') {
     //   Drawer.get(this.props.data)
     //   .then((data: any) => {
@@ -168,7 +173,8 @@ export default class PaChart extends Vue {
   }
 
   public repaint () {
-    this.canvas.dispose()
+    console.log('Chart.ts~~~~~~~~~~~~~~~~~~~~~~~~`repaint')
+    this.canvas && this.canvas.dispose()
     this.draw()
   }
   
