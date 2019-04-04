@@ -1,14 +1,3 @@
-/**
- * 管理图表预设
- * 预设是一组属性值的组合
- * <pa-chart preset="gdp-of-year">
- * {
- *   name: 'gdp-of-year',
-*   title: '年度GDP'
- * }
- */
-
-
 let presets: { [key: string]: any } = {}
 const requires = require.context('../../../presets/', true, /.ts$/)
 
@@ -19,9 +8,17 @@ requires.keys().forEach((k: string) => {
     presets[name] = requires(k).default
   }
 })
-console.log('presets/index.js@@@@@@@@@@@@@@', presets)
 export default presets
 
+/**
+ * 管理图表预设
+ * 预设是一组属性值的组合
+ * <pa-chart preset="gdp-by-years">
+ * {
+ *   name: 'gdp-by-years',
+*   title: '年度GDP'
+ * }
+ */
 export class PresetManager {
   static init() {
 
@@ -34,6 +31,11 @@ export class PresetManager {
     if (!Reflect.has(presets, name)) {
       console.warn('[Chartlib warn] preset not found, given: ' + name)
     }
-    return presets[name] || {}
+    let preset = presets[name] || {}
+    if (preset.parent) {
+      let parent = this.get(preset.parent)
+      preset = Object.assign({}, preset, parent)
+    }
+    return preset
   }
 }
