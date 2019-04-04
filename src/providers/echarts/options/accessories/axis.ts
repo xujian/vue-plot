@@ -7,5 +7,8 @@ export default (props: any, providerOptions: any) => {
     position: axis.position,
     type: 'value'
   }
+  providerOptions.yAxis = providerOptions.yAxis || [{
+    type: 'value'
+  }]
   providerOptions.yAxis.push(result)
 }
