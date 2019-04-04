@@ -11,7 +11,7 @@ export default class PaLineChart extends PaChart {
    *  线条宽度(pixel)
    */
   @Prop({})
-  lineWidth: number = 2
+  lineWidth: number | undefined
 
   /**
    * 是否堆叠
