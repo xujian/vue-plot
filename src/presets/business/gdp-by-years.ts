@@ -1,16 +1,16 @@
 export default {
-  name: 'gdp-of-year',
+  name: 'gdp-by-years',
   title: '年度GDP',
-  type: 'bar',
+  parent: 'gdp',
   props: {
-    barWidth: 10,
-    barGap: '100%'
   },
-  data: 'mocks:bar-simple',
+  data: 'mocks:bar-gdp-by-years',
   layers: [
     {
       type: 'line',
-      smooth: true,
+      props: {
+        smooth: true,
+      },
       data: 'mocks:line-simple'
     }
   ]
