@@ -163,9 +163,10 @@ export default class PaChart extends Vue {
     if (this.mode === 'layer') return
     let provider = new Provider(this.$refs.chart)
     let assignedProps: {[key: string]: any} = {}
-    Object.keys(this.props).forEach(p => {
-      if (this.props[p]) {
-        assignedProps[p] = this.props[p]
+    let props = this.props
+    Object.keys(props).forEach(p => {
+      if (props[p]) {
+        assignedProps[p] = props[p]
       }
     })
     // 合并固有 props 与 accessories props

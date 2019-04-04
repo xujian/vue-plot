@@ -33,7 +33,7 @@ function buildSeries (props: any): Promise<any[]> {
   return makeSeries([props, ...layers])
 }
 
-function integrate (options: any) {
+function applyLegends (options: any) {
   // 将 legend 内的文本写入到 series 的 name
   let legend = options.legend
   if (legend && legend.data) {
@@ -61,7 +61,7 @@ let OptionsManager = {
     return new Promise<any>((resolve, reject) => {
       buildSeries(props).then(series => {
         options.series = options.series.concat(...series)
-        integrate(options)
+        applyLegends(options)
         let final = Object.assign({},
           common,
           defaults[props.type],

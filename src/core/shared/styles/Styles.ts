@@ -1,5 +1,11 @@
 import Color, { Gradient } from './Color'
 
+/**
+ *  将有关样式的选项集中在Styles里
+ *  colors
+ *  backgrounds
+ *  borders
+ */
 export default class Styles {
   colors?: string | string[] | Color | Color[]
   background?: string | {}
@@ -8,13 +14,13 @@ export default class Styles {
   static create (input: any): Styles {
     let styles = new Styles()
     if ('string' === typeof input) {
-      if (input.startsWith('gradient:')) {
-        styles.colors = Gradient.from(input)
-      } else {
-        styles.colors = [input]
+      styles = {
+        colors: Color.from(input)
       }
     } else {
-      Object.assign(styles, input)
+      if (input.colors) {
+        styles.colors = Color.from(input.colors)
+      }
     }
     return styles
   }

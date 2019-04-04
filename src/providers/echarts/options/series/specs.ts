@@ -9,6 +9,11 @@ const specs = [{
     'area',
     'marks'
   ]
+},{
+  type: 'bar',
+  features: [
+    'styles'
+  ]
 }]
 
 export default specs
