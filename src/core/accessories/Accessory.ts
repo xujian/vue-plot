@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { Prop, Component } from 'vue-property-decorator'
-import { Style } from '../../core/shared/styles'
+import Styles from '../../core/shared/styles'
 import PaChart from '../chart'
 import { PaMap } from '@/charts/map'
 
@@ -19,7 +19,7 @@ export default class PaAccessory extends Vue {
   theme: string | undefined
 
   @Prop(Object)
-  styles: Style | undefined
+  styles: Styles | undefined
 
   get props () {
     return this.$props

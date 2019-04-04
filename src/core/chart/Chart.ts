@@ -4,7 +4,7 @@ import Prop from '../decorators/Prop'
 import { resolveSlot } from '../../core/accessories/slots'
 import Provider from '../../providers/echarts'
 import Bus from '../../core/shared/events/bus'
-import ChartStyle from './ChartStyle'
+import Styles from '../shared/styles'
 import { PresetManager } from '../shared/presets'
 
 /**
@@ -17,11 +17,13 @@ export declare type Props = {
 @Component({
   template: `
     <div class="chart-container">
+      <div class="chart-header">
+        <h6 v-if="title">{{title}}</h6>
+      </div>
       <div class="chart" ref="chart">
         <slot></slot>
       </div>
-    </div>
-  `
+    </div>`
 })
 export default class PaChart extends Vue {
   protected type: string = ''
@@ -56,7 +58,7 @@ export default class PaChart extends Vue {
   theme: string | undefined
 
   @Prop({})
-  styles: ChartStyle | undefined
+  styles: Partial<Styles> | undefined
 
   private __data: any[] = []
 
@@ -83,10 +85,14 @@ export default class PaChart extends Vue {
    * 用于生成 echart options
    */
   public get props(): any {
-    console.log('Chart.ts get props---$$$$$$$$$$$$$$4', this)
+    console.log('Chart.ts-------------get props----AAAAAAAAA', this)
+    let styles = this.styles
+      ? this.buildStyles(this.styles)
+      : undefined
     return {
       ...this.$props,
       type: this.type,
+      styles,
       layers: this.layers,
       accessories: this.accessories
     }
@@ -106,6 +112,14 @@ export default class PaChart extends Vue {
   protected preProcessProps() {
     if (this.styles) {
     }
+  }
+
+  protected buildStyles (input: Partial<Styles>) {
+    console.log('buildStyles<><>><><', this.styles)
+    if (input.constructor.name !== 'Styles') {
+      return Styles.create(input)
+    }
+    return input
   }
 
   protected processSlots() {
@@ -174,7 +188,9 @@ export default class PaChart extends Vue {
     Object.keys(this.props).forEach((p: string) => {
       this.$watch(p, () => {
         console.log('............Chart.ts---props watch-->repaint', p)
-        this.repaint()
+        if (!'layers'.split(',').includes(p)) {
+          this.repaint()
+        }
       })
     })
   }

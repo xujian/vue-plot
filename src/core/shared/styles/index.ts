@@ -1,5 +1,3 @@
-import Style from './Style'
+import Styles from './Styles'
 
-export {
-  Style
-}
+export default Styles
