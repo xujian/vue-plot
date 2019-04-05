@@ -44,10 +44,31 @@ let states = [
       </pa-bar-chart>`
   },
   {
-    name: 'with styles',
+    name: 'With colors',
     template: `<pa-bar-chart
     :styles="{
-      colors: 'gradient:#83bff6,#188df0',
+      colors: ['#003366', '#006699', '#4cabce', '#e5323e'],
+      background: '#333'
+    }"
+    :round="round"
+    :bar-width="barWidth"
+    :bar-gap="barGap"
+    :data="[
+      [320, 332, 301, 334, 390],
+      [220, 182, 191, 234, 290],
+      [150, 232, 201, 154, 190],
+      [98, 77, 101, 99, 40]
+    ]"
+    ></pa-bar-chart>`
+  },
+  {
+    name: 'With gradients',
+    template: `<pa-bar-chart
+    :styles="{
+      colors: [
+        'gradient:#009688,#ffffff',
+        'gradient:#e57373,#ffffff',
+      ],
       background: '#333'
     }"
     :round="round"

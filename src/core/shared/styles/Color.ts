@@ -24,12 +24,12 @@ export default class Color {
 }
 
 export class Gradient extends Color {
-  public colors: string[] = []
+  public stops: string[] = []
   
   static from (input: string): Color {
     let gradient = new Gradient()
     input = input.replace(/^gradient\:/, '')
-    gradient.colors = input.split(',')
+    gradient.stops = input.split(',')
     return gradient
   }
 }

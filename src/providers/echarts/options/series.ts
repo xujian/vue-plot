@@ -9,14 +9,14 @@ requires.keys().forEach((p: string) => {
   types[name] = requires(p)['default']
 })
 
-function buildExtra (props: any) {
+function buildExtra (props: any, index?: number): {}[] {
   let features = []
   // 查找某一图表类型的字段定义
   let spec = specs.find(s => s.type === props.type)
   if (spec) {
     features = spec.features.map(f => {
       let feature = require(`./series/features/${f}`).default
-      return f = feature.call(null, props)
+      return f = feature.call(null, props, index)
     })
   }
   return features
@@ -50,7 +50,7 @@ export function makeSeries (layers: any[]): Promise<any[]> {
             let typedSettings = type
               ? type.call(null, {...thisLayer, data: d})
               : []
-            let extraSettings = buildExtra(thisLayer)
+            let extraSettings = buildExtra(thisLayer, dataIndex)
             seriesOfThisLayer.push(
               Object.assign(
                 {},
