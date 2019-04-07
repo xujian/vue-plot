@@ -3,6 +3,9 @@ export default {
   title: '年度GDP',
   parent: 'gdp',
   props: {
+    colors: ['#003366', '#006699', '#4cabce', '#e5323e'],
+    barWidth: 20,
+    barGap: '50%'
   },
   data: 'mocks:bar-gdp-by-years',
   layers: [
