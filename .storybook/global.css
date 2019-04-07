@@ -8,3 +8,13 @@
   width: 100%;
   background-color: rgba(0, 77, 64, 0.1);
 }
+
+.chart-container .chart-header h6 {
+  margin: 0;
+  font-weight: 100;
+  color: #fff;
+}
+
+.sb-show-main {
+  color: #eee;
+}
