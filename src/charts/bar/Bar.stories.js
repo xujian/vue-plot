@@ -1,10 +1,8 @@
 import { storiesOf } from '@storybook/vue'
-import withProps from '../../../.storybook/decorators/withProps'
 import { boolean, number, text } from '@storybook/addon-knobs'
-import PaBarChart from './Bar.ts'
 
 let stories = storiesOf('Charts|Bar', module)
-stories.addDecorator(withProps)
+// stories.addDecorator(withTheme)
 
 let states = [
   {
@@ -67,8 +65,8 @@ let states = [
     template: `<pa-bar-chart
     :styles="{
       colors: [
-        'gradient:#009688,#ffffff',
-        'gradient:#e57373,#ffffff',
+        'gradient:#00eafc,#009aff',
+        'gradient:#fff85d,#ffff5f',
       ],
       background: '#333'
     }"
@@ -85,7 +83,6 @@ let states = [
 
 states.forEach(s => {
   stories.add(s.name, () => ({
-    components: { PaBarChart },
     template: s.template,
     props: {
       round: {
@@ -102,7 +99,6 @@ states.forEach(s => {
 })
 
 stories.add('With presets', () => ({
-  components: { PaBarChart },
   template: `<pa-bar-chart
     :preset="'gdp-by-years'"
     :title="'年度GDP'"

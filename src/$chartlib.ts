@@ -20,9 +20,7 @@ let $chartlib = new Vue({
       set: function(theme: string) {
         globalConfigs.theme = theme
         setGlobalConfigs(globalConfigs)
-        Bus.emit('theme.changed', {
-          theme: theme
-        })
+        Bus.emit('theme.changed', { theme })
       } 
     }
   }
