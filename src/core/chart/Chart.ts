@@ -169,14 +169,17 @@ export default class PaChart extends Vue {
         assignedProps[p] = props[p]
       }
     })
+    let finalProps = { // 覆盖顺序
+      ...preset.props, // preset props
+      ...assignedProps, // props assigned
+      ...slotProps, // props from slots
+      ...this.accessories // props from accessories
+    }
+    console.log('Chart.ts~~~~~~~~~~~~~~~~~~FINALPROPS',
+      preset, finalProps)
     // 合并固有 props 与 accessories props
     provider
-      .draw({ // 覆盖顺序
-        ...preset.props, // preset props
-        ...assignedProps, // props assigned
-        ...slotProps, // props from slots
-        ...this.accessories // props from accessories
-      })
+      .draw(finalProps)
       .then(chart => {
         this.canvas = chart
       })

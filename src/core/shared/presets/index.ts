@@ -33,8 +33,8 @@ export class PresetManager {
     }
     let preset = presets[name] || {}
     if (preset.parent) {
-      let parent = this.get(preset.parent)
-      preset = Object.assign({}, preset, parent)
+      let parent = PresetManager.get(preset.parent)
+      preset = Object.assign({}, parent, preset)
     }
     return preset
   }
