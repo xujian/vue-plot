@@ -7,9 +7,30 @@ import withLiveCode from './decorators/withLiveCode'
 import withProps from './decorators/withProps'
 import './global.css'
 
+let themesOptions = {
+  themes: {
+    dark: {
+      name: 'Dark',
+      type: 'mobile',
+    },
+    warm: {
+      name: 'Warm',
+      type: 'mobile',
+    },
+    cold: {
+      name: 'Cold',
+      type: 'mobile',
+    }
+  },
+  defaultTheme: 'dark',
+  changed: (theme) => {
+    console.log('theme changed--------', theme)
+  }
+}
 // Option defaults:
 addParameters({
-  options
+  options,
+  themesOptions
 })
 
 addDecorator(withKnobs)
