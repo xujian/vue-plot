@@ -21,3 +21,8 @@ export declare type TreeChartData = {
     TreeChartData | {name: string, value: number}
   ]
 }
+
+export declare type TreemapChartData = {
+  name: string,
+  value: number
+}[]
