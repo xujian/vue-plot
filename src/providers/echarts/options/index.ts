@@ -1,5 +1,5 @@
 import common from './common'
-import { makeSeries } from './series'
+import { makeSeries, populateSeries } from './series'
 import handler from './handler'
 
 let defaults: any = {}
@@ -28,9 +28,9 @@ function buildAccessories (props: any, options: any) {
   return options
 }
 
-function buildSeries (props: any): Promise<any[]> {
+function buildSeries (props: any, options: any): Promise<any[]> {
   let layers = props.layers.map((l: any) => l.props)
-  return makeSeries([props, ...layers])
+  return makeSeries([props, ...layers], options)
 }
 
 function applyLegends (options: any) {
@@ -55,17 +55,19 @@ let OptionsManager = {
      * 3. accessories
      * 4. series
      */
-    let options = buildProps(props)
-    options = buildAccessories(props, options)
-    options.series = []
+    let propsOptions = buildProps(props)
+    let final = Object.assign({},
+      common,
+      defaults[props.type],
+      propsOptions)
+    console.log('index.ts--------make||||||', final)
+    final = buildAccessories(props, final)
+    final.series = []
     return new Promise<any>((resolve, reject) => {
-      buildSeries(props).then(series => {
-        options.series = options.series.concat(...series)
-        applyLegends(options)
-        let final = Object.assign({},
-          common,
-          defaults[props.type],
-          options)
+      buildSeries(props, final).then(series => {
+        final.series = final.series.concat(...series)
+        applyLegends(final)
+        final = populateSeries(props, final)
         resolve(final)
       })
     })

@@ -29,6 +29,12 @@ export default class PaBarChart extends PaChart {
   @Prop({})
   stack: string | undefined
 
+  /**
+   * 阴影 shadow
+   */
+  @Prop({})
+  shadow: boolean | undefined
+
   @Prop({
     type: [String, Array]
   })

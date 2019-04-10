@@ -52,6 +52,7 @@ let states = [
     :round="round"
     :bar-width="barWidth"
     :bar-gap="barGap"
+    :shadow="true"
     :data="[
       [320, 332, 301, 334, 390],
       [220, 182, 191, 234, 290],

@@ -15,7 +15,7 @@ const common = {
   },
   xAxis: {
     type: 'category',
-    data: ['a', 'b', 'c', 'd', 'e', 'f']
+    data: ['a', 'b', 'c', 'd', 'e']
   },
   yAxis: [
     {

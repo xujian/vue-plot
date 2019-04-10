@@ -1,10 +1,11 @@
-export default function (props: any) {
-  return props.data.map((d: any) => {
+export default function (series: any[], props: any) {
+  series.forEach((s: any) => {
     let item: any = {
-      name: d.name,
+      name: s.data.name,
       stack: props.stack,
       smooth: props.smooth
     }
-    return item
+    Object.assign(s, item)
   })
+  return series
 }

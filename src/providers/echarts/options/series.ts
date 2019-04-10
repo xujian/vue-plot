@@ -26,7 +26,7 @@ function buildExtra (props: any, index?: number): {}[] {
  * 将 data 组装为 series
  * @param props 
  */
-export function makeSeries (layers: any[]): Promise<any[]> {
+export function makeSeries (layers: any[], options: any): Promise<any[]> {
   // 输入的是多套 props/data 外层以及layers合并而来
   let promises: Promise<any[]>[] = layers.map(layer => {
     let props = { ...layer, ...layer.accessories }
@@ -36,33 +36,28 @@ export function makeSeries (layers: any[]): Promise<any[]> {
     Promise.all(promises).then(
       (layersOfSeriesData: any[]) => {
       let final: any[] = []
-        layersOfSeriesData.forEach(
-          (series: any, layerIndex: number) => {
-          let seriesOfThisLayer: any[] = []
-          series.forEach((d: any, dataIndex: number) => {
-            // 合并: 给定配置项 ➡️ 缺省配置项 ➡️ 固有配置项
-            let thisLayer = layers[layerIndex]
-            let basicSettings = {
-              type: thisLayer.type || 'bar',
-              data: d
-            }
-            let type = Reflect.get(types, thisLayer.type)
-            let typedSettings = type
-              ? type.call(null, {...thisLayer, data: d})
-              : []
-            let extraSettings = buildExtra(thisLayer, dataIndex)
-            seriesOfThisLayer.push(
-              Object.assign(
-                {},
-                basicSettings,
-                typedSettings[dataIndex],
-                ...extraSettings
-              )
-            )
+      layersOfSeriesData.forEach(
+        (series: any, layerIndex: number) => {
+        console.log('series.ts MAIKE SERIES ______________ ', series)
+        let thisLayer = layers[layerIndex]
+        series = series.map((d: any, dataIndex: number) => {
+          let extraSettings = buildExtra(thisLayer, dataIndex)
+          // 合并: 给定配置项 ➡️ 缺省配置项 ➡️ 固有配置项
+          return {
+            type: thisLayer.type || 'bar',
+            data: d,
+            ...extraSettings
+          }
         })
-        final.push(seriesOfThisLayer)
-      }) // 1 forEach
+        let typeFn = Reflect.get(types, thisLayer.type)
+        series = typeFn.call(null, series, thisLayer, options)
+        final.push(series)
+      })
       resolve(final)
     })
   })
+}
+
+export function populateSeries (props: any, options: any) {
+  return options
 }
