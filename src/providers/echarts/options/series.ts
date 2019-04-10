@@ -50,7 +50,9 @@ export function makeSeries (layers: any[], options: any): Promise<any[]> {
           }
         })
         let typeFn = Reflect.get(types, thisLayer.type)
-        series = typeFn.call(null, series, thisLayer, options)
+        if (typeFn) {
+          series = typeFn.call(null, series, thisLayer, options)
+        }
         final.push(series)
       })
       resolve(final)
