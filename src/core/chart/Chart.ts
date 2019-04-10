@@ -218,8 +218,10 @@ export default class PaChart extends Vue {
     this.$nextTick(() => {
       this.init()
     })
-    Bus.on('theme.changed', (payload: any) => {
-      this.repaint()
-    })
+    Bus.on('theme.changed', this.repaint)
+  }
+
+  beforeDestroy() {
+    Bus.off('theme.changed', this.repaint)
   }
 }
