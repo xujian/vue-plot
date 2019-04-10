@@ -5,6 +5,7 @@ import PaScatterChartPlugin, { PaScatterChart } from './scatter'
 import PaMapPlugin, { PaMap, PaBaiduMap } from './map'
 import PaTreeChartPlugin, { PaTreeChart } from './tree'
 import PaTreemapChartPlugin, { PaTreemapChart } from './treemap'
+import PaRadarChartPlugin, { PaRadarChart } from './radar'
 
 let plugins: {[name: string]: any} = {
   PaBarChartPlugin,
@@ -13,6 +14,7 @@ let plugins: {[name: string]: any} = {
   PaScatterChartPlugin,
   PaTreeChartPlugin,
   PaTreemapChartPlugin,
+  PaRadarChartPlugin,
   PaMapPlugin
 }
 
@@ -24,6 +26,7 @@ let charts = {
   PaMap,
   PaTreeChart,
   PaTreemapChart,
+  PaRadarChart,
   PaBaiduMap
 }
 
