@@ -18,8 +18,8 @@ var axisCommon = function () {
     },
     splitLine: {
       lineStyle: {
-        type: 'dashed',
-        color: '#aaa'
+        type: 'solid',
+        color: '#447'
       }
     },
     splitArea: {
