@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import { configure, addParameters, addDecorator } from '@storybook/vue'
+import addons, { makeDecorator } from '@storybook/addons'
 import { withKnobs } from '@storybook/addon-knobs'
 import options from './options'
 import ChartLib from '../src/index'
+import $chartlib from '../src/$chartlib'
 import withLiveCode from './decorators/withLiveCode'
 import withProps from './decorators/withProps'
 import './global.css'
@@ -22,10 +24,7 @@ let themesOptions = {
       type: 'mobile',
     }
   },
-  defaultTheme: 'dark',
-  changed: (theme) => {
-    console.log('theme changed--------', theme)
-  }
+  defaultTheme: 'dark'
 }
 // Option defaults:
 addParameters({
@@ -35,7 +34,17 @@ addParameters({
 
 addDecorator(withKnobs)
 addDecorator(withLiveCode)
-// addDecorator(withProps)
+addDecorator(makeDecorator({
+  name: 'withTheme',
+  wrapper: (storyFn, context, { parameters }) => {
+    const channel = addons.getChannel()
+    channel.on('storybook-addon-chartlib/theme-changed', (data) => {
+      console.log('config.js!!!!!!withTheme-onononononononononon--storybook-addon-chartlib/theme-changed', data)
+      $chartlib.theme = data.theme
+    })
+    return storyFn(context);
+  }
+}))
 
 Vue.use(ChartLib, {
   theme: 'dark'

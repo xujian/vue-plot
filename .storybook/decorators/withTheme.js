@@ -1,6 +1,5 @@
 import Vue from 'vue'
+import { makeDecorator } from '@storybook/addons'
 import ChartLib from '../../src/index'
 
-export default (storyFn, context) => {
-  return storyFn()
-}
+
