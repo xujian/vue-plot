@@ -18,6 +18,18 @@ let states = [
         [47, 100, 100, 430, 210]
       ]"
       ></pa-line-chart>`
+  },
+  {
+    name: 'Area',
+    template: `<pa-line-chart
+      :smooth="smooth"
+      :area="true"
+      :line-width="lineWidth"
+      :data="[
+        [100, 150, 500, 250, 400],
+        [47, 100, 100, 430, 210]
+      ]"
+      ></pa-line-chart>`
   }
 ]
 
@@ -30,7 +42,7 @@ states.forEach(s => {
         default: boolean('smooth', false)
       },
       lineWidth: {
-        default: number('lineWidth', 4)
+        default: number('lineWidth', 2)
       }
     }
   }))
