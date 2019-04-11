@@ -20,7 +20,9 @@
   ],
   "dependencies": {
     "@storybook/addon-info": "^5.0.6",
+    "@types/lodash": "^4.14.123",
     "echarts": "^4.1.0",
+    "lodash": "^4.17.11",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",
     "vuex": "^3.1.0"

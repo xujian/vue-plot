@@ -1,5 +1,6 @@
 import common from './common'
 import { makeSeries, populateSeries } from './series'
+import { merge as _merge } from 'lodash'
 import handler from './handler'
 
 let defaults: any = {}
@@ -14,9 +15,13 @@ function buildProps (props: any) {
   let options: any = {}
   // 转换规则按字段集中在 rules 目录
   // 文件名为字段名
-  Object.keys(props).forEach((k: string) => {
+  let names = Object.keys(props)
+  // 将 styles 挪到最后一个
+  names = names.sort((a, b) => b === 'styles' ? -1 : 1) 
+  names.forEach((k: string) => {
     let output = handler.translate(k, props)
-    Object.assign(options, output)
+    options = _merge(options, output)
+    console.log('.........................build.props...', k, output, options)
   })
   return options
 }

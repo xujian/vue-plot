@@ -10,6 +10,7 @@ export default class Styles {
   colors?: string | string[] | Color | Color[]
   background?: string | {}
   border?: string | {}
+  label?: string | {}
 
   static create (input: any): Styles {
     let styles = new Styles()
@@ -20,6 +21,9 @@ export default class Styles {
     } else {
       if (input.colors) {
         styles.colors = Color.from(input.colors)
+      }
+      if (input.label) {
+        styles.label = input.label
       }
     }
     return styles

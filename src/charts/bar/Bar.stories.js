@@ -103,6 +103,7 @@ stories.add('With presets', () => ({
   template: `<pa-bar-chart
     :preset="'gdp-by-years'"
     :title="'年度GDP'"
+    :styles="{label:{rotate: 45}}"
     :x="['福田区', '罗湖区', '盐田区', '南山区', '宝安区',
     '龙华区', '光明新区', '龙岗区', '坪山区', '大鹏新区']"
     :data="'mocks:gdp-by-years'">

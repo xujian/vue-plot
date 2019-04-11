@@ -23,8 +23,8 @@ type indexable = { [key: string]: any }
 
 export default function (props: any, index: number): indexable {
   let styles = props.styles || {}
-  if (!styles || !styles.colors) return {}
-  let itemStyle = { normal: {}, emphasis: {} }
+  styles.colors = styles.colors || []
+  let itemStyle: any = { normal: {}, emphasis: {} }
   let dataItem = props.data[index]
   let color = styles.colors[index]
   if (color && dataItem) {

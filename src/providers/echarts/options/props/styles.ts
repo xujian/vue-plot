@@ -9,5 +9,12 @@ export default (props: any) => {
   if (styles.background) {
     output.backgroundColor = styles.background
   }
+  if (styles.label) {
+    output.xAxis = [{
+      axisLabel: {
+        rotate: styles.label.rotate
+      }
+    }]
+  }
   return output
 }
