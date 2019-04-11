@@ -109,9 +109,25 @@ export default class PaChart extends Vue {
 
   protected appendOptions(): void {}
 
-  protected preProcessProps() {
-    if (this.styles) {
+  protected prepareProps() {
+    let preset = PresetManager.get(this.preset)
+    let assignedProps: {[key: string]: any} = {}
+    let slotProps: Props = this.processSlots()
+    slotProps = this.postProcessSlots(slotProps)
+    let props = this.props
+    Object.keys(props).forEach(p => {
+      if (props[p]) {
+        assignedProps[p] = props[p]
+      }
+    })
+    let finalProps = { // 覆盖顺序
+      ...preset.props, // preset props
+      ...assignedProps, // props assigned
+      ...slotProps, // props from slots
+      ...this.accessories // props from accessories
     }
+    console.log('prepareProps+++++++++++++++++', finalProps)
+    return finalProps
   }
 
   protected buildStyles (input: Partial<Styles>) {
@@ -157,27 +173,9 @@ export default class PaChart extends Vue {
 
   private draw() {
     // 计算最终的 options 并交给 echart 绘图
-    let preset = PresetManager.get(this.preset)
-    let slotProps: Props = this.processSlots()
-    slotProps = this.postProcessSlots(slotProps)
+    let finalProps = this.prepareProps()
     if (this.mode === 'layer') return
     let provider = new Provider(this.$refs.chart)
-    let assignedProps: {[key: string]: any} = {}
-    let props = this.props
-    Object.keys(props).forEach(p => {
-      if (props[p]) {
-        assignedProps[p] = props[p]
-      }
-    })
-    let finalProps = { // 覆盖顺序
-      ...preset.props, // preset props
-      ...assignedProps, // props assigned
-      ...slotProps, // props from slots
-      ...this.accessories // props from accessories
-    }
-    console.log('Chart.ts~~~~~~~~~~~~~~~~~~FINALPROPS',
-      preset, finalProps)
-    // 合并固有 props 与 accessories props
     provider
       .draw(finalProps)
       .then(chart => {
