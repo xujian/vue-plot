@@ -5,6 +5,7 @@ import { resolveSlot } from '../../core/accessories/slots'
 import Provider from '../../providers/echarts'
 import Bus from '../../core/shared/events/bus'
 import Styles from '../shared/styles'
+import themes from '../shared/themes'
 import { PresetManager } from '../shared/presets'
 
 /**
@@ -111,6 +112,7 @@ export default class PaChart extends Vue {
 
   protected prepareProps() {
     let preset = PresetManager.get(this.preset)
+    let theme = themes[this.theme || 'dark']
     let assignedProps: {[key: string]: any} = {}
     let slotProps: Props = this.processSlots()
     slotProps = this.postProcessSlots(slotProps)
@@ -122,6 +124,7 @@ export default class PaChart extends Vue {
     })
     let finalProps = { // 覆盖顺序
       ...preset.props, // preset props
+      ...theme.props,
       ...assignedProps, // props assigned
       ...slotProps, // props from slots
       ...this.accessories // props from accessories
