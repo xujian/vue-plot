@@ -56,11 +56,11 @@ let OptionsManager = {
      * 4. series
      */
     let propsOptions = buildProps(props)
+    let commonOptions = JSON.parse(JSON.stringify(common))
     let final = Object.assign({},
-      common,
+      commonOptions,
       defaults[props.type],
       propsOptions)
-    console.log('index.ts--------make||||||', final)
     final = buildAccessories(props, final)
     final.series = []
     return new Promise<any>((resolve, reject) => {

@@ -38,7 +38,6 @@ export function makeSeries (layers: any[], options: any): Promise<any[]> {
       let final: any[] = []
       layersOfSeriesData.forEach(
         (series: any, layerIndex: number) => {
-        console.log('series.ts MAIKE SERIES ______________ ', series)
         let thisLayer = layers[layerIndex]
         series = series.map((d: any, dataIndex: number) => {
           let extraSettings = buildExtra(thisLayer, dataIndex)
