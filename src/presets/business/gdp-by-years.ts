@@ -4,10 +4,10 @@ export default {
   parent: 'gdp',
   props: {
     colors: ['#003366', '#006699', '#4cabce', '#e5323e'],
-    barWidth: 20,
-    barGap: '50%'
+    barWidth: 10,
+    barGap: '5%'
   },
-  data: 'mocks:bar-gdp-by-years',
+  data: 'mocks:gdp-by-years',
   layers: [
     {
       type: 'line',
