@@ -43,11 +43,11 @@ export function makeSeries (layers: any[], options: any): Promise<any[]> {
         series = series.map((d: any, dataIndex: number) => {
           let extraSettings = buildExtra(thisLayer, dataIndex)
           // 合并: 给定配置项 ➡️ 缺省配置项 ➡️ 固有配置项
-          return {
+          return Object.assign({
             type: thisLayer.type || 'bar',
             data: d,
-            ...extraSettings
-          }
+          },
+          ...extraSettings)
         })
         let typeFn = Reflect.get(types, thisLayer.type)
         if (typeFn) {
