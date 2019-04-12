@@ -8,6 +8,7 @@ import Styles, { StyleRules } from '../shared/styles'
 import themes from '../shared/themes'
 import { PresetManager } from '../shared/presets'
 import { DataManager } from '../data'
+import accessories from '../accessories';
 /**
  * 定义 chart 的 props 组
  */
@@ -72,6 +73,7 @@ export default class PaChart extends Vue {
   @Prop({})
   dataset: string | any[] | undefined
 
+  @Prop({})
   public accessories: any = {}
 
   constructor() {
@@ -114,12 +116,16 @@ export default class PaChart extends Vue {
   protected appendOptions(): void {}
 
   protected prepareProps() {
+    let { layers, accessories } = this.processSlots()
+    layers = this.layers.concat(...layers)
+    accessories = {
+      ...this.accessories,
+      ...accessories
+    }
     let preset = PresetManager.get(this.preset)
     let theme = themes[this.theme || 'dark']
     console.log('prepareProps+++++++++++++++++theme', theme)
     let assignedProps: {[key: string]: any} = {}
-    let slotProps: Props = this.processSlots()
-    slotProps = this.postProcessSlots(slotProps)
     let props = this.props
     Object.keys(props).forEach(p => {
       if (props[p]) {
@@ -131,10 +137,10 @@ export default class PaChart extends Vue {
       ...preset.props, // preset props
       ...theme.props, // props in theme
       ...assignedProps, // props assigned
-      ...slotProps, // props from slots
-      ...this.accessories // props from accessories
+      layers,
+      accessories // props from accessories
     }
-    console.log('...prepareProps+++++++++++++++++', finalProps)
+    console.log('...prepareProps+++++++++++++++++finalProps', finalProps)
     return finalProps
   }
 
@@ -147,28 +153,27 @@ export default class PaChart extends Vue {
   }
 
   protected processSlots() {
-    let props: Props = {}
-    // 将 slot 里面的 accessory 处理为 props
+    // 将 slot 里面的 accessory 处理为 layers/accessories
     let slots = resolveSlot(<any[]>this.$slots.default)
-    console.log('processSlots**************', slots)
+    let results: {
+      layers: any[],
+      accessories: { [key: string]: any }
+    } = {layers: [], accessories: {}}
     if (slots.length) {
-      let layers: any[] = []
       slots.forEach(s => {
         // 处理 layers
         let name = s.name.replace(/^pa-/, '')
         if (name === 'layer') {
           console.log('...processSlots**************', s)
-          layers.push(s.component)
+          results.layers.push(s.component)
         } else {
           // 处理 props
-          this.accessories[name] = s.props
-          props[name] = s.props
+          results.accessories[name] = s.props
+          // props[name] = s.props
         }
       })
-      this.layers = layers
     }
-    // console.log('Chart.ts ----after processSlots----', props)
-    return props
+    return results
   }
 
   /**
