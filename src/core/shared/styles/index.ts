@@ -1,3 +1,7 @@
-import Styles from './Styles'
+import Styles, { StyleRules } from './Styles'
+
+export {
+  StyleRules
+}
 
 export default Styles

@@ -48,8 +48,7 @@ let options = {
       name: 'F',
       max: 2000
     }]
-  },
-  color: ['#009688', '#e57373']
+  }
 }
 
 export default options

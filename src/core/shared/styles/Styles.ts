@@ -1,5 +1,12 @@
 import Color, { Gradient } from './Color'
 
+export type StyleRules = {
+  canvas?: {}
+  colors?: string | string[] | Color | Color[]
+  background?: string | {}
+  border?: string | {}
+  label?: string | {}
+}
 /**
  *  将有关样式的选项集中在Styles里
  *  colors
@@ -7,24 +14,17 @@ import Color, { Gradient } from './Color'
  *  borders
  */
 export default class Styles {
-  colors?: string | string[] | Color | Color[]
-  background?: string | {}
-  border?: string | {}
-  label?: string | {}
 
-  static create (input: any): Styles {
+  rules: StyleRules = {}
+
+  static create (input: StyleRules | string): Styles {
     let styles = new Styles()
     if ('string' === typeof input) {
-      styles = {
+      styles.rules = {
         colors: Color.from(input)
       }
     } else {
-      if (input.colors) {
-        styles.colors = Color.from(input.colors)
-      }
-      if (input.label) {
-        styles.label = input.label
-      }
+      styles.rules = input
     }
     return styles
   }

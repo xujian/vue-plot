@@ -22,7 +22,7 @@ type indexable = { [key: string]: any }
  */
 
 export default function (props: any, index: number): indexable {
-  let styles = props.styles || {}
+  let styles = props.styles.rules || {}
   styles.colors = styles.colors || []
   let itemStyle: any = { normal: {}, emphasis: {} }
   let dataItem = props.data[index]

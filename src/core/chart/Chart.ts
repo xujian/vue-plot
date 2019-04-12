@@ -4,7 +4,7 @@ import Prop from '../decorators/Prop'
 import { resolveSlot } from '../../core/accessories/slots'
 import Provider from '../../providers/echarts'
 import Bus from '../../core/shared/events/bus'
-import Styles from '../shared/styles'
+import Styles, { StyleRules } from '../shared/styles'
 import themes from '../shared/themes'
 import { PresetManager } from '../shared/presets'
 import { DataManager } from '../data'
@@ -59,7 +59,7 @@ export default class PaChart extends Vue {
   theme: string | undefined
 
   @Prop({})
-  styles: Partial<Styles> | undefined
+  styles: StyleRules | string | undefined
 
   private __data: any[] = []
 
@@ -133,7 +133,7 @@ export default class PaChart extends Vue {
     return finalProps
   }
 
-  protected buildStyles (input: Partial<Styles>) {
+  protected buildStyles (input: StyleRules | string) {
     console.log('buildStyles<><>><><', this.styles)
     if (input.constructor.name !== 'Styles') {
       return Styles.create(input)
@@ -177,8 +177,9 @@ export default class PaChart extends Vue {
   private draw() {
     // 计算最终的 options 并交给 echart 绘图
     let finalProps = this.prepareProps()
+    console.log('||||||||||||||||Chart.ts-prepareData', finalProps)
     DataManager.load(this.props).then((props: {}) => {
-      console.log('||||||||||||||||Chart.ts-prepareData', props)
+    console.log('...||||||||||||||||Chart.ts-prepareData', props)
       finalProps = {
         ...finalProps,
         ...props
