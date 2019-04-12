@@ -34,9 +34,9 @@ function __load (url: string): Promise<any> {
 
 function parseDataSet (dataset: any[]): any {
   let x = dataset[0].slice(1),
-    d = dataset.slice(1).map(item => item.slice(1)),
+    data = dataset.slice(1).map(item => item.slice(1)),
     legends = dataset.slice(1).map(item => item[0])
-  return({ data: d, x, legends})
+  return({ data, x, legends})
 }
 
 function loadFromMocks (path: string): any[] {
@@ -50,15 +50,16 @@ function loadFromMocks (path: string): any[] {
 const DataManager: any = {
   load (props: any): Promise<{}> {
     return new Promise((resolve, reject) => {
+      let output = {}
       if (props.dataset) {
         const dataset = props.dataset
         if (dataset.constructor.name === 'Array') {
-          let props = parseDataSet(dataset)
-          resolve(props) // data非字符串直接返回
+          output = parseDataSet(dataset)
+          resolve(output) // data非字符串直接返回
         } else {
           __load(dataset).then(d => {
-            let props = parseDataSet(d)
-            resolve(props)
+            output = parseDataSet(d)
+            resolve(output)
           })
         }
       } else {
@@ -67,7 +68,7 @@ const DataManager: any = {
           resolve({ data }) // data非字符串直接返回
         } else {
           __load(data).then(d => {
-            resolve(props)
+            resolve({ data: d })
           })
         }
       }
