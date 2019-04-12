@@ -5,9 +5,7 @@ import PaAccessory from '../Accessory'
  * 表现X或Y坐标轴
  * 覆盖默认配置
  */
-@Component({
-  template: ''
-})
+@Component({})
 export default class PaTooltip extends PaAccessory {
 
   @Prop({

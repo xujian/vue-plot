@@ -32,6 +32,7 @@ const handler = {
     let tag = accessories[key]
     if (tag) {
       if (typeof tag === 'function') {
+        console.log('<<<<<<<<<<<<<<<<handler.ts take accessories:', key, providerOptions)
         return tag.call(this, props, providerOptions)
       } else {
         return {}

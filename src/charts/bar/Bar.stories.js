@@ -136,6 +136,9 @@ stories.add('With presets', () => ({
     }"
     :title="'年度GDP'"
     :dataset="'mocks:gdp-by-years-dataset'">
+      <pa-tooltip
+        :position="[10, 10]"
+        :style="{}"></pa-tooltip>
     </pa-bar-chart>`
 }))
 

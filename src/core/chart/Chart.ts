@@ -74,7 +74,7 @@ export default class PaChart extends Vue {
   dataset: string | any[] | undefined
 
   @Prop({})
-  public accessories: any = {}
+  public accessories: {} | undefined
 
   constructor() {
     super()
