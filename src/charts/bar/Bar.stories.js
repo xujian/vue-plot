@@ -144,6 +144,12 @@ stories.add('With presets', () => ({
           '{a1}: {c1} (亿元)',
         ].join('')"
         :style="{}"></pa-tooltip>
+      <pa-axis
+        position="right"
+        :label="'Y'"></pa-axis>
+      <pa-line-chart
+        :axis="'right'"
+        :data="[[6.88, 9.38, 8.46, 16.1, 12.4, 13.5, 14.9, 11.5, 14.5, 6.50]]"></pa-line-chart>
     </pa-bar-chart>`
 }))
 
