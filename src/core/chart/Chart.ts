@@ -94,7 +94,6 @@ export default class PaChart extends Vue {
    * 用于生成 echart options
    */
   public get props(): any {
-    console.log('Chart.ts-------------get props----AAAAAAAAA', this)
     let styles = this.styles
       ? this.buildStyles(this.styles)
       : undefined
@@ -124,7 +123,6 @@ export default class PaChart extends Vue {
     }
     let preset = PresetManager.get(this.preset)
     let theme = themes[this.theme || 'dark']
-    console.log('prepareProps+++++++++++++++++theme', theme)
     let assignedProps: {[key: string]: any} = {}
     let props = this.props
     Object.keys(props).forEach(p => {
@@ -145,7 +143,6 @@ export default class PaChart extends Vue {
   }
 
   protected buildStyles (input: StyleRules | string) {
-    console.log('buildStyles<><>><><', this.styles)
     if (input.constructor.name !== 'Styles') {
       return Styles.create(input)
     }
@@ -164,7 +161,6 @@ export default class PaChart extends Vue {
         // 处理 layers
         let name = s.name.replace(/^pa-/, '')
         if (name === 'layer') {
-          console.log('...processSlots**************', s)
           results.layers.push(s.component)
         } else {
           // 处理 props
@@ -196,11 +192,7 @@ export default class PaChart extends Vue {
       }
       if (this.mode === 'layer') return
       let provider = new Provider(this.$refs.chart)
-      provider
-        .draw(finalProps)
-        .then(chart => {
-          this.canvas = chart
-        })
+      this.canvas = provider.draw(finalProps)
     })
   }
 
@@ -209,7 +201,6 @@ export default class PaChart extends Vue {
     // watch 放在draw后面 不然会引起死循环
     Object.keys(this.props).forEach((p: string) => {
       this.$watch(p, () => {
-        console.log('............Chart.ts---props watch-->repaint', p)
         if (!'layers'.split(',').includes(p)) {
           this.repaint()
         }
@@ -218,7 +209,6 @@ export default class PaChart extends Vue {
   }
 
   public repaint() {
-    console.log('Chart.ts~~~~~~~~~~~~~~~~~~~~~~~~`repaint')
     this.canvas && this.canvas.dispose()
     this.draw()
   }

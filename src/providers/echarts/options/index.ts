@@ -21,7 +21,6 @@ function buildProps (props: any) {
   names.forEach((k: string) => {
     let output = handler.translate(k, props)
     options = _merge(options, output)
-    console.log('.........................build.props...', k, output, options)
   })
   return options
 }
@@ -33,7 +32,7 @@ function buildAccessories (props: any, options: any) {
   return options
 }
 
-function buildSeries (props: any, options: any): Promise<any[]> {
+function buildSeries (props: any, options: any): any[] {
   let layers = props.layers.map((l: any) => l.props)
   return makeSeries([props, ...layers], options)
 }
@@ -68,14 +67,11 @@ let OptionsManager = {
       propsOptions)
     final = buildAccessories(props, final)
     final.series = []
-    return new Promise<any>((resolve, reject) => {
-      buildSeries(props, final).then(series => {
-        final.series = final.series.concat(...series)
-        applyLegends(final)
-        final = populateSeries(props, final)
-        resolve(final)
-      })
-    })
+    let series = buildSeries(props, final)
+    final.series = final.series.concat(...series)
+    applyLegends(final)
+    final = populateSeries(props, final)
+    return final
   }
 }
 

@@ -10,16 +10,13 @@ class Provider {
     this.container = container
   }
 
-  draw(props: any): Promise<any> {
+  draw(props: any): any {
     let theme = globalConfigs.theme
     let chart = echarts.init(this.container, theme)
-    return new Promise<any>((resolve, reject) => {
-      options.make(props).then(finalOption => {
-        console.log('=X=X=X=X=X======== final provider options', finalOption)
-        chart.setOption(finalOption)
-        resolve(chart)
-      })
-    })
+    let finalOption = options.make(props)
+    console.log('=X=X=X=X=X======== final provider options', finalOption)
+    chart.setOption(finalOption)
+    return chart
   }
 
   make(options: any): void {

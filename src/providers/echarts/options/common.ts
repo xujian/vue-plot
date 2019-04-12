@@ -23,7 +23,18 @@ const common = {
     }
   ],
   tooltip: {
-    trigger: 'axis'
+    trigger: 'axis',
+    padding: 10,
+    borderColor: '#fff',
+    borderWidth: 1,
+    backgroundColor: 'rgba(0,24,62,0.8)',
+    textStyle: {
+      fontSize: 12,
+    },
+    extraCssText: [
+      'border-radius: 0',
+      'background-color： rgba(0,0,0,0.5)'
+    ].join(';')
   }
 }
 

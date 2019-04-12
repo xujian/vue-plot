@@ -27,53 +27,31 @@ function buildExtra (props: any, index?: number): {}[] {
  * 将 data 组装为 series
  * @param props 
  */
-export function makeSeries (layers: any[], options: any): Promise<any> {
+export function makeSeries (layers: any[], options: any): any {
   // 输入的是多套 props/data 外层以及layers合并而来
-  let promises: Promise<any>[] = layers.map(layer => {
-    let props = { ...layer, ...layer.accessories }
-    if (props.dataset) {
-      return new Promise<any>((resolve, reject) => {
-        Drawer.get(props.dataset || []).then((data => {
-          let x = data[0].slice(1),
-            d = data.slice(1).map(item => item.slice(1)),
-            legends = data.map(item => item[0])
-          resolve({ data: d, x, legends})
-        }))
-      })
-    } else {
-      return new Promise<any>((resolve, reject) => {
-        Drawer.get(props.data || []).then(data => {
-          resolve({data: data})
-        })
-      })
-    }
-  })
-  return new Promise<any[]>((resolve, reject) => {
-    Promise.all(promises).then(
-      (layersOfSeriesData) => {
-      let final: any[] = []
-      layersOfSeriesData.forEach(
-        (series: any, layerIndex: number) => {
-        let thisLayer = layers[layerIndex]
-        let mergedProps = merge(thisLayer, series)
-        series = series.data.map((d: any, dataIndex: number) => {
-          let extraSettings = buildExtra(mergedProps, dataIndex)
-          // 合并: 给定配置项 ➡️ 缺省配置项 ➡️ 固有配置项
-          return Object.assign({
-            type: thisLayer.type || 'bar',
-            data: d,
-          },
-          ...extraSettings)
-        })
-        let typeFn = Reflect.get(types, thisLayer.type)
-        if (typeFn) {
-          series = typeFn.call(null, series, thisLayer, options)
-        }
-        final.push(series)
-      })
-      resolve(final)
+  let final: any[] = []
+  layers.forEach(
+    (series: any, layerIndex: number) => {
+    let thisLayer = layers[layerIndex]
+    let mergedProps = merge(thisLayer, series)
+    series = series.data.map((d: any, dataIndex: number) => {
+      let extraSettings = buildExtra(mergedProps, dataIndex)
+      // 合并: 给定配置项 ➡️ 缺省配置项 ➡️ 固有配置项
+      return Object.assign({
+        type: thisLayer.type || 'bar',
+        data: d,
+        name: series.legends
+          ? series.legends[dataIndex] : ''
+      },
+      ...extraSettings)
     })
+    let typeFn = Reflect.get(types, thisLayer.type)
+    if (typeFn) {
+      series = typeFn.call(null, series, thisLayer, options)
+    }
+    final.push(series)
   })
+  return final
 }
 
 export function populateSeries (props: any, options: any) {

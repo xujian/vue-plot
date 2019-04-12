@@ -1,9 +1,10 @@
 export default (props: any, providerOptions: any) => {
-  console.log('accessories-tooltip_________________')
+  let tooltip = props.accessories.tooltip
   providerOptions.tooltip = {
+    ...providerOptions.tooltip,
     show: true,
     trigger: 'axis',
-    positon: props.positon,
-    // backgroundColor: props.style.backgroundColor || ''
+    positon: tooltip.positon,
+    formatter: tooltip.formatter
   }
 }
