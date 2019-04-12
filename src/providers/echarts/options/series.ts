@@ -1,4 +1,5 @@
 import specs from './series/specs'
+import { merge } from 'lodash'
 import Drawer from '../../../core/chart/Drawer';
 
 let types: { [name: string]: () => any } = {}
@@ -26,21 +27,37 @@ function buildExtra (props: any, index?: number): {}[] {
  * 将 data 组装为 series
  * @param props 
  */
-export function makeSeries (layers: any[], options: any): Promise<any[]> {
+export function makeSeries (layers: any[], options: any): Promise<any> {
   // 输入的是多套 props/data 外层以及layers合并而来
-  let promises: Promise<any[]>[] = layers.map(layer => {
+  let promises: Promise<any>[] = layers.map(layer => {
     let props = { ...layer, ...layer.accessories }
-    return Drawer.get(props.data || []) // 返回的是 data[]
+    if (props.dataset) {
+      return new Promise<any>((resolve, reject) => {
+        Drawer.get(props.dataset || []).then((data => {
+          let x = data[0].slice(1),
+            d = data.slice(1).map(item => item.slice(1)),
+            legends = data.map(item => item[0])
+          resolve({ data: d, x, legends})
+        }))
+      })
+    } else {
+      return new Promise<any>((resolve, reject) => {
+        Drawer.get(props.data || []).then(data => {
+          resolve({data: data})
+        })
+      })
+    }
   })
   return new Promise<any[]>((resolve, reject) => {
     Promise.all(promises).then(
-      (layersOfSeriesData: any[]) => {
+      (layersOfSeriesData) => {
       let final: any[] = []
       layersOfSeriesData.forEach(
         (series: any, layerIndex: number) => {
         let thisLayer = layers[layerIndex]
-        series = series.map((d: any, dataIndex: number) => {
-          let extraSettings = buildExtra(thisLayer, dataIndex)
+        let mergedProps = merge(thisLayer, series)
+        series = series.data.map((d: any, dataIndex: number) => {
+          let extraSettings = buildExtra(mergedProps, dataIndex)
           // 合并: 给定配置项 ➡️ 缺省配置项 ➡️ 固有配置项
           return Object.assign({
             type: thisLayer.type || 'bar',

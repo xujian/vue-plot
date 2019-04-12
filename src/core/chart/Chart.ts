@@ -7,7 +7,7 @@ import Bus from '../../core/shared/events/bus'
 import Styles from '../shared/styles'
 import themes from '../shared/themes'
 import { PresetManager } from '../shared/presets'
-
+import { DataManager } from '../data'
 /**
  * 定义 chart 的 props 组
  */
@@ -66,6 +66,9 @@ export default class PaChart extends Vue {
   @Prop({})
   data: string | any[] | undefined
 
+  @Prop({})
+  dataset: string | any[] | undefined
+
   public accessories: any = {}
 
   constructor() {
@@ -99,9 +102,6 @@ export default class PaChart extends Vue {
     }
   }
 
-  /**
-   * Add new layer to chart
-   */
   addLayer() {}
 
   addAxis() {}
@@ -177,17 +177,23 @@ export default class PaChart extends Vue {
   private draw() {
     // 计算最终的 options 并交给 echart 绘图
     let finalProps = this.prepareProps()
-    if (this.mode === 'layer') return
-    let provider = new Provider(this.$refs.chart)
-    provider
-      .draw(finalProps)
-      .then(chart => {
-        this.canvas = chart
+    DataManager.load(this.props).then((props: {}) => {
+      console.log('||||||||||||||||Chart.ts-prepareData', props)
+      finalProps = {
+        ...finalProps,
+        ...props
+      }
+      if (this.mode === 'layer') return
+      let provider = new Provider(this.$refs.chart)
+      provider
+        .draw(finalProps)
+        .then(chart => {
+          this.canvas = chart
+        })
       })
   }
 
   private init() {
-    console.log('Chart.ts---------<<<<<<<<<<<<<<<<<<init')
     this.draw()
     // watch 放在draw后面 不然会引起死循环
     Object.keys(this.props).forEach((p: string) => {
@@ -212,9 +218,6 @@ export default class PaChart extends Vue {
   mounted() {
     // determin mode by parent
     // to prevent layer chart to draw
-    console.log(
-      'Chart.ts$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$=====mounted'
-    )
     this.mode = this.$parent instanceof PaChart ? 'layer' : 'chart'
     this.$nextTick(() => {
       this.init()
