@@ -21,7 +21,10 @@ const common = {
     {
       type: 'value'
     }
-  ]
+  ],
+  tooltip: {
+    trigger: 'axis'
+  }
 }
 
 declare type ProviderOptions = {
