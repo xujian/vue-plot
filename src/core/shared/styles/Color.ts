@@ -6,20 +6,14 @@
 export default class Color {
   public value: string | string[] = ''
 
-  static from (input: string | string[]): Color | Color[] {
-    if(typeof input === 'string') {
-      input = [input]
+  static from (input: string): Color {
+    if (input.startsWith('gradient:')) {
+      return Gradient.from(input)
+    } else {
+      let color = new Color()
+      color.value = input
+      return color
     }
-    let colors = input.map(x => {
-      if (x.startsWith('gradient:')) {
-        return Gradient.from(x)
-      } else {
-        let color = new Color()
-        color.value = x
-        return color
-      }
-    })
-    return colors
   }
 }
 

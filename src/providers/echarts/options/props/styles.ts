@@ -5,7 +5,9 @@ export default (props: any) => {
   let styles: any = props.styles.rules || {}
   let output: any = {}
   if (styles.colors) {
-    output.color = styles.colors.map((c: Color) => c.value)
+    output.color = styles.colors.map(
+      (c: Color) => c.value
+    )
   }
   if (styles.background) {
     output.backgroundColor = styles.background

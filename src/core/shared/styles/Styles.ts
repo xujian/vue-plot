@@ -2,13 +2,13 @@ import Color, { Gradient } from './Color'
 
 export type StyleRules = {
   canvas?: {}
-  colors?: string | string[] | Color | Color[]
+  colors?: any[]
   background?: string | {}
   border?: string | {}
   label?: string | {}
 }
 /**
- *  将有关样式的选项集中在Styles里
+ *  将有关样式的选项集中在styles里
  *  colors
  *  backgrounds
  *  borders
@@ -21,10 +21,23 @@ export default class Styles {
     let styles = new Styles()
     if ('string' === typeof input) {
       styles.rules = {
-        colors: Color.from(input)
+        colors: [Color.from(input)]
       }
     } else {
-      styles.rules = input
+      if (input.colors) {
+        styles.rules.colors = []
+        for (let c = 0; c < input.colors.length; c ++) {
+          let color = input.colors[c]
+          if (typeof color === 'string') {
+            color = Color.from(color)
+          }
+          styles.rules.colors.push(color)
+        }
+      }
+      styles.rules = {
+        ...input,
+        ...styles.rules
+      }
     }
     return styles
   }

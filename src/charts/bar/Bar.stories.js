@@ -102,7 +102,12 @@ states.forEach(s => {
 stories.add('With dataset', () => ({
   template: `<pa-bar-chart
     :title="'年度GDP'"
-    :styles="{label:{rotate: 45, fontSize: 10}}"
+    :styles="{
+      label:{rotate: 45, fontSize: 10},
+      canvas: {
+        margin: ['5%', '8%', '20%', '8%']
+      },
+    }"
     :dataset="[
       ['GDP', '福田区', '罗湖区', '盐田区',
       '南山区', '宝安区', '龙华区', '光明区',

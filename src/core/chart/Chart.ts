@@ -59,6 +59,9 @@ export default class PaChart extends Vue {
   theme: string | undefined
 
   @Prop({})
+  colors: string | string[] | undefined
+
+  @Prop({})
   styles: StyleRules | string | undefined
 
   private __data: any[] = []
@@ -113,6 +116,7 @@ export default class PaChart extends Vue {
   protected prepareProps() {
     let preset = PresetManager.get(this.preset)
     let theme = themes[this.theme || 'dark']
+    console.log('prepareProps+++++++++++++++++theme', theme)
     let assignedProps: {[key: string]: any} = {}
     let slotProps: Props = this.processSlots()
     slotProps = this.postProcessSlots(slotProps)
@@ -122,14 +126,15 @@ export default class PaChart extends Vue {
         assignedProps[p] = props[p]
       }
     })
+    console.log('...prepareProps+++++++++++++++++assignedProps', assignedProps)
     let finalProps = { // 覆盖顺序
       ...preset.props, // preset props
-      ...theme.props,
+      ...theme.props, // props in theme
       ...assignedProps, // props assigned
       ...slotProps, // props from slots
       ...this.accessories // props from accessories
     }
-    console.log('prepareProps+++++++++++++++++', finalProps)
+    console.log('...prepareProps+++++++++++++++++', finalProps)
     return finalProps
   }
 
@@ -179,7 +184,7 @@ export default class PaChart extends Vue {
     let finalProps = this.prepareProps()
     console.log('||||||||||||||||Chart.ts-prepareData', finalProps)
     DataManager.load(this.props).then((props: {}) => {
-    console.log('...||||||||||||||||Chart.ts-prepareData', props)
+      console.log('...||||||||||||||||Chart.ts-prepareData', props)
       finalProps = {
         ...finalProps,
         ...props
@@ -191,7 +196,7 @@ export default class PaChart extends Vue {
         .then(chart => {
           this.canvas = chart
         })
-      })
+    })
   }
 
   private init() {
