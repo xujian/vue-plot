@@ -1,3 +1,5 @@
+import { merge } from 'lodash'
+
 let presets: { [key: string]: any } = {}
 const requires = require.context('../../../presets/', true, /.ts$/)
 
@@ -24,18 +26,26 @@ export class PresetManager {
 
   }
 
-  static get (name: string | undefined): any {
+  static get (name: string | string[] | undefined): any {
     if (!name) {
       return {}
     }
-    if (!Reflect.has(presets, name)) {
-      console.warn('[Chartlib warn] preset not found, given: ' + name)
+    if (typeof name === 'string') {
+      name = name.split(/\,/)
     }
-    let preset = presets[name] || {}
-    if (preset.parent) {
-      let parent = PresetManager.get(preset.parent)
-      preset = Object.assign({}, parent, preset)
-    }
-    return preset
+    let result = {}
+    name.forEach(n => {
+      if (!Reflect.has(presets, n)) {
+        console.warn('[Chartlib warn] preset not found, given: ' + name)
+      }
+      let preset = presets[n] || {}
+      if (preset.parent) {
+        let parent = PresetManager.get(preset.parent)
+        preset = Object.assign({}, parent, preset)
+      }
+      result = merge(result, preset)
+      console.log('presetmanager.get_______________', result, n)
+    })
+    return result
   }
 }
