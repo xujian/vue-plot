@@ -139,7 +139,8 @@ export default class PaChart extends Vue {
       ...theme.props, // props in theme
       ...assignedProps, // props assigned
       layers,
-      accessories // props from accessories
+      accessories, // props from accessories
+      name: this.constructor.name
     }
     console.log('...prepareProps+++++++++++++++++finalProps', finalProps)
     return finalProps

@@ -141,7 +141,8 @@ stories.add('With presets', () => ({
         :formatter="[
           '{b}<br>',
           '{a0}: {c0} (亿元)<br>',
-          '{a1}: {c1} (亿元)',
+          '{a1}: {c1} (亿元)<br>',
+          '{a2}: {c2} %',
         ].join('')"
         :style="{}"></pa-tooltip>
       <pa-axis
