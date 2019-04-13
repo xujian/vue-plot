@@ -103,7 +103,7 @@ stories.add('With dataset', () => ({
   template: `<pa-bar-chart
     :title="'年度GDP'"
     :styles="{
-      label:{rotate: 45, fontSize: 10},
+      x:{rotate: 45, fontSize: 10},
       canvas: {
         margin: ['5%', '8%', '20%', '8%']
       },

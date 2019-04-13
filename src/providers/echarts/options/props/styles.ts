@@ -12,11 +12,11 @@ export default (props: any) => {
   if (styles.background) {
     output.backgroundColor = styles.background
   }
-  if (styles.label) {
+  if (styles.x) {
     output.xAxis = [{
       axisLabel: {
-        rotate: styles.label.rotate,
-        fontSize: styles.label.fontSize
+        rotate: styles.x.rotate,
+        fontSize: styles.x.fontSize
       }
     }]
   }
@@ -42,6 +42,9 @@ export default (props: any) => {
         align: 'center'
       }
     }
+  }
+  if (styles.label) {
+
   }
   return output
 }

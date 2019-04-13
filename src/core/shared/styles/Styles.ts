@@ -5,6 +5,7 @@ export type StyleRules = {
   colors?: any[]
   background?: string | {}
   border?: string | {}
+  x?: {}
   label?: string | {}
   title?: {},
 }
