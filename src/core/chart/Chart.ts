@@ -9,6 +9,7 @@ import themes from '../shared/themes'
 import { PresetManager } from '../shared/presets'
 import { DataManager } from '../data'
 import accessories from '../accessories';
+import { merge } from 'lodash'
 /**
  * 定义 chart 的 props 组
  */
@@ -97,13 +98,9 @@ export default class PaChart extends Vue {
    * 用于生成 echart options
    */
   public get props(): any {
-    let styles = this.styles
-      ? this.buildStyles(this.styles)
-      : undefined
     return {
       ...this.$props,
       type: this.type,
-      styles,
       layers: this.layers,
       accessories: this.accessories
     }
@@ -133,16 +130,18 @@ export default class PaChart extends Vue {
         assignedProps[p] = props[p]
       }
     })
-    console.log('...prepareProps+++++++++++++++++assignedProps', assignedProps)
-    let finalProps = { // 覆盖顺序
-      ...preset.props, // preset props
-      ...theme.props, // props in theme
-      ...assignedProps, // props assigned
-      layers,
-      accessories, // props from accessories
-      name: this.constructor.name
+    let finalProps = merge( // 覆盖顺序
+      preset.props, // preset props
+      theme.props, // props in theme
+      assignedProps, // props assigned
+      { layers },
+      { accessories }, // props from accessories
+      { name: this.constructor.name }
+    )
+    if (finalProps.styles) {
+      finalProps.styles = this.buildStyles(finalProps.styles)
     }
-    console.log('...prepareProps+++++++++++++++++finalProps', finalProps)
+    console.log('☀☀☀☀☀☀☀☀+prepareProps+++++++++++++++++finalProps', finalProps)
     return finalProps
   }
 
@@ -187,9 +186,7 @@ export default class PaChart extends Vue {
   private draw() {
     // 计算最终的 options 并交给 echart 绘图
     let finalProps = this.prepareProps()
-    console.log('||||||||||||||||Chart.ts-prepareData', finalProps)
     DataManager.load(this.props).then((props: {}) => {
-      console.log('...||||||||||||||||Chart.ts-prepareData', props)
       finalProps = {
         ...finalProps,
         ...props

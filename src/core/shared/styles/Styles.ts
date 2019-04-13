@@ -6,6 +6,7 @@ export type StyleRules = {
   background?: string | {}
   border?: string | {}
   label?: string | {}
+  title?: {},
 }
 /**
  *  将有关样式的选项集中在styles里

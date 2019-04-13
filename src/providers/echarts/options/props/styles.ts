@@ -31,5 +31,17 @@ export default (props: any) => {
       }
     }
   }
+  if (styles.title) {
+    output.title = {
+      text: props.title,
+    }
+    if (styles.title.position === 'center') {
+      output.title.left = 'center'
+      output.title.top = 'center'
+      output.title.textStyle = {
+        align: 'center'
+      }
+    }
+  }
   return output
 }

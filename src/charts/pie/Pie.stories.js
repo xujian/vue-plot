@@ -11,7 +11,20 @@ let states = [
   {
     name: 'Simple',
     template: `<pa-pie-chart
-      :radius="radius"
+      :data="[[
+        { name: 'A', value: 100 },
+        { name: 'B', value: 150 },
+        { name: 'C', value: 500 },
+        { name: 'D', value: 250 },
+        { name: 'E', value: 400 }
+      ]]"
+      ></pa-pie-chart>`
+  },
+  {
+    name: 'Ring',
+    template: `<pa-pie-chart
+      :title="'生源组成'"
+      :preset="'ring,rich-label'"
       :data="[[
         { name: 'A', value: 100 },
         { name: 'B', value: 150 },
@@ -28,9 +41,6 @@ states.forEach(s => {
     components: { PaPieChart },
     template: s.template,
     props: {
-      radius: {
-        default: array('radius', ['0%', '100%'])
-      }
     }
   }))
 })
