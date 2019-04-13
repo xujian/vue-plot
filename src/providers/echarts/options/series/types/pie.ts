@@ -1,7 +1,7 @@
 export default function (series: any[], props: any) {
   series.forEach((s: any) => {
     let item: any = {
-      radius: props.radius,
+      radius: props.radius || ['0%', '100%'],
       labelLine: {
         normal: {
           show: true,
