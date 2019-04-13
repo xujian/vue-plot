@@ -5,6 +5,10 @@ export default (props: any, providerOptions: any) => {
     show: true,
     trigger: 'axis',
     positon: tooltip.positon,
-    formatter: tooltip.formatter
+    formatter: [
+      `<div class="tooltip">`,
+      tooltip.formatter,
+      `</di>`
+    ].join('')
   }
 }

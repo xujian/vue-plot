@@ -18,3 +18,12 @@
 .sb-show-main {
   color: #eee;
 }
+
+.chart-container .tooltip {
+  border-width: 1px;
+  border-color: #fff;
+  border-style: solid;
+  border-radius: 12px;
+  padding: 12px;
+  background-color: rgba(0,24,62,0.68);
+}

@@ -66,8 +66,8 @@ let states = [
     template: `<pa-bar-chart
     :styles="{
       colors: [
-        'gradient:#00eafc,#009aff',
-        'gradient:#fff85d,#ffff5f',
+        'gradient:#008cff,#005193',
+        'gradient:#00da9c,#007a55',
       ],
       background: '#333'
     }"
@@ -149,6 +149,7 @@ stories.add('With presets', () => ({
         :label="'Y'"></pa-axis>
       <pa-line-chart
         :axis="'right'"
+        :legends="['同比增长']"
         :data="[[6.88, 9.38, 8.46, 16.1, 12.4, 13.5, 14.9, 11.5, 14.5, 6.50]]"></pa-line-chart>
     </pa-bar-chart>`
 }))

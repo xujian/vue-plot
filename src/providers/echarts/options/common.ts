@@ -22,12 +22,12 @@ const common = {
       type: 'value'
     }
   ],
+  backgroundColor: '#00265f',
   tooltip: {
     trigger: 'axis',
-    padding: 10,
-    borderColor: '#fff',
-    borderWidth: 1,
-    backgroundColor: 'rgba(0,24,62,0.8)',
+    padding: 0,
+    borderWidth: 0,
+    backgroundColor: 'transparent',
     textStyle: {
       fontSize: 12,
     },
