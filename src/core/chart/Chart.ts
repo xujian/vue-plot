@@ -54,6 +54,9 @@ export default class PaChart extends Vue {
   options: any
 
   @Prop({})
+  legends: any[] | undefined
+
+  @Prop({})
   preset: string | undefined
 
   @Prop({})
@@ -161,7 +164,7 @@ export default class PaChart extends Vue {
         // 处理 layers
         let name = s.name.replace(/^pa-/, '')
         if (name === 'layer') {
-          results.layers.push(s.component)
+          results.layers.push(s.component.props)
         } else {
           // 处理 props
           results.accessories[name] = s.props

@@ -33,12 +33,12 @@ function buildAccessories (props: any, options: any) {
 }
 
 function buildSeries (props: any, options: any): any[] {
-  let layers = props.layers.map((l: any) => l.props)
-  return makeSeries([props, ...layers], options)
+  return makeSeries([props, ...props.layers], options)
 }
 
 function applyLegends (options: any) {
   // 将 legend 内的文本写入到 series 的 name
+  console.log('options/index applyLegends--------', options)
   let legend = options.legend
   if (legend && legend.data) {
     options.series.forEach((s: any, i: number) => {

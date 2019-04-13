@@ -1,6 +1,5 @@
 import specs from './series/specs'
 import { merge } from 'lodash'
-import Drawer from '../../../core/chart/Drawer';
 
 let types: { [name: string]: () => any } = {}
 let requires
@@ -30,24 +29,22 @@ function buildExtra (props: any, index?: number): {}[] {
 export function makeSeries (layers: any[], options: any): any {
   // 输入的是多套 props/data 外层以及layers合并而来
   let final: any[] = []
-  layers.forEach(
-    (series: any, layerIndex: number) => {
-    let thisLayer = layers[layerIndex]
-    let mergedProps = merge(thisLayer, series)
-    series = series.data.map((d: any, dataIndex: number) => {
-      let extraSettings = buildExtra(mergedProps, dataIndex)
+  layers.forEach((layer: any) => {
+    let series: any[] = layer.data.map(
+      (d: any, dataIndex: number) => {
+      let extraSettings = buildExtra(layer, dataIndex)
       // 合并: 给定配置项 ➡️ 缺省配置项 ➡️ 固有配置项
       return Object.assign({
-        type: thisLayer.type || 'bar',
+        type: layer.type || 'bar',
         data: d,
-        name: series.legends
-          ? series.legends[dataIndex] : ''
+        name: layer.legends
+          ? layer.legends[dataIndex] : ''
       },
       ...extraSettings)
     })
-    let typeFn = Reflect.get(types, thisLayer.type)
+    let typeFn = Reflect.get(types, layer.type)
     if (typeFn) {
-      series = typeFn.call(null, series, thisLayer, options)
+      series = typeFn.call(null, series, layer, options)
     }
     final.push(series)
   })
