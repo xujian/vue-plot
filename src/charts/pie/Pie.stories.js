@@ -24,7 +24,7 @@ let states = [
     name: 'Ring',
     template: `<pa-pie-chart
       :title="'生源组成'"
-      :preset="'ring,rich-label'"
+      :preset="'circle,rich-label'"
       :data="[[{
           value: 4981,
           name: '曲阜师范大学'
