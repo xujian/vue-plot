@@ -30,6 +30,7 @@ export declare type Props = {
 })
 export default class PaChart extends Vue {
   protected type: string = ''
+  protected subType: string = ''
   private canvas: any = null
 
   /**
@@ -101,6 +102,7 @@ export default class PaChart extends Vue {
     return {
       ...this.$props,
       type: this.type,
+      subType: this.subType,
       layers: this.layers,
       accessories: this.accessories
     }

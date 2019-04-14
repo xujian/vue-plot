@@ -41,7 +41,7 @@ export function makeSeries (layers: any[], options: any): any {
       },
       ...extraSettings)
     })
-    let typeFn = Reflect.get(types, layer.type)
+    let typeFn = Reflect.get(types, layer.subType || layer.type)
     if (typeFn) {
       series = typeFn.call(null, series, layer, options)
     }
