@@ -12,7 +12,6 @@ const specs = [{
 },{
   type: 'bar',
   features: [
-    'styles'
   ]
 }]
 

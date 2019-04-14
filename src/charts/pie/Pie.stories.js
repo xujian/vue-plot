@@ -25,13 +25,25 @@ let states = [
     template: `<pa-pie-chart
       :title="'生源组成'"
       :preset="'ring,rich-label'"
-      :data="[[
-        { name: 'A', value: 100 },
-        { name: 'B', value: 150 },
-        { name: 'C', value: 500 },
-        { name: 'D', value: 250 },
-        { name: 'E', value: 400 }
-      ]]"
+      :data="[[{
+          value: 4981,
+          name: '曲阜师范大学'
+        }, {
+          value: 1354,
+          name: '潍坊学院'
+        }, {
+          value: 2105,
+          name: '青岛职业技术学院'
+        }, {
+          value: 3915,
+          name: '淄博师范高等专科'
+        }, {
+          value: 2354,
+          name: '鲁东大学'
+        }, {
+          value: 3290,
+          name: '山东师范大学'
+        }]]"
       ></pa-pie-chart>`
   }
 ]

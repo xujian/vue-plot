@@ -24,22 +24,36 @@ type indexable = { [key: string]: any }
 export default function (props: any, index: number): indexable {
   let styles = props.styles.rules || {}
   styles.colors = styles.colors || []
-  let itemStyle: any = { normal: {}, emphasis: {} }
+  let result: any = {}
   let dataItem = props.data[index]
   let color = styles.colors[index]
   if (color && dataItem) {
+    result.itemStyle = { normal: {}, emphasis: {} }
     if (color.constructor.name === 'Gradient') {
       let stops = color.stops.map((s: any, i: number) => ({
         offset: (1 / (color.stops.length - 1)) * i,
         color: s
       }))
-      itemStyle.normal = {
+      result.itemStyle.normal = {
         color: new echarts.graphic.LinearGradient(0, 0, 0, 1, stops)
       }
     }
   }
-  // 返回的是多个itemStyle数组
-  return {
-    itemStyle
+  console.log('styles.ts____________________________________________', styles)
+  if (styles.label) {
+    result.label = {
+      normal: {
+        formatter: function(params: any, ticket: any, callback: () => void) {
+          return [
+            '{name|' + params.name + '}\n',
+            '{hr|}\n',
+            '{value|' + params.value + '}'
+          ].join('')
+        },
+        rich: styles.label.formats
+      }
+    }
   }
+  // 返回的是多个itemStyle数组
+  return result
 }

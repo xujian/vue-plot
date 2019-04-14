@@ -10,15 +10,14 @@ requires.keys().forEach((p: string) => {
 })
 
 function buildExtra (props: any, index?: number): {}[] {
-  let features = []
+  let features = [], fields = []
   // 查找某一图表类型的字段定义
   let spec = specs.find(s => s.type === props.type)
-  if (spec) {
-    features = spec.features.map(f => {
-      let feature = require(`./series/features/${f}`).default
-      return f = feature.call(null, props, index)
-    })
-  }
+  fields = spec ? [...spec.features, 'styles'] : ['styles']
+  features = fields.map(f => {
+    let feature = require(`./series/features/${f}`).default
+    return f = feature.call(null, props, index)
+  })
   return features
 }
 

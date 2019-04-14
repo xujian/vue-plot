@@ -43,8 +43,5 @@ export default (props: any) => {
       }
     }
   }
-  if (styles.label) {
-
-  }
   return output
 }
