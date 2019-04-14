@@ -21,7 +21,7 @@ let states = [
       ></pa-pie-chart>`
   },
   {
-    name: 'Ring',
+    name: 'Circle',
     template: `<pa-pie-chart
       :title="'生源组成'"
       :preset="'circle,rich-label'"
