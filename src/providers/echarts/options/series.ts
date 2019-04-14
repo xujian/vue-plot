@@ -35,7 +35,7 @@ export function makeSeries (layers: any[], options: any): any {
       // 合并: 给定配置项 ➡️ 缺省配置项 ➡️ 固有配置项
       return Object.assign({
         type: layer.type || 'bar',
-        data: d,
+        data: Array.isArray(d) ? d : d.value,
         name: layer.legends
           ? layer.legends[dataIndex] : ''
       },
