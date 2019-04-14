@@ -1,5 +1,3 @@
-import formats from '../../formats'
-
 export default {
   name: 'ring',
   props: {
