@@ -12,6 +12,16 @@ let states = [
     :symbol="symbol"
     :data="'mocks:scatter-simple'"
     ></pa-scatter-chart>`
+  },
+  {
+    name: 'With markareas',
+    template: `<pa-scatter-chart
+    :title="'中等散点图'"
+    :symbol="symbol"
+    :data="'mocks:scatter-medium'"
+    >
+      <pa-markarea></pa-markarea>
+    </pa-scatter-chart>`
   }
 ]
 

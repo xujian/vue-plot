@@ -13,6 +13,12 @@ const specs = [{
   type: 'bar',
   features: [
   ]
+},{
+  type: 'scatter',
+  features: [
+    'markarea',
+    'symbol'
+  ]
 }]
 
 export default specs
