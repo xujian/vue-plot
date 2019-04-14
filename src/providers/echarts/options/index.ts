@@ -63,7 +63,7 @@ let OptionsManager = {
     let commonOptions = JSON.parse(JSON.stringify(common))
     let final = Object.assign({},
       commonOptions,
-      defaults[props.type],
+      defaults[props.subType || props.type],
       propsOptions)
     final = buildAccessories(props, final)
     final.series = []
