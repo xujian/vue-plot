@@ -22,6 +22,7 @@ type indexable = { [key: string]: any }
  */
 
 export default function (props: any, index: number): indexable {
+  if (!props.styles) return {}
   let styles = props.styles.rules || {}
   styles.colors = styles.colors || []
   let result: any = {}
@@ -39,7 +40,6 @@ export default function (props: any, index: number): indexable {
       }
     }
   }
-  console.log('styles.ts____________________________________________', styles)
   if (styles.label) {
     result.label = {
       normal: {
