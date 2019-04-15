@@ -10,13 +10,13 @@ export default class PaMarkareas extends PaAccessory {
 
   @Prop({
     type: String,
-    default: 'max-min'
+    default: () => 'max-min'
   })
   mode: string | undefined // max-min, columns, rows
 
   @Prop({
-    type: Array,
-    default: {}
+    type: Object,
+    default: () => ({})
   })
   data: {
     color: string[],

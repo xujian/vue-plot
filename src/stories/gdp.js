@@ -4,6 +4,7 @@ let stories = storiesOf('业务图表|经济指标', module)
 
 stories.add('深圳市GDP增长率', () => ({
   template: `<pa-line-chart
+    class="full-width"
     :preset="'gdp-by-years'"
     :title="'深圳市经济指标'"
     :gap="false"
@@ -23,37 +24,37 @@ stories.add('深圳市GDP增长率', () => ({
       }
     }"
     >
-      <pa-tooltip
-        :position="[10, 10]"
-        :formatter="[
-          '{b}<br>',
-          '{c0} %<br>'
-        ].join('')"
-        :style="{}"></pa-tooltip>
-      <pa-markareas 
-        :mode="'columns'"
-        :data="[
-          {
-            color: '#666',
-            label: '十五',
-            coords: ['2001', '2005']
-          },
-          {
-            color: '#999',
-            label: '十一五',
-            coords: ['2005', '2009']
-          },
-          {
-            color: '#666',
-            label: '十二五',
-            coords: ['2009', '2014']
-          },
-          {
-            color: '#999',
-            label: '十三五',
-            coords: ['2014', '2019']
-          }
-        ]"></pa-markareas>
+    <pa-tooltip
+      :position="[10, 10]"
+      :formatter="[
+        '{b}<br>',
+        '{c0} %<br>'
+      ].join('')"
+      :style="{}"></pa-tooltip>
+    <pa-markareas 
+      :mode="'columns'"
+      :data="[
+        {
+          color: '#009688',
+          label: '十五',
+          coords: ['2001', '2006']
+        },
+        {
+          color: '#795548',
+          label: '十一五',
+          coords: ['2006', '2011']
+        },
+        {
+          color: '#009688',
+          label: '十二五',
+          coords: ['2011', '2016']
+        },
+        {
+          color: '#795548',
+          label: '十三五',
+          coords: ['2016', '2020']
+        }
+      ]"></pa-markareas>
     </pa-line-chart>`
 }))
 

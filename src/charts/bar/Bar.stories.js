@@ -31,6 +31,7 @@ let states = [
       ]">
         <pa-axis
           position="right"
+          :unit="'%'"
           :label="'Y'"></pa-axis>
         <pa-line-chart
           :axis="'right'"

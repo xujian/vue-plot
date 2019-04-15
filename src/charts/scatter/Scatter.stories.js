@@ -20,7 +20,7 @@ let states = [
     :symbol="symbol"
     :data="'mocks:scatter-medium'"
     >
-      <pa-markarea></pa-markarea>
+      <pa-markareas mode="max-min"></pa-markareas>
     </pa-scatter-chart>`
   }
 ]

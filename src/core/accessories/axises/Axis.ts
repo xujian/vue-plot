@@ -17,6 +17,9 @@ export default class PaAxis extends PaAccessory {
   @Prop(String)
   label: string | undefined
 
+  @Prop(String)
+  unit: string | undefined
+
   @Prop(Array)
   data: string[] | number[] | undefined
 }

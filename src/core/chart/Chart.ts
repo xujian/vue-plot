@@ -44,10 +44,10 @@ export default class PaChart extends Vue {
   layers: any[] = []
 
   @Prop({})
-  x: string[] | undefined
+  x: string[] | object | undefined
 
   @Prop({})
-  y: string[] | undefined
+  y: string[] | object | undefined
 
   @Prop({})
   axis: ['left', 'right', 0, 1] | undefined
