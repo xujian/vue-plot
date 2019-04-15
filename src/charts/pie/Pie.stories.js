@@ -4,7 +4,7 @@ import { withKnobs, boolean, number, text, array } from '@storybook/addon-knobs'
 import PaPieChart from './Pie.ts'
 import PaRingChart from './Ring.ts'
 
-let stories = storiesOf('Charts|Pie', module)
+let stories = storiesOf('基本图表|Pie', module)
 stories.addDecorator(withKnobs)
 stories.addDecorator(withLiveCode)
 

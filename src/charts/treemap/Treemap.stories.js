@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/vue'
 import { boolean, number, text } from '@storybook/addon-knobs'
 
-let stories = storiesOf('Charts|Treemap', module)
+let stories = storiesOf('基本图表|Treemap', module)
 // stories.addDecorator(withTheme)
 
 let states = [

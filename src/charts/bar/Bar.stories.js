@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/vue'
 import { boolean, number, text } from '@storybook/addon-knobs'
 
-let stories = storiesOf('Charts|Bar', module)
+let stories = storiesOf('基本图表|Bar', module)
 // stories.addDecorator(withTheme)
 
 let states = [

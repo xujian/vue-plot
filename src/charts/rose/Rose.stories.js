@@ -3,7 +3,7 @@ import withLiveCode from '../../../.storybook/decorators/withLiveCode'
 import { withKnobs, boolean, number, text, array } from '@storybook/addon-knobs'
 import PaRoseChart from './Rose'
 
-let stories = storiesOf('Charts|Rose', module)
+let stories = storiesOf('基本图表|Rose', module)
 stories.addDecorator(withKnobs)
 stories.addDecorator(withLiveCode)
 

@@ -3,7 +3,7 @@ import withLiveCode from '../../../.storybook/decorators/withLiveCode'
 import { withKnobs, boolean, number, text } from '@storybook/addon-knobs'
 import PaLineChart from './Line.ts'
 
-let stories = storiesOf('Charts|Line', module)
+let stories = storiesOf('基本图表|Line', module)
 stories.addDecorator(withKnobs)
 stories.addDecorator(withLiveCode)
 

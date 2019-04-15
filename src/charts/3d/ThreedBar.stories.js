@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/vue'
 
-let stories = storiesOf('Charts|3D', module)
+let stories = storiesOf('基本图表|3D', module)
 
 let states = [
   {
