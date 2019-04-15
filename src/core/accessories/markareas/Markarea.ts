@@ -8,6 +8,18 @@ import PaAccessory from '../Accessory';
 @Component({})
 export default class PaMarkarea extends PaAccessory {
 
+  @Prop({
+    type: String,
+    default: 'max-min'
+  })
+  mode: string | undefined // max-min, columns, rows
+
+  @Prop({
+    type: Array,
+    default: []
+  })
+  data: number[][] | string[][] | undefined
+
   @Prop(String)
   label: string | undefined
 }

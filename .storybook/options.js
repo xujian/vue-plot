@@ -21,7 +21,7 @@ export default {
    * where to show the addon panel
    * @type {String}
    */
-  panelPosition: 'right',
+  panelPosition: 'bottom',
   /**
    * sorts stories
    * @type {Boolean}

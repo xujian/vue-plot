@@ -27,6 +27,7 @@ function buildProps (props: any) {
 
 function buildAccessories (props: any, options: any) {
   Object.keys(props.accessories).forEach((k: string) => {
+    console.log('buildAccessories.....handler.take................', k, options.series)
     handler.take(k, props, options)
   })
   return options
@@ -66,8 +67,8 @@ let OptionsManager = {
       defaults[props.subType || props.type],
       propsOptions)
     final = buildAccessories(props, final)
-    final.series = []
     let series = buildSeries(props, final)
+    final.series = final.series || []
     final.series = final.series.concat(...series)
     applyLegends(final)
     final = populateSeries(props, final)
