@@ -16,7 +16,6 @@ const specs = [{
 },{
   type: 'scatter',
   features: [
-    'markarea',
     'symbol'
   ]
 }]
