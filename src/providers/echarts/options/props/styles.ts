@@ -15,12 +15,14 @@ export default (props: any) => {
   if (styles.x) {
     console.log('styles.ts_________________________', styles)
     output.xAxis = [{
-      boundaryGap: styles.gap,
       axisLabel: {
         rotate: styles.x.rotate,
         fontSize: styles.x.fontSize
       }
     }]
+    if (styles.x.gap === false) {
+      output.xAxis[0].boundaryGap = false
+    }
   }
   if (styles.canvas) {
     if (styles.canvas.margin) {
