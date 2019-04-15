@@ -25,11 +25,14 @@ const common = {
   backgroundColor: '#00265f',
   tooltip: {
     trigger: 'axis',
-    padding: 0,
+    padding: 10,
     borderWidth: 0,
-    backgroundColor: 'transparent',
+    backgroundColor: 'rgba(0,0,0,0.33)',
     textStyle: {
       fontSize: 12,
+    },
+    axisPointer: {
+      type: 'shadow'
     },
     extraCssText: [
       'border-radius: 0',
