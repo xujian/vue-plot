@@ -13,6 +13,12 @@ export default class PaLineChart extends PaChart {
   @Prop({})
   lineWidth: number | undefined
 
+  @Prop({
+    type: Boolean,
+    default: true
+  })
+  gap: boolean | undefined
+
   /**
    * 是否堆叠
    */

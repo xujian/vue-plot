@@ -41,16 +41,25 @@ export default function (props: any, index: number): indexable {
     }
   }
   if (styles.label) {
-    result.label = {
-      normal: {
-        formatter: function(params: any, ticket: any, callback: () => void) {
-          return [
-            '{name|' + params.name + '}\n',
-            '{hr|}\n',
-            '{value|' + params.value + '}'
-          ].join('')
-        },
-        rich: styles.label.formats
+    if (styles.label.formats) {
+      result.label = {
+        normal: {
+          formatter: function(params: any, ticket: any, callback: () => void) {
+            return [
+              '{name|' + params.name + '}\n',
+              '{hr|}\n',
+              '{value|' + params.value + '}'
+            ].join('')
+          },
+          rich: styles.label.formats
+        }
+      }
+    } else {
+      result.label = {
+        show: true,
+        position: styles.label.position,
+        offset: [20, 0],
+        fontSize: styles.label.fontSize
       }
     }
   }

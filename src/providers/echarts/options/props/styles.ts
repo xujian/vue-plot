@@ -13,7 +13,9 @@ export default (props: any) => {
     output.backgroundColor = styles.background
   }
   if (styles.x) {
+    console.log('styles.ts_________________________', styles)
     output.xAxis = [{
+      boundaryGap: styles.gap,
       axisLabel: {
         rotate: styles.x.rotate,
         fontSize: styles.x.fontSize
