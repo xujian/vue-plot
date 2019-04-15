@@ -9,7 +9,7 @@ stories.add('分区人口增长', () => ({
       canvas: {
         margin: ['5%', '8%', '20%', '8%']
       },
-      label:{
+      x: {
         rotate: 45,
         fontSize: 10
       }
