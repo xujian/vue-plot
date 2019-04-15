@@ -129,7 +129,7 @@ stories.add('With presets', () => ({
       canvas: {
         margin: ['5%', '8%', '20%', '8%']
       },
-      label:{
+      x:{
         rotate: 45,
         fontSize: 10
       }
