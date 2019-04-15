@@ -1,3 +1,3 @@
-import PaMarkarea from './Markarea'
+import PaMarkareas from './Markareas'
 
-export { PaMarkarea }
+export { PaMarkareas }

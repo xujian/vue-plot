@@ -3,7 +3,7 @@ import { PaTooltip } from './tooltips'
 import { PaLayer } from './layers'
 import { PaMarks } from './marks'
 import { PaLegend } from './legend'
-import { PaMarkarea } from './markareas'
+import { PaMarkareas } from './markareas'
 
 let accessories: {[name: string]: any} = {
   PaAxis,
@@ -11,7 +11,7 @@ let accessories: {[name: string]: any} = {
   PaLayer,
   PaMarks,
   PaLegend,
-  PaMarkarea
+  PaMarkareas
 }
 
 export default accessories

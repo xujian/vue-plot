@@ -6,7 +6,7 @@ import PaAccessory from '../Accessory';
  * 覆盖默认配置
  */
 @Component({})
-export default class PaMarkarea extends PaAccessory {
+export default class PaMarkareas extends PaAccessory {
 
   @Prop({
     type: String,
@@ -16,9 +16,12 @@ export default class PaMarkarea extends PaAccessory {
 
   @Prop({
     type: Array,
-    default: []
+    default: {}
   })
-  data: number[][] | string[][] | undefined
+  data: {
+    color: string[],
+    coords: number[] | string[] | string
+  } | undefined
 
   @Prop(String)
   label: string | undefined
