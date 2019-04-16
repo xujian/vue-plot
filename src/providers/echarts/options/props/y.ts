@@ -1,26 +1,32 @@
 export default function (props: any) {
-  if (props.y === false) {
-    return {
+  let yAxis: any = {}, y: any = props.y
+  'show,data,min'.split(',').forEach(p => {
+    if (Reflect.has(y, p)) {
+      yAxis[p] = y[p]
+    }
+  })
+  if (props.y.unit) {
+    yAxis.axisLabel = {
+      formatter: props.y.unit === '100%' 
+        ? (value: number, index: number) => value * 100 + '%'
+        : '{value}' + props.y.unit
     }
   }
-  let yAxis: any = {}
-  if (Array.isArray(props.y)) {
-    yAxis = {
-      type: 'value',
-      data: props.y
+  if (props.y.line) {
+    let line = props.y.line
+    if (line === false) {
+      yAxis.axisLine = {
+        show: false
+      }
+    } else {
+
     }
-  } else {
-    if ([props.y.data]) {
-      yAxis.data = props.y.data
-    }
-    if (props.y.min) {
-      yAxis.min = props.y.min
-    }
-    if (props.y.unit) {
-      yAxis.axisLabel = {
-        formatter: props.y.unit === '100%' 
-          ? (value: number, index: number) => value * 100 + '%'
-          : '{value}' + props.y.unit
+  }
+  if (props.y.ticks) {
+    let ticks = props.y.ticks
+    if (ticks === false) {
+      yAxis.axisTick = {
+        show: false
       }
     }
   }

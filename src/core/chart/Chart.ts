@@ -10,6 +10,7 @@ import { PresetManager } from '../shared/presets'
 import { DataManager } from '../data'
 import accessories from '../accessories';
 import { merge } from 'lodash'
+import normalizeProps from '../shared/props';
 /**
  * 定义 chart 的 props 组
  */
@@ -132,6 +133,9 @@ export default class PaChart extends Vue {
         assignedProps[p] = props[p]
       }
     })
+    Object.keys(assignedProps).forEach(p => {
+      assignedProps[p] = normalizeProps(assignedProps[p], p)
+    })
     let finalProps = merge({}, // 覆盖顺序
       theme.props, // props in theme
       preset.props, // preset props
@@ -181,7 +185,7 @@ export default class PaChart extends Vue {
    * slot 之后的特别处理, 由子类实现
    * @param props 输入的 props 项目
    */
-  protected postProcessSlots(props: Props): ChartProps {
+  protected postProcessSlots(props: Props): Props {
     return props
   }
 
