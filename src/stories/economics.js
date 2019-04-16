@@ -78,4 +78,38 @@ stories.add('二十年间增长率', () => ({
     </pa-line-chart>`
 }))
 
+stories.add('GDP测算-国内环境分析', () => ({
+  template: `<pa-line-chart
+    :preset="'gdp'"
+    :title="'GDP测算-国内环境分析'"
+    :gap="false"
+    :y="{unit: '%', min: 5}"
+    :x="Array(2019 - 2013 + 1).fill(0).map((x, i) => 2013 + i)"
+    legends="['深圳市GDP增速', '全省GDP增速', '全国GDP增速']"
+    :data="[
+      [10.7, 10.1, 9.3, 9.1, 8.8, 7.9, 7.1],
+      [10.4, 9.7, 9.0, 8.8, 8.1, 7.1, 6.5],
+      [10.1, 9.6, 8.8, 8.4, 7.7, 7.0, 6.1]
+    ]"
+    :styles="{
+      x: {
+        gap: false,
+        fontSize: 10
+      },
+      label: {
+        position: 'top',
+        fontSize: 9
+      }
+    }"
+    >
+    <pa-tooltip
+      :position="[10, 10]"
+      :formatter="[
+        '{b}<br>',
+        '{c0} %<br>'
+      ].join('')"
+      :style="{}"></pa-tooltip>
+    </pa-line-chart>`
+}))
+
 export default stories

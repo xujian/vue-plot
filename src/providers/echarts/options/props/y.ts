@@ -10,8 +10,8 @@ export default function (props: any) {
       data: props.y
     }
   } else {
-    yAxis = {
-      data: props.y.data
+    if ([props.y.data]) {
+      yAxis.data = props.y.data
     }
     if (props.y.min) {
       yAxis.min = props.y.min
