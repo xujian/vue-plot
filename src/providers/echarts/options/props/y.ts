@@ -18,7 +18,7 @@ export default function (props: any) {
     }
     if (props.y.unit) {
       yAxis.axisLabel = {
-        formatter: props.y.unit === '%' 
+        formatter: props.y.unit === '100%' 
           ? (value: number, index: number) => value * 100 + '%'
           : '{value}' + props.y.unit
       }

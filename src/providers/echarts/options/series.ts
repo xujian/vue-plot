@@ -21,6 +21,26 @@ function buildExtra (props: any, index?: number): {}[] {
   return features
 }
 
+// 将Y轴单位或formatter复制到图表
+function applyFormatterFromAxis (series: any[], options: any) {
+  return series.map(s => {
+    let yAxisIndex = s.yAxisIndex || 0
+    let yAxis = options.yAxis[yAxisIndex]
+    if (yAxis) {
+      if (s.label && s.label.show) {
+        let label = yAxis.axisLabel
+        if (label
+          && label.formatter
+          && typeof label.formatter === 'string') {
+            s.label.formatter = yAxis.axisLabel.formatter
+              .replace('{value}', '{c}')
+          }
+      }
+    }
+    return s
+  })
+}
+
 /**
  * 将 data 组装为 series
  * @param props 
@@ -45,6 +65,7 @@ export function makeSeries (layers: any[], options: any): any {
     if (typeFn) {
       series = typeFn.call(null, series, layer, options)
     }
+    series = applyFormatterFromAxis(series, options)
     final.push(series)
   })
   return final

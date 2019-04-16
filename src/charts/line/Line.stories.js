@@ -20,7 +20,19 @@ let states = [
       ></pa-line-chart>`
   },
   {
-    name: 'Area',
+    name: 'Has label',
+    template: `<pa-line-chart
+      :smooth="smooth"
+      :line-width="lineWidth"
+      :styles="{label:'top'}"
+      :data="[
+        [100, 150, 500, 250, 400],
+        [47, 100, 100, 430, 210]
+      ]"
+      ></pa-line-chart>`
+  },
+  {
+    name: 'Has area',
     template: `<pa-line-chart
       :smooth="smooth"
       :area="true"

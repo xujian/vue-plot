@@ -1,4 +1,4 @@
-import Vue, { VNode } from 'vue'
+import Vue from 'vue'
 import { Component } from 'vue-property-decorator'
 import Prop from '../decorators/Prop'
 import { resolveSlot } from '../../core/accessories/slots'
@@ -132,9 +132,9 @@ export default class PaChart extends Vue {
         assignedProps[p] = props[p]
       }
     })
-    let finalProps = merge( // 覆盖顺序
-      preset.props, // preset props
+    let finalProps = merge({}, // 覆盖顺序
       theme.props, // props in theme
+      preset.props, // preset props
       assignedProps, // props assigned
       { layers },
       { accessories }, // props from accessories
@@ -143,7 +143,7 @@ export default class PaChart extends Vue {
     if (finalProps.styles) {
       finalProps.styles = this.buildStyles(finalProps.styles)
     }
-    console.log('☀☀☀☀☀☀☀☀+prepareProps+++++++++++++++++finalProps', finalProps)
+    console.log('☀☀☀☀☀☀☀☀prepareProps+++++++++++++++++finalProps', finalProps)
     return finalProps
   }
 

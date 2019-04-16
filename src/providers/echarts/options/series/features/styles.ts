@@ -41,25 +41,38 @@ export default function (props: any, index: number): indexable {
     }
   }
   if (styles.label) {
-    if (styles.label.formats) {
-      result.label = {
-        normal: {
-          formatter: function(params: any, ticket: any, callback: () => void) {
-            return [
-              '{name|' + params.name + '}\n',
-              '{hr|}\n',
-              '{value|' + params.value + '}'
-            ].join('')
-          },
-          rich: styles.label.formats
+    /***
+     * styles.label = '{c}%'
+     * styles.label = 'top'
+     */
+    if (typeof styles.label === 'string') {
+      if (['top'].includes(styles.label)) {
+        result.label = {
+          show: true,
+          position: styles.label
         }
       }
     } else {
-      result.label = {
-        show: true,
-        position: styles.label.position,
-        offset: [20, 0],
-        fontSize: styles.label.fontSize
+      if (styles.label.formats) {
+        result.label = {
+          normal: {
+            formatter: function(params: any, ticket: any, callback: () => void) {
+              return [
+                '{name|' + params.name + '}\n',
+                '{hr|}\n',
+                '{value|' + params.value + '}'
+              ].join('')
+            },
+            rich: styles.label.formats
+          }
+        }
+      } else {
+        result.label = {
+          show: true,
+          position: styles.label.position,
+          offset: [20, 0],
+          fontSize: styles.label.fontSize
+        }
       }
     }
   }

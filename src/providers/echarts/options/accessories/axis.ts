@@ -8,7 +8,7 @@ export default (props: any, providerOptions: any) => {
   }
   if (input.unit) {
     axis.axisLabel = {
-      formatter: input.unit === '%' 
+      formatter: input.unit === '100%' 
         ? (value: number, index: number) => value * 100 + '%'
         : '{value}' + input.unit
     }
