@@ -39,7 +39,8 @@ function parseDataSet (dataset: any[]): any {
     },
     data = dataset.slice(1).map(item => item.slice(1)),
     legend = dataset.slice(1).map(item => item[0])
-  return({ data, x, y, legend})
+  return({ data, x, y,
+    accessories: {legend: {data: legend}}})
 }
 
 function loadFromMocks (path: string): any[] {
