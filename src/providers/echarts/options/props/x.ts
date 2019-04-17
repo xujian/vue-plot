@@ -2,11 +2,15 @@ export default function (props: any) {
   let x = props.x
   x = x || []
   let xAxis: any = {
-    type: x.type || 'category'
   }
   if (xAxis.type === 'category') {
     xAxis.data = x.data
   }
+  'name,show,data,min'.split(',').forEach(p => {
+    if (Reflect.has(x, p)) {
+      xAxis[p] = x[p]
+    }
+  })
   if (x.label) {
     xAxis.axisLabel = {
       formatter: x.label

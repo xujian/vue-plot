@@ -17,7 +17,9 @@ let states = [
     name: 'With markareas',
     template: `<pa-scatter-chart
     :title="'中等散点图'"
-    :symbol="symbol"
+    :symbol="3"
+    :x="{name: '身高(cm)'}"
+    :y="{name: '体重(Kg)'}"
     :data="'mocks:scatter-medium'"
     >
       <pa-markareas mode="max-min"></pa-markareas>
@@ -30,7 +32,7 @@ states.forEach(s => {
     template: s.template,
     props: {
       symbol: {
-        default: number('symbol', 2)
+        default: number('symbol', 10)
       }
     }
   }))
