@@ -120,16 +120,16 @@ export default class PaChart extends Vue {
   protected prepareProps() {
     let { layers, accessories } = this.processSlots()
     layers = this.layers.concat(...layers)
-    accessories = {
-      ...this.accessories,
-      ...accessories
-    }
+    accessories = merge({},
+      this.accessories,
+      accessories
+    )
     let preset = PresetManager.get(this.preset)
     let theme = themes[this.theme || 'dark']
     let assignedProps: {[key: string]: any} = {}
     let props = this.props
     Object.keys(props).forEach(p => {
-      if (props[p]) {
+      if (props[p]) { // 直接给定的props
         assignedProps[p] = props[p]
       }
     })
@@ -195,10 +195,10 @@ export default class PaChart extends Vue {
     // 计算最终的 options 并交给 echart 绘图
     let finalProps = this.prepareProps()
     DataManager.load(this.props).then((props: {}) => {
-      finalProps = {
-        ...finalProps,
-        ...props
-      }
+      finalProps = merge({}, 
+        finalProps,
+        props
+      )
       if (this.mode === 'layer') return
       let provider = new Provider(this.$refs.chart)
       this.canvas = provider.draw(finalProps)
