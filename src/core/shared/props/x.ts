@@ -10,6 +10,8 @@ export default function (input: any) {
         type: 'category',
         data: input
       }
+    } else {
+      output = input
     }
   }
   return output

@@ -10,6 +10,8 @@ export default function (input: any) {
         type: 'value',
         data: input
       }
+    } else {
+      output = input
     }
   }
   return output

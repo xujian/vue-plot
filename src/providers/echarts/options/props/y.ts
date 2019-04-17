@@ -5,15 +5,15 @@ export default function (props: any) {
       yAxis[p] = y[p]
     }
   })
-  if (props.y.unit) {
+  if (y.unit) {
     yAxis.axisLabel = {
-      formatter: props.y.unit === '100%' 
+      formatter: y.unit === '100%'
         ? (value: number, index: number) => value * 100 + '%'
-        : '{value}' + props.y.unit
+        : '{value}' + y.unit
     }
   }
-  if (props.y.line) {
-    let line = props.y.line
+  if (Reflect.has(y, 'line')) {
+    let line = y.line
     if (line === false) {
       yAxis.axisLine = {
         show: false
@@ -22,8 +22,8 @@ export default function (props: any) {
 
     }
   }
-  if (props.y.ticks) {
-    let ticks = props.y.ticks
+  if (Reflect.has(y, 'ticks')) {
+    let ticks = y.ticks
     if (ticks === false) {
       yAxis.axisTick = {
         show: false
