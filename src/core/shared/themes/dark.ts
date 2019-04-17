@@ -7,8 +7,7 @@ export default {
         'gradient:#00e7f7,#0096f4',
         'gradient:#00da9c,#007a55',
         'gradient:#f44336,#b5291e'
-      ],
-      background: '#333'
+      ]
     }
   }
 }

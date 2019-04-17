@@ -15,11 +15,13 @@
 .chart-container .chart-header h6 {
   margin: 0;
   font-weight: 100;
+  line-height: 2em;
   color: #fff;
 }
 
 .sb-show-main {
   color: #eee;
+  background: #004346;
 }
 
 .chart-container .tooltip {

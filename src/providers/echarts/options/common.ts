@@ -7,10 +7,10 @@
   */
 const common = {
   grid: {
-    top: '12%',
+    top: '15%',
     left: '12%',
     right: '12%',
-    bottom: '12%',
+    bottom: '15%',
     // containLabel: true
   },
   xAxis: {
@@ -22,7 +22,7 @@ const common = {
       type: 'value'
     }
   ],
-  backgroundColor: '#00265f',
+  backgroundColor: 'rgba(0,0,0,0.2)',
   tooltip: {
     trigger: 'axis',
     padding: 10,
