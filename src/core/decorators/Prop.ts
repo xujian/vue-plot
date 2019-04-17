@@ -13,7 +13,6 @@ export default function Prop(options: PropOptions): PropertyDecorator {
     options.type = Reflect.getMetadata('design:type', target, key)
     options.validator = (value: any) => {
       let chart = target
-      console.log('____________My own prop decorator: validator', key, value)
       return true
     }
     createDecorator((componentOptions, k) => {
