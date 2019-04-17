@@ -1,8 +1,10 @@
 export default function (series: any[], props: any) {
   series.forEach((s: any) => {
     let item: any = {
-      stack: props.stack,
       smooth: props.smooth
+    }
+    if (props.stacked) {
+      item.stack = props.stacked || 'stack-1'
     }
     if (props.area) {
       item.areaStyle = {}

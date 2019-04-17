@@ -1,8 +1,10 @@
 export default function (series: any[], props: any, options: any) {
   let item: any = {
     barWidth: props.barWidth,
-    stack: props.stacked,
     barGap: props.barGap
+  }
+  if (props.stacked) {
+    item.stack = props.stacked || 'stack-1'
   }
   if (props.round) {
     item.itemStyle = {

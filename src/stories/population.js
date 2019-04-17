@@ -2,6 +2,26 @@ import { storiesOf } from '@storybook/vue'
 
 let stories = storiesOf('业务图表|人口', module)
 
+stories.add('人口概况', () => ({
+  template: `<pa-bar-chart
+    style="width:400px;height:200px;"
+    :title="'南山区人口概况'"
+    :preset="'no-lines'"
+    :stacked="true"
+    :dataset="[
+      ['万人', '1月', '2月'],
+      ['常住人口', 179.56, 73.05],
+      ['非常住人口', 1388.92, 1392.54]
+    ]">
+      <pa-tooltip
+        :formatter="[
+          '{b}<br>',
+          '{a0}: {c0} (万人)<br>',
+          '{a1}: {c1} (万人)'
+        ].join('')"></pa-tooltip>
+    </pa-bar-chart>`
+}))
+
 stories.add('分区人口增长', () => ({
   template: `<pa-bar-chart
     :preset="'gdp-by-years'"

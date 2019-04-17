@@ -9,7 +9,7 @@ import PaAccessory from '../Accessory'
 export default class PaTooltip extends PaAccessory {
 
   @Prop({
-    default: [10, 10]
+    default: () => [10, 10]
   })
   position: [string, string] | [number, number] | string | undefined
 

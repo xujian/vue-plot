@@ -23,7 +23,7 @@ export default class PaLineChart extends PaChart {
    * 是否堆叠
    */
   @Prop({})
-  stack: string | undefined
+  stacked: boolean | string | undefined
 
   /**
    * 平滑线条

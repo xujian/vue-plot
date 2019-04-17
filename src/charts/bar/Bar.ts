@@ -27,7 +27,7 @@ export default class PaBarChart extends PaChart {
    * 是否堆叠
    */
   @Prop({})
-  stack: string | undefined
+  stacked: boolean | string | undefined
 
   /**
    * 阴影 shadow
