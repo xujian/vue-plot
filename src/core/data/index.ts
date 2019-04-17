@@ -33,7 +33,7 @@ function __load (url: string): Promise<any> {
 }
 
 function parseDataSet (dataset: any[]): any {
-  let x = dataset[0].slice(1),
+  let x = { data: dataset[0].slice(1) },
     data = dataset.slice(1).map(item => item.slice(1)),
     legend = dataset.slice(1).map(item => item[0])
   return({ data, x, legend})

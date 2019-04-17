@@ -18,7 +18,6 @@ let states = [
     template: `<pa-scatter-chart
     :title="'中等散点图'"
     :symbol="3"
-    :x="{name: '身高(cm)'}"
     :y="{name: '体重(Kg)'}"
     :data="'mocks:scatter-medium'"
     >
