@@ -13,8 +13,11 @@ export default (props: any, providerOptions: any) => {
         : '{value}' + input.unit
     }
   }
-  providerOptions.yAxis = providerOptions.yAxis || [{
+  let yAxis = providerOptions.yAxis || [{
     type: 'value'
   }]
-  providerOptions.yAxis.push(axis)
+  yAxis.push(axis)
+  return {
+    yAxis
+  }
 }

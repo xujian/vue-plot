@@ -22,6 +22,12 @@ const common = {
       type: 'value'
     }
   ],
+  legend: {
+    right: 0,
+    top: 10,
+    itemHeight: 10,
+    fontSize: 10
+  },
   backgroundColor: 'rgba(0,0,0,0.2)',
   tooltip: {
     trigger: 'axis',

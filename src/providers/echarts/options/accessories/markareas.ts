@@ -32,6 +32,9 @@ export default (props: any, options: any) => {
       return item
     })
   }
-  options.series = options.series || []
-  options.series.push(...series)
+  let output = options.series || []
+  output.push(...series)
+  return {
+    output
+  }
 }

@@ -53,11 +53,11 @@ export function makeSeries (layers: any[], options: any): any {
       (d: any, dataIndex: number) => {
       let extraSettings = buildExtra(layer, dataIndex)
       // 合并: 给定配置项 ➡️ 缺省配置项 ➡️ 固有配置项
-      return Object.assign({
+      return merge({
         type: layer.type || 'bar',
         data: Array.isArray(d) ? d : d.value,
-        name: layer.legend
-          ? layer.legend[dataIndex] : ''
+        name: layer.accessories && layer.accessories.legend
+          ? layer.accessories.legend[dataIndex] : ''
       },
       ...extraSettings)
     })

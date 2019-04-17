@@ -1,6 +1,6 @@
 import common from './common'
 import { makeSeries, populateSeries } from './series'
-import { merge as _merge } from 'lodash'
+import { merge } from 'lodash'
 import handler from './handler'
 
 let defaults: any = {}
@@ -20,17 +20,17 @@ function buildProps (props: any) {
   names = names.sort((a, b) => b === 'styles' ? -1 : 1) 
   names.forEach((k: string) => {
     let output = handler.translate(k, props)
-    options = _merge(options, output)
+    options = merge(options, output)
   })
   return options
 }
 
 function buildAccessories (props: any, options: any) {
+  let output: any = {}
   Object.keys(props.accessories).forEach((k: string) => {
-    console.log('buildAccessories.....handler.take................', k, options.series)
-    handler.take(k, props, options)
+    output = merge(output, handler.take(k, props, options))
   })
-  return options
+  return output
 }
 
 function buildSeries (props: any, options: any): any[] {
@@ -39,7 +39,6 @@ function buildSeries (props: any, options: any): any[] {
 
 function applyLegend (options: any) {
   // 将 legend 内的文本写入到 series 的 name
-  console.log('options/index applyLegend--------', options)
   let legend = options.legend
   if (legend && legend.data) {
     options.series.forEach((s: any, i: number) => {
@@ -62,11 +61,11 @@ let OptionsManager = {
      */
     let propsOptions = buildProps(props)
     let commonOptions = JSON.parse(JSON.stringify(common))
-    let final = Object.assign({},
+    let final = merge({},
       commonOptions,
       defaults[props.subType || props.type],
       propsOptions)
-    final = buildAccessories(props, final)
+    final = merge(final, buildAccessories(props, final))
     let series = buildSeries(props, final)
     final.series = final.series || []
     final.series = final.series.concat(...series)

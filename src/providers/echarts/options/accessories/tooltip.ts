@@ -1,6 +1,6 @@
 export default (props: any, providerOptions: any) => {
   let tooltip = props.accessories.tooltip
-  providerOptions.tooltip = {
+  let output = {
     ...providerOptions.tooltip,
     padding: 0,
     backgroundColor: 'transparent',
@@ -12,5 +12,8 @@ export default (props: any, providerOptions: any) => {
       tooltip.formatter,
       `</di>`
     ].join('')
+  }
+  return {
+    tooltip
   }
 }

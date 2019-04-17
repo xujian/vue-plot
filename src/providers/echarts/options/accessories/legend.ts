@@ -21,5 +21,7 @@ export default (props: any, providerOptions: any) => {
   if (input.direction) {
     output.orient = input.direction
   }
-  providerOptions.legend = output
+  return {
+    legend: output
+  }
 }
