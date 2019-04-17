@@ -147,7 +147,9 @@ export default class PaChart extends Vue {
     if (finalProps.styles) {
       finalProps.styles = this.buildStyles(finalProps.styles)
     }
-    console.log('☀☀☀☀☀☀☀☀prepareProps+++++++++++++++++finalProps', finalProps)
+    console.log('%c///Chart.ts: prepareProps: finalProps',
+      'background-color:#009688;color:#fff;',
+      finalProps)
     return finalProps
   }
 

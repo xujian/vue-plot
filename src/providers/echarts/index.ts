@@ -14,7 +14,9 @@ class Provider {
     let theme = globalConfigs.theme
     let chart = echarts.init(this.container, theme)
     let finalOption = options.make(props)
-    console.log('=X=X=X=X=X======== final provider options', finalOption)
+    console.log('%c>>>FINAL PROVIDER OPTIONS',
+      'background:#e57373;color:#fff',
+      finalOption)
     chart.setOption(finalOption)
     return chart
   }

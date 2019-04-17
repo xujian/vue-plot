@@ -1,5 +1,5 @@
 export default (props: any, providerOptions: any) => {
-  let legend: any = props.legend
+  let legend: any = props.accessories.legend
   let aligns: any = {
     right:  {
       right: '10%'
@@ -10,6 +10,5 @@ export default (props: any, providerOptions: any) => {
   }
   let result = aligns[legend.align]
   result.data = legend.data
-  console.log('legend.ts_______________________', result)
   providerOptions.legend = result
 }

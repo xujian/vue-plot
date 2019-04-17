@@ -85,7 +85,6 @@ stories.add('GDP测算-国内环境分析', () => ({
     :gap="false"
     :y="{unit: '%', min: 5}"
     :x="Array(2019 - 2013 + 1).fill(0).map((x, i) => 2013 + i)"
-    :legend="['深圳市GDP增速', '全省GDP增速', '全国GDP增速']"
     :data="[
       [13.7, 13.1, 12.3, 11.1, 10.8, 9.9, 9.1],
       [11.4, 10.7, 10.0, 9.4, 8.1, 7.6, 6.5],
@@ -102,6 +101,7 @@ stories.add('GDP测算-国内环境分析', () => ({
       }
     }"
     >
+    <pa-legend :data="['深圳市GDP增速', '全省GDP增速', '全国GDP增速']"></pa-legend>
     <pa-tooltip
       :position="[10, 10]"
       :formatter="[
