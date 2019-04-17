@@ -1,5 +1,11 @@
 export default (props: any, providerOptions: any) => {
-  let legend: any = props.accessories.legend
+  let input: any = props.accessories.legend
+  let output: any = {}
+  'top,right,bottom'.split(',').forEach(p => {
+    if (Reflect.has(input, p)) {
+      output[p] = input[p]
+    }
+  })
   let aligns: any = {
     right:  {
       right: '10%'
@@ -8,7 +14,12 @@ export default (props: any, providerOptions: any) => {
       left: '10%'
     }
   }
-  let result = aligns[legend.align]
-  result.data = legend.data
-  providerOptions.legend = result
+  output = { ...output, ...aligns[input.align] }
+  if (input.data) {
+    output.data = input.data
+  }
+  if (input.direction) {
+    output.orient = input.direction
+  }
+  providerOptions.legend = output
 }

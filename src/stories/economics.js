@@ -80,7 +80,7 @@ stories.add('二十年间增长率', () => ({
 
 stories.add('GDP测算-国内环境分析', () => ({
   template: `<pa-line-chart
-    :preset="'gdp,no-lines'"
+    :preset="'gdp,no-lines,legend-right-vertical'"
     :title="'GDP测算-国内环境分析'"
     :gap="false"
     :y="{unit: '%', min: 5}"
