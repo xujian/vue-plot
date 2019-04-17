@@ -20,7 +20,11 @@ type indexable = { [key: string]: any }
       background: '#333'
     }"
  */
-
+/**
+ * 处理styles中colors与label定义
+ * @param props 
+ * @param index 
+ */
 export default function (props: any, index: number): indexable {
   if (!props.styles) return {}
   let styles = props.styles.rules || {}
@@ -31,12 +35,14 @@ export default function (props: any, index: number): indexable {
   if (color && dataItem) {
     result.itemStyle = { normal: {}, emphasis: {} }
     if (color.constructor.name === 'Gradient') {
-      let stops = color.stops.map((s: any, i: number) => ({
-        offset: (1 / (color.stops.length - 1)) * i,
-        color: s
-      }))
-      result.itemStyle.normal = {
-        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, stops)
+      if (['bar'].includes(props.types)) {
+        let stops = color.stops.map((s: any, i: number) => ({
+          offset: (1 / (color.stops.length - 1)) * i,
+          color: s
+        }))
+        result.itemStyle.normal = {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, stops)
+        }
       }
     }
   }
