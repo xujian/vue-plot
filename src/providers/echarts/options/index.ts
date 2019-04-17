@@ -37,9 +37,9 @@ function buildSeries (props: any, options: any): any[] {
   return makeSeries([props, ...props.layers], options)
 }
 
-function applyLegends (options: any) {
+function applyLegend (options: any) {
   // 将 legend 内的文本写入到 series 的 name
-  console.log('options/index applyLegends--------', options)
+  console.log('options/index applyLegend--------', options)
   let legend = options.legend
   if (legend && legend.data) {
     options.series.forEach((s: any, i: number) => {
@@ -70,7 +70,7 @@ let OptionsManager = {
     let series = buildSeries(props, final)
     final.series = final.series || []
     final.series = final.series.concat(...series)
-    applyLegends(final)
+    applyLegend(final)
     final = populateSeries(props, final)
     return final
   }

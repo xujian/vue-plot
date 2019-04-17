@@ -30,7 +30,7 @@ stories.add('分区人口增长', () => ({
         :label="'Y'"></pa-axis>
       <pa-line-chart
         :axis="'right'"
-        :legends="['同比增长']"
+        :legend="['同比增长']"
         :data="[[6.88, 9.38, 8.46, 16.1, 12.4, 13.5, 14.9, 11.5, 14.5, 6.50]]"></pa-line-chart>
     </pa-bar-chart>`
 }))

@@ -57,7 +57,7 @@ export default class PaChart extends Vue {
   options: any
 
   @Prop({})
-  legends: any[] | undefined
+  legend: any[] | undefined
 
   @Prop({})
   preset: string | undefined

@@ -56,8 +56,8 @@ export function makeSeries (layers: any[], options: any): any {
       return Object.assign({
         type: layer.type || 'bar',
         data: Array.isArray(d) ? d : d.value,
-        name: layer.legends
-          ? layer.legends[dataIndex] : ''
+        name: layer.legend
+          ? layer.legend[dataIndex] : ''
       },
       ...extraSettings)
     })

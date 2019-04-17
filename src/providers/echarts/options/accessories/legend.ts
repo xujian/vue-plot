@@ -10,5 +10,6 @@ export default (props: any, providerOptions: any) => {
   }
   let result = aligns[legend.align]
   result.data = legend.data
+  console.log('legend.ts_______________________', result)
   providerOptions.legend = result
 }

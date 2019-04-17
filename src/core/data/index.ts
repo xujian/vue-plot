@@ -35,8 +35,8 @@ function __load (url: string): Promise<any> {
 function parseDataSet (dataset: any[]): any {
   let x = dataset[0].slice(1),
     data = dataset.slice(1).map(item => item.slice(1)),
-    legends = dataset.slice(1).map(item => item[0])
-  return({ data, x, legends})
+    legend = dataset.slice(1).map(item => item[0])
+  return({ data, x, legend})
 }
 
 function loadFromMocks (path: string): any[] {
@@ -45,7 +45,7 @@ function loadFromMocks (path: string): any[] {
 
 /**
  * 负责请求远程API数据
- * 可处理 dataset 格式的数据并解释为X轴data以及legends
+ * 可处理 dataset 格式的数据并解释为X轴data以及legend
  */
 const DataManager: any = {
   load (props: any): Promise<{}> {
