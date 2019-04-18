@@ -41,9 +41,9 @@ export class PresetManager {
       let preset = presets[n] || {}
       if (preset.parent) {
         let parent = PresetManager.get(preset.parent)
-        preset = Object.assign({}, parent, preset)
+        preset = merge({}, parent, preset)
       }
-      result = merge(result, preset)
+      result = merge({}, result, preset)
       console.log('presetmanager.get_______________', result, n)
     })
     return result

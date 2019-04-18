@@ -1,14 +1,23 @@
 import accessories from '@/core/accessories';
 
 export default {
-  name: 'no-lines',
+  name: 'legend-right-vertical',
   props: {
     accessories: {
       legend: {
-        positin: 'right',
+        x: 'right',
         direction: 'vertical',
         right: 10,
-        top: 10
+        top: 'middle'
+      }
+    },
+    styles: {
+      label: false,
+      canvas: {
+        center: ['38%', '50%']
+      },
+      title: {
+        left: '28%'
       }
     }
   }

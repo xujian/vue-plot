@@ -19,7 +19,10 @@ const common = {
   },
   yAxis: [
     {
-      type: 'value'
+      type: 'value',
+      nameTextStyle: {
+        fontSize: 10
+      }
     }
   ],
   legend: {

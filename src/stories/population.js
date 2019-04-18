@@ -22,6 +22,22 @@ stories.add('人口概况', () => ({
     </pa-bar-chart>`
 }))
 
+stories.add('常住人口分析', () => ({
+  template: `<pa-pie-chart
+    style="width:400px;height:200px;"
+    title="年龄分布"
+    preset="circle,legend-right-vertical"
+    :data="[[
+      { name: '0-17岁', value: 0.58 },
+      { name: '18-40岁', value: 38.18 },
+      { name: '41-49岁', value: 30.94 },
+      { name: '50-59岁', value: 22.27 },
+      { name: '60-65岁', value: 6.91 },
+      { name: '66岁及以上', value: 3.12 }
+    ]]">
+    </pa-pie-chart>`
+}))
+
 stories.add('分区人口增长', () => ({
   template: `<pa-bar-chart
     :preset="'gdp-by-years'"

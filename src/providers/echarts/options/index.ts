@@ -20,7 +20,7 @@ function buildProps (props: any) {
   names = names.sort((a, b) => b === 'styles' ? -1 : 1) 
   names.forEach((k: string) => {
     let output = handler.translate(k, props)
-    options = merge(options, output)
+    options = merge({}, options, output)
   })
   return options
 }

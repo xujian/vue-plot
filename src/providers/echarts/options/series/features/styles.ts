@@ -46,12 +46,16 @@ export default function (props: any, index: number): indexable {
       }
     }
   }
-  if (styles.label) {
+  if (Reflect.has(styles, 'label')) {
     /***
      * styles.label = '{c}%'
      * styles.label = 'top'
      */
-    if (typeof styles.label === 'string') {
+    if (styles.label === false) {
+      result.label = {
+        show: false
+      }
+    } else if (typeof styles.label === 'string') {
       if (['top'].includes(styles.label)) {
         result.label = {
           show: true,
@@ -82,6 +86,9 @@ export default function (props: any, index: number): indexable {
       }
     }
   }
-  // 返回的是多个itemStyle数组
+  if (styles.canvas) {
+    let center = styles.canvas.center
+    result.center = center
+  }
   return result
 }
