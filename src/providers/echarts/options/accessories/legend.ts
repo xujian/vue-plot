@@ -1,5 +1,12 @@
 export default (props: any, providerOptions: any) => {
   let input: any = props.accessories.legend
+  if (input === false) {
+    return {
+      legend: {
+        show: false
+      }
+    }
+  }
   let output: any = {}
   'top,right,bottom'.split(',').forEach(p => {
     if (Reflect.has(input, p)) {

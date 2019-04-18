@@ -11,6 +11,7 @@ let states = [
   {
     name: 'Simple',
     template: `<pa-rose-chart
+      preset="no-legend"
       :radius="radius"
       :half="half"
       :data="[[
