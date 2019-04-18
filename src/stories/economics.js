@@ -51,7 +51,7 @@ stories.add('二十年间增长率', () => ({
         '{c0} %<br>'
       ].join('')"
       :style="{}"></pa-tooltip>
-    <pa-markareas 
+    <pa-markareas
       :mode="'columns'"
       :data="[
         {
@@ -80,8 +80,8 @@ stories.add('二十年间增长率', () => ({
 
 stories.add('GDP测算-国内环境分析', () => ({
   template: `<pa-line-chart
-    :preset="'gdp,no-lines,legend-right-vertical'"
-    :title="'GDP测算-国内环境分析'"
+    :preset="'gdp,no-lines'"
+    :title="''"
     :gap="false"
     :y="{unit: '%', min: 5}"
     :x="Array(2019 - 2013 + 1).fill(0).map((x, i) => 2013 + i)"
