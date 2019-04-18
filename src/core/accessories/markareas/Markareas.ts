@@ -15,13 +15,12 @@ export default class PaMarkareas extends PaAccessory {
   mode: string | undefined // max-min, columns, rows
 
   @Prop({
-    type: Object,
-    default: () => ({})
   })
   data: {
     color: string[],
+    label: string,
     coords: number[] | string[] | string
-  } | undefined
+  }[] | undefined
 
   @Prop(String)
   label: string | undefined
