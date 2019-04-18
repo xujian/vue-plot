@@ -4,7 +4,7 @@ import Prop from '../decorators/Prop'
 import { resolveSlot } from '../../core/accessories/slots'
 import Provider from '../../providers/echarts'
 import Bus from '../../core/shared/events/bus'
-import Styles, { StyleRules } from '../shared/styles'
+import Styles, { StyleRules, StyleManager } from '../shared/styles'
 import themes from '../shared/themes'
 import { PresetManager } from '../shared/presets'
 import { DataManager } from '../data'
@@ -69,7 +69,7 @@ export default class PaChart extends Vue {
   colors: string | string[] | undefined
 
   @Prop({})
-  styles: StyleRules | string | undefined
+  styles: StyleRules | StyleRules[] | string | undefined
 
   private __data: any[] = []
 
@@ -145,19 +145,12 @@ export default class PaChart extends Vue {
       { name: this.constructor.name }
     )
     if (finalProps.styles) {
-      finalProps.styles = this.buildStyles(finalProps.styles)
+      finalProps.styles = StyleManager.make(finalProps)
     }
     console.log('%c///Chart.ts: prepareProps: finalProps',
       'background-color:#009688;color:#fff;',
       finalProps)
     return finalProps
-  }
-
-  protected buildStyles (input: StyleRules | string) {
-    if (input.constructor.name !== 'Styles') {
-      return Styles.create(input)
-    }
-    return input
   }
 
   protected processSlots() {
