@@ -24,9 +24,10 @@ const common = {
   ],
   legend: {
     right: 0,
-    top: 10,
-    itemHeight: 10,
-    fontSize: 10
+    top: 0,
+    itemHeight: 8,
+    itemWidth: 8,
+    fontSize: 8
   },
   backgroundColor: 'rgba(0,0,0,0.2)',
   tooltip: {
