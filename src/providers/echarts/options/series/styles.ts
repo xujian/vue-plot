@@ -35,7 +35,7 @@ export default function makeSeriesStyles (styles: any, props: any, index: number
   if (color && dataItem) {
     result.itemStyle = { normal: {}, emphasis: {} }
     if (color.constructor.name === 'Gradient') {
-      if (['bar'].includes(props.types)) {
+      if (['bar'].includes(props.subType || props.type)) {
         let stops = color.stops.map((s: any, i: number) => ({
           offset: (1 / (color.stops.length - 1)) * i,
           color: s
@@ -85,6 +85,17 @@ export default function makeSeriesStyles (styles: any, props: any, index: number
         }
       }
     }
+  }
+  if (Reflect.has(rules, 'line')) {
+    let line = rules.line
+    result.lineStyle = {}
+    if (typeof line === 'string') {
+      if ('dotted,dashed'.split(',').includes(rules.line)) {
+        result.lineStyle.type = rules.line
+      }
+    } else {
+
+    } 
   }
   if (rules.canvas) {
     let center = rules.canvas.center
