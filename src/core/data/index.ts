@@ -68,6 +68,9 @@ const DataManager: any = {
         }
       } else {
         let data = props.data
+        if (!data) {
+          resolve({data: []})
+        }
         if (data.constructor.name === 'Array') {
           resolve({ data }) // data非字符串直接返回
         } else {

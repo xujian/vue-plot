@@ -10,14 +10,10 @@ export default class PaBaiduMap extends PaMap {
 
   constructor() {
     super()
-    this.type = 'baidu-map'
+    this.subType = 'baidu-map'
   }
 
   afterCreate () {
-    Object.assign(this, {
-      x: false,
-      y: false
-    })
   }
 
   protected postProcessSlots (props: Props): Props {

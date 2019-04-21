@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue, { VNode } from 'vue'
 import { Component } from 'vue-property-decorator'
 import Prop from '../decorators/Prop'
 import { resolveSlot } from '../../core/accessories/slots'
@@ -71,10 +71,12 @@ export default class PaChart extends Vue {
   @Prop({})
   styles: StyleRules | StyleRules[] | string | undefined
 
-  private __data: any[] = []
-
   @Prop({})
   data: string | any[] | undefined
+
+  __data: any[] | undefined
+
+  protected computedProps: any | undefined = undefined
 
   @Prop({})
   dataset: string | any[] | undefined
@@ -102,6 +104,7 @@ export default class PaChart extends Vue {
   public get props(): any {
     return {
       ...this.$props,
+      __data: this.__data,
       type: this.type,
       subType: this.subType,
       layers: this.layers,
@@ -152,7 +155,7 @@ export default class PaChart extends Vue {
 
   protected processSlots() {
     // 将 slot 里面的 accessory 处理为 layers/accessories
-    let slots = resolveSlot(<any[]>this.$slots.default)
+    let slots = resolveSlot(this.$slots.default || [])
     let results: {
       layers: any[],
       accessories: { [key: string]: any }
@@ -184,7 +187,9 @@ export default class PaChart extends Vue {
   private draw() {
     // 计算最终的 options 并交给 echart 绘图
     let finalProps = this.prepareProps()
-    DataManager.load(this.props).then((props: {}) => {
+    DataManager.load(this.props).then((props: any) => {
+      console.log('Chart.ts/////DataManager.load______________///', this.type)
+      this.__data = props.data
       finalProps = merge({}, 
         finalProps,
         props
@@ -192,6 +197,7 @@ export default class PaChart extends Vue {
       if (finalProps.styles) {
         finalProps.styles = StyleManager.make(finalProps)
       }
+      this.computedProps = finalProps
       if (this.mode === 'layer') return
       let provider = new Provider(this.$refs.chart)
       this.canvas = provider.draw(finalProps)
