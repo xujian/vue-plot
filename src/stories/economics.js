@@ -6,6 +6,7 @@ stories.add('增长趋势', () => ({
   template: `<pa-bar-chart
     :preset="'gdp'"
     :title="'增长趋势'"
+    :colors="['#5045f6', '#ad46f3', '#f6d54a']"
     :x="Array(2020 - 2010 + 1).fill(0).map((x, i) => 2010 + i)"
     :data="[
       [300, 350, 420, 480, 560, 640, 760, 890, 1020, 1080]
@@ -17,6 +18,16 @@ stories.add('增长趋势', () => ({
       :data="[
         [13.2, 12.5, 11.7, 10.7, 10.1,
         9.3, 9.1, 8.8, 7.9, 7.1]
+    ]"></pa-line-chart>
+    <pa-line-chart
+      :axis="'right'"
+      :styles="{
+        label: 'top',
+        line: 'dotted',
+        color: ['#f00']
+      }"
+      :data="[
+        Array(9).fill(undefined).concat(7.1, 6.4)
     ]"></pa-line-chart>
   </pa-bar-chart>`
 }))
