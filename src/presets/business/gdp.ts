@@ -8,8 +8,7 @@ export default {
     barWidth: 10,
     barGap: '10%',
     styles: {
-      canvas: ['15%', '10%', '15%', '10%'],
-      label: 'top'
+      canvas: ['15%', '10%', '15%', '10%']
     }
   }
 }

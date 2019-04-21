@@ -1,5 +1,5 @@
-import Styles, { StyleRules } from './Styles'
-import { Props } from '@/core/chart';
+import Styles, { StyleRules, StyleSet } from './Styles'
+import { Props } from '@/core/chart'
 
 let StyleManager = {
   /**
@@ -7,14 +7,14 @@ let StyleManager = {
    * 给styles编号以独立应用到各个sereies
    * @param props 
    */
-  make (props: Props): Styles[] {
-    let result: Styles[] = []
+  make (props: Props): StyleSet {
+    let result: StyleSet = new StyleSet()
     let styles: Styles = Styles.create(props.styles || {})
     let StylesArray = Array(props.data.length).fill(styles)
-    result.push(...StylesArray)
+    result.add(StylesArray)
     props.layers.forEach((l: any) => {
-      let s: Styles = Styles.create(l.styles)
-      result.push(s)
+      styles = Styles.create(l.styles || {})
+      result.add(styles)
     })
     return result
   }

@@ -25,13 +25,13 @@ type indexable = { [key: string]: any }
  * @param props 
  * @param index 
  */
-export default function (props: any, index: number): indexable {
-  if (!props.styles) return {}
-  let styles = props.styles.rules || {}
-  styles.colors = styles.colors || []
+export default function makeSeriesStyles (styles: any, props: any, index: number): indexable {
+  if (!styles) return {}
+  let rules = styles.rules || {}
+  rules.colors = rules.colors || []
   let result: any = {}
   let dataItem = props.data[index]
-  let color = styles.colors[index]
+  let color = rules.colors[index]
   if (color && dataItem) {
     result.itemStyle = { normal: {}, emphasis: {} }
     if (color.constructor.name === 'Gradient') {
@@ -46,24 +46,24 @@ export default function (props: any, index: number): indexable {
       }
     }
   }
-  if (Reflect.has(styles, 'label')) {
+  if (Reflect.has(rules, 'label')) {
     /***
      * styles.label = '{c}%'
      * styles.label = 'top'
      */
-    if (styles.label === false) {
+    if (rules.label === false) {
       result.label = {
         show: false
       }
-    } else if (typeof styles.label === 'string') {
-      if (['top'].includes(styles.label)) {
+    } else if (typeof rules.label === 'string') {
+      if (['top'].includes(rules.label)) {
         result.label = {
           show: true,
-          position: styles.label
+          position: rules.label
         }
       }
     } else {
-      if (styles.label.formats) {
+      if (rules.label.formats) {
         result.label = {
           normal: {
             formatter: function(params: any, ticket: any, callback: () => void) {
@@ -73,21 +73,21 @@ export default function (props: any, index: number): indexable {
                 '{value|' + params.value + '}'
               ].join('')
             },
-            rich: styles.label.formats
+            rich: rules.label.formats
           }
         }
       } else {
         result.label = {
           show: true,
-          position: styles.label.position,
+          position: rules.label.position,
           offset: [20, 0],
-          fontSize: styles.label.fontSize
+          fontSize: rules.label.fontSize
         }
       }
     }
   }
-  if (styles.canvas) {
-    let center = styles.canvas.center
+  if (rules.canvas) {
+    let center = rules.canvas.center
     result.center = center
   }
   return result

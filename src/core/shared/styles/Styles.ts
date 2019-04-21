@@ -44,3 +44,32 @@ export default class Styles {
     return styles
   }
 }
+
+/**
+ * 包含Styles的序列
+ */
+export class StyleSet {
+  items: Styles[]
+
+  constructor () {
+    this.items = []
+  }
+  
+  add (items: Styles | Styles[]) {
+    if (!Array.isArray(items)) {
+      items = [items]
+    }
+    this.items.push(...items)
+  }
+
+  item (index: number) {
+    return this.items[index]
+  }
+
+  /**
+   * main styles
+   */
+  get main () {
+    return this.items[0]
+  }
+}

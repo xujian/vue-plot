@@ -1,5 +1,6 @@
 import specs from './series/specs'
 import { merge } from 'lodash'
+import makeSeriesStyles from './series/styles'
 
 let types: { [name: string]: () => any } = {}
 let requires
@@ -13,7 +14,7 @@ function buildFeatures (props: any, index?: number): {}[] {
   let features = [], fields = []
   // 查找某一图表类型的字段定义
   let spec = specs.find(s => s.type === props.type)
-  fields = spec ? [...spec.features, 'styles'] : ['styles']
+  fields = spec ? spec.features : []
   features = fields.map(f => {
     let feature = require(`./series/features/${f}`).default
     return f = feature.call(null, props, index)
@@ -22,7 +23,8 @@ function buildFeatures (props: any, index?: number): {}[] {
 }
 
 function buildStyles (props: any, index: number) {
-
+  let styles = props.styles ? props.styles.item(index): null
+  return makeSeriesStyles(styles, props, index)
 }
 
 // 将Y轴单位或formatter复制到图表
@@ -51,11 +53,13 @@ function applyFormatterFromAxis (series: any[], options: any) {
  */
 export function makeSeries (layers: any[], options: any): any {
   // 输入的是多套 props/data 外层以及layers合并而来
-  let final: any[] = []
+  let final: any[] = [], seriesIndex = 0
   layers.forEach((layer: any, layerIndex: number) => {
     let series: any[] = layer.data.map(
       (d: any, dataIndex: number) => {
       let features = buildFeatures(layer, dataIndex)
+      let styles = buildStyles(layers[0], seriesIndex ++)
+      console.log('series.ts-------makeSeries-------styles:', styles)
       // 合并: 给定配置项 ➡️ 缺省配置项 ➡️ 固有配置项
       return merge({
         type: layer.type || 'bar',
@@ -63,7 +67,8 @@ export function makeSeries (layers: any[], options: any): any {
         name: layer.accessories && layer.accessories.legend
           ? layer.accessories.legend[dataIndex] : ''
       },
-      ...features) // 从props定义的属性
+      ...features,
+      styles) // 从props定义的属性
     })
     let typeFn = Reflect.get(types, layer.subType || layer.type)
     if (typeFn) {

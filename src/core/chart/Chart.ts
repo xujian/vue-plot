@@ -144,9 +144,6 @@ export default class PaChart extends Vue {
       { accessories }, // props from accessories
       { name: this.constructor.name }
     )
-    if (finalProps.styles) {
-      finalProps.styles = StyleManager.make(finalProps)
-    }
     console.log('%c///Chart.ts: prepareProps: finalProps',
       'background-color:#009688;color:#fff;',
       finalProps)
@@ -192,6 +189,9 @@ export default class PaChart extends Vue {
         finalProps,
         props
       )
+      if (finalProps.styles) {
+        finalProps.styles = StyleManager.make(finalProps)
+      }
       if (this.mode === 'layer') return
       let provider = new Provider(this.$refs.chart)
       this.canvas = provider.draw(finalProps)

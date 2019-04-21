@@ -1,21 +1,14 @@
-import Color from '../../../../core/shared/styles/Color'
-
 export default (props: any) => {
   if (!props.styles) return {}
-  let styles: any = props.styles.rules || {}
+  let styles: any = props.styles.main.rules || {}
   let output: any = {}
-  // if (styles.colors) {
-  //   output.color = styles.colors.map(
-  //     (c: Color) => c.value
-  //   )
-  // }
   if (styles.background) {
     output.backgroundColor = styles.background
   }
   if (styles.x) {
     output.xAxis = [{
       axisLabel: {
-        rotate: styles.x.rotate,
+        rotate: styles.x.rotate,  
         fontSize: styles.x.fontSize
       }
     }]
