@@ -76,8 +76,6 @@ export default class PaChart extends Vue {
 
   __data: any[] | undefined
 
-  protected computedProps: any | undefined = undefined
-
   @Prop({})
   dataset: string | any[] | undefined
 
@@ -120,7 +118,11 @@ export default class PaChart extends Vue {
 
   protected appendOptions(): void {}
 
-  protected prepareProps() {
+  onLayerDataLoad (layer: PaChart) {
+    console.log('Chart.ts___________________onLayerDataLoad', layer)
+  }
+
+  get computedProps() {
     let { layers, accessories } = this.processSlots()
     layers = this.layers.concat(...layers)
     accessories = merge({},
@@ -147,7 +149,7 @@ export default class PaChart extends Vue {
       { accessories }, // props from accessories
       { name: this.constructor.name }
     )
-    console.log('%c///Chart.ts: prepareProps: finalProps',
+    console.log('%c///Chart.ts: get computedProps: finalProps',
       'background-color:#009688;color:#fff;',
       finalProps)
     return finalProps
@@ -165,6 +167,7 @@ export default class PaChart extends Vue {
         // 处理 layers
         let name = s.name.replace(/^pa-/, '')
         if (name === 'layer') {
+          s.component.$on('dataFetched', this.onLayerDataLoad)
           results.layers.push(s.component.props)
         } else {
           // 处理 props
@@ -173,6 +176,7 @@ export default class PaChart extends Vue {
         }
       })
     }
+    results = this.postProcessSlots(results)
     return results
   }
 
@@ -180,24 +184,29 @@ export default class PaChart extends Vue {
    * slot 之后的特别处理, 由子类实现
    * @param props 输入的 props 项目
    */
-  protected postProcessSlots(props: Props): Props {
+  protected postProcessSlots(props: any): any {
     return props
   }
 
   private draw() {
     // 计算最终的 options 并交给 echart 绘图
-    let finalProps = this.prepareProps()
-    DataManager.load(this.props).then((props: any) => {
+    let finalProps = this.computedProps
+    let withLayers = [finalProps, ...finalProps.layers]
+    let dataPromises = withLayers.map(props => DataManager.load(props))
+    Promise.all(dataPromises).then((props: any) => {
       console.log('Chart.ts/////DataManager.load______________///', this.type)
       this.__data = props.data
       finalProps = merge({}, 
         finalProps,
-        props
+        props[0]
       )
+      let layersProps = props.slice(1)
+      finalProps.layers = finalProps.layers.map((l: any, i: number) => 
+        merge({}, l, layersProps[i]))
       if (finalProps.styles) {
         finalProps.styles = StyleManager.make(finalProps)
       }
-      this.computedProps = finalProps
+      this.$emit('dataFetched')
       if (this.mode === 'layer') return
       let provider = new Provider(this.$refs.chart)
       this.canvas = provider.draw(finalProps)
