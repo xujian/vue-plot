@@ -10,13 +10,16 @@ class Provider {
     this.container = container
   }
 
-  draw(props: any): any {
+  draw(props: any, beforePaint: (options: any) => any): any {
     let theme = globalConfigs.theme
     let chart = echarts.init(this.container, theme)
     let finalOption = options.make(props)
     console.log('%c>>>FINAL PROVIDER OPTIONS',
       'background:#e57373;color:#fff',
       finalOption)
+    if (beforePaint) {
+      finalOption = beforePaint(finalOption)
+    }
     chart.setOption(finalOption)
     return chart
   }

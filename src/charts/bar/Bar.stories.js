@@ -154,4 +154,20 @@ stories.add('With presets', () => ({
     </pa-bar-chart>`
 }))
 
+stories.add('With hooks', () => ({
+  template: `<pa-bar-chart
+    :title="'简单柱形图'"
+    :beforePaint="beforePaint"
+    :data="[
+      [100, 150, 500, 250, 400],
+      [47, 100, 100, 430, 210]
+    ]"
+    ></pa-bar-chart>`,
+  props: {
+    beforePaint: (options) => {
+      console.log('/////////', options)
+    }
+  }
+}))
+
 export default stories

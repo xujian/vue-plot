@@ -82,6 +82,10 @@ export default class PaChart extends Vue {
   @Prop({})
   public accessories: {} | undefined
 
+  // hooks
+  @Prop({})
+  beforePaint: ((options: any) => any) | undefined
+
   constructor() {
     super()
     this.type = ''
@@ -209,7 +213,8 @@ export default class PaChart extends Vue {
       this.$emit('dataFetched')
       if (this.mode === 'layer') return
       let provider = new Provider(this.$refs.chart)
-      this.canvas = provider.draw(finalProps)
+      let defautlCallback = (options: any) => options
+      this.canvas = provider.draw(finalProps, this.beforePaint || defautlCallback)
     })
   }
 
