@@ -2,6 +2,7 @@ import common from './common'
 import { makeSeries, populateSeries } from './series'
 import { merge } from 'lodash'
 import handler from './handler'
+import options from './defaults/pie';
 
 let defaults: any = {}
 let requires = require.context(
@@ -71,6 +72,14 @@ let OptionsManager = {
     final.series = final.series.concat(...series)
     applyLegend(final)
     final = populateSeries(props, final)
+    if (props.rotate) {
+      if (props.rotate === 90) {
+        // 旋转90度(顺时针)
+        let xAxis = final.xAxis, yAxis = final.yAxis
+        final.xAxis = yAxis
+        final.yAxis = xAxis
+      }
+    }
     return final
   }
 }

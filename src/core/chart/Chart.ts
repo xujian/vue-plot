@@ -80,6 +80,9 @@ export default class PaChart extends Vue {
   dataset: string | any[] | undefined
 
   @Prop({})
+  rotate: number | undefined
+
+  @Prop({})
   public accessories: {} | undefined
 
   // hooks

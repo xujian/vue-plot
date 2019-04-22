@@ -8,6 +8,7 @@ stories.add('人口概况', () => ({
     :title="'南山区人口概况'"
     :preset="'no-lines'"
     :stacked="true"
+    :rotate="90"
     :dataset="[
       ['万人', '1月', '2月'],
       ['常住人口', 179.56, 73.05],
