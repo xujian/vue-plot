@@ -32,3 +32,8 @@
   padding: 12px;
   background-color: rgba(0,24,62,0.68);
 }
+
+
+.chart-container .anchorBL {
+  display: none;
+}

@@ -13,6 +13,7 @@ export function resolveSlot (slots: VNode[]) {
       if (s.tag) {
         let tag = s.componentOptions && s.componentOptions.tag || s.tag || ''
         let component = s.componentInstance
+        console.log('slots.ts______componnet', component)
         let props = component ? (component as PaChart).props: {}
         let name: string = tag
         if (tag !== null && tag.endsWith('-chart')) {

@@ -398,4 +398,4 @@ var convertData = function(data: any[]) {
   return res
 }
 
-export default [[convertData(data)]]
+export default [convertData(data)]

@@ -20,7 +20,7 @@ export default class PaBaiduMap extends PaMap {
     Object.keys(props).forEach((p: string) => {
       if (p === 'layers') {
         props[p].forEach((l: any) => {
-          l.type = 'baidu-map-scatter'
+          l.subType = 'baidu-map-scatter'
         })
       }
     })

@@ -9,7 +9,7 @@ stories.addDecorator(withLiveCode)
 
 let states = [
   {
-    name: 'Simple',
+    name: '散点图',
     template: `<pa-baidu-map class="full-width full-height">
       <pa-scatter-chart data="mocks:map-scatter"/>
     </pa-baidu-map>`

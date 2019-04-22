@@ -1,3 +1,5 @@
+import 'echarts/extension/bmap/bmap'
+
 let options = {
   xAxis: false,
   yAxis: false,
