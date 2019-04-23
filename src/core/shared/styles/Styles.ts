@@ -70,6 +70,8 @@ export class StyleSet {
    * main styles
    */
   get main () {
-    return this.items[0]
+    return this.items[0] || {
+      rules: {}
+    }
   }
 }
