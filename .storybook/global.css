@@ -1,39 +1,4 @@
-.chart-container {
-  width: 600px;
-  height: 240px;
-}
-
-.chart-container.full-width {
-  width: 100%;
-}
-
-.chart-container .chart {
-  height: 100%;
-  width: 100%;
-}
-
-.chart-container .chart-header h6 {
-  margin: 0;
-  font-weight: 100;
-  line-height: 2em;
-  color: #fff;
-}
-
 .sb-show-main {
   color: #eee;
   background: #004346;
-}
-
-.chart-container .tooltip {
-  border-width: 1px;
-  border-color: #fff;
-  border-style: solid;
-  border-radius: 12px;
-  padding: 12px;
-  background-color: rgba(0,24,62,0.68);
-}
-
-
-.chart-container .anchorBL {
-  display: none;
 }
