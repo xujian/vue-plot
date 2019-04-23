@@ -8,7 +8,6 @@ stories.add('人口概况', () => ({
     :title="'南山区人口概况'"
     :preset="'no-lines'"
     :stacked="true"
-    :rotate="90"
     :dataset="[
       ['万人', '1月', '2月'],
       ['常住人口', 179.56, 73.05],
@@ -69,6 +68,27 @@ stories.add('分区人口增长', () => ({
         :axis="'right'"
         :legend="['同比增长']"
         :data="[[6.88, 9.38, 8.46, 16.1, 12.4, 13.5, 14.9, 11.5, 14.5, 6.50]]"></pa-line-chart>
+    </pa-bar-chart>`
+}))
+
+stories.add('籍贯分布', () => ({
+  template: `<pa-bar-chart
+    style="width:400px;height:200px;"
+    :title="'籍贯分布'"
+    :preset="'no-lines'"
+    :stacked="true"
+    :rotate="90"
+    :x="['广东', '湖南', '湖北', '四川', '广西']"
+    :y="{ unit: '%' }"
+    :data="[
+      [61.16, 6.98, 5.89, 4.23, 3.78]
+    ]">
+      <pa-tooltip
+        :formatter="[
+          '{b}<br>',
+          '{a0}: {c0} (万人)<br>',
+          '{a1}: {c1} (万人)'
+        ].join('')"></pa-tooltip>
     </pa-bar-chart>`
 }))
 
