@@ -27,6 +27,7 @@ stories.add('常住人口分析', () => ({
     style="width:400px;height:200px;"
     title="年龄分布"
     preset="circle,legend-right-vertical"
+    :styles="{ background: 'transparent' }"
     :data="[[
       { name: '0-17岁', value: 0.58 },
       { name: '18-40岁', value: 38.18 },
@@ -90,6 +91,39 @@ stories.add('籍贯分布', () => ({
           '{a1}: {c1} (万人)'
         ].join('')"></pa-tooltip>
     </pa-bar-chart>`
+}))
+
+stories.add('职住分析', () => ({
+  template: `<div class="html-chart relative"
+    style="width:360px;height:240px">
+    <h6>南山居住 - 南山工作</h6>
+    <pa-pie-chart class="absolute"
+      style="width:25%;height:40%;top:30%;left:15%"
+      preset="no-label,no-legend"
+      :radius="['0%', '95%']"
+      :colors="['#005c8f', 'transparent', 'transparent', '#005c8f']"
+      :data="[[
+        { name: 'A', value: 66.4 },
+        { name: '', value: 10.8 },
+        { name: '', value: 22.8 }
+      ]]"
+    >
+      <pa-pie-chart
+        :radius="['99%', '100%']"
+        :styles="{ label: false }"
+        :data="[
+          [{name: '', value: 100 }]
+        ]"
+      ></pa-pie-chart>
+    </pa-pie-chart>
+    <div class="absolute" style="
+      width:50%;
+      right:0;
+      height:80%;
+      background-image:url(/assets/chart/images/livein.png);
+      background-position: center center;
+      background-repeat: no-repeat;"></div>
+  </div>`
 }))
 
 export default stories

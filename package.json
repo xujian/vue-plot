@@ -8,7 +8,7 @@
     "build:docs": "vue-cli-service build --target app ./docs/main.ts",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -s ./public -p 9001 -c .storybook"
   },
   "main": "dist/vue-chartlib.common.js",
   "module": "src/index.ts",
