@@ -10,7 +10,10 @@ import { PresetManager } from '../shared/presets'
 import { DataManager } from '../data'
 import accessories from '../accessories';
 import { merge } from 'lodash'
-import normalizeProps from '../shared/props';
+import normalizeProps from '../shared/props'
+import '../../css/chart.css'
+import '../../css/helpers.css'
+
 /**
  * 定义 chart 的 props 组
  */
