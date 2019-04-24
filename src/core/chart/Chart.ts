@@ -1,6 +1,6 @@
 import Vue, { VNode } from 'vue'
-import { Component } from 'vue-property-decorator'
-import Prop from '../decorators/Prop'
+import { Component, Prop } from 'vue-property-decorator'
+// import Prop from '../decorators/Prop'
 import { resolveSlot } from '../../core/accessories/slots'
 import Provider from '../../providers/echarts'
 import Bus from '../../core/shared/events/bus'
