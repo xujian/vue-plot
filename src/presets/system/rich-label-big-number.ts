@@ -1,11 +1,11 @@
 import formats from '../../formats'
 
 export default {
-  name: 'rich-label',
+  name: 'rich-label-big-number',
   props: {
     styles: {
       label: {
-        formats: formats.nameValuePercent,
+        formats: formats.bignumber,
       }
     }
   }

@@ -64,16 +64,17 @@ export default function makeSeriesStyles (styles: any, props: any, index: number
       }
     } else {
       if (rules.label.formats) {
+        let formats = rules.label.formats
         result.label = {
           normal: {
             formatter: function(params: any, ticket: any, callback: () => void) {
               return [
                 '{name|' + params.name + '}\n',
-                '{hr|}\n',
+                formats.hr ? '{hr|}\n' : '',
                 '{value|' + params.value + '}'
               ].join('')
             },
-            rich: rules.label.formats
+            rich: formats
           }
         }
       } else {
