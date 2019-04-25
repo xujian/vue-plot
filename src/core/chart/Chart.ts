@@ -161,7 +161,7 @@ export default class PaChart extends Vue {
     let assignedProps: {[key: string]: any} = {}
     let props = this.props
     Object.keys(props).forEach(p => {
-      if (props[p]) { // 直接给定的props
+      if (props[p] !== undefined) { // 直接给定的props
         assignedProps[p] = props[p]
       }
     })
