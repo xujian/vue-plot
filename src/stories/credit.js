@@ -5,7 +5,7 @@ let stories = storiesOf('业务图表|商事信用', module)
 stories.add('产业分布', () => ({
   template: `<pa-pie-chart
   :title="'企业产业分布图'"
-  :preset="'circle,no-legend,rich-label'"
+  :preset="'circle,no-legend,rich-label-percent'"
   :data="[[{
       value: 4908,
       name: '第一产业'

@@ -71,7 +71,10 @@ export default function makeSeriesStyles (styles: any, props: any, index: number
               return [
                 '{name|' + params.name + '}\n',
                 formats.hr ? '{hr|}\n' : '',
-                '{value|' + params.value + '}'
+                '{value|' + params.value + '}',
+                rules.label.percent && params.percent
+                  ? '\n{percent|' + params.percent + '%}'
+                  : ''
               ].join('')
             },
             rich: formats

@@ -33,8 +33,8 @@ export declare type Props = {
     </div>`
 })
 export default class PaChart extends Vue {
-  protected type: string = ''
-  protected subType: string = ''
+  public type: string = ''
+  public subType: string = ''
   private canvas: any = null
 
   /**
@@ -79,6 +79,12 @@ export default class PaChart extends Vue {
 
   __data: any[] | undefined
 
+  get realData () {
+    return typeof this.data === 'string'
+      ? this.__data || []
+      : this.data
+  }
+
   @Prop({})
   dataset: string | any[] | undefined
 
@@ -89,8 +95,19 @@ export default class PaChart extends Vue {
   public accessories: {} | undefined
 
   // hooks
+  dataAvailable (data: any, props: any): any[] {
+    return data
+  }
+
   @Prop({})
   beforePaint: ((options: any) => any) | undefined
+
+  get hooks (): any {
+    return {
+      beforePaint: this.beforePaint,
+      dataAvailable: this.dataAvailable
+    }
+  }
 
   constructor() {
     super()
@@ -205,7 +222,7 @@ export default class PaChart extends Vue {
     let dataPromises = withLayers.map(props => DataManager.load(props))
     Promise.all(dataPromises).then((props: any) => {
       console.log('Chart.ts/////DataManager.load______________///', this.type)
-      this.__data = props.data
+      this.__data = props[0].data
       finalProps = merge({}, 
         finalProps,
         props[0]
@@ -217,6 +234,13 @@ export default class PaChart extends Vue {
         finalProps.styles = StyleManager.make(finalProps)
       }
       this.$emit('dataFetched')
+      if (this.dataAvailable) {
+        let dataWithPercent = this.dataAvailable(finalProps.data, finalProps)
+        finalProps = {
+          ...finalProps,
+          data: dataWithPercent
+        }
+      }
       if (this.mode === 'layer') return
       let provider = new Provider(this.$refs.chart)
       let defautlCallback = (options: any) => options

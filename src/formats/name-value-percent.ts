@@ -13,8 +13,8 @@ export default {
   },
   percent: {
     color: '#49dff0',
-    fontSize: 12,
+    fontSize: 10,
     align: 'right',
-    padding: [2, 0],
+    padding: [1, 0],
   }
 }
