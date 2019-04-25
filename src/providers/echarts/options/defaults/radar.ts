@@ -26,7 +26,7 @@ let options = {
       formatter: '{value}',
       textStyle: {
         color: 'rgba(255,255,255,0.5)',
-        fontSize: 16
+        fontSize: 12
       }
     },
     indicator: [{

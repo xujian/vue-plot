@@ -20,7 +20,10 @@ function buildProps (props: any) {
   // 将 styles 挪到最后一个
   names = names.sort((a, b) => b === 'styles' ? -1 : 1) 
   names.forEach((k: string) => {
-    let output = handler.translate(k, props)
+    const type = props.subType || props.type // transfer to typed field function
+    let fieldWithType = k + '.' + type
+    const field = handler.has(fieldWithType) ? fieldWithType : k
+    let output = handler.translate(field, props)
     options = merge({}, options, output)
   })
   return options

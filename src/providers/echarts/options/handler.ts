@@ -2,7 +2,7 @@ let requires: {[name: string]: any} =
   require.context('./props/', true, /.ts$/)
 let rules: {[name: string]: any} = {}
 requires.keys().forEach((p: string) => {
-  let name = (p.match(/\.\/(\w+)\.ts$/) || ['', 'null'])[1]
+  let name = (p.match(/\.\/([\.\w]+)\.ts$/) || ['', 'null'])[1]
   rules[name] = (requires as (p: string) => any)(p)['default']
 })
 let accessories: {[name: string]: any} = {}
@@ -12,12 +12,13 @@ requires.keys().forEach((p: string) => {
   accessories[name] = (requires as (p: string) => any)(p)['default']
 })
 
-console.log('Handler.ts-------------------rules, accessories', rules, accessories)
-
 /**
  * 将 chart props 转换为 echart 原生配置项
  */
 const handler = {
+  has (key: string): boolean {
+    return Reflect.has(rules, key)
+  },
   translate (key: string, props: any): any {
     let rule = rules[key]
     if (rule) {
@@ -32,7 +33,6 @@ const handler = {
     let tag = accessories[key]
     if (tag) {
       if (typeof tag === 'function') {
-        console.log('<<<<<<<<<<<<<<<<handler.ts take accessories:', key, providerOptions)
         return tag.call(this, props, providerOptions)
       } else {
         return {}
