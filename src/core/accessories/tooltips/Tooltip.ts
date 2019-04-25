@@ -15,4 +15,11 @@ export default class PaTooltip extends PaAccessory {
 
   @Prop()
   formatter: string | undefined
+
+  /**
+   * 显示tooltip时的信息队列
+   * 提前格式化好然后直接获取
+   */
+  @Prop({})
+  data: any[][] | undefined
 }

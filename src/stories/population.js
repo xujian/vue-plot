@@ -87,8 +87,7 @@ stories.add('籍贯分布', () => ({
       <pa-tooltip
         :formatter="[
           '{b}<br>',
-          '{a0}: {c0} (万人)<br>',
-          '{a1}: {c1} (万人)'
+          '{c0} (万人)'
         ].join('')"></pa-tooltip>
     </pa-bar-chart>`
 }))
