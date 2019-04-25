@@ -1,5 +1,13 @@
 export default function (props: any) {
   let yAxis: any = {}, y: any = props.y
+  if (y === false) {
+    yAxis = {
+      show: false
+    }
+    return {
+      yAxis: [yAxis]
+    }
+  }
   'name,show,data,min'.split(',').forEach(p => {
     if (Reflect.has(y, p)) {
       yAxis[p] = y[p]
