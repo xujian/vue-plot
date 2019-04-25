@@ -89,7 +89,7 @@ export default function makeSeriesStyles (styles: any, props: any, index: number
         }
       }
     }
-  }
+  } // label
   if (Reflect.has(rules, 'line')) {
     let line = rules.line
     result.lineStyle = {}
@@ -100,10 +100,20 @@ export default function makeSeriesStyles (styles: any, props: any, index: number
     } else {
 
     } 
-  }
+  } // line
   if (rules.canvas) {
     let center = rules.canvas.center
     result.center = center
+  }
+  if (Reflect.has(rules, 'border')) {
+    const border = rules.border
+    if (border === true) {
+      result.itemStyle = {
+        normal: {
+          borderColor: '#000'
+        }
+      }
+    }
   }
   return result
 }
