@@ -66,3 +66,13 @@ stories.add('社会经济运行关系', () => ({
     ]"></pa-tooltip>
   </pa-line-chart>`
 }))
+
+stories.add('企业活跃度行业分布图', () => ({
+  template: `<pa-radar-chart
+    :data="[
+      [{
+          value: [91.36, 87.78, 87.99, 88.65, 89.39, 89.4, 90.03, 90.87],
+          name: '2018'
+      }]
+    ]"></pa-radar-chart>`
+}))
