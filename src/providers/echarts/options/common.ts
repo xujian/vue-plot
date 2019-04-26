@@ -13,10 +13,10 @@ const common = {
     bottom: '15%',
     // containLabel: true
   },
-  xAxis: {
+  xAxis: [{
     type: 'category',
     data: ['a', 'b', 'c', 'd', 'e']
-  },
+  }],
   yAxis: [
     {
       type: 'value',

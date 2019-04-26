@@ -90,3 +90,13 @@ stories.add('企业活跃度行业分布图', () => ({
       }]
     ]"></pa-radar-chart>`
 }))
+
+stories.add('企业活跃度与企业年龄', () => ({
+  template: `<pa-line-chart
+  :smooth="true"
+  :data="[
+    [100, 150, 500, 250, 400],
+    [47, 100, 100, 430, 210]
+  ]"
+  ></pa-line-chart>`
+}))

@@ -1,7 +1,7 @@
 let options = {
-  xAxis: {
+  xAxis: [{
     type: 'value'
-  }
+  }]
 }
 
 export default options
