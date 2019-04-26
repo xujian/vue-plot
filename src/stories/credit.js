@@ -93,10 +93,14 @@ stories.add('企业活跃度行业分布图', () => ({
 
 stories.add('企业活跃度与企业年龄', () => ({
   template: `<pa-line-chart
+  :preset="'area-gradient'"
   :smooth="true"
+  :gap="false"
+  :area="{ color: 'gradient:#5045f6;rgba(0,0,0,0)' }"
+  :x="'1,2,3,4,5,6,7,8,9,10,10年以上'.split(',')"
+  :y="{ min: 75, max: 90, unit: '%' }"
   :data="[
-    [100, 150, 500, 250, 400],
-    [47, 100, 100, 430, 210]
+    [86.69, 81.24, 80.96, 78.15, 82.14, 82.35, 84.61, 84.63, 85.51, 85.56, 85.67]
   ]"
   ></pa-line-chart>`
 }))

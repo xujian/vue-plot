@@ -66,8 +66,8 @@ let states = [
     template: `<pa-bar-chart
     :styles="{
       colors: [
-        'gradient:#008cff,#005193',
-        'gradient:#00da9c,#007a55',
+        'gradient:#008cff;#005193',
+        'gradient:#00da9c;#007a55',
       ],
     }"
     :round="round"

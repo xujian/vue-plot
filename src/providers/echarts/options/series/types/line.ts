@@ -6,9 +6,6 @@ export default function (series: any[], props: any) {
     if (props.stacked) {
       item.stack = props.stacked || 'stack-1'
     }
-    if (props.area) {
-      item.areaStyle = {}
-    }
     if (props.lineWidth) {
       item.lineStyle = {
         width: props.lineWidth

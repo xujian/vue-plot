@@ -20,10 +20,10 @@ export default class Color {
 export class Gradient extends Color {
   public stops: string[] = []
   
-  static from (input: string): Color {
+  static from (input: string): Gradient {
     let gradient = new Gradient()
     input = input.replace(/^gradient\:/, '')
-    gradient.stops = input.split(',')
+    gradient.stops = input.split(';')
     return gradient
   }
 }

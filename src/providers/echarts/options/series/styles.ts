@@ -8,14 +8,14 @@ type indexable = { [key: string]: any }
     }"
  * 渐变色 gradient 写法A 单渐变
  * :styles="{
-      colors: 'gradient:#009688,#000',
+      colors: 'gradient:#009688;#000',
       background: '#333'
     }"
     写法B 多渐变
     :styles="{
       colors: [
-        'gradient:#009688,#ffffff',
-        'gradient:#e57373,#ffffff',
+        'gradient:#009688;#ffffff',
+        'gradient:#e57373;#ffffff',
       ],
       background: '#333'
     }"
