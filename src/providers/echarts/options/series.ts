@@ -59,7 +59,6 @@ export function makeSeries (layers: any[], options: any): any {
       (d: any, dataIndex: number) => {
       let features = buildFeatures(layer, dataIndex)
       let styles = buildStyles(layers[0], seriesIndex ++)
-      console.log('series.ts-------makeSeries-------styles:', styles)
       // 合并: 给定配置项 ➡️ 缺省配置项 ➡️ 固有配置项
       return merge({
         type: layer.type || 'bar',
