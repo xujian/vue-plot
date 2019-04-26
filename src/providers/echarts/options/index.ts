@@ -24,7 +24,6 @@ function buildProps (props: any) {
     let fieldWithType = k + '.' + type
     const field = handler.has(fieldWithType) ? fieldWithType : k
     let output = handler.translate(field, props)
-    console.log('buildProps__________________', k, output)
     options = merge({}, options, output)
   })
   return options
