@@ -123,4 +123,10 @@ stories.add('GDP测算-国内环境分析', () => ({
     </pa-line-chart>`
 }))
 
+stories.add('深圳各区GDP对比', () => ({
+  template: `<pa-pie-chart>
+    :data="[]"
+  </pa-pie-chart>`
+}))
+
 export default stories
