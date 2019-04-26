@@ -51,33 +51,11 @@ export default function makeSeriesStyles (styles: any, props: any, index: number
       }
     }
   }
-
-  if (Reflect.has(rules, 'line')) {
-    let line = rules.line
-    result.lineStyle = {}
-    if (typeof line === 'string') {
-      if ('dotted,dashed'.split(',').includes(rules.line)) {
-        result.lineStyle.type = rules.line
-      }
-    } else {
-
-    } 
-  } // line
   if (rules.canvas) {
     let center = rules.canvas.center
     result.center = center
   }
-  if (Reflect.has(rules, 'border')) {
-    const border = rules.border
-    if (border === true) {
-      result.itemStyle = {
-        normal: {
-          borderColor: '#000'
-        }
-      }
-    }
-  }
-  ['label'].forEach(f => {
+  ['label', 'line', 'border'].forEach(f => {
     if (Reflect.has(rules, f)) {
       if (Reflect.has(fields, f)) {
         let computed = fields[f].apply(null, [rules, props])
