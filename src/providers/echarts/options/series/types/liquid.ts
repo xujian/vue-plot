@@ -6,5 +6,11 @@ export default function (series: any[], props: any) {
   return series.map((s: any, i: number) => Object.assign(
     {},
     s,
-    { center: [distribute[i], '50%'] }))
+    {
+      center: [distribute[i], '50%'],
+      backgroundStyle: {
+        borderWidth: 0,
+        color: 'transparent'
+      }
+    }))
 }

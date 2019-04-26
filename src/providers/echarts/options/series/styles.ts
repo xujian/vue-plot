@@ -1,4 +1,9 @@
 import echarts from 'echarts'
+import pack from '@/utils/pack'
+import { merge } from 'lodash'
+
+let fields: { [name: string]: (...args: any[]) => any } = pack(
+  require.context('./styles', true, /.ts$/))
 
 type indexable = { [key: string]: any }
 /**
@@ -46,50 +51,7 @@ export default function makeSeriesStyles (styles: any, props: any, index: number
       }
     }
   }
-  if (Reflect.has(rules, 'label')) {
-    /***
-     * styles.label = '{c}%'
-     * styles.label = 'top'
-     */
-    if (rules.label === false) {
-      result.label = {
-        show: false
-      }
-    } else if (typeof rules.label === 'string') {
-      if (['top'].includes(rules.label)) {
-        result.label = {
-          show: true,
-          position: rules.label
-        }
-      }
-    } else {
-      if (rules.label.formats) {
-        let formats = rules.label.formats
-        result.label = {
-          normal: {
-            formatter: function(params: any, ticket: any, callback: () => void) {
-              return [
-                '{name|' + params.name + '}\n',
-                formats.hr ? '{hr|}\n' : '',
-                '{value|' + params.value + '}',
-                rules.label.percent && params.percent
-                  ? '\n{percent|' + params.percent + '%}'
-                  : ''
-              ].join('')
-            },
-            rich: formats
-          }
-        }
-      } else {
-        result.label = {
-          show: true,
-          position: rules.label.position,
-          offset: [20, 0],
-          fontSize: rules.label.fontSize
-        }
-      }
-    }
-  } // label
+
   if (Reflect.has(rules, 'line')) {
     let line = rules.line
     result.lineStyle = {}
@@ -115,5 +77,13 @@ export default function makeSeriesStyles (styles: any, props: any, index: number
       }
     }
   }
+  ['label'].forEach(f => {
+    if (Reflect.has(rules, f)) {
+      if (Reflect.has(fields, f)) {
+        let computed = fields[f].apply(null, [rules, props])
+        result = merge({}, result, computed)
+      }
+    } // label
+  })
   return result
 }

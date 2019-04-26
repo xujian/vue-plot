@@ -12,6 +12,9 @@ let states = [
       [0.28, 0.27, 0.26],
       [0.01, 0, -0.01]
     ]"
+    :styles="{
+      label: { fontSize: '32px' }
+    }"
     ></pa-liquid-chart>`
   }
 ]

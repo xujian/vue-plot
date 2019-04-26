@@ -1,14 +1,10 @@
 import specs from './series/specs'
 import { merge } from 'lodash'
 import makeSeriesStyles from './series/styles'
+import pack from '@/utils/pack'
 
-let types: { [name: string]: () => any } = {}
-let requires
-  = require.context('./series/types', true, /.ts$/)
-requires.keys().forEach((p: string) => {
-  let name = (p.match(/\.\/([\w\-]+)\.ts$/) || ['', 'null'])[1]
-  types[name] = requires(p)['default']
-})
+let types: { [name: string]: () => any } = pack(
+  require.context('./series/types', true, /.ts$/))
 
 function buildFeatures (props: any, index?: number): {}[] {
   let features = [], fields = []
