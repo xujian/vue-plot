@@ -4316,6 +4316,10 @@ echarts-gl@^1.1.1:
     claygl "^1.2.1"
     zrender "^4.0.4"
 
+echarts-liquidfill@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/echarts-liquidfill/-/echarts-liquidfill-2.0.4.tgz#6cf9eb57017070da0641494f22b8f446e421ac31"
+
 echarts@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/echarts/-/echarts-4.1.0.tgz#d588c95f73c1a9928b9c73d5b769751c3185bcdc"

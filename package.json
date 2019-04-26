@@ -23,6 +23,7 @@
     "@types/lodash": "^4.14.123",
     "echarts": "^4.1.0",
     "echarts-gl": "^1.1.1",
+    "echarts-liquidfill": "^2.0.4",
     "lodash": "^4.17.11",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",

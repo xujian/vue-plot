@@ -8,6 +8,7 @@ import PaTreemapChartPlugin, { PaTreemapChart } from './treemap'
 import PaRadarChartPlugin, { PaRadarChart } from './radar'
 import PaRoseChartPlugin, { PaRoseChart } from './rose'
 import Pa3dBarChartPlugin, { Pa3dBarChart } from './3d'
+import PaLiquidChartPlugin, { PaLiquidChart } from './liquid'
 
 let plugins: {[name: string]: any} = {
   PaBarChartPlugin,
@@ -19,7 +20,8 @@ let plugins: {[name: string]: any} = {
   PaRadarChartPlugin,
   PaRoseChartPlugin,
   PaMapPlugin,
-  Pa3dBarChartPlugin
+  Pa3dBarChartPlugin,
+  PaLiquidChartPlugin
 }
 
 let charts = {
@@ -34,7 +36,8 @@ let charts = {
   PaRadarChart,
   PaRoseChart,
   PaBaiduMap,
-  Pa3dBarChart
+  Pa3dBarChart,
+  PaLiquidChart
 }
 
 export {
