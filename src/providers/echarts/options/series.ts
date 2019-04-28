@@ -1,7 +1,7 @@
 import specs from './series/specs'
 import { merge } from 'lodash'
 import makeSeriesStyles from './series/styles'
-import pack from '@/utils/pack'
+import pack from '../../../utils/pack'
 
 let types: { [name: string]: () => any } = pack(
   require.context('./series/types', true, /.ts$/))

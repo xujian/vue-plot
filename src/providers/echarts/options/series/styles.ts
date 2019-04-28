@@ -1,5 +1,5 @@
 import echarts from 'echarts'
-import pack from '@/utils/pack'
+import pack from '../../../../utils/pack'
 import { merge } from 'lodash'
 
 let fields: { [name: string]: (...args: any[]) => any } = pack(
