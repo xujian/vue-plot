@@ -35,6 +35,6 @@ export default (props: any, options: any) => {
   let output = options.series || []
   output.push(...series)
   return {
-    output
+    series: output
   }
 }

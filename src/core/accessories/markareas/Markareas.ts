@@ -1,5 +1,5 @@
 import { Prop, Component } from 'vue-property-decorator'
-import PaAccessory from '../Accessory';
+import PaAccessory from '../Accessory'
 
 /**
  * 表现X或Y坐标轴
