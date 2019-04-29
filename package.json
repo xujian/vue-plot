@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build:lib": "vue-cli-service build --target lib --name vue-chartlib ./src/index.ts --report",
+    "build:lib": "vue-cli-service build --target lib --name vue-chartlib ./src/index.ts --no-clean --report",
+    "build:support": "vue-cli-service build --target lib --name vue-chartlib-support ./src/support/index.ts --no-clean --report",
     "build:docs": "vue-cli-service build --target app ./docs/main.ts",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
@@ -25,6 +26,7 @@
     "echarts-gl": "^1.1.1",
     "echarts-liquidfill": "^2.0.4",
     "lodash": "^4.17.11",
+    "quasar": "^1.0.0-beta.19",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",
     "vuex": "^3.1.0"
@@ -70,6 +72,8 @@
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
     "reflect-metadata": "^0.1.13",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
     "typescript": "~3.2.2",
     "vue-cli-plugin-webpack-bundle-analyzer": "^1.3.0",
     "vue-loader": "^15.7.0",
