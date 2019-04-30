@@ -4,6 +4,13 @@ import PropTypes from './PropTypes'
  */
 const charts = [
   {
+    name: 'title',
+    options: {
+      type: String,
+      label: '标题'
+    }
+  },
+  {
     name: 'round',
     options: {
       type: Boolean,

@@ -1,5 +1,5 @@
-import { Component } from 'vue-property-decorator'
-import Prop from '../../core/decorators/Prop'
+import { Component, Prop } from 'vue-property-decorator'
+// import Prop from '../../core/decorators/Prop'
 import PaChart, { Props } from '../../core/chart'
 import { ChartDataTypes } from '../../core/data'
 import 'echarts-gl'

@@ -52,7 +52,7 @@ export default {
     },
     updateProps () {
       this.props = this.value.map(p => {
-        let type = p.type
+        let type = typeof p.type === 'string'? p.type: p.type.name
         p.input = this.components[type]
         return p
       })
