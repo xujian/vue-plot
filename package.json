@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build:lib": "vue-cli-service build --target lib --name lib ./src/index.ts --no-clean --report",
-    "build:support": "vue-cli-service build --target lib --name support ./src/support/index.ts --no-clean --report",
+    "build:support": "vue-cli-service build --target lib --name support ./support/index.ts --no-clean --report",
     "build:docs": "vue-cli-service build --target app ./docs/main.ts",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
