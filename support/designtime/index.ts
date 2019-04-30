@@ -1,5 +1,14 @@
-import Inspector from './inspector'
+import Inspector, {
+  Inspectable,
+  Prop,
+  PropTypes,
+  PropDefs
+  } from './inspector'
 
 export {
-  Inspector
+  Inspector,
+  Inspectable,
+  Prop,
+  PropTypes,
+  PropDefs
 }

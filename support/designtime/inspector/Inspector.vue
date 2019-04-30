@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import PaProps from './Props'
+import PaProps from './Props.vue'
 
 export default {
   name: 'PaInspector',

@@ -1,5 +1,15 @@
-import { Inspector } from './designtime'
+import {
+  Inspector,
+  Inspectable,
+  Prop,
+  PropTypes,
+  PropDefs,
+  } from './designtime'
 
 export {
-  Inspector
+  Inspector,
+  Inspectable,
+  Prop,
+  PropTypes,
+  PropDefs,
 }

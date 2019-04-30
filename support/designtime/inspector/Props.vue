@@ -52,7 +52,7 @@ export default {
     },
     updateProps () {
       this.props = this.value.map(p => {
-        let type = p.value.constructor.name
+        let type = p.type
         p.input = this.components[type]
         return p
       })
