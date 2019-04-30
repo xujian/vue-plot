@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { QList, QListItem, QListItemMain } from 'quasar'
 
 export default {
   name: 'PaProps',
@@ -67,6 +68,9 @@ export default {
     this.updateProps()
   },
   components: {
+    QList,
+    QListItem,
+    QListItemMain
   }
 }
 </script>
