@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build:lib": "vue-cli-service build --target lib --name vue-chartlib ./src/index.ts --no-clean --report",
-    "build:support": "vue-cli-service build --target lib --name vue-chartlib-support ./src/support/index.ts --no-clean --report",
+    "build:lib": "vue-cli-service build --target lib --name lib ./src/index.ts --no-clean --report",
+    "build:support": "vue-cli-service build --target lib --name support ./src/support/index.ts --no-clean --report",
     "build:docs": "vue-cli-service build --target app ./docs/main.ts",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "storybook": "start-storybook -s ./public -p 9001 -c .storybook"
+    "storybook": "start-storybook -s ./public -p 9001 -c .storybook --ci"
   },
-  "main": "dist/vue-chartlib.common.js",
+  "main": "dist/lib.common.js",
   "module": "src/index.ts",
   "types": "types/index.d.js",
   "files": [
@@ -22,23 +22,24 @@
   "dependencies": {
     "@storybook/addon-info": "^5.0.6",
     "@types/lodash": "^4.14.123",
-    "echarts": "^4.1.0",
-    "echarts-gl": "^1.1.1",
-    "echarts-liquidfill": "^2.0.4",
     "lodash": "^4.17.11",
     "quasar": "^1.0.0-beta.19",
     "vue-class-component": "^6.0.0",
-    "vue-property-decorator": "^7.0.0",
-    "vuex": "^3.1.0"
+    "vue-property-decorator": "^7.0.0"
   },
   "peerDependencies": {
-    "vue": "^2.6.8"
+    "vue": "^2.6.8",
+    "vuex": "^3.1.0",
+    "echarts": "^4.1.0",
+    "echarts-gl": "^1.1.1",
+    "echarts-liquidfill": "^2.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@storybook/addon-actions": "^5.1.0-alpha.0",
     "@storybook/addon-backgrounds": "^5.1.0-alpha.0",
     "@storybook/addon-centered": "^5.1.0-alpha.0",
+    "@storybook/addon-info": "^5.0.6",
     "@storybook/addon-knobs": "^5.1.0-alpha.0",
     "@storybook/addon-links": "^5.1.0-alpha.0",
     "@storybook/addon-notes": "^5.1.0-alpha.0",
@@ -50,6 +51,7 @@
     "@storybook/theming": "^5.0.0",
     "@storybook/vue": "^5.1.0-alpha.0",
     "@types/chai": "^4.1.0",
+    "@types/lodash": "^4.14.123",
     "@types/mocha": "^5.2.4",
     "@vue/cli-plugin-babel": "^3.4.0",
     "@vue/cli-plugin-eslint": "^3.4.0",

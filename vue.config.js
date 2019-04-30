@@ -18,7 +18,8 @@ module.exports = {
   configureWebpack: {
     output: {},
     externals: {
-      vue: 'Vue'
+      vue: 'Vue',
+      echarts: 'echarts'
     },
     optimization: {
       splitChunks: false
