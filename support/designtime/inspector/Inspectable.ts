@@ -28,11 +28,11 @@ function setInspectableForTarget (
       value: []
     })
     Reflect.defineProperty(target, INSPECTABLE_METHOD_NAME, {
-      value: () => {
+      value: function() {
         let control = target as any
         let props = control[INSPECTABLE_FIELD_NAME]
         return props.map((p: any) => {
-          let value = control[p.name]
+          let value = Reflect.get(this, p.name)
           let prop = new Prop({
             name: p.name,
             value: value,
@@ -83,7 +83,6 @@ Inspectable.set = (component: PaChart) => {
   Object.keys(props).forEach(prop => {
     let def = PropDefs.charts.find(d => d.name === prop)
     if (def) {
-      console.log('Inspectable ------------------/////set:', def)
       setInspectableForTarget(component, prop, def.options)
     }
   })
