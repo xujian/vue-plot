@@ -45,6 +45,8 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
+    "support/**/*.ts",
+    "support/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx", "src/index.js"
   ],
