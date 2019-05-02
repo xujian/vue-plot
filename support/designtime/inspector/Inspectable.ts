@@ -1,6 +1,5 @@
 import PaChart from '@chartlib/core/chart'
 import Prop from './Prop'
-import PropDefs from './PropDefs'
 import 'reflect-metadata'
 
 export const INSPECTABLE_FIELD_NAME = '__inspectable__'
@@ -63,7 +62,8 @@ function setInspectableForTarget (
 function Inspectable (options: {
   label: string,
   readonly?: boolean,
-  type?: any
+  type?: any,
+  default?: any
 }) {
   return (
     target: object,
@@ -71,21 +71,6 @@ function Inspectable (options: {
   ) => {
     setInspectableForTarget(target, propertyKey, options)
   }
-}
-
-/**
- * 为 PaChart 设置 inspectable 属性
- */
-Inspectable.set = (component: PaChart) => {
-  console.log('Inspectable.set: component******', component)
-  let props = component.props
-  // 读取对于特定PaChart的属性定义
-  Object.keys(props).forEach(prop => {
-    let def = PropDefs.charts.find(d => d.name === prop)
-    if (def) {
-      setInspectableForTarget(component, prop, def.options)
-    }
-  })
 }
 
 export default Inspectable

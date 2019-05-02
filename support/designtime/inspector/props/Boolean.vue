@@ -1,12 +1,16 @@
 <template>
-  <div class="prop-item-boolean">
-    <q-toggle
-      dark
-      color="secondary"
-      :label="prop.label"
-      :value="prop.__value"
-      @input="onInput"></q-toggle>
+  <div class="prop-boolean row">
+    <div class="col">
+      <div class="prop-label">{{prop.label}}</div>
     </div>
+    <div class="col">
+      <q-toggle
+        dark
+        color="secondary"
+        :value="prop.__value"
+        @input="onInput"></q-toggle>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

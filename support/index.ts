@@ -2,14 +2,12 @@ import {
   Inspector,
   Inspectable,
   Prop,
-  PropTypes,
-  PropDefs,
+  PropTypes
   } from './designtime'
 
 export {
   Inspector,
   Inspectable,
   Prop,
-  PropTypes,
-  PropDefs,
+  PropTypes
 }

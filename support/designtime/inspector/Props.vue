@@ -86,4 +86,8 @@ export default {
     h3
       font-size 12px
       text-align center
+  .q-item
+    padding 0
+  .prop-item
+    width 100%
 </style>

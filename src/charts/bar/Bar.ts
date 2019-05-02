@@ -2,36 +2,46 @@ import { Component, Prop } from 'vue-property-decorator'
 // import Prop from '../../core/decorators/Prop'
 import PaChart, { Props } from '../../core/chart'
 import { ChartDataTypes } from '../../core/data'
+import { Inspectable, PropTypes } from '../../../support'
 
 @Component({})
 export default class PaBarChart extends PaChart {
   /**
    *  Bar条为圆角
    */
+  @Inspectable({
+    type: Boolean,
+    label: '圆角'
+  })
   @Prop({})
   public round: boolean | undefined
 
-  /**
-   * Bar条宽度(pixel)
-   */
+  @Inspectable({
+    type: Number,
+    label: '单柱宽度'
+  })
   @Prop({})
   public barWidth: number | undefined
 
-  /**
-   * 组间距
-   */
+  @Inspectable({
+    type: PropTypes.Percent,
+    label: '柱间距',
+    default: '10%'
+  })
   @Prop({})
   public barGap: string | undefined
 
-  /**
-   * 是否堆叠
-   */
+  @Inspectable({
+    type: Boolean,
+    label: '堆叠'
+  })
   @Prop({})
   stacked: boolean | string | undefined
 
-  /**
-   * 阴影 shadow
-   */
+  @Inspectable({
+    type: Boolean,
+    label: '阴影'
+  })
   @Prop({})
   shadow: boolean | undefined
 

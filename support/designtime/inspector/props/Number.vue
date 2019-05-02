@@ -1,11 +1,18 @@
 <template>
-  <q-input
-    dark
-    type="number"
-    suffix="%"
-    :float-label="prop.label"
-    :value="prop.value"
-    @input="onInput"></q-input>
+  <div class="prop-number row">
+    <div class="col">
+      <div class="prop-label">{{prop.label}}</div>
+    </div>
+    <div class="col">
+      <q-input
+        square dense dark
+        standout="bg-secondary"
+        color="secondary"
+        type="number"
+        :value="prop.value"
+        @input="onInput"></q-input>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -27,7 +34,3 @@ export default class PaString extends PropInput {
   }
 }
 </script>
-
-<style>
-
-</style>

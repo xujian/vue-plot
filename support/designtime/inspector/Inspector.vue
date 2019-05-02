@@ -1,7 +1,7 @@
 <template>
   <div class="inspector">
     <header>
-      <h1>组件设置</h1>
+      <h1>属性</h1>
     </header>
     <main>
       <pa-props
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import './inspector.css'
 import PaProps from './Props.vue'
 
 export default {
@@ -76,4 +77,6 @@ export default {
   main
     .q-list
       border none
+  .q-toggle__label
+    font-size 12px
 </style>

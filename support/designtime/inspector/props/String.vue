@@ -1,9 +1,16 @@
 <template>
-  <q-input
-    square standout dense
-    :label="prop.label"
-    :value="prop.value"
-    @input="onInput"></q-input>
+  <div class="prop-string row">
+    <div class="col">
+      <div class="prop-label">{{prop.label}}</div>
+    </div>
+    <div class="col">
+      <q-input
+        square dense dark
+        standout="bg-secondary"
+        :value="prop.value"
+        @input="onInput"></q-input>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

@@ -1,33 +1,44 @@
 import { Component, Prop } from 'vue-property-decorator'
 import PaChart from '../../core/chart'
 import { LineChartData } from '../../core/data/ChartDataTypes'
+import { Inspectable, PropTypes } from '../../../support'
 
 @Component({})
 export default class PaLineChart extends PaChart {
   @Prop({})
   data: LineChartData | undefined
 
-  /**
-   *  线条宽度(pixel)
-   */
+  @Inspectable({
+    type: Number,
+    label: '线型宽度'
+  })
   @Prop({})
   lineWidth: number | undefined
 
+  @Inspectable({
+    type: Boolean,
+    label: '紧靠坐标轴'
+  })
   @Prop({
     type: Boolean,
     default: true
   })
   gap: boolean | undefined
 
-  /**
-   * 是否堆叠
-   */
-  @Prop({})
+  @Inspectable({
+    type: Boolean,
+    label: '堆叠'
+  })
+  @Prop({
+    type: Boolean,
+    default: false
+  })
   stacked: boolean | string | undefined
 
-  /**
-   * 平滑线条
-   */
+  @Inspectable({
+    type: Boolean,
+    label: '平滑曲线'
+  })
   @Prop({})
   smooth: boolean | undefined
 

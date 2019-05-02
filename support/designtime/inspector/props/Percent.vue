@@ -1,11 +1,18 @@
 <template>
-  <q-input
-    dark
-    type="number"
-    suffix="%"
-    :float-label="prop.label"
-    :value="prop.value.number"
-    @input="onInput"></q-input>
+  <div class="prop-string row">
+    <div class="col">
+      <div class="prop-label">{{prop.label}}</div>
+    </div>
+    <div class="col">
+      <q-input
+        square dense dark
+        standout="bg-secondary"
+        type="number"
+        suffix="%"
+        :value="prop.value.number"
+        @input="onInput"></q-input>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -25,7 +32,3 @@ export default class PaPercent extends PropInput {
   }
 }
 </script>
-
-<style>
-
-</style>

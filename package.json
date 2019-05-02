@@ -20,6 +20,9 @@
     "types/*.d.ts"
   ],
   "dependencies": {
+    "echarts": "^4.1.0",
+    "echarts-gl": "^1.1.1",
+    "echarts-liquidfill": "^2.0.4",
     "lodash": "^4.17.11",
     "quasar": "^1.0.0-beta.19",
     "vue-class-component": "^6.0.0",
