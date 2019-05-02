@@ -18,7 +18,6 @@ import { Component, Prop as PropDecorator } from 'vue-property-decorator'
 })
 export default class PaString extends PropInput {
   onInput (value: string) {
-    console.log('Boolean.vue ------onInputXXXXXXXXXXX', value)
     this.emitChange({
       ...this.prop,
       value
@@ -26,7 +25,6 @@ export default class PaString extends PropInput {
   }
 
   mounted () {
-    console.log('Boolean.vue------------mounted', this.prop)
   }
 }
 </script>

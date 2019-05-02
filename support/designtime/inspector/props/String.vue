@@ -1,7 +1,7 @@
 <template>
   <q-input
-    dark
-    :float-label="prop.label"
+    square standout dense
+    :label="prop.label"
     :value="prop.value"
     @input="onInput"></q-input>
 </template>

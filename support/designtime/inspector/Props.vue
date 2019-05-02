@@ -4,7 +4,7 @@
       <q-item
         v-for="(prop, index) in props"
         :key="index">
-        <q-item-main>
+        <q-item-section>
           <div class="prop-item" v-if="prop.input">
             <component
             :is="prop.input"
@@ -15,7 +15,7 @@
             <h6>{{prop.label}}</h6>
             <p>尚未实现</p>
           </div>
-        </q-item-main>
+        </q-item-section>
       </q-item>
     </q-list>
     <div v-if="value.length === 0"
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { QList, QListItem, QListItemMain } from 'quasar'
+import { QList, QItem, QItemSection, QItemLabel } from 'quasar'
 
 export default {
   name: 'PaProps',
@@ -69,8 +69,8 @@ export default {
   },
   components: {
     QList,
-    QListItem,
-    QListItemMain
+    QItem,
+    QItemSection
   }
 }
 </script>

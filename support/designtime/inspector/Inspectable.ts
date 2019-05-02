@@ -1,4 +1,4 @@
-import PaChart from '@/core/chart'
+import PaChart from '@chartlib/core/chart'
 import Prop from './Prop'
 import PropDefs from './PropDefs'
 import 'reflect-metadata'
