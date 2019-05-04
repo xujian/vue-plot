@@ -2,7 +2,7 @@ import { Component, Prop } from 'vue-property-decorator'
 // import Prop from '../../core/decorators/Prop'
 import PaChart, { Props } from '../../core/chart'
 import { ChartDataTypes } from '../../core/data'
-import { Inspectable, PropTypes } from '../../../support'
+import Inspectable, { PropTypes } from '../../../support/designtime/inspectable'
 
 @Component({})
 export default class PaBarChart extends PaChart {

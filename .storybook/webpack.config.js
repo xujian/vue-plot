@@ -28,6 +28,5 @@ module.exports = async ({ config, mode }) => {
   '../../designer/node_modules/vue/dist/vue.esm.js')
   config.resolve.extensions.push('.ts', '.tsx');
   // Return the altered config
-  console.log('webpack.config===================______________', config)
   return config;
 };

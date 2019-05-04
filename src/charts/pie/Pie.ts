@@ -1,7 +1,7 @@
 import { Component, Prop } from 'vue-property-decorator'
 import PaChart from '../../core/chart'
-import { Inspectable, PropTypes } from '../../../support'
 import { ChartDataTypes } from '../../core/data'
+import Inspectable, { PropTypes } from '../../../support/designtime/inspectable'
 
 @Component({})
 export default class PaPieChart extends PaChart {

@@ -1,8 +1,9 @@
-import Inspector, {
-  Inspectable,
+import Inspectable, {
   Prop,
   PropTypes
-  } from './inspector'
+  } from './inspectable'
+
+import Inspector from './inspector'
 
 export {
   Inspector,

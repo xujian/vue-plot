@@ -1,5 +1,5 @@
 import { Vue, Component } from 'vue-property-decorator'
-import Prop from '../Prop'
+import Prop from '../../inspectable/Prop'
 
 @Component({
   props: {
