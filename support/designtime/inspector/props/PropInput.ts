@@ -1,4 +1,4 @@
-import { Vue, Component, Watch } from 'vue-property-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 import Prop from '../Prop'
 
 @Component({
@@ -16,7 +16,7 @@ export default class PropInput extends Vue {
   }
 
   set prop (v) {
-    console.log('PropInput<><>><><><><><><><>',)
+    console.log('PropInput<><>><><><><><><><>', v)
     this.__prop = v
   }
 

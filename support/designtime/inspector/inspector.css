@@ -1,5 +1,6 @@
-.inspector .prop-item {
-  background-color: rgba(0,0,0,0.1)
+
+.inspector .prop-display {
+  padding: 0 12px
 }
 
 .inspector .prop-label {

@@ -1,6 +1,6 @@
 <template>
-  <div class="position">
-    <p class="text-center">X: {{prop.value.x}} Y: {{prop.value.y}} Z: {{prop.value.z}}</p>
+  <div class="prop-display prop-position">
+    <p>X: {{prop.value.x}} Y: {{prop.value.y}} Z: {{prop.value.z}}</p>
   </div>
 </template>
 
@@ -15,7 +15,3 @@ export default class PaPosition extends PropInput {
 
 }
 </script>
-
-<style>
-
-</style>

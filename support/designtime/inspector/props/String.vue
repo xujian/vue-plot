@@ -29,7 +29,3 @@ export default class PaString extends PropInput {
   }
 }
 </script>
-
-<style>
-
-</style>

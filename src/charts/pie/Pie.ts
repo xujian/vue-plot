@@ -1,14 +1,24 @@
 import { Component, Prop } from 'vue-property-decorator'
 import PaChart from '../../core/chart'
+import { Inspectable, PropTypes } from '../../../support'
 import { ChartDataTypes } from '../../core/data'
 
 @Component({})
 export default class PaPieChart extends PaChart {
-  /**
-   *  设定圆环宽度
-   */
+  @Inspectable({
+    type: PropTypes.Range,
+    label: '内外径',
+    default: [0, 50]
+  })
   @Prop({})
   radius: [number, number] | [string, string] | undefined
+
+  @Inspectable({
+    type: Boolean,
+    label: '显示边线'
+  })
+  @Prop({})
+  border: boolean | undefined
 
   @Prop({})
   data: string | ChartDataTypes.PieChartData | undefined

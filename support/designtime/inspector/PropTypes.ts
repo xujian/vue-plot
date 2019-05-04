@@ -38,6 +38,15 @@ namespace PropTypes {
       this.number = number
     }
   }
+
+  export class Range extends PropValueType {
+    value: [number, number]
+    constructor (input: [number, number] | [string, string]) {
+      super()
+      console.log('Range________________________________________________________', input)
+      this.value = [parseInt(input[0] + '', 10), parseInt(input[1] + '', 10)]
+    }
+  }
 }
 
 export default PropTypes

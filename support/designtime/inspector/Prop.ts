@@ -1,4 +1,4 @@
-import PropTypes from './PropTypes';
+import PropTypes from './PropTypes'
 /**
  * Base for Prop of Control other Classes
  */

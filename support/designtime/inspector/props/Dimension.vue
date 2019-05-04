@@ -1,5 +1,5 @@
 <template>
-  <div class="dimension">
+  <div class="prop-dimension">
     <p class="text-center">宽度: {{prop.value.width}} 高度: {{prop.value.height}}</p>
   </div>
 </template>
@@ -15,7 +15,3 @@ export default class PaDimension extends PropInput {
 
 }
 </script>
-
-<style>
-
-</style>

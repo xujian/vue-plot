@@ -88,6 +88,8 @@ export default {
       text-align center
   .q-item
     padding 0
+    min-height  24px
+    border-bottom 1px solid rgba(255,255,255,0.2)
   .prop-item
     width 100%
 </style>
