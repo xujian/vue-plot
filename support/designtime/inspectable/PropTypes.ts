@@ -47,6 +47,15 @@ namespace PropTypes {
       this.value = [parseInt(input[0] + '', 10), parseInt(input[1] + '', 10)]
     }
   }
+
+  export class Json extends PropValueType {
+    value: Object
+    constructor (input: Object) {
+      super()
+      console.log('Json________________________________________________________', input)
+      this.value = input
+    }
+  }
 }
 
 export default PropTypes

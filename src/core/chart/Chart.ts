@@ -11,6 +11,7 @@ import { DataManager } from '../data'
 import accessories from '../accessories';
 import { merge } from 'lodash'
 import normalizeProps from '../shared/props'
+import Inspectable, { PropTypes } from '../../../support/designtime/inspectable'
 import '../../css/chart.css'
 import '../../css/helpers.css'
 
@@ -71,6 +72,11 @@ export default class PaChart extends Vue {
   @Prop({})
   colors: string | string[] | undefined
 
+  @Inspectable({
+    type: Object,
+    label: '样式定义',
+    default: {}
+  })
   @Prop({})
   styles: StyleRules | StyleRules[] | string | undefined
 

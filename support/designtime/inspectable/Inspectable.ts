@@ -15,18 +15,17 @@ function setInspectableForTarget (
   target: object, prop: string, options: InspectableOptions
 ) {
   // 给 target 内部设置一个 inspectable 队列
-  let prototype = target as any
   if (!Reflect.has(target, INSPECTABLE_FIELD_NAME)) {
     Reflect.defineProperty(target, INSPECTABLE_FIELD_NAME, {
       value: []
     })
     Reflect.defineProperty(target, INSPECTABLE_METHOD_NAME, {
       value: function() {
-        let control = target as any
-        let props = control[INSPECTABLE_FIELD_NAME]
+        let control = target
+        let props = Reflect.get(control, INSPECTABLE_FIELD_NAME)
+        console.log('INspectable_______all_props___', props, control)
         return props.map((p: any) => {
           let value = Reflect.get(this, p.name)
-          console.log('INspectable_______create Prop___', p.name, value)
           let prop = new Prop({
             name: p.name,
             value: value || p.default,
