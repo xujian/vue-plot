@@ -1,10 +1,8 @@
 <template>
-  <div class="prop-json row">
-    <div class="col">
-      <div class="prop-label">{{prop.label}}</div>
-    </div>
-    <div class="col">
-      <h6>JSON</h6>
+  <div class="prop-json">
+    <div class="prop-label">{{prop.label}}</div>
+    <div class="editor" style="height: 60px;">
+      <pa-code-editor :value="'{}'"></pa-code-editor>
     </div>
   </div>
 </template>
@@ -14,11 +12,14 @@ import PropInput from './PropInput'
 import { QRange, QBadge } from 'quasar'
 import { Component } from 'vue-property-decorator'
 
+let PaCodeEditor = require('../../shared/codeeditor/CodeEditor.js')
+
 @Component({
   name: 'PaString',
   components: {
     QRange,
-    QBadge
+    QBadge,
+    PaCodeEditor
   }
 })
 export default class PaString extends PropInput {
@@ -26,7 +27,7 @@ export default class PaString extends PropInput {
   onChange (val: any) {
     this.emitChange({
       ...this.prop,
-      value: [val.min, val.max]
+      value: val
     })
   }
 }

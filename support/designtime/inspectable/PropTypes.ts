@@ -52,7 +52,6 @@ namespace PropTypes {
     value: Object
     constructor (input: Object) {
       super()
-      console.log('Json________________________________________________________', input)
       this.value = input
     }
   }

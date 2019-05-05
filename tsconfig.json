@@ -48,7 +48,8 @@
     "support/**/*.ts",
     "support/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx", "src/index.js"
+    "tests/**/*.tsx", "src/index.js",
+    "support/designtime/shared/codeeditor/CodeEditor.js"
   ],
   "exclude": [
     "node_modules"
