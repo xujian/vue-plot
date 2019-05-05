@@ -73,8 +73,8 @@ export default class PaChart extends Vue {
   colors: string | string[] | undefined
 
   @Inspectable({
-    type: Object,
     label: '样式定义',
+    type: PropTypes.Json,
     default: {}
   })
   @Prop({})

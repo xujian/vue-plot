@@ -12,55 +12,56 @@ declare type InspectableOptions = {
 }
 
 function setInspectableForTarget (
-  target: object, prop: string, options: InspectableOptions
+  target: any, prop: string, options: InspectableOptions
 ) {
   // 给 target 内部设置一个 inspectable 队列
-  if (!Reflect.has(target, INSPECTABLE_FIELD_NAME)) {
-    Reflect.defineProperty(target, INSPECTABLE_FIELD_NAME, {
-      value: []
-    })
-    Reflect.defineProperty(target, INSPECTABLE_METHOD_NAME, {
-      value: function() {
-        let control = target
-        let props = Reflect.get(control, INSPECTABLE_FIELD_NAME)
-        console.log('INspectable_______all_props___', props, control)
-        return props.map((p: any) => {
-          let value = Reflect.get(this, p.name)
-          let prop = new Prop({
-            name: p.name,
-            value: value || p.default,
-            default: p.default,
-            label: p.label,
-            readonly: p.readonly,
-            type: p.type
-          })
-          return prop
-        })
-      }
-    })
-  }
-  let inspected = {
-    name: prop,
-    ...options
-  }
-  Reflect.defineMetadata
-  // Reflect.defineMetadata('proptype',
-  //   PropTypes.Dimension, inspected)
-  let insp = Reflect.get(target, INSPECTABLE_FIELD_NAME)
-  insp.push(inspected)
-  Reflect.set(target, INSPECTABLE_FIELD_NAME, insp)
+  console.log('INSPECTABLE_________________________SET', prop, target)
+  Inspectable.set(target, prop, options)
 }
 
 /**
  * 使属性项可以在属性面板编辑
  */
 function Inspectable (options: InspectableOptions) {
-  return (
-    target: object,
-    key: string
-  ) => {
+  return (target: any, key: string) => {
     setInspectableForTarget(target, key, options)
   }
+}
+
+type InspectableBook = {
+  [key: string]: Prop<any>[]
+}
+
+let book: InspectableBook = {}
+
+Inspectable.set = function (control: any, field: string, options: InspectableOptions) {
+  let __class = control.constructor.name
+  if (!Reflect.has(book, __class)) {
+    book[__class] = []
+  }
+  let props: Prop<any>[] = book[__class] || []
+  let value = Reflect.get(this, field)
+  props.push(new Prop({
+    name: field,
+    value: value || options.default,
+    default: options.default,
+    label: options.label,
+    readonly: options.readonly,
+    type: options.type
+  }))
+  book[__class] = props
+}
+
+Inspectable.get = function (control: any) {
+  let result: Prop<any>[] = []
+  let proto = control.__proto__
+  // 沿原型链向上查找
+  while (proto.constructor.name.startsWith('Pa')) {
+    let up = book[proto.constructor.name]
+    result = result.concat(up)
+    proto = proto.__proto__
+  }
+  return result
 }
 
 export default Inspectable

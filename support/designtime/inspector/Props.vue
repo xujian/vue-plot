@@ -92,4 +92,10 @@ export default {
     border-bottom 1px solid rgba(255,255,255,0.2)
   .prop-item
     width 100%
+  .prop-item-na
+    text-align center
+    padding 8px 0
+    color #999
+    h6
+      line-height 1.2em
 </style>

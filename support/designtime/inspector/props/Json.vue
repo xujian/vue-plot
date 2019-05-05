@@ -22,14 +22,7 @@ import { Component } from 'vue-property-decorator'
   }
 })
 export default class PaString extends PropInput {
-  get range () {
-    return {
-      min: this.prop.value.value[0],
-      max: this.prop.value.value[1]
-    }
-  }
-  set range (value: any) {
-  }
+  
   onChange (val: any) {
     this.emitChange({
       ...this.prop,
