@@ -1,6 +1,7 @@
+import { StyleRules } from '@/core/shared/styles';
+
 namespace PropTypes {
   export class PropValueType {
-
   }
 
   export class Dimension extends PropValueType {
@@ -51,6 +52,14 @@ namespace PropTypes {
   export class Json extends PropValueType {
     value: Object
     constructor (input: Object) {
+      super()
+      this.value = input
+    }
+  }
+
+  export class Styles extends PropValueType {
+    value: StyleRules
+    constructor (input: StyleRules) {
       super()
       this.value = input
     }

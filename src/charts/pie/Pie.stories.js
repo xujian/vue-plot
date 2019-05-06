@@ -12,6 +12,7 @@ let states = [
   {
     name: 'Simple',
     template: `<pa-pie-chart
+      :styles="{border:true}"
       :data="[[
         { name: 'A', value: 100 },
         { name: 'B', value: 150 },

@@ -1,25 +1,19 @@
 <template>
-  <div class="prop-json">
+  <div class="prop-styles">
     <div class="prop-label">{{prop.label}}</div>
     <div class="editor" style="height: 60px;">
-      <pa-code-editor :value="'{}'"></pa-code-editor>
+      <h6>Styles</h6>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import PropInput from './PropInput'
-import { QRange, QBadge } from 'quasar'
 import { Component } from 'vue-property-decorator'
 
-let PaCodeEditor = require('../../shared/codeeditor/CodeEditor.js')
-
 @Component({
-  name: 'PaJsonProp',
+  name: 'PaStylesProp',
   components: {
-    QRange,
-    QBadge,
-    PaCodeEditor
   }
 })
 export default class PaString extends PropInput {

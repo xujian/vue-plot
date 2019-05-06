@@ -18,7 +18,7 @@ import { QToggle } from 'quasar'
 import { Component, Prop as PropDecorator } from 'vue-property-decorator'
 
 @Component({
-  name: 'PaString',
+  name: 'PaBooeleanProp',
   components: {
     QToggle
   },

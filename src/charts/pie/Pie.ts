@@ -13,13 +13,6 @@ export default class PaPieChart extends PaChart {
   @Prop({})
   radius: [number, number] | [string, string] | undefined
 
-  @Inspectable({
-    type: Boolean,
-    label: '显示边线'
-  })
-  @Prop({})
-  border: boolean | undefined
-
   @Prop({})
   data: string | ChartDataTypes.PieChartData | undefined
 
