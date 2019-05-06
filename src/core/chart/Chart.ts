@@ -66,9 +66,23 @@ export default class PaChart extends Vue {
   @Prop({})
   preset: string | undefined
 
+  @Inspectable({
+    label: '配色主题',
+    type: PropTypes.Theme,
+    category: 'styles',
+    order: 1,
+    default: ''
+  })
   @Prop({})
   theme: string | undefined
 
+  @Inspectable({
+    label: '颜色序列',
+    type: PropTypes.Colors,
+    category: 'styles',
+    order: 2,
+    default: []
+  })
   @Prop({})
   colors: string | string[] | undefined
 

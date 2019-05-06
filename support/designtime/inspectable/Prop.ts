@@ -9,6 +9,7 @@ export default class Prop<T extends PropTypes.PropValueType> {
   category: string = 'props' // 显示在特定的tab内
   readonly: boolean = false
   type: any = String
+  order: number = 999
   default!: T 
   private __value: T | null = null
 
@@ -26,6 +27,7 @@ export default class Prop<T extends PropTypes.PropValueType> {
     name: string,
     value: T,
     default?: T
+    order?: number,
     category?: string, 
     label?: string,
     readonly?: boolean,
@@ -33,5 +35,6 @@ export default class Prop<T extends PropTypes.PropValueType> {
   }) {
     Object.assign(this, input)
     this.category =  input.category || 'props'
+    this.order =  input.order || 999
   }
 }

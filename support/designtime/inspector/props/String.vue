@@ -18,7 +18,7 @@ import PropInput from './PropInput'
 import { Component, Prop as PropDecorator } from 'vue-property-decorator'
 
 @Component({
-  name: 'PaString'
+  name: 'PaStringProp'
 })
 export default class PaString extends PropInput {
   onInput (value: string) {
