@@ -1,3 +1,27 @@
+.inspector .q-tabs {
+  background-color: rgba(0,0,0,0.17)
+}
+
+.inspector .q-tab-panels {
+  background-color: transparent
+}
+
+.inspector .q-tab-panel {
+  padding: 0
+}
+
+.inspector {
+  background-color: rgba(68, 68, 68, 0.5);
+  color: #eee;
+}
+
+.inspector .q-item {
+  padding: 0;
+  min-height: 24px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: -1px;
+}
 
 .inspector .prop-display {
   padding: 0 12px
@@ -6,4 +30,8 @@
 .inspector .prop-label {
   padding: 4px 12px;
   color:#ccc;
+}
+
+.inspector .col-input {
+  background-color: rgba(0,150,136,0.17)
 }

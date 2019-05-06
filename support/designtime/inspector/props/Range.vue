@@ -1,9 +1,9 @@
 <template>
   <div class="prop-range row">
-    <div class="col">
+    <div class="col col-label">
       <div class="prop-label">{{prop.label}}</div>
     </div>
-    <div class="col">
+    <div class="col col-input">
       <q-range
         label
         color="secondary"
