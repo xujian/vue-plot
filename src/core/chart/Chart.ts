@@ -75,6 +75,7 @@ export default class PaChart extends Vue {
   @Inspectable({
     label: '样式定义',
     type: PropTypes.Json,
+    category: 'styles',
     default: {}
   })
   @Prop({})

@@ -6,6 +6,7 @@ export default class Prop<T extends PropTypes.PropValueType> {
   name: string = ''
   label: string | undefined
   description: string = ''
+  category: string = 'props' // 显示在特定的tab内
   readonly: boolean = false
   type: any = String
   default!: T 
@@ -25,10 +26,12 @@ export default class Prop<T extends PropTypes.PropValueType> {
     name: string,
     value: T,
     default?: T
+    category?: string, 
     label?: string,
     readonly?: boolean,
     type?: string
   }) {
     Object.assign(this, input)
+    this.category =  input.category || 'props'
   }
 }

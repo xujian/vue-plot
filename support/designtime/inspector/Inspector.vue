@@ -4,15 +4,13 @@
       v-model="tab" dense inline-label
       align="left"
       :breakpoint="0">
-      <q-tab name="props" label="属性"></q-tab>
-      <q-tab name="styles" label="样式"></q-tab>
-      <q-tab name="events" label="联动"></q-tab>
+      <q-tab v-for="t in tabs" :key="t.name" :name="t.name" :label="t.label"></q-tab>
     </q-tabs>
     <q-tab-panels v-model="tab" animated="">
-      <q-tab-panel name="props">
+      <q-tab-panel v-for="t in tabs" :key="t.name" :name="t.name">
         <q-list class="items" v-if="props.length > 0">
           <q-item
-            v-for="(prop, index) in value"
+            v-for="(prop, index) in props.filter(p => p.category === t.name)"
             :key="index">
             <q-item-section>
               <div class="prop-item" v-if="prop.input">
@@ -29,8 +27,6 @@
           </q-item>
         </q-list>
       </q-tab-panel>
-      <q-tab-panel name="styles"></q-tab-panel>
-      <q-tab-panel name="events"></q-tab-panel>
     </q-tab-panels>
     <div v-if="value.length === 0"
       class="empty full-height">
@@ -56,10 +52,29 @@ export default {
       type: String
     }
   },
+  computed: {
+    props () {
+      return this.value
+    }
+  },
   data () {
     return {
       components: {},
       props: [],
+      tabs: [
+        {
+          name: 'props',
+          label: '关键属性'
+        },
+        {
+          name: 'styles',
+          label: '样式'
+        },
+        {
+          name: 'events',
+          label: '联动'
+        }
+      ],
       tab: 'props'
     }
   },

@@ -46,6 +46,7 @@ Inspectable.set = function (control: any, field: string, options: InspectableOpt
     value: value || options.default,
     default: options.default,
     label: options.label,
+    category: options.category,
     readonly: options.readonly,
     type: options.type
   }))
