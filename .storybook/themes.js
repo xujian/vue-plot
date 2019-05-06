@@ -1,4 +1,4 @@
-import { create } from '@storybook/theming';
+import { create } from '@storybook/theming'
 
 const dark = create({
   base: 'dark',
@@ -25,8 +25,9 @@ const dark = create({
   inputBorder: 'rgba(0,0,0,.1)',
   inputTextColor: '#eee',
   inputBorderRadius: 0,
-
-  brand: `Chartlib`,
+  brandTitle: '标准图表库',
+  brandUrl: 'https://chartlib.pingan.com.cn',
+  brandImage: '/logo.png',
 })
 
 export default {

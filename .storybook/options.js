@@ -1,7 +1,6 @@
 import themes from './themes'
 
 export default {
-  name: 'Chartlib',
   /**
    * show story component as full screen
    * @type {Boolean}
