@@ -127,7 +127,7 @@ export default {
     },
     callDrawer (data) {
       let { command, payload } = data
-      if (payload === false) {
+      if (payload.data === false) {
         this.drawerActive = false
       } else {
         this.drawerActive = true
