@@ -241,7 +241,6 @@ export default class PaChart extends Vue {
     let withLayers = [finalProps, ...finalProps.layers]
     let dataPromises = withLayers.map(props => DataManager.load(props))
     Promise.all(dataPromises).then((props: any) => {
-      console.log('Chart.ts/////DataManager.load______________///', this.type)
       this.__data = props[0].data
       finalProps = merge({}, 
         finalProps,
@@ -272,10 +271,13 @@ export default class PaChart extends Vue {
     this.draw()
     // watch 放在draw后面 不然会引起死循环
     Object.keys(this.props).forEach((p: string) => {
-      this.$watch(p, () => {
-        if (!'layers'.split(',').includes(p)) {
-          this.repaint()
-        }
+      this.$watch(p, {
+        handler: () => {
+          if (!'layers'.split(',').includes(p)) {
+            this.repaint()
+          }
+        },
+        deep: true
       })
     })
   }
