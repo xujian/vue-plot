@@ -8,7 +8,7 @@ export default function (props: any) {
       xAxis[p] = x[p]
     }
   })
-  if (x.type !== 'value') {
+  if (x.type && x.type !== 'value') {
     xAxis = {
       type: 'category'
     }
