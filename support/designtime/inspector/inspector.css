@@ -70,7 +70,7 @@
 
 .inspector .drawer {
   position: fixed;
-  width: 280px;
+  width: 160px;
   height: 100%;
   opacity: 0;
   left: 0;
@@ -88,5 +88,17 @@
 .inspector .drawer.active {
   transition: all 0.3s;
   opacity: 1;
-  left: -280px;
+  left: -160px;
+}
+
+.inspector .q-color-picker {
+  width: 160px;
+}
+
+.inspector .q-color-picker .q-panel {
+  overflow: hidden;
+}
+
+.inspector .q-color-picker .q-tab {
+  padding: 0;
 }
