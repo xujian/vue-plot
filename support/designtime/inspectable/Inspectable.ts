@@ -8,6 +8,8 @@ declare type InspectableOptions = {
   label: string,
   readonly?: boolean,
   type?: any,
+  category?: string,
+  order?: number,
   default?: any
 }
 
@@ -59,7 +61,9 @@ Inspectable.get = function (control: any) {
   // 沿原型链向上查找
   while (proto.constructor.name.startsWith('Pa')) {
     let up = book[proto.constructor.name]
-    result = result.concat(up)
+    if (up) {
+      result = result.concat(up)
+    }
     proto = proto.__proto__
   }
   return result
