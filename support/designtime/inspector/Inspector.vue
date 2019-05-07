@@ -1,36 +1,49 @@
 <template>
   <div class="inspector">
-    <q-tabs
-      v-model="tab" dense inline-label
-      align="left"
-      :breakpoint="0">
-      <q-tab v-for="t in tabs" :key="t.name" :name="t.name" :label="t.label"></q-tab>
-    </q-tabs>
-    <q-tab-panels v-model="tab" animated="">
-      <q-tab-panel v-for="t in tabs" :key="t.name" :name="t.name">
-        <q-list class="items" v-if="props.length > 0">
-          <q-item
-            v-for="(prop, index) in props.filter(p => p.category === t.name)"
-            :key="index">
-            <q-item-section>
-              <div class="prop-item" v-if="prop.input">
-                <component
-                :is="prop.input"
-                :value="prop"
-                @change="onPropChange(index, $event)"></component>
-              </div>
-              <div v-else class="prop-item-na">
-                <h6>{{prop.label}}</h6>
-                <p>尚未实现</p>
-              </div>
-            </q-item-section>
-          </q-item>
-        </q-list>
-      </q-tab-panel>
-    </q-tab-panels>
-    <div v-if="value.length === 0"
-      class="empty full-height">
-      <h6 class="info text-center">无可用配置项</h6>
+    <div class="front">
+      <q-tabs
+        v-model="tab" dense inline-label
+        align="left"
+        :breakpoint="0">
+        <q-tab v-for="t in tabs" :key="t.name" :name="t.name" :label="t.label"></q-tab>
+      </q-tabs>
+      <q-tab-panels v-model="tab" animated="">
+        <q-tab-panel v-for="t in tabs" :key="t.name" :name="t.name">
+          <q-list class="items" v-if="props.length > 0">
+            <q-item
+              v-for="(prop, index) in props.filter(p => p.category === t.name)"
+              :key="index">
+              <q-item-section>
+                <div class="prop-item" v-if="prop.input">
+                  <component
+                  :is="prop.input"
+                  :value="prop"
+                  @change="onPropChange(index, $event)"
+                  @drawerRequired="callDrawer"></component>
+                </div>
+                <div v-else class="prop-item-na">
+                  <h6>{{prop.label}}</h6>
+                  <p>尚未实现</p>
+                </div>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-tab-panel>
+      </q-tab-panels>
+      <div v-if="value.length === 0"
+        class="empty full-height">
+        <h6 class="info text-center">无可用配置项</h6>
+      </div>
+    </div>
+    <div class="drawer" :class="{'active': drawerActive}">
+      <div class="color-picker-container">
+        <q-color dark
+          v-if="drawerColor"
+          :value="drawerColor"
+          @input="onColorPickerInput"
+          class="color-picker"
+          ></q-color>
+      </div>
     </div>
   </div>
 </template>
@@ -75,7 +88,10 @@ export default {
           label: '联动'
         }
       ],
-      tab: 'props'
+      tab: 'props',
+      drawerActive: false,
+      drawerColor: '',
+      drawColorCallback: undefined
     }
   },
   computed: {
@@ -108,6 +124,21 @@ export default {
         p.input = this.components[type]
         return p
       })
+    },
+    callDrawer (data) {
+      let { command, payload } = data
+      if (payload === false) {
+        this.drawerActive = false
+      } else {
+        this.drawerActive = true
+        this.drawerColor = payload.data
+        this.drawColorCallback = payload.callback
+      }
+    },
+    onColorPickerInput (value) {
+      if (this.drawColorCallback) {
+        this.drawColorCallback.call(this, value)
+      }
     }
   },
   components: {

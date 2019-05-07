@@ -56,11 +56,13 @@ namespace PropTypes {
    * 数值范围
    */
   export class Range extends PropValueType {
-    value: [number, number]
+    value?: [number, number]
     constructor (input: [number, number] | [string, string]) {
       super()
       console.log('Range________________________________________________________', input)
-      this.value = [parseInt(input[0] + '', 10), parseInt(input[1] + '', 10)]
+      this.value = input ?
+        [parseInt(input[0] + '', 10), parseInt(input[1] + '', 10)]
+        : undefined
     }
   }
 
@@ -101,8 +103,8 @@ namespace PropTypes {
    * 颜色序列
    */
   export class Colors extends PropValueType {
-    value: string[]
-    constructor (input: string) {
+    value?: string[]
+    constructor (input: string[]) {
       super()
       this.value = input
     }

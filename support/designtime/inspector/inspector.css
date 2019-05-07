@@ -23,6 +23,10 @@
   margin-bottom: -1px;
 }
 
+.inspector .prop-item {
+  position: relative;
+}
+
 .inspector .prop-display {
   padding: 0 12px
 }
@@ -34,4 +38,55 @@
 
 .inspector .col-input {
   background-color: rgba(0,150,136,0.17)
+}
+
+.inspector .prop-colors .empty {
+  line-height: 2em;
+}
+
+.inspector .prop-colors .chips {
+  padding: 6px 0
+}
+
+.inspector .prop-colors .chips .q-btn {
+  padding: 0;
+  line-height: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.inspector .prop-colors .chips .pipe {
+  border: 1px solid #ddd
+}
+
+.inspector .prop-colors .color-picker-container {
+  margin-top: -7px;
+}
+
+.inspector .prop-colors .color-picker {
+  max-width: 220px;
+  margin-left: -60px;
+}
+
+.inspector .drawer {
+  position: fixed;
+  width: 280px;
+  height: 100%;
+  opacity: 0;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.inspector .front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.inspector .drawer.active {
+  transition: all 0.3s;
+  opacity: 1;
+  left: -280px;
 }

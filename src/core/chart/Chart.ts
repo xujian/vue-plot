@@ -79,8 +79,7 @@ export default class PaChart extends Vue {
   @Inspectable({
     label: '颜色序列',
     type: PropTypes.Colors,
-    category: 'styles',
-    order: 2,
+    order: 1,
     default: []
   })
   @Prop({})

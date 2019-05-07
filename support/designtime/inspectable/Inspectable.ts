@@ -45,7 +45,7 @@ Inspectable.set = function (control: any, field: string, options: InspectableOpt
   let value = Reflect.get(this, field)
   props.push(new Prop({
     name: field,
-    value: value || options.default,
+    value: value,
     default: options.default,
     label: options.label,
     category: options.category,

@@ -22,17 +22,20 @@ import { QRange, QBadge } from 'quasar'
 import { Component } from 'vue-property-decorator'
 
 @Component({
-  name: 'PaString',
+  name: 'PaRangeProp',
   components: {
     QRange,
     QBadge
   }
 })
-export default class PaString extends PropInput {
+export default class PaRangeProp extends PropInput {
   get range () {
-    return {
+    return this.prop.value && this.prop.value.value ? {
       min: this.prop.value.value[0],
       max: this.prop.value.value[1]
+    }: {
+      min: this.prop.default[0],
+      max: this.prop.default[1]
     }
   }
   set range (value: any) {
