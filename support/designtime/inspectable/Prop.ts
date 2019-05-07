@@ -33,6 +33,7 @@ export default class Prop<T extends PropTypes.PropValueType> {
     readonly?: boolean,
     type?: string
   }) {
+    console.log('Prop.ts_____________________________________________', input)
     Object.assign(this, input)
     this.category =  input.category || 'props'
     this.order =  input.order || 999

@@ -66,6 +66,9 @@ Inspectable.get = function (control: any) {
     }
     proto = proto.__proto__
   }
+  result.forEach((p: Prop<any>) => {
+    p.value = control[p.name]
+  })
   return result
 }
 

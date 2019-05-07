@@ -87,7 +87,8 @@ module.exports = {
     editor.setOptions({
       highlightActiveLine: false,
       showGutter: false,
-      showLineNumbers: false
+      showLineNumbers: false,
+      vScrollBarAlwaysVisible: false
     })
   }
 }
