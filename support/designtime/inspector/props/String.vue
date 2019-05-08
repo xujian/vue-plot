@@ -7,7 +7,8 @@
       <q-input
         square dense dark
         standout="bg-secondary"
-        :value="prop.value"
+        :value="prop.value || ''"
+        placeholder="(未设置)"
         @input="onInput"></q-input>
     </div>
   </div>

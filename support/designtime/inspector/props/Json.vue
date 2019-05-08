@@ -17,12 +17,15 @@
         :value="jsonValue"
         :options="options"></pa-code-editor>
     </div>
+    <q-banner v-if="errorMessage"
+      dense dark
+      class="bg-primary">{{errorMessage}}</q-banner>
   </div>
 </template>
 
 <script lang="ts">
 import PropInput from './PropInput'
-import { QRange, QBadge } from 'quasar'
+import { QRange, QBanner } from 'quasar'
 import { Component } from 'vue-property-decorator'
 
 let PaCodeEditor = require('../../shared/codeeditor/CodeEditor.js')
@@ -31,22 +34,31 @@ let PaCodeEditor = require('../../shared/codeeditor/CodeEditor.js')
   name: 'PaJsonProp',
   components: {
     QRange,
-    QBadge,
+    QBanner,
     PaCodeEditor
   }
 })
 export default class PaString extends PropInput {
   options: object = {
   }
+  errorMessage: string = ''
   get jsonValue () {
-    return JSON.stringify(this.prop.value.value, null, 2)
+    return JSON.stringify(this.prop.value && this.prop.value.value || {}, null, 2)
   }
   onSave () {
     let content: string = this.$refs.input.editor.getValue()
-    this.emitChange({
-      ...this.prop,
-      value: JSON.parse(content)
-    })
+    let parsed = undefined
+    try {
+      content = content.trim() || '{}'
+      let parsed = JSON.parse(content)
+      this.errorMessage = ''
+      this.emitChange({
+        ...this.prop,
+        value: parsed
+      })
+    } catch (e) {
+      this.errorMessage = '格式错误'
+    }
   }
 }
 </script>

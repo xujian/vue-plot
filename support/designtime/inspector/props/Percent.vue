@@ -1,5 +1,5 @@
 <template>
-  <div class="prop-string row">
+  <div class="prop-percent row">
     <div class="col col-label">
       <div class="prop-label">{{prop.label}}</div>
     </div>
@@ -9,7 +9,8 @@
         standout="bg-secondary"
         type="number"
         suffix="%"
-        :value="prop.value.number"
+        placeholder="(未设置)"
+        :value="prop.value && prop.value.number"
         @input="onInput"></q-input>
     </div>
   </div>
@@ -29,6 +30,13 @@ export default class PaPercent extends PropInput {
       ...this.prop,
       value: value + '%'
     })
+  }
+  beforeMounted () {
+    if (!this.prop.value) {
+      this.prop.value = {
+        numbner: 10
+      }
+    }
   }
 }
 </script>

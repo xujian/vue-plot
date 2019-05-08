@@ -46,7 +46,8 @@ export default class PaString extends PropInput {
   activeIndex: number = -1
   sequence: string[] = []
   onCreateClick () {
-    this.sequence = ['#000000']
+    this.sequence = ['#000']
+    this.raiseUpdate()
   }
   onChipsClick (selected: number) {
     this.activeIndex = selected
@@ -63,24 +64,29 @@ export default class PaString extends PropInput {
     let seq = [...this.sequence]
     seq.push('#000000')
     this.sequence = seq
+    this.raiseUpdate()
   }
   onDeleteClick () {
     let seq = [...this.sequence]
     seq.pop()
     this.sequence = seq
+    this.raiseUpdate()
   }
   colorUpdated (color: string) {
     console.log('Colors.vue____________colorUpdated', color, this.activeIndex)
     let seq = [...this.sequence]
     seq[this.activeIndex] = color
     this.sequence = seq
+    this.raiseUpdate()
+  }
+  raiseUpdate () {
     this.emitChange({
       ...this.prop,
       value: this.sequence
     })
   }
   mounted () {
-    this.sequence = this.prop.value.value || []
+    this.sequence = this.prop.value && this.prop.value.value || []
   }
 }
 </script>

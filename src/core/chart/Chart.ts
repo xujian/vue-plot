@@ -43,6 +43,11 @@ export default class PaChart extends Vue {
    */
   mode: 'chart' | 'layer' = 'chart'
 
+  @Inspectable({
+    type: String,
+    label: '标题',
+    order: 2
+  })
   @Prop({})
   title: string | undefined
 
@@ -63,6 +68,11 @@ export default class PaChart extends Vue {
   @Prop({})
   legend: any[] | undefined
 
+  @Inspectable({
+    type: String,
+    label: '预设组',
+    order: 1
+  })
   @Prop({})
   preset: string | undefined
 
@@ -79,7 +89,7 @@ export default class PaChart extends Vue {
   @Inspectable({
     label: '颜色序列',
     type: PropTypes.Colors,
-    order: 1,
+    order: 3,
     default: []
   })
   @Prop({})

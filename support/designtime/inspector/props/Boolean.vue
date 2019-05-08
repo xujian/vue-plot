@@ -7,7 +7,8 @@
       <q-toggle
         dark
         color="secondary"
-        v-model="propValue"></q-toggle>
+        :value="propValue"
+        @input="onInput"></q-toggle>
     </div>
   </div>
 </template>
@@ -21,30 +22,19 @@ import { Component, Prop as PropDecorator } from 'vue-property-decorator'
   name: 'PaBooeleanProp',
   components: {
     QToggle
-  },
-  data () {
-    return {
-      propValue: false
-    }
-  },
-  watch: {
-    propValue (val: boolean) {
-      this.onInput(val)
-    }
   }
 })
 export default class PaString extends PropInput {
-  
+  propValue: boolean = false
   onInput (value: boolean) {
-    console.log('Boolean.vue_________________________////onIput', value)
+    this.propValue = value
     this.emitChange({
       ...this.prop,
       value: value
     })
   }
-
-  mounted () {
-    console.log('BOolean.vue-_______________________', this.prop)
+  beforeMount () {
+    this.propValue = this.prop.__value || false
   }
 }
 </script>

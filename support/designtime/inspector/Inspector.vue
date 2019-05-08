@@ -3,7 +3,7 @@
     <div class="front" @click="onFrontClick">
       <q-tabs
         v-model="tab" dense inline-label
-        align="left"
+        align="right"
         :breakpoint="0">
         <q-tab v-for="t in tabs" :key="t.name" :name="t.name" :label="t.label"></q-tab>
       </q-tabs>
@@ -11,7 +11,7 @@
         <q-tab-panel v-for="t in tabs" :key="t.name" :name="t.name">
           <q-list class="items" v-if="props.length > 0">
             <q-item
-              v-for="(prop, index) in props.filter(p => p.category === t.name)"
+              v-for="(prop, index) in props.filter(p => p.category === t.name).sort((a, b) => a.order - b.order)"
               :key="index">
               <q-item-section>
                 <div class="prop-item" v-if="prop.input">

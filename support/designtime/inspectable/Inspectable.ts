@@ -50,6 +50,7 @@ Inspectable.set = function (control: any, field: string, options: InspectableOpt
     label: options.label,
     category: options.category,
     readonly: options.readonly,
+    order: options.order,
     type: options.type
   }))
   book[__class] = props

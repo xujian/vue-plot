@@ -1,6 +1,7 @@
 import { Component, Prop } from 'vue-property-decorator'
 import PaChart from '../../core/chart'
-import { ChartDataTypes } from '../../core/data';
+import { ChartDataTypes } from '../../core/data'
+import { Inspectable, PropTypes } from '../../../support'
 
 @Component({})
 export default class PaScatterChart extends PaChart {
@@ -9,9 +10,10 @@ export default class PaScatterChart extends PaChart {
 
   private __symbol: number | string | undefined
 
-  /**
-   * 散点形状
-   */
+  @Inspectable({
+    label: '散点形状',
+    type: Number
+  })
   @Prop({})
   symbol: number | string | object | undefined
 

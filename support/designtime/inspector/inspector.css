@@ -103,3 +103,7 @@
 .inspector .q-color-picker .q-tab {
   padding: 0;
 }
+
+.inspector .prop-json .error {
+  margin-top: -32px;
+}
