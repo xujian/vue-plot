@@ -56,7 +56,8 @@
 }
 
 .inspector .prop-colors .chips .pipe {
-  border: 1px solid #ddd
+  border: 1px solid #ddd;
+  max-width: 142px;
 }
 
 .inspector .prop-colors .color-picker-container {

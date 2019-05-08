@@ -1,6 +1,6 @@
 <template>
   <div class="inspector">
-    <div class="front">
+    <div class="front" @click="onFrontClick">
       <q-tabs
         v-model="tab" dense inline-label
         align="left"
@@ -139,6 +139,14 @@ export default {
       if (this.drawColorCallback) {
         this.drawColorCallback.call(this, value)
       }
+    },
+    onFrontClick () {
+      this.callDrawer({
+        command: 'command',
+        payload: {
+          data: false
+        }
+      })
     }
   },
   components: {

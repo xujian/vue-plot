@@ -12,13 +12,21 @@
             :key="i"
             :style="{backgroundColor:c}"
             :label="i + 1"
-            @click="onChipsClick(i)"></q-btn>
-            <q-btn class="append-btn"
-              size="xs"
-              label="+"></q-btn>
+            @click.stop="onChipsClick(i)"></q-btn>
           </q-btn-group>
+          <q-btn class="append-btn"
+            size="xs"
+            label="+"
+            @click.stop="onAppendClick"></q-btn>
+          <q-btn class="clear-btn"
+            size="xs"
+            label="X"
+            @click.stop="onDeleteClick"></q-btn>
       </div>
-      <div v-else class="empty">(未设置)</div>
+      <div v-else class="empty">
+        <span>(not set)</span>
+        <q-btn flat @click="onCreateClick">➡️</q-btn>
+      </div>
     </div>
   </div>
 </template>
@@ -35,23 +43,14 @@ import { Component, Prop as PropDecorator } from 'vue-property-decorator'
   }
 })
 export default class PaString extends PropInput {
-  private __sequence: string[] = []
   activeIndex: number = -1
-  get sequence (): string[] {
-    this.__sequence = this.prop.value.value || []
-    if (this.__sequence.length === 0) {
-      this.__sequence = ['#e57373','#009688','#FFC107']
-    }
-    return this.__sequence
+  sequence: string[] = []
+  onCreateClick () {
+    this.sequence = ['#000000']
   }
   onChipsClick (selected: number) {
-    if (selected === this.activeIndex) {
-      this.activeIndex = -1
-      this.callColorPicker(false)
-    } else {
-      this.activeIndex = selected
-      this.callColorPicker(this.sequence[selected])
-    }
+    this.activeIndex = selected
+    this.callColorPicker(this.sequence[selected])
   }
   callColorPicker (data?: any, callback?: (color: string) => {}) {
     this.$emit('drawerRequired', {
@@ -60,15 +59,28 @@ export default class PaString extends PropInput {
       }
     })
   }
+  onAppendClick () {
+    let seq = [...this.sequence]
+    seq.push('#000000')
+    this.sequence = seq
+  }
+  onDeleteClick () {
+    let seq = [...this.sequence]
+    seq.pop()
+    this.sequence = seq
+  }
   colorUpdated (color: string) {
     console.log('Colors.vue____________colorUpdated', color, this.activeIndex)
-    this.__sequence[this.activeIndex] = color
+    let seq = [...this.sequence]
+    seq[this.activeIndex] = color
+    this.sequence = seq
     this.emitChange({
       ...this.prop,
-      value: this.__sequence
+      value: this.sequence
     })
   }
   mounted () {
+    this.sequence = this.prop.value.value || []
   }
 }
 </script>
