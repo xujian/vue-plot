@@ -13,7 +13,7 @@
     </div>
     <div class="editor" style="height: 260px;">
       <pa-code-editor
-        ref="editor"
+        ref="input"
         :value="jsonValue"
         :options="options"></pa-code-editor>
     </div>
@@ -42,7 +42,8 @@ export default class PaString extends PropInput {
     return JSON.stringify(this.prop.value.value, null, 2)
   }
   onSave () {
-    let content: string = this.$refs.editor.value
+    let content: string = this.$refs.input.editor.getValue()
+    debugger
     this.emitChange({
       ...this.prop,
       value: JSON.parse(content)
