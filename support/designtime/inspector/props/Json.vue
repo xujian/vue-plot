@@ -43,7 +43,6 @@ export default class PaString extends PropInput {
   }
   onSave () {
     let content: string = this.$refs.input.editor.getValue()
-    debugger
     this.emitChange({
       ...this.prop,
       value: JSON.parse(content)
