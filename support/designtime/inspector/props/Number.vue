@@ -24,12 +24,9 @@ import { Component } from 'vue-property-decorator'
 })
 export default class PaString extends PropInput {
   onInput (value: number) {
-    this.prop = {
-      number: value
-    }
+    this.prop.value = value
     this.emitChange({
-      ...this.prop,
-      value
+      ...this.prop
     })
   }
 }

@@ -26,6 +26,7 @@ import { Component, Prop as PropDecorator } from 'vue-property-decorator'
 export default class PaPercent extends PropInput {
   onInput (value: string) {
     console.log('Percent.vue===========', value)
+    this.prop.value = value
     this.emitChange({
       ...this.prop,
       value: value + '%'
