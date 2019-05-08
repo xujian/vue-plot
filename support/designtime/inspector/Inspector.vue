@@ -18,7 +18,7 @@
                   <component
                   :is="prop.input"
                   :value="prop"
-                  @change="onPropChange(index, $event)"
+                  @change="onPropChange(prop.name, $event)"
                   @drawerRequired="callDrawer"></component>
                 </div>
                 <div v-else class="prop-item-na">
@@ -113,9 +113,12 @@ export default {
     this.updateProps()
   },
   methods: {
-    onPropChange (propIndex, prop) {
+    onPropChange (name, prop) {
       // 更新本地数据并向上通知
-      this.props[propIndex].value = prop.value
+      let toUpdate = this.props.find(p => p.name === p.name)
+      if (toUpdate) {
+        toUpdate.value = prop.value
+      }
       this.$emit('change', [prop])
     },
     updateProps () {
