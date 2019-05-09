@@ -281,14 +281,13 @@ export default class PaChart extends Vue {
     this.draw()
     // watch 放在draw后面 不然会引起死循环
     Object.keys(this.props).forEach((p: string) => {
-      this.$watch(p, {
-        handler: () => {
+      this.$watch(p, function () {
           if (!'layers'.split(',').includes(p)) {
             this.repaint()
           }
         },
-        deep: true
-      })
+        { deep: true }
+      )
     })
   }
 
