@@ -34,6 +34,7 @@ export declare type Props = {
     </div>`
 })
 export default class PaChart extends Vue {
+  public uuid: string = ''
   public type: string = ''
   public subType: string = ''
   private canvas: any = null
@@ -160,6 +161,7 @@ export default class PaChart extends Vue {
     return {
       ...this.$props,
       __data: this.__data,
+      uuid: this.uuid,
       type: this.type,
       subType: this.subType,
       layers: this.layers,

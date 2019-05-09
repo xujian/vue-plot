@@ -3,15 +3,20 @@ declare module 'vue-chartlib' {
   export default Vue
  
   export class PaChart {
+    uuid: string
+    type: string
+    name: string
     props: any
     repaint (): void
   }
 
   export class ChartFactory {
-    static make (
-      name: String,
-      options: any,
-      layers?: any): PaChart
+    static make (input: {
+      uuid?: string
+      name: string,
+      props: { [key: string]: any },
+      layers?: any[]
+    }): PaChart
   }
 
   export mocks

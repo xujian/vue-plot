@@ -5,29 +5,30 @@ import { charts } from '../../charts'
  * Factory to make Chart from name
  */
 class ChartFactory {
-  static make<T extends PaChart> (
+  static make<T extends PaChart> (input: {
+    uuid?: string
     name: string,
-    props: any,
+    props: { [key: string]: any },
     layers?: any[]
-  ): T {
+  }): T {
     let chart = null
     for (let k in charts) {
-      if (k === name) {
+      if (k === input.name) {
         let chartClass = Reflect.get(charts, k)
         chart = new chartClass()
-        if (layers) {
-          if (props.layers) {
-            props.layers = props.layers.concat(...layers)
+        chart.uuid = input.uuid
+        if (input.layers) {
+          if (input.props.layers) {
+            input.props.layers = input.props.layers.concat(...input.layers)
           } else {
-            props.layers = layers
+            input.props.layers = input.layers
           }
         }
-        console.log('Factory////////props', props)
-        Object.assign(chart, props)
+        console.log('Factory////////props', input.props)
+        Object.assign(chart, input.props)
         chart.afterCreate()
       }
     }
-    
     return chart
   }
 }
