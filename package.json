@@ -25,9 +25,9 @@
     "echarts-gl": "^1.1.1",
     "echarts-liquidfill": "^2.0.4",
     "lodash": "^4.17.11",
-    "quasar": "^1.0.0-beta.21",
-    "vue-class-component": "^7.0.2",
-    "vue-property-decorator": "^8.1.0"
+    "quasar": "^1.0.0-beta.22",
+    "vue-class-component": "^7.1.0",
+    "vue-property-decorator": "^8.1.1"
   },
   "peerDependencies": {
     "echarts": "^4.1.0",
