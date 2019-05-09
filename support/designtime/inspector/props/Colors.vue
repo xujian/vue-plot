@@ -34,7 +34,8 @@
 <script lang="ts">
 import { QBtnGroup, QBtn, QInput, QColor } from 'quasar'
 import PropInput from './PropInput'
-import { Component, Prop as PropDecorator } from 'vue-property-decorator'
+import Component, { mixins } from 'vue-class-component'
+import { Prop as PropDecorator, Watch } from 'vue-property-decorator'
 
 @Component({
   name: 'PaColorsProp',
@@ -44,10 +45,12 @@ import { Component, Prop as PropDecorator } from 'vue-property-decorator'
 })
 export default class PaString extends PropInput {
   activeIndex: number = -1
-  sequence: string[] = []
+  get sequence () {
+    return this.prop.value && this.prop.value.value || []
+  }
   onCreateClick () {
-    this.sequence = ['#000']
-    this.raiseUpdate()
+    let seq = ['#000']
+    this.commit(seq)
   }
   onChipsClick (selected: number) {
     this.activeIndex = selected
@@ -63,30 +66,18 @@ export default class PaString extends PropInput {
   onAppendClick () {
     let seq = [...this.sequence]
     seq.push('#000000')
-    this.sequence = seq
-    this.raiseUpdate()
+    this.commit(seq)
   }
   onDeleteClick () {
     let seq = [...this.sequence]
     seq.pop()
-    this.sequence = seq
-    this.raiseUpdate()
+    this.commit(seq)
   }
   colorUpdated (color: string) {
     console.log('Colors.vue____________colorUpdated', color, this.activeIndex)
     let seq = [...this.sequence]
     seq[this.activeIndex] = color
-    this.sequence = seq
-    this.raiseUpdate()
-  }
-  raiseUpdate () {
-    this.emitChange({
-      ...this.prop,
-      value: this.sequence
-    })
-  }
-  mounted () {
-    this.sequence = this.prop.value && this.prop.value.value || []
+    this.commit(seq)
   }
 }
 </script>

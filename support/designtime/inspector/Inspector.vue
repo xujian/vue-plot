@@ -52,7 +52,7 @@
 import './inspector.css'
 import { 
   QList, QItem, QItemSection, QItemLabel,
-  QTabs, QTab, QTabPanels, QTabPanel
+  QTabs, QTab, QTabPanels, QTabPanel, QColor
 } from 'quasar'
 
 export default {
@@ -104,7 +104,6 @@ export default {
     }
   },
   mounted () {
-    console.log('Props.vue<><', this.props)
     const req = require.context('./props', true, /.vue$/)
     req.keys().forEach(filename => {
       let name = filename.match(/([\w\-]+)\.vue$/)[1]
@@ -115,10 +114,13 @@ export default {
   methods: {
     onPropChange (name, prop) {
       // 更新本地数据并向上通知
-      let toUpdate = this.props.find(p => p.name === p.name)
-      if (toUpdate) {
-        toUpdate.value = prop.value
-      }
+      let updated = [...this.props]
+      updated.forEach(p => {
+        if (p.name === name) {
+          p.value = prop.value
+        }
+      })
+      this.props = updated
       this.$emit('change', [prop])
     },
     updateProps () {
@@ -159,7 +161,8 @@ export default {
     QTabs,
     QTab,
     QTabPanels,
-    QTabPanel
+    QTabPanel,
+    QColor
   }
 }
 </script>

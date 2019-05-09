@@ -1,23 +1,30 @@
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component, Prop as PropDecorator, Watch } from 'vue-property-decorator'
 import Prop from '../../inspectable/Prop'
 
 @Component({
-  props: {
-    value: Prop
-  },
   template: ''
 })
 export default class PropInput extends Vue {
-  
-  private __prop: any
 
+  @PropDecorator({})
+  value?: Prop<any>
+  
   get prop () {
-    return this.__prop = Reflect.get(this, 'value')
+    return this.value
   }
 
   set prop (v) {
-    console.log('PropInput<><>><><><><><><><>', v)
-    this.__prop = v
+    this.emitChange({
+      ...this.prop,
+      value: v
+    })
+  }
+
+  commit (value: any) {
+    this.emitChange({
+      ...this.prop,
+      value: value
+    })
   }
 
   created () {
