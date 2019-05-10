@@ -27,10 +27,6 @@ export default class PropInput extends Vue {
     })
   }
 
-  created () {
-    this.__prop = Reflect.get(this, 'value')
-  }
-
   emitChange (data: any) {
     this.$emit('change', data)
   }

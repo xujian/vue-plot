@@ -5,8 +5,12 @@ module.exports = {
   pluginOptions: {
     webpackBundleAnalyzer: {
       openAnalyzer: false
+    },
+    quasar: {
+      treeShake: true
     }
   },
+
   chainWebpack: config => {
     config.resolve.alias
       .delete('vue$')
@@ -15,6 +19,7 @@ module.exports = {
       .plugin('webpack-bundle-analyzer')
       .use(BundleAnalyzerPlugin)
   },
+
   configureWebpack: {
     output: {},
     externals: {
@@ -34,5 +39,10 @@ module.exports = {
       }
     }
   },
-  filenameHashing: false
+
+  filenameHashing: false,
+
+  transpileDependencies: [
+    /[\\\/]node_modules[\\\/]quasar[\\\/]/
+  ]
 }
