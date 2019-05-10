@@ -104276,7 +104276,7 @@ module.exports = {
 /***/ "8bbf":
 /***/ (function(module, exports) {
 
-module.exports = require("Vue");
+module.exports = require("vue");
 
 /***/ }),
 
@@ -123695,9 +123695,9 @@ function __importDefault(mod) {
     return (mod && mod.__esModule) ? mod : { default: mod };
 }
 
-// EXTERNAL MODULE: external "Vue"
-var external_Vue_ = __webpack_require__("8bbf");
-var external_Vue_default = /*#__PURE__*/__webpack_require__.n(external_Vue_);
+// EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
+var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
+var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
 // EXTERNAL MODULE: ./node_modules/vue-property-decorator/node_modules/vue-class-component/dist/vue-class-component.common.js
 var vue_class_component_common = __webpack_require__("c89a");
@@ -124420,7 +124420,7 @@ function () {
 /* harmony default export */ var echarts = (echarts_Provider);
 // CONCATENATED MODULE: ./src/core/shared/events/bus.ts
 
-var Bus = new external_Vue_default.a({
+var Bus = new external_commonjs_vue_commonjs2_vue_root_Vue_default.a({
   methods: {
     emit: function emit(event, args) {
       this.$emit(event, args);
@@ -125536,7 +125536,7 @@ function (_Vue) {
   }]);
 
   return PaChart;
-}(external_Vue_default.a);
+}(external_commonjs_vue_commonjs2_vue_root_Vue_default.a);
 
 __decorate([inspectable({
   type: String,
@@ -126392,7 +126392,7 @@ function (_Vue) {
   }]);
 
   return PaAccessory;
-}(external_Vue_default.a);
+}(external_commonjs_vue_commonjs2_vue_root_Vue_default.a);
 
 __decorate([vue_property_decorator_Prop({
   default: 'dark'
@@ -127090,7 +127090,7 @@ function () {
 
 
 
-var $chartlib = new external_Vue_default.a({
+var $chartlib = new external_commonjs_vue_commonjs2_vue_root_Vue_default.a({
   computed: {
     configs: {
       get: function get() {
