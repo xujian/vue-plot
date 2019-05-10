@@ -19,5 +19,7 @@ declare module 'vue-chartlib' {
     }): PaChart
   }
 
-  export mocks
+  export {
+    mocks
+  }
 }

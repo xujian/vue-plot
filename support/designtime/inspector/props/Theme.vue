@@ -32,11 +32,11 @@ import { Component, Prop as PropDecorator } from 'vue-property-decorator'
   },
   data () {
     return {
-      selected: this.value
+      selected: this.prop.value
     }
   }
 })
-export default class PaString extends PropInput {
+export default class PaThemeProps extends PropInput {
   onInput (value: string) {
     this.emitChange({
       ...this.prop,

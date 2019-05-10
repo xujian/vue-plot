@@ -2,6 +2,7 @@ const path = require('path')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = {
+  runtimeCompiler: true,
   pluginOptions: {
     webpackBundleAnalyzer: {
       openAnalyzer: false
@@ -14,7 +15,7 @@ module.exports = {
   chainWebpack: config => {
     config.resolve.alias
       .delete('vue$')
-      .set('vue$', '../designer/node_modules/vue/dist/vue.runtime.esm.js')
+      .set('vue$', '../designer/node_modules/vue/dist/vue.js')
     config
       .plugin('webpack-bundle-analyzer')
       .use(BundleAnalyzerPlugin)
@@ -23,7 +24,6 @@ module.exports = {
   configureWebpack: {
     output: {},
     externals: {
-      vue: 'Vue',
       echarts: 'echarts'
     },
     optimization: {
@@ -35,7 +35,7 @@ module.exports = {
       alias: {
         '@': path.resolve(__dirname, './src'),
         '@sb': path.resolve(__dirname, './.storybook'),
-        vue$: '../designer/node_modules/vue/dist/vue.runtime.esm.js'
+        vue$: '../designer/node_modules/vue/dist/vue.js'
       }
     }
   },
