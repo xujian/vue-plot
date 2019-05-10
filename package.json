@@ -6,12 +6,12 @@
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
     "build:docs": "vue-cli-service build --target app ./docs/main.ts",
-    "build:lib": "vue-cli-service build --target lib --name lib ./src/index.ts --no-clean --report",
-    "build:support": "vue-cli-service build --target lib --name support ./support/index.ts --no-clean --report",
+    "build:lib": "vue-cli-service build --target lib --name vue-chartlib ./src/index.ts --no-clean --report",
+    "build:support": "vue-cli-service build --target lib --name vue-chartlib-support ./support/index.ts --no-clean --report",
     "storybook": "start-storybook -s ./public -p 9001 -c .storybook --ci",
     "test:unit": "vue-cli-service test:unit"
   },
-  "main": "dist/lib.common.js",
+  "main": "dist/vue-chartlib.common.js",
   "module": "src/index.ts",
   "files": [
     "dist",
