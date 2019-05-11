@@ -1,6 +1,6 @@
 import echarts from 'echarts'
 import pack from '../../../../utils/pack'
-import { merge } from 'lodash'
+import merge from 'lodash/merge'
 
 let fields: { [name: string]: (...args: any[]) => any } = pack(
   require.context('./styles', true, /.ts$/))

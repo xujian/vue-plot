@@ -1,4 +1,4 @@
-import { merge } from 'lodash'
+import merge from 'lodash/merge'
 
 let presets: {[key: string]: any} = {}
 const requires = require.context('../../presets', true, /.ts$/)

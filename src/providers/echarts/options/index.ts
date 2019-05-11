@@ -1,6 +1,6 @@
 import common from './common'
 import { makeSeries, populateSeries } from './series'
-import { merge } from 'lodash'
+import merge from 'lodash/merge'
 import handler from './handler'
 import options from './defaults/pie';
 

@@ -1,5 +1,5 @@
 import specs from './series/specs'
-import { merge } from 'lodash'
+import merge from 'lodash/merge'
 import makeSeriesStyles from './series/styles'
 import pack from '../../../utils/pack'
 
