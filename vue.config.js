@@ -24,7 +24,8 @@ module.exports = {
   configureWebpack: {
     output: {},
     externals: {
-      echarts: 'echarts'
+      echarts: 'echarts',
+      'echarts-gl': 'echarts-gl'
     },
     optimization: {
       splitChunks: false
