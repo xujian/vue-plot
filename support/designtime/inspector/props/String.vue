@@ -9,21 +9,21 @@
         standout="bg-secondary"
         :value="prop.value || ''"
         placeholder="(未设置)"
-        @input="onInput"></q-input>
+        @change="onInput"></q-input>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import PropInput from './PropInput'
-import { Component, Prop as PropDecorator } from 'vue-property-decorator'
+import { Component } from 'vue-property-decorator'
 
 @Component({
   name: 'PaStringProp'
 })
-export default class PaString extends PropInput {
-  onInput (value: string) {
-    this.prop.value = value
+export default class PaStringProp extends PropInput {
+  onInput ($event: Event) {
+    this.prop.value = ($event.target as any).value
     this.emitChange({
       ...this.prop
     })

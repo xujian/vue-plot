@@ -9,9 +9,9 @@ import PropInput from './PropInput'
 import { Component } from 'vue-property-decorator'
 
 @Component({
-  name: 'PaPosition'
+  name: 'PaPositionProp'
 })
-export default class PaPosition extends PropInput {
+export default class PaPositionProp extends PropInput {
 
 }
 </script>

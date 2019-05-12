@@ -9,9 +9,9 @@
         standout="bg-secondary"
         type="number"
         suffix="%"
-        placeholder="(未设置)"
+        placeholder="(not set)"
         :value="prop.value && prop.value.number"
-        @input="onInput"></q-input>
+        @change="onInput"></q-input>
     </div>
   </div>
 </template>
@@ -21,15 +21,18 @@ import PropInput from './PropInput'
 import { Component, Prop as PropDecorator } from 'vue-property-decorator'
 
 @Component({
-  name: 'PaPercent'
+  name: 'PaPercentProp'
 })
 export default class PaPercent extends PropInput {
-  onInput (value: string) {
-    console.log('Percent.vue===========', value)
-    this.prop.value = value
+  onInput ($event: Event) {
+    console.log('Percent.vue===========', $event)
+    let input = $event.target
+    this.prop.value = {
+      number: (input as any).value
+    }
     this.emitChange({
       ...this.prop,
-      value: value + '%'
+      value: this.prop.value + '%'
     })
   }
   beforeMounted () {

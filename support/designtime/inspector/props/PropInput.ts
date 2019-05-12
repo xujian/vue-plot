@@ -1,13 +1,12 @@
-import { Vue, Component, Prop as PropDecorator, Watch } from 'vue-property-decorator'
-import Prop from '../../inspectable/Prop'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component({
   template: ''
 })
 export default class PropInput extends Vue {
 
-  @PropDecorator({})
-  value?: Prop<any>
+  @Prop({})
+  value: Prop<any>
   
   get prop () {
     return this.value

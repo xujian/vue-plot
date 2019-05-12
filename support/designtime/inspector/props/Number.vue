@@ -9,8 +9,9 @@
         standout="bg-secondary"
         color="secondary"
         type="number"
+        placeholder="(not set)"
         :value="prop.value"
-        @input="onInput"></q-input>
+        @change="onInput"></q-input>
     </div>
   </div>
 </template>
@@ -20,9 +21,9 @@ import PropInput from './PropInput'
 import { Component } from 'vue-property-decorator'
 
 @Component({
-  name: 'PaNumber'
+  name: 'PaNumberProp'
 })
-export default class PaString extends PropInput {
+export default class PaNumberProp extends PropInput {
   onInput (value: number) {
     this.prop.value = value
     this.emitChange({

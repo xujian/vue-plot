@@ -16,7 +16,7 @@ import { Component } from 'vue-property-decorator'
   components: {
   }
 })
-export default class PaString extends PropInput {
+export default class PaStylesProp extends PropInput {
   onChange (val: any) {
     this.emitChange({
       ...this.prop,

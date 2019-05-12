@@ -43,7 +43,7 @@ import { Prop as PropDecorator, Watch } from 'vue-property-decorator'
     QBtnGroup, QBtn, QInput, QColor
   }
 })
-export default class PaString extends PropInput {
+export default class PaColorsProp extends PropInput {
   activeIndex: number = -1
   get sequence () {
     return this.prop.value && this.prop.value.value || []

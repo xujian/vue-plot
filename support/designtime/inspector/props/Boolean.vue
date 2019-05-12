@@ -24,7 +24,7 @@ import { Component, Prop as PropDecorator } from 'vue-property-decorator'
     QToggle
   }
 })
-export default class PaString extends PropInput {
+export default class PaBooleanProp extends PropInput {
   propValue: boolean = false
   onInput (value: boolean) {
     this.propValue = value

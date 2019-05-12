@@ -38,7 +38,7 @@ let PaCodeEditor = require('../../shared/codeeditor/CodeEditor.js')
     PaCodeEditor
   }
 })
-export default class PaString extends PropInput {
+export default class PaJsonProp extends PropInput {
   options: object = {
   }
   errorMessage: string = ''

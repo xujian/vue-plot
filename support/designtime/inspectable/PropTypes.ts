@@ -1,4 +1,4 @@
-import { StyleRules } from '@/core/shared/styles';
+import { StyleRules } from '@/core/shared/styles'
 
 /**
  * 属性类型用于定义属性面板输入模式
