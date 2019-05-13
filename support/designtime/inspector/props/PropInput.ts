@@ -1,12 +1,13 @@
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop as VueProp } from 'vue-property-decorator'
+import Prop from '../../inspectable/Prop'
 
 @Component({
   template: ''
 })
 export default class PropInput extends Vue {
 
-  @Prop({})
-  value: Prop<any>
+  @VueProp({})
+  value?: Prop<any>
   
   get prop () {
     return this.value
@@ -20,10 +21,10 @@ export default class PropInput extends Vue {
   }
 
   commit (value: any) {
-    this.emitChange({
-      ...this.prop,
-      value: value
-    })
+    if (this.prop) {
+      this.prop.value = value
+    }
+    this.emitChange(this.prop)
   }
 
   emitChange (data: any) {

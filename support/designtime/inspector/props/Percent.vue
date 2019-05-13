@@ -11,7 +11,7 @@
         suffix="%"
         placeholder="(not set)"
         :value="prop.value && prop.value.number"
-        @change="onInput"></q-input>
+        @input="onInput"></q-input>
     </div>
   </div>
 </template>
@@ -24,22 +24,13 @@ import { Component, Prop as PropDecorator } from 'vue-property-decorator'
   name: 'PaPercentProp'
 })
 export default class PaPercent extends PropInput {
-  onInput ($event: Event) {
-    console.log('Percent.vue===========', $event)
-    let input = $event.target
-    this.prop.value = {
-      number: (input as any).value
-    }
-    this.emitChange({
-      ...this.prop,
-      value: this.prop.value + '%'
-    })
+  onInput (value: number) {
+    this.prop.value.number = value
+    this.emitChange(this.prop)
   }
   beforeMounted () {
     if (!this.prop.value) {
-      this.prop.value = {
-        numbner: 10
-      }
+      this.prop.value.number = 10
     }
   }
 }

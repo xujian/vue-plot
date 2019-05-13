@@ -23,10 +23,9 @@ import { Component } from 'vue-property-decorator'
 })
 export default class PaStringProp extends PropInput {
   onInput ($event: Event) {
-    this.prop.value = ($event.target as any).value
-    this.emitChange({
-      ...this.prop
-    })
+    let value = ($event.target as any).value
+    this.prop.value = value
+    this.emitChange(this.prop)
   }
 }
 </script>

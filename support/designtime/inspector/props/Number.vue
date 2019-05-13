@@ -11,11 +11,10 @@
         type="number"
         placeholder="(not set)"
         :value="prop.value"
-        @change="onInput"></q-input>
+        @input="onInput"></q-input>
     </div>
   </div>
 </template>
-
 <script lang="ts">
 import PropInput from './PropInput'
 import { Component } from 'vue-property-decorator'
@@ -25,10 +24,7 @@ import { Component } from 'vue-property-decorator'
 })
 export default class PaNumberProp extends PropInput {
   onInput (value: number) {
-    this.prop.value = value
-    this.emitChange({
-      ...this.prop
-    })
+    this.commit(value)
   }
 }
 </script>

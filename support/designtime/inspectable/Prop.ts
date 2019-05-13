@@ -13,17 +13,20 @@ export default class Prop<T extends PropTypes.PropValueType> {
   default!: T 
   private __value: T | undefined = undefined
 
-  get value (): T | undefined {
-    if (this.__value === undefined) {
-      return undefined
-    }
-    return this.type
-      ? new this.type(this.__value)
-      : this.__value
+  get value () {
+    return this.__value
   }
 
-  set value (v: T | undefined) {
-    this.__value = v
+  set value (v: any) {
+    if (false === v instanceof this.type) {
+      this.__value = new this.type(v)
+    } else {
+      this.__value = v
+    }
+  }
+
+  valueOf () {
+    return this.__value ? this.__value.valueOf(): undefined
   }
 
   constructor (input: {

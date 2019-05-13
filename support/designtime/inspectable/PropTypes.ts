@@ -4,7 +4,8 @@ import { StyleRules } from '@/core/shared/styles'
  * 属性类型用于定义属性面板输入模式
  */
 namespace PropTypes {
-  export class PropValueType {
+  export abstract class PropValueType {
+    abstract valueOf (): any
   }
 
   /**
@@ -21,6 +22,10 @@ namespace PropTypes {
       this.width = input.width
       this.height = input.height
     }
+
+    valueOf () {
+      return [this.width, this.height]
+    }
   }
 
   /**
@@ -36,6 +41,10 @@ namespace PropTypes {
       this.y = input.y
       this.z = input.z
     }
+
+    valueOf () {
+      return this.z? [this.x, this.y, this.z]: [this.x, this.y]
+    }
   }
 
   /**
@@ -50,6 +59,10 @@ namespace PropTypes {
       }
       this.number = number
     }
+    
+    valueOf () {
+      return this.number + '%'
+    }
   }
 
   /**
@@ -59,10 +72,13 @@ namespace PropTypes {
     value?: [number, number]
     constructor (input: [number, number] | [string, string]) {
       super()
-      console.log('Range________________________________________________________', input)
       this.value = input ?
         [parseInt(input[0] + '', 10), parseInt(input[1] + '', 10)]
         : undefined
+    }
+
+    valueOf () {
+      return this.value
     }
   }
 
@@ -75,6 +91,10 @@ namespace PropTypes {
       super()
       this.value = input
     }
+
+    valueOf () {
+      return this.value
+    }
   }
 
   /**
@@ -85,6 +105,10 @@ namespace PropTypes {
     constructor (input: StyleRules) {
       super()
       this.value = input
+    }
+
+    valueOf () {
+      return this.value
     }
   }
 
@@ -97,6 +121,10 @@ namespace PropTypes {
       super()
       this.value = input
     }
+
+    valueOf () {
+      return this.value
+    }
   }
 
   /**
@@ -107,6 +135,10 @@ namespace PropTypes {
     constructor (input: string[]) {
       super()
       this.value = input
+    }
+
+    valueOf () {
+      return this.value
     }
   }
 }

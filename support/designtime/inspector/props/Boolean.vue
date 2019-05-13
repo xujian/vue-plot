@@ -7,7 +7,7 @@
       <q-toggle
         dark
         color="secondary"
-        :value="propValue"
+        :value="this.prop.value"
         @input="onInput"></q-toggle>
     </div>
   </div>
@@ -25,16 +25,9 @@ import { Component, Prop as PropDecorator } from 'vue-property-decorator'
   }
 })
 export default class PaBooleanProp extends PropInput {
-  propValue: boolean = false
   onInput (value: boolean) {
-    this.propValue = value
-    this.emitChange({
-      ...this.prop,
-      value: value
-    })
-  }
-  beforeMount () {
-    this.propValue = this.prop.__value || false
+    this.prop.value = value
+    this.emitChange(this.prop)
   }
 }
 </script>
