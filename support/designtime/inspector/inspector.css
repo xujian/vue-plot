@@ -1,3 +1,12 @@
+.inspector .q-toolbar {
+  min-height: 32px;
+}
+
+.inspector .q-toolbar__title {
+  font-size: 14px;
+  padding: 0 12px;
+}
+
 .inspector .q-tabs {
   background-color: rgba(0,0,0,0.17)
 }

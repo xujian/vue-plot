@@ -1,6 +1,18 @@
 <template>
   <div class="inspector">
     <div class="front" @click="onFrontClick">
+    <q-toolbar dark>
+      <q-toolbar-title>属性</q-toolbar-title>
+      <q-space/>
+      <q-btn-dropdown stretch flat label="主图表">
+        <q-list>
+          <q-item-label header>内嵌图表</q-item-label>
+          <q-item>q-line-chart</q-item>
+          <q-item-label header>图表组件</q-item-label>
+          <q-item>tooltip</q-item>
+        </q-list>
+      </q-btn-dropdown>
+    </q-toolbar>
       <q-tabs
         v-model="tab" dense inline-label
         align="right"
@@ -52,7 +64,8 @@
 import './inspector.css'
 import { 
   QList, QItem, QItemSection, QItemLabel,
-  QTabs, QTab, QTabPanels, QTabPanel, QColor
+  QTabs, QTab, QTabPanels, QTabPanel, QColor,
+  QToolbar, QToolbarTitle, QBtnDropdown, QSpace
 } from 'quasar'
 
 export default {
