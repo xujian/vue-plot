@@ -14,17 +14,17 @@ export default class PropInput extends Vue {
   }
 
   set prop (v) {
-    this.emitChange({
-      ...this.prop,
-      value: v
-    })
+    this.commit(v)
   }
 
   commit (value: any) {
     if (this.prop) {
       this.prop.value = value
+      this.emitChange({
+        name: this.prop.name,
+        value: this.prop.valueOf()
+      })
     }
-    this.emitChange(this.prop)
   }
 
   emitChange (data: any) {

@@ -4,34 +4,29 @@
       <div class="prop-label">{{prop.label}}</div>
     </div>
     <div class="col col-input">
-      <q-toggle
+      <q-checkbox
         dark
         color="secondary"
-        :value="this.prop.value"
-        @input="onInput"></q-toggle>
+        :value="prop.value.valueOf()"
+        @input="onInput"></q-checkbox>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import PropInput from './PropInput'
-import { QToggle } from 'quasar'
+import { QCheckbox } from 'quasar'
 import { Component, Prop as PropDecorator } from 'vue-property-decorator'
 
 @Component({
   name: 'PaBooeleanProp',
   components: {
-    QToggle
+    QCheckbox
   }
 })
 export default class PaBooleanProp extends PropInput {
   onInput (value: boolean) {
-    this.prop.value = value
-    this.emitChange(this.prop)
+    this.commit(value)
   }
 }
 </script>
-
-<style>
-
-</style>

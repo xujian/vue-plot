@@ -114,18 +114,17 @@ export default {
   methods: {
     onPropChange (name, prop) {
       // 更新本地数据并向上通知
-      console.log('Inspector.vue________________________onPropCHange', prop)
+      console.log('Inspector.vue________________________onPropChange', prop)
       let updated = [...this.props]
       updated.forEach(p => {
         if (p.name === name) {
-          p.value = prop.valueOf()
+          p.value = prop.value
         }
       })
-      // this.props = updated
+      this.props = updated
       this.$emit('change', [prop])
     },
     updateProps () {
-      console.log('Inspector.vue________________________updateProps', this.value)
       this.props = this.value.map(p => {
         let type = typeof p.type === 'string'? p.type: p.type.name
         p.input = this.components[type]

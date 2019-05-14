@@ -18,7 +18,9 @@ export default class Prop<T extends PropTypes.PropValueType> {
   }
 
   set value (v: any) {
-    if (false === v instanceof this.type) {
+    if (v === undefined) {
+      this.__value = undefined
+    } else  if (false === v instanceof this.type) {
       this.__value = new this.type(v)
     } else {
       this.__value = v
@@ -39,7 +41,6 @@ export default class Prop<T extends PropTypes.PropValueType> {
     readonly?: boolean,
     type?: string
   }) {
-    console.log('Prop.ts_____________________________________________', input)
     Object.assign(this, input)
     this.category =  input.category || 'props'
     this.order =  input.order || 999
