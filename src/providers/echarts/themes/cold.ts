@@ -1,4 +1,4 @@
-var contrastColor = '#eee'
+var contrastColor = '#000'
 var axisCommon = function () {
   return {
     axisLine: {
@@ -31,17 +31,6 @@ var axisCommon = function () {
 };
 
 var colorPalette = [
-  '#009688',
-  '#759aa0',
-  '#e69d87',
-  '#8dc1a9',
-  '#ea7e53',
-  '#eedd78',
-  '#73a373',
-  '#73b9bc',
-  '#7289ab',
-  '#91ca8c',
-  '#f49f42'
 ]
 var theme = {
   color: colorPalette,
@@ -87,7 +76,6 @@ var theme = {
     },
     itemStyle: {
       normal: {
-        color: colorPalette[1]
       }
     },
     label: {

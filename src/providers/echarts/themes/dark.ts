@@ -1,19 +1,20 @@
-var contrastColor = '#eee'
+var lineColor = '#447'
+var textColor = '#99d'
 var axisCommon = function () {
   return {
     axisLine: {
       lineStyle: {
-        color: contrastColor
+        color: lineColor
       }
     },
     axisTick: {
       lineStyle: {
-        color: contrastColor
+        color: lineColor
       }
     },
     axisLabel: {
       textStyle: {
-        color: contrastColor
+        color: textColor
       }
     },
     splitLine: {
@@ -24,7 +25,7 @@ var axisCommon = function () {
     },
     splitArea: {
       areaStyle: {
-        color: contrastColor
+        color: lineColor
       }
     }
   };
@@ -45,41 +46,41 @@ var theme = {
   tooltip: {
     axisPointer: {
       lineStyle: {
-        color: contrastColor
+        color: lineColor
       },
       crossStyle: {
-        color: contrastColor
+        color: lineColor
       }
     }
   },
   legend: {
     textStyle: {
-      color: contrastColor
+      color: lineColor
     }
   },
   textStyle: {
-    color: contrastColor
+    color: lineColor
   },
   title: {
     textStyle: {
-      color: contrastColor
+      color: lineColor
     }
   },
   toolbox: {
     iconStyle: {
       normal: {
-        borderColor: contrastColor
+        borderColor: lineColor
       }
     }
   },
   dataZoom: {
     textStyle: {
-      color: contrastColor
+      color: lineColor
     }
   },
   timeline: {
     lineStyle: {
-      color: contrastColor
+      color: lineColor
     },
     itemStyle: {
       normal: {
@@ -89,14 +90,14 @@ var theme = {
     label: {
       normal: {
         textStyle: {
-          color: contrastColor
+          color: lineColor
         }
       }
     },
     controlStyle: {
       normal: {
-        color: contrastColor,
-        borderColor: contrastColor
+        color: lineColor,
+        borderColor: lineColor
       }
     }
   },
@@ -114,7 +115,7 @@ var theme = {
   gauge: {
     title: {
       textStyle: {
-        color: contrastColor
+        color: lineColor
       }
     }
   },
