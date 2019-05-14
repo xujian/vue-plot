@@ -30,7 +30,7 @@ var axisCommon = function () {
   };
 };
 
-var colorPalette = [
+var colorPalette: string[] = [
 ]
 var theme = {
   color: colorPalette,

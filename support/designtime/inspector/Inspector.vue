@@ -3,13 +3,24 @@
     <div class="front" @click="onFrontClick">
     <q-toolbar dark>
       <q-toolbar-title>属性</q-toolbar-title>
-      <q-space/>
-      <q-btn-dropdown stretch flat label="主图表">
-        <q-list>
+      <q-btn-dropdown class="realm-select"
+        stretch flat dark
+        label="主图表"
+        menu-anchor="top left">
+        <q-list dark class="inspector-realm-menu bg-primary"
+          style="width:160px">
           <q-item-label header>内嵌图表</q-item-label>
-          <q-item>q-line-chart</q-item>
-          <q-item-label header>图表组件</q-item-label>
-          <q-item>tooltip</q-item>
+          <q-item clickable>
+            <q-item-section>
+              <q-item-label>pa-line-chart</q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-item-label header>内嵌组件</q-item-label>
+          <q-item clickable>
+            <q-item-section>
+              <q-item-label>pa-tooltiip</q-item-label>
+            </q-item-section>
+          </q-item>
         </q-list>
       </q-btn-dropdown>
     </q-toolbar>
@@ -65,7 +76,8 @@ import './inspector.css'
 import { 
   QList, QItem, QItemSection, QItemLabel,
   QTabs, QTab, QTabPanels, QTabPanel, QColor,
-  QToolbar, QToolbarTitle, QBtnDropdown, QSpace
+  QToolbar, QToolbarTitle, QBtnDropdown, QSpace,
+  ClosePopup
 } from 'quasar'
 
 export default {

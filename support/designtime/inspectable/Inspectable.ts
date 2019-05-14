@@ -56,7 +56,7 @@ Inspectable.set = function (control: any, field: string, options: InspectableOpt
   book[__class] = props
 }
 
-Inspectable.get = function (control: any) {
+Inspectable.get = function (control: any): Prop<any>[] {
   let result: Prop<any>[] = []
   let proto = control.__proto__
   // 沿原型链向上查找

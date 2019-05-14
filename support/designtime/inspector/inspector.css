@@ -1,10 +1,30 @@
 .inspector .q-toolbar {
-  min-height: 32px;
+  min-height: 24px;
+  background-color: #00695c80
 }
 
 .inspector .q-toolbar__title {
   font-size: 14px;
+}
+
+.inspector .q-toolbar__title:first-child {
+  padding-left: 12px;
+}
+
+.inspector .realm-select {
   padding: 0 12px;
+  background-color: #00847373;
+}
+
+.inspector-realm-menu .q-item__label--header {
+  padding: 6px 12px;
+  background-color: #3a3a3a80;
+}
+
+.inspector-realm-menu .q-item {
+  padding: 6px 12px;
+  min-height: 24px;
+  background-color: #56565680;
 }
 
 .inspector .q-tabs {
