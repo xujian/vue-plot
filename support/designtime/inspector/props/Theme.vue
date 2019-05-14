@@ -9,7 +9,7 @@
         clearable dark options-dark
         toggle-color="secondary"
         placeholder="dark"
-        :value="prop.value.name"
+        :value="prop.value? prop.value.name: undefined"
         @input="onInput"
         :options="[
           'dark',
