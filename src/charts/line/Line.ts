@@ -17,11 +17,11 @@ export default class PaLineChart extends PaChart {
 
   @Inspectable({
     type: Boolean,
-    label: '紧靠坐标轴'
+    label: '坐标轴间隙'
   })
   @Prop({
     type: Boolean,
-    default: true
+    default: false
   })
   gap: boolean | undefined
 
@@ -42,6 +42,10 @@ export default class PaLineChart extends PaChart {
   @Prop({})
   smooth: boolean | undefined
 
+  @Inspectable({
+    type: Boolean,
+    label: '面积'
+  })
   @Prop()
   area: boolean | {} | undefined
 

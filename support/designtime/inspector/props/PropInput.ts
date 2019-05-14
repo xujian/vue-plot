@@ -22,7 +22,7 @@ export default class PropInput extends Vue {
       this.prop.value = value
       this.emitChange({
         name: this.prop.name,
-        value: this.prop.valueOf()
+        value: this.prop.primitive
       })
     }
   }

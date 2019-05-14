@@ -7,7 +7,7 @@
       <q-checkbox
         dark
         color="secondary"
-        :value="prop.value.valueOf()"
+        :value="prop.primitive || false"
         @input="onInput"></q-checkbox>
     </div>
   </div>

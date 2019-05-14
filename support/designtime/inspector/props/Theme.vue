@@ -10,11 +10,12 @@
         color="secondary"
         toggle-color="secondary"
         label=""
-        v-model="selected"
+        :value="prop.value"
+        @input="onInput"
         :options="[
-          { label: 'Dark', value: 'dark'},
-          { label: 'Warm', value: 'warm'},
-          { label: 'Cold', value: 'cold'},
+          'dark',
+          'warm',
+          'cold'
         ]"></q-select>
     </div>
   </div>
@@ -29,19 +30,11 @@ import { Component, Prop as PropDecorator } from 'vue-property-decorator'
   name: 'PaThemeProp',
   components: {
     QSelect
-  },
-  data () {
-    return {
-      selected: this.prop.value
-    }
   }
 })
 export default class PaThemeProps extends PropInput {
-  onInput (value: string) {
-    this.emitChange({
-      ...this.prop,
-      value
-    })
+  onInput (selected: any) {
+    this.commit(selected)
   }
 }
 </script>

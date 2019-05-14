@@ -10,7 +10,7 @@ export default class Prop<T extends PropTypes.PropValueType> {
   readonly: boolean = false
   type: any = String
   order: number = 999
-  default!: T 
+  default!: any
   private __value: T | undefined = undefined
 
   get value () {
@@ -27,7 +27,7 @@ export default class Prop<T extends PropTypes.PropValueType> {
     }
   }
 
-  valueOf () {
+  get primitive () {
     return this.__value ? this.__value.valueOf(): undefined
   }
 
