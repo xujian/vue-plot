@@ -108,3 +108,7 @@
 .inspector .prop-json .error {
   margin-top: -32px;
 }
+
+.q-menu .q-item--active {
+  color: #009688;
+}

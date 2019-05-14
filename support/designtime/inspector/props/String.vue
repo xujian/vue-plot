@@ -5,7 +5,7 @@
     </div>
     <div class="col">
       <q-input
-        square dense dark
+        square dense dark clearable
         standout="bg-secondary"
         :value="prop.value || ''"
         placeholder="(未设置)"

@@ -116,14 +116,14 @@ namespace PropTypes {
    * 设定主题
    */
   export class Theme extends PropValueType {
-    value: string
+    name: string
     constructor (input: string) {
       super()
-      this.value = input
+      this.name = input
     }
 
     valueOf () {
-      return this.value
+      return this.name
     }
   }
 

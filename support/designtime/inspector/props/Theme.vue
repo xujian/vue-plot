@@ -7,10 +7,9 @@
       <q-select
         dense borderless standout
         clearable dark options-dark
-        color="secondary"
         toggle-color="secondary"
-        label=""
-        :value="prop.value"
+        placeholder="dark"
+        :value="prop.value.name"
         @input="onInput"
         :options="[
           'dark',
