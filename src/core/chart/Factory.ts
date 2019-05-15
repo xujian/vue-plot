@@ -22,7 +22,6 @@ function createChart (chartClass: typeof PaChart, input: any): PaChart {
       input.props.layers = input.layers
     }
   }
-  console.log('Factory////////props', chartClass, input.props)
   Object.assign(chart, input.props)
   chart.afterCreate()
   return chart
@@ -38,16 +37,15 @@ function createAccessory (type: typeof PaAccessory, props: any) {
  * Factory to make Chart from name
  */
 class ChartFactory {
-  static make<T extends PaChart> (input: {
+  static make (input: {
     uuid?: string
     name: string,
     props: { [key: string]: any },
     layers?: any[]
-  }): T | null {
+  }): PaChart | null {
     let chart = null
     for (let k in charts) {
       if (k === input.name) {
-        console.log('Factory.ts___________make, layers', k, input.props.layers)
         let layers: PaChart[] = []
         if (input.props.layers) {
           input.props.layers.forEach((props: any) => {
