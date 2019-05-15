@@ -5,14 +5,23 @@
       <q-toolbar-title>属性</q-toolbar-title>
       <q-btn-dropdown class="realm-select"
         stretch flat dark
-        label="主图表"
+        :label="getLabel()"
         menu-anchor="top left">
         <q-list dark class="inspector-realm-menu bg-primary"
           style="width:160px">
-          <q-item-label header>内嵌图表</q-item-label>
-          <q-item clickable>
+          <q-item clickable
+            @click="applyProps('main')">
             <q-item-section>
-              <q-item-label>pa-line-chart</q-item-label>
+              <q-item-label>外层图表</q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-item-label header>内嵌图表</q-item-label>
+          <q-item clickable
+            v-for="(layer, index) in value.layers"
+            :key="index"
+            @click="applyProps('layer-' + index)">
+            <q-item-section>
+              <q-item-label>{{layer.name}}</q-item-label>
             </q-item-section>
           </q-item>
           <q-item-label header>内嵌组件</q-item-label>
@@ -84,21 +93,17 @@ export default {
   name: 'PaInspector',
   props: {
     value: {
-      type: [Array, Object]
+      type: Object
     },
     uuid: {
       type: String
     }
   },
-  computed: {
-    props () {
-      return this.value
-    }
-  },
   data () {
     return {
       components: {},
-      props: [],
+      props: this.value.main,
+      realm: 'main', // 右上角属性组
       tabs: [
         {
           name: 'props',
@@ -124,7 +129,7 @@ export default {
   watch: {
     value: {
       handler () {
-        this.updateProps()
+        this.applyProps()
       }
     }
   },
@@ -134,7 +139,7 @@ export default {
       let name = filename.match(/([\w\-]+)\.vue$/)[1]
       this.components[name] = req(filename).default
     })
-    this.updateProps()
+    this.applyProps()
   },
   methods: {
     onPropChange (name, prop) {
@@ -149,8 +154,19 @@ export default {
       this.props = updated
       this.$emit('change', [prop])
     },
-    updateProps () {
-      this.props = this.value.map(p => {
+    applyProps (realm) {
+      this.realm = realm || 'main'
+      let activeProps = []
+      if (this.realm === 'main') {
+        activeProps = this.value.main
+      } else if (this.realm.startsWith('layer')) {
+        let index = parseInt(this.realm.replace('layer-', ''), 10)
+        activeProps = this.value.layers[index].props
+      } else if (this.realm.startsWith('accessory')) {
+        let index = parseInt(this.realm.replace('accessory-', ''), 10)
+        activeProps = this.value.accessories[index].props
+      }
+      this.props = activeProps.map(p => {
         let type = typeof p.type === 'string'? p.type: p.type.name
         p.input = this.components[type]
         return p
@@ -178,6 +194,20 @@ export default {
           data: false
         }
       })
+    },
+    getLabel () {
+      if (this.realm === 'main') {
+        return '外层图表'
+      } else if (this.realm.startsWith('layer')) {
+        let index = parseInt(this.realm.replace('layer-', ''), 10)
+        let t = this.value.layers[index].name
+        return '内嵌图表:' + t
+      } else if (this.realm.startsWith('accessory')) {
+        let index = parseInt(ths.realm.replace('accessory-', ''), 10)
+        let t = this.value.accessories[index].name
+        return '内嵌图表:' + t
+      }
+      return '(NA)'
     }
   },
   components: {

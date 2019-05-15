@@ -28,7 +28,7 @@ export function resolveSlot (slots: VNode[]) {
         } else {
           result.push({
             name: name,
-            props
+            component
           })
         }
       }

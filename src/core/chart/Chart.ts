@@ -1,6 +1,5 @@
 import Vue, { VNode } from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
-// import Prop from '../decorators/Prop'
 import { resolveSlot } from '../../core/accessories/slots'
 import Provider from '../../providers/echarts'
 import Bus from '../../core/shared/events/bus'
@@ -14,6 +13,7 @@ import normalizeProps from '../shared/props'
 import Inspectable, { PropTypes } from '../../../support/designtime/inspectable'
 import '../../css/chart.css'
 import '../../css/helpers.css'
+import PaAccessory from '../accessories/Accessory'
 
 /**
  * 定义 chart 的 props 组
@@ -51,8 +51,6 @@ export default class PaChart extends Vue {
   })
   @Prop({})
   title: string | undefined
-
-  layers: any[] = []
 
   @Prop({})
   x: string[] | object | undefined
@@ -122,8 +120,9 @@ export default class PaChart extends Vue {
   @Prop({})
   rotate: number | undefined
 
-  @Prop({})
-  public accessories: {} | undefined
+  layers: PaChart[] = []
+
+  public accessories: { [key: string]: PaAccessory } = {}
 
   // hooks
   dataAvailable (data: any, props: any): any[] {
@@ -140,7 +139,7 @@ export default class PaChart extends Vue {
     }
   }
 
-  constructor() {
+  constructor () {
     super()
     this.type = ''
   }
@@ -149,7 +148,7 @@ export default class PaChart extends Vue {
    * Custom hook, called when props set
    * in Factory.ts
    */
-  afterCreate() {
+  afterCreate () {
     // console.log('///////////Chart.ts afterCreate', this.props)
   }
 
@@ -157,37 +156,40 @@ export default class PaChart extends Vue {
    * 拿到所有chart specified props
    * 用于生成 echart options
    */
-  public get props(): any {
+  public get props (): any {
+    let accessories: { [key: string]: any } = {}
+    if (this.accessories) {
+      Object.keys(this.accessories).forEach(a => {
+        accessories[a] = this.accessories[a].props
+      })
+    }
     return {
       ...this.$props,
       __data: this.__data,
       uuid: this.uuid,
       type: this.type,
       subType: this.subType,
-      layers: this.layers,
-      accessories: this.accessories
+      layers: this.layers.map(l => l.props),
+      accessories
     }
   }
 
-  addLayer() {}
+  addLayer () {}
 
-  addAxis() {}
+  addAxis () {}
 
-  applyOptions(options: any) {}
+  applyOptions (options: any) {}
 
-  protected appendOptions(): void {}
+  protected appendOptions (): void {}
 
   onLayerDataLoad (layer: PaChart) {
     console.log('Chart.ts___________________onLayerDataLoad', layer)
   }
 
-  get computedProps() {
+  get computedProps () {
     let { layers, accessories } = this.processSlots()
-    layers = this.layers.concat(...layers)
-    accessories = merge({},
-      this.accessories,
-      accessories
-    )
+    this.layers = this.layers.concat(...layers)
+    this.accessories = merge({}, this.accessories, accessories)
     let preset = PresetManager.get(this.preset)
     let theme = themes[this.theme || 'dark']
     let assignedProps: {[key: string]: any} = {}
@@ -204,8 +206,6 @@ export default class PaChart extends Vue {
       theme.props, // props in theme
       preset.props, // preset props
       assignedProps, // props assigned
-      { layers },
-      { accessories }, // props from accessories
       { name: this.constructor.name }
     )
     console.log('%c///Chart.ts: get computedProps: finalProps',
@@ -214,12 +214,12 @@ export default class PaChart extends Vue {
     return finalProps
   }
 
-  protected processSlots() {
-    // 将 slot 里面的 accessory 处理为 layers/accessories
+  protected processSlots () {
+    // 将 slot 内容处理为 layers/accessories
     let slots = resolveSlot(this.$slots.default || [])
     let results: {
-      layers: any[],
-      accessories: { [key: string]: any }
+      layers: PaChart[],
+      accessories: { [key: string]: PaAccessory }
     } = {layers: [], accessories: {}}
     if (slots.length) {
       slots.forEach(s => {
@@ -227,11 +227,10 @@ export default class PaChart extends Vue {
         let name = s.name.replace(/^pa-/, '')
         if (name === 'layer') {
           s.component.$on('dataFetched', this.onLayerDataLoad)
-          results.layers.push(s.component.props)
+          results.layers.push(s.component)
         } else {
           // 处理 props
-          results.accessories[name] = s.props
-          // props[name] = s.props
+          results.accessories[name] = s.component
         }
       })
     }
@@ -243,11 +242,11 @@ export default class PaChart extends Vue {
    * slot 之后的特别处理, 由子类实现
    * @param props 输入的 props 项目
    */
-  protected postProcessSlots(props: any): any {
+  protected postProcessSlots (props: any): any {
     return props
   }
 
-  private draw() {
+  private draw () {
     // 计算最终的 options 并交给 echart 绘图
     let finalProps = this.computedProps
     let withLayers = [finalProps, ...finalProps.layers]
@@ -279,29 +278,29 @@ export default class PaChart extends Vue {
     })
   }
 
-  private init() {
+  private init () {
     this.draw()
     // watch 放在draw后面 不然会引起死循环
+    let props = Object.keys(this.props)
     Object.keys(this.props).forEach((p: string) => {
-      this.$watch(p, function () {
-          if (!'layers'.split(',').includes(p)) {
-            this.repaint()
-          }
+      if (!'layers,accessories'.split(',').includes(p)) {
+        this.$watch(p, function () {
+          this.repaint()
         },
-        { deep: true }
-      )
+        { deep: true })
+      }
     })
   }
 
-  public repaint() {
+  public repaint () {
     this.canvas && this.canvas.dispose()
     this.draw()
   }
 
-  created() {
+  created () {
   }
 
-  mounted() {
+  beforeMount () {
     // determin mode by parent
     // to prevent layer chart to draw
     this.mode = this.$parent instanceof PaChart ? 'layer' : 'chart'

@@ -141,3 +141,7 @@
 .q-menu .q-item--active {
   color: #009688;
 }
+
+.inspector .q-checkbox__bg {
+  border-radius: 0;
+}
