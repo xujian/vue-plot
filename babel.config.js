@@ -1,14 +1,14 @@
 module.exports = {
-  "presets": [
-    "@vue/app"
+  presets: [
+    'vue'
   ],
-  "plugins": [
+  plugins: [
     [
-      "transform-imports",
+      'transform-imports',
       {
-        "quasar": {
-          "transform": "quasar/dist/babel-transforms/imports.js",
-          "preventFullImport": true
+        quasar: {
+          transform: 'quasar/dist/babel-transforms/imports.js',
+          preventFullImport: true
         }
       }
     ]
