@@ -26,6 +26,7 @@
     "echarts-liquidfill": "^2.0.4",
     "lodash": "^4.17.11",
     "quasar": "^1.0.0-beta.22",
+    "storybook-addon-chartlib": "../storybook-addon-chartlib",
     "vue-class-component": "^7.1.0",
     "vue-property-decorator": "^8.1.1"
   },
