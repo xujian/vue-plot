@@ -23,32 +23,42 @@
   * stories 业务stories
   * utils  
 
-## Install
-
-```bash
-git clone https://github.com/xujian/vue-chartlib
-cd vue-chartlib
-yarn
-```
-
 ### 解决依赖
-#### 1. 安装 designer
+
+1. designer
+1. vue-chartlib
+1. storybook-addon-chartlib
+是三个并列项目
+
+依赖关系为:
+
+designer → vue-chartlib → storybook-addon-chartlib
+
+分别下载 designer与storybook-addon-chartlib
 
 designer 是用于测试属性面板的demo项目
+storybook-addon-chartlib是storybook addon
 
 ```bash
 cd ..
 git clone https://github.com/xujian/designer
 cd designer
 yarn
+cd ..
+git clone https://github.com/xujian/storybook-addon-chartlib
+cd ../storybook-addon-chartlib
+yarn
 ```
 
-vue-chartlib 需要使用designer内的vue本地宝
-vue-chartlib/vue.config.j内设置有指向designer目录的vue alias
+## Install
 
-```code
-vue$: '../designer/node_modules/vue/dist/vue.js'
+```bash
+cd ..
+git clone https://github.com/xujian/vue-chartlib
+cd vue-chartlib
+yarn
 ```
+
 
 #### 2. 设置npm link
 
@@ -62,18 +72,21 @@ cd ../designer
 npm link vue-chartlib
 ```
 
-#### 2. storybook-addon-chartlib
-
-
 ## Storybook
 ![Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)
 
 组件库使用Storybook做演示及开发时预览。
 https://github.com/storybooks/storybook
 
-启动Storybook
+#### 启动Storybook
 
 ```bash
+cd ../vue-chartlib
 yarn storybook
 ```
 
+#### Build
+
+```bash
+yarn build:lib
+```
