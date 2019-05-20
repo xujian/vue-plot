@@ -1,5 +1,6 @@
 var lineColor = '#447'
-var textColor = '#99d'
+var labelColor = '#99d'
+var textColor = '#cce'
 var axisCommon = function () {
   return {
     axisLine: {
@@ -14,7 +15,7 @@ var axisCommon = function () {
     },
     axisLabel: {
       textStyle: {
-        color: textColor
+        color: labelColor
       }
     },
     splitLine: {
@@ -55,15 +56,15 @@ var theme = {
   },
   legend: {
     textStyle: {
-      color: lineColor
+      color: textColor
     }
   },
   textStyle: {
-    color: lineColor
+    color: textColor
   },
   title: {
     textStyle: {
-      color: lineColor
+      color: textColor
     }
   },
   toolbox: {
