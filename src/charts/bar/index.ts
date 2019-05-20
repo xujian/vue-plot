@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import PaBarChart from './Bar'
-import { VueClass } from 'vue-class-component/lib/declarations';
+import { VueClass } from 'vue-class-component/lib/declarations'
 
 const Plugin = {
   install (Vue: VueClass<Vue>) {

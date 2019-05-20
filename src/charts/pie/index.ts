@@ -1,7 +1,7 @@
 import __Vue__ from 'vue'
 import PaPieChart from './Pie'
 import PaRingChart from './Ring'
-import { VueClass } from 'vue-class-component/lib/declarations';
+import { VueClass } from 'vue-class-component/lib/declarations'
 
 const Plugin = {
   install(Vue: typeof __Vue__) {

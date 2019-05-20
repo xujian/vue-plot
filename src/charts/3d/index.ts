@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Pa3dBarChart from './ThreedBar'
-import { VueClass } from 'vue-class-component/lib/declarations';
+import { VueClass } from 'vue-class-component/lib/declarations'
 
 const Plugin = {
   install (Vue: VueClass<Vue>) {

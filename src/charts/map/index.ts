@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import PaMap from './Map'
 import PaBaiduMap from './BaiduMap'
-import { VueClass } from 'vue-class-component/lib/declarations';
+import { VueClass } from 'vue-class-component/lib/declarations'
 
 const Plugin = {
   install (Vue: VueClass<Vue>) {
