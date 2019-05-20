@@ -1385,11 +1385,29 @@
     requireindex "^1.2.0"
     tsutils "^3.7.0"
 
+"@typescript-eslint/eslint-plugin@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.npm.taobao.org/@typescript-eslint/eslint-plugin/download/@typescript-eslint/eslint-plugin-1.9.0.tgz#29d73006811bf2563b88891ceeff1c5ea9c8d9c6"
+  dependencies:
+    "@typescript-eslint/experimental-utils" "1.9.0"
+    "@typescript-eslint/parser" "1.9.0"
+    eslint-utils "^1.3.1"
+    functional-red-black-tree "^1.0.1"
+    regexpp "^2.0.1"
+    requireindex "^1.2.0"
+    tsutils "^3.7.0"
+
 "@typescript-eslint/experimental-utils@1.8.0":
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-1.8.0.tgz#634edf60c2fa6e6a34df3d96887dfc26c4fcbdcc"
   dependencies:
     "@typescript-eslint/typescript-estree" "1.8.0"
+
+"@typescript-eslint/experimental-utils@1.9.0":
+  version "1.9.0"
+  resolved "https://registry.npm.taobao.org/@typescript-eslint/experimental-utils/download/@typescript-eslint/experimental-utils-1.9.0.tgz#a92777d0c92d7bc8627abd7cdb06cdbcaf2b39e8"
+  dependencies:
+    "@typescript-eslint/typescript-estree" "1.9.0"
 
 "@typescript-eslint/parser@1.8.0", "@typescript-eslint/parser@^1.1.0":
   version "1.8.0"
@@ -1400,9 +1418,25 @@
     eslint-scope "^4.0.0"
     eslint-visitor-keys "^1.0.0"
 
+"@typescript-eslint/parser@1.9.0", "@typescript-eslint/parser@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.npm.taobao.org/@typescript-eslint/parser/download/@typescript-eslint/parser-1.9.0.tgz#5796cbfcb9a3a5757aeb671c1ac88d7a94a95962"
+  dependencies:
+    "@typescript-eslint/experimental-utils" "1.9.0"
+    "@typescript-eslint/typescript-estree" "1.9.0"
+    eslint-scope "^4.0.0"
+    eslint-visitor-keys "^1.0.0"
+
 "@typescript-eslint/typescript-estree@1.8.0":
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-1.8.0.tgz#8f327a4267c6074ec7dd55b7b3e418d91d1d0226"
+  dependencies:
+    lodash.unescape "4.0.1"
+    semver "5.5.0"
+
+"@typescript-eslint/typescript-estree@1.9.0":
+  version "1.9.0"
+  resolved "https://registry.npm.taobao.org/@typescript-eslint/typescript-estree/download/@typescript-eslint/typescript-estree-1.9.0.tgz#5d6d49be936e96fb0f859673480f89b070a5dd9b"
   dependencies:
     lodash.unescape "4.0.1"
     semver "5.5.0"
@@ -4331,6 +4365,12 @@ escodegen@^1.11.0:
   optionalDependencies:
     source-map "~0.6.1"
 
+eslint-config-prettier@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.npm.taobao.org/eslint-config-prettier/download/eslint-config-prettier-4.3.0.tgz#c55c1fcac8ce4518aeb77906984e134d9eb5a4f0"
+  dependencies:
+    get-stdin "^6.0.0"
+
 eslint-config-standard@^12.0.0:
   version "12.0.0"
   resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-12.0.0.tgz#638b4c65db0bd5a41319f96bba1f15ddad2107d9"
@@ -4392,6 +4432,12 @@ eslint-plugin-node@^8.0.0:
     minimatch "^3.0.4"
     resolve "^1.8.1"
     semver "^5.5.0"
+
+eslint-plugin-prettier@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.npm.taobao.org/eslint-plugin-prettier/download/eslint-plugin-prettier-3.1.0.tgz#8695188f95daa93b0dc54b249347ca3b79c4686d"
+  dependencies:
+    prettier-linter-helpers "^1.0.0"
 
 eslint-plugin-promise@^4.0.1:
   version "4.1.1"
@@ -4761,6 +4807,10 @@ fast-deep-equal@^1.0.0:
 fast-deep-equal@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-2.0.1.tgz#7b05218ddf9667bf7f370bf7fdb2cb15fdd0aa49"
+
+fast-diff@^1.1.2:
+  version "1.2.0"
+  resolved "https://registry.npm.taobao.org/fast-diff/download/fast-diff-1.2.0.tgz#73ee11982d86caaf7959828d519cfe927fac5f03"
 
 fast-glob@^2.0.2, fast-glob@^2.2.6:
   version "2.2.6"
@@ -5143,6 +5193,10 @@ get-func-name@^2.0.0:
 get-own-enumerable-property-symbols@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/get-own-enumerable-property-symbols/-/get-own-enumerable-property-symbols-2.0.1.tgz#5c4ad87f2834c4b9b4e84549dc1e0650fb38c24b"
+
+get-stdin@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.npm.taobao.org/get-stdin/download/get-stdin-6.0.0.tgz#9e09bf712b360ab9225e812048f71fde9c89657b"
 
 get-stream@^3.0.0:
   version "3.0.0"
@@ -8044,6 +8098,12 @@ prepend-http@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
 
+prettier-linter-helpers@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/prettier-linter-helpers/download/prettier-linter-helpers-1.0.0.tgz#d23d41fe1375646de2d0104d3454a3008802cf7b"
+  dependencies:
+    fast-diff "^1.1.2"
+
 prettier@1.16.3:
   version "1.16.3"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.16.3.tgz#8c62168453badef702f34b45b6ee899574a6a65d"
@@ -8051,6 +8111,10 @@ prettier@1.16.3:
 prettier@^1.16.4:
   version "1.17.0"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.17.0.tgz#53b303676eed22cc14a9f0cec09b477b3026c008"
+
+prettier@^1.17.1:
+  version "1.17.1"
+  resolved "https://registry.npm.taobao.org/prettier/download/prettier-1.17.1.tgz#ed64b4e93e370cb8a25b9ef7fef3e4fd1c0995db"
 
 pretty-error@^2.0.2, pretty-error@^2.1.1:
   version "2.1.1"
