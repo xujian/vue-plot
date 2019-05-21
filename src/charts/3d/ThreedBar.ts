@@ -1,6 +1,6 @@
 import { Component, Prop } from 'vue-property-decorator'
 // import Prop from '../../core/decorators/Prop'
-import PaChart, { Props } from '../../core/chart'
+import PaChart from '../../core/chart'
 import { ChartDataTypes } from '../../core/data'
 import 'echarts-gl'
 
@@ -12,7 +12,7 @@ export default class Pa3dBarChart extends PaChart {
   })
   data: string | ChartDataTypes.BarChartData[] | undefined
 
-  constructor() {
+  constructor () {
     super()
     this.type = 'bar3D'
     this.subType = '3d-bar'

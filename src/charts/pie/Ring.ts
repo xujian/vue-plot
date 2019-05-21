@@ -1,10 +1,10 @@
-import { Component, Prop } from 'vue-property-decorator'
+import { Component } from 'vue-property-decorator'
 import PaPieChart from './Pie'
 
 @Component({})
 export default class PaRingChart extends PaPieChart {
 
-  constructor() {
+  constructor () {
     super()
     this.type = 'pie'
     this.subType = 'ring'

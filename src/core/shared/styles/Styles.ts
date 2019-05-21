@@ -1,4 +1,4 @@
-import Color, { Gradient } from './Color'
+import Color from './Color'
 
 export type StyleRules = {
   canvas?: {}
@@ -54,7 +54,7 @@ export class StyleSet {
   constructor () {
     this.items = []
   }
-  
+
   add (items: Styles | Styles[]) {
     if (!Array.isArray(items)) {
       items = [items]

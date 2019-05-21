@@ -2,7 +2,6 @@ import common from './common'
 import { makeSeries, populateSeries } from './series'
 import merge from 'lodash/merge'
 import handler from './handler'
-import options from './defaults/pie';
 
 let defaults: any = {}
 let requires = require.context(
@@ -18,7 +17,7 @@ function buildProps (props: any) {
   // 文件名为字段名
   let names = Object.keys(props)
   // 将 styles 挪到最后一个
-  names = names.sort((a, b) => b === 'styles' ? -1 : 1) 
+  names = names.sort((a, b) => b === 'styles' ? -1 : 1)
   names.forEach((k: string) => {
     const type = props.subType || props.type // transfer to typed field function
     let fieldWithType = k + '.' + type

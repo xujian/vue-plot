@@ -1,27 +1,27 @@
 <template>
   <div class="prop-colors row">
     <div class="col">
-      <div class="prop-label">{{prop.label}}</div>
+      <div class="prop-label">{{ prop.label }}</div>
     </div>
     <div class="col">
-      <div class="chips" v-if="sequence.length > 0">
+      <div v-if="sequence.length > 0" class="chips">
         <q-btn-group class="pipe">
           <q-btn
-            size="xs"
             v-for="(c, i) in sequence"
             :key="i"
+            size="xs"
             :style="{backgroundColor:c}"
             :label="i + 1"
-            @click.stop="onChipsClick(i)"></q-btn>
+            @click.stop="onChipsClick(i)" />
           </q-btn-group>
           <q-btn class="append-btn"
             size="xs"
             label="+"
-            @click.stop="onAppendClick"></q-btn>
+            @click.stop="onAppendClick" />
           <q-btn class="clear-btn"
             size="xs"
             label="X"
-            @click.stop="onDeleteClick"></q-btn>
+            @click.stop="onDeleteClick" />
       </div>
       <div v-else class="empty">
         <span>(not set)</span>
@@ -34,8 +34,7 @@
 <script lang="ts">
 import { QBtnGroup, QBtn, QInput, QColor } from 'quasar'
 import PropInput from './PropInput'
-import Component, { mixins } from 'vue-class-component'
-import { Prop as PropDecorator, Watch } from 'vue-property-decorator'
+import Component from 'vue-class-component'
 
 @Component({
   name: 'PaColorsProp',
@@ -46,7 +45,7 @@ import { Prop as PropDecorator, Watch } from 'vue-property-decorator'
 export default class PaColorsProp extends PropInput {
   activeIndex: number = -1
   get sequence () {
-    return this.prop.value && this.prop.value.value || []
+    return this.prop && this.prop.value && this.prop.value.value || []
   }
   onCreateClick () {
     let seq = ['#000']
@@ -56,7 +55,7 @@ export default class PaColorsProp extends PropInput {
     this.activeIndex = selected
     this.callColorPicker(this.sequence[selected])
   }
-  callColorPicker (data?: any, callback?: (color: string) => {}) {
+  callColorPicker (data?: any) {
     this.$emit('drawerRequired', {
       command: 'color', payload: {
         data, callback: this.colorUpdated

@@ -1,6 +1,5 @@
 import { Component, Prop } from 'vue-property-decorator'
-// import Prop from '../../core/decorators/Prop'
-import PaChart, { Props } from '../../core/chart'
+import PaChart from '../../core/chart'
 import { ChartDataTypes } from '../../core/data'
 import Inspectable, { PropTypes } from '../../../support/designtime/inspectable'
 
@@ -50,12 +49,12 @@ export default class PaBarChart extends PaChart {
   })
   data: string | ChartDataTypes.BarChartData[] | undefined
 
-  constructor() {
+  constructor () {
     super()
     this.type = 'bar'
   }
 
-  onBarClick(): void {
+  onBarClick (): void {
     this.$emit('click')
   }
 }

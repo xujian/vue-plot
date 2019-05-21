@@ -1,16 +1,16 @@
 import echarts from 'echarts'
 import options from './options'
-import globalConfigs, { setGlobalConfigs } from '../../core/shared/configs'
+import globalConfigs from '../../core/shared/configs'
 
 class Provider {
 
   public container: any
 
-  constructor(container: any) {
+  constructor (container: any) {
     this.container = container
   }
 
-  draw(props: any, beforePaint: (options: any) => any): any {
+  draw (props: any, beforePaint: (options: any) => any): any {
     let theme = globalConfigs.theme
     let chart = echarts.init(this.container, theme)
     let finalOption = options.make(props)
@@ -24,8 +24,7 @@ class Provider {
     return chart
   }
 
-  make(options: any): void {
-
+  make (options: any): void {
   }
 }
 

@@ -1,4 +1,4 @@
-import PaChart, { Props } from './Chart'
+import PaChart from './Chart'
 import { charts } from '../../charts'
 import { PaAxis } from '../accessories/axises'
 import PaAccessory from '../accessories/Accessory'
@@ -38,7 +38,7 @@ function createAccessory (type: typeof PaAccessory, props: any) {
  */
 class ChartFactory {
   static make (input: {
-    uuid?: string
+    uuid?: string,
     name: string,
     props: { [key: string]: any },
     layers?: any[]

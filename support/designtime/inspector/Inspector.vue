@@ -216,14 +216,10 @@ export default {
     }
   },
   components: {
-    QList,
-    QItem,
-    QItemSection,
-    QTabs,
-    QTab,
-    QTabPanels,
-    QTabPanel,
-    QColor
+    QList, QItem, QItemSection, QItemLabel,
+    QTabs, QTab, QTabPanels, QTabPanel, QColor,
+    QToolbar, QToolbarTitle, QBtnDropdown, QSpace,
+    ClosePopup
   }
 }
 </script>

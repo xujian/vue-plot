@@ -1,12 +1,12 @@
-export default function (series: any[], props: any) {
-  let result = series.map(s => {
+export default function (series: any[]) {
+  series.forEach(s => {
     let item = {
       label: {
         normal: {
-            position: 'left',
-            verticalAlign: 'middle',
-            align: 'right',
-            color: '#fff'
+          position: 'left',
+          verticalAlign: 'middle',
+          align: 'right',
+          color: '#fff'
         }
       }
     }

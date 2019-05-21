@@ -28,9 +28,23 @@ module.exports = {
     indent: 0,
     '@typescript-eslint/indent': [1, 2],
     '@typescript-eslint/explicit-function-return-type': 0,
-    '@typescript-eslint/member-delimiter-style': [2, {
-      delimiter: 'none',
-      requireLast: false,
+    '@typescript-eslint/member-delimiter-style': [1, {
+      multiline: {
+        delimiter: 'comma',
+        requireLast: true
+      },
+      singleline: {
+        delimiter: 'comma',
+        requireLast: true
+      },
+      overrides: {
+        interface: {
+          multiline: {
+            delimiter: 'semi',
+            requireLast: true
+          }
+        }
+      }
     }],
     '@typescript-eslint/prefer-interface': 0,
     'vue/max-attributes-per-line': 0,

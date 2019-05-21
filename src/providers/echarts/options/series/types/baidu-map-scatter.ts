@@ -1,4 +1,4 @@
-export default function (series: any[], props: any) {
+export default function (series: any[]) {
   series.forEach((s: any) => {
     let item: any = {
       name: '',

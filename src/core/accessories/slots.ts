@@ -1,7 +1,4 @@
 import { VNode } from 'vue'
-import PaChart from '../chart';
-import ChartFactory from '../chart/Factory';
-
 /**
  * 将 <chart>内slot包含的内容转化为标准选项或layer
  */
@@ -14,7 +11,6 @@ export function resolveSlot (slots: VNode[]) {
         let tag = s.componentOptions && s.componentOptions.tag || s.tag || ''
         let component = s.componentInstance
         console.log('slots.ts______componnet', component)
-        let props = component ? (component as PaChart).props: {}
         let name: string = tag
         if (tag !== null && tag.endsWith('-chart')) {
           // 嵌入的 chart
@@ -39,9 +35,9 @@ export function resolveSlot (slots: VNode[]) {
 }
 
 /**
- * 
- * @param chartType 
- * @param props 
+ *
+ * @param chartType
+ * @param props
  */
 function processLayer (chartType: string, component: any) {
   return component

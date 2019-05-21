@@ -1,9 +1,9 @@
 /**
  * 将styles.label翻译为series内的字段
- * @param rules 
- * @param props 
+ * @param rules
+ * @param props
  */
-export default function (rules: any, props: any) {
+export default function (rules: any) {
   let label: {[key: string]: any} = {}
   /***
    * styles.label = '{c}%'
@@ -25,7 +25,7 @@ export default function (rules: any, props: any) {
       let formats = rules.label.formats
       label = {
         normal: {
-          formatter: function(params: any, ticket: any, callback: () => void) {
+          formatter: function (params: any) {
             return [
               '{name|' + params.name + '}\n',
               formats.hr ? '{hr|}\n' : '',

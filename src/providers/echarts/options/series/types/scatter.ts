@@ -1,3 +1,3 @@
-export default function (series: any[], props: any) {
+export default function (series: any[]) {
   return series
 }

@@ -2,24 +2,26 @@
   <div class="prop-json">
     <div class="prop-label row">
       <div class="col">
-        <h6>{{prop.label}}</h6>
+        <h6>{{ prop.label }}</h6>
       </div>
       <div class="col text-right">
-        <q-btn 
+        <q-btn
           size="xs"
-          @click="onSave"
-          label="保存"></q-btn>
+          label="保存"
+          @click="onSave" />
       </div>
     </div>
     <div class="editor" style="height: 260px;">
       <pa-code-editor
         ref="input"
         :value="jsonValue"
-        :options="options"></pa-code-editor>
+        :options="options" />
     </div>
     <q-banner v-if="errorMessage"
       dense dark
-      class="bg-primary">{{errorMessage}}</q-banner>
+      class="bg-primary">
+      {{ errorMessage }}
+    </q-banner>
   </div>
 </template>
 
@@ -43,11 +45,10 @@ export default class PaJsonProp extends PropInput {
   }
   errorMessage: string = ''
   get jsonValue () {
-    return JSON.stringify(this.prop.value && this.prop.value.value || {}, null, 2)
+    return JSON.stringify(this.prop && this.prop.value && this.prop.value.value || {}, null, 2)
   }
   onSave () {
     let content: string = this.$refs.input.editor.getValue()
-    let parsed = undefined
     try {
       content = content.trim() || '{}'
       let parsed = JSON.parse(content)

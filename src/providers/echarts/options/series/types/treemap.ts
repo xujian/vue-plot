@@ -1,9 +1,9 @@
-export default function (series: any[], props: any) {
+export default function (series: any[]) {
   let defaults = {
     roam: false,
     nodeClick: false,
     breadcrumb: {
-        show: false
+      show: false
     },
   }
   series = series.map((s: any) => Object.assign({}, s, defaults))

@@ -1,4 +1,4 @@
-export default function (rules: any, props: any) {
+export default function (rules: any) {
   let result: {[key: string]: any} = {}
   let line = rules.line
   if (typeof line === 'string') {
@@ -7,7 +7,7 @@ export default function (rules: any, props: any) {
     }
   } else {
 
-  } 
+  }
   return {
     lineStyle: result
   }
