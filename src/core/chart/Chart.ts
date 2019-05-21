@@ -253,12 +253,12 @@ export default class PaChart extends Vue {
     let dataPromises = withLayers.map(props => DataManager.load(props))
     Promise.all(dataPromises).then((props: any) => {
       this.__data = props[0].data
-      finalProps = merge({}, 
+      finalProps = merge({},
         finalProps,
         props[0]
       )
       let layersProps = props.slice(1)
-      finalProps.layers = finalProps.layers.map((l: any, i: number) => 
+      finalProps.layers = finalProps.layers.map((l: any, i: number) =>
         merge({}, l, layersProps[i]))
       if (finalProps.styles) {
         finalProps.styles = StyleManager.make(finalProps)

@@ -1,10 +1,10 @@
 module.exports = {
-  parser:  '@typescript-eslint/parser', 
+  parser:  '@typescript-eslint/parser',
   extends: [
     'plugin:vue/essential',
     'plugin:@typescript-eslint/recommended',
     '@vue/standard',
-    '@vue/typescript'  
+    '@vue/typescript'
   ],
   plugins: [
     '@typescript-eslint'
@@ -13,7 +13,7 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'prettier/prettier': 0,
-    'space-before-function-paren': 'always',
+    'space-before-function-paren': 2,
     '@typescript-eslint/explicit-member-accessibility': 0,
     '@typescript-eslint/indent': 0,
     '@typescript-eslint/explicit-function-return-type': 0,
