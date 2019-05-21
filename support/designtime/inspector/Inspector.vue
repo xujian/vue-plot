@@ -1,60 +1,62 @@
 <template>
   <div class="inspector">
     <div class="front" @click="onFrontClick">
-    <q-toolbar dark>
-      <q-toolbar-title>属性</q-toolbar-title>
-      <q-btn-dropdown class="realm-select"
-        stretch flat dark
-        :label="getLabel()"
-        menu-anchor="top left">
-        <q-list dark class="inspector-realm-menu bg-primary"
-          style="width:160px">
-          <q-item clickable
-            @click="applyProps('main')">
-            <q-item-section>
-              <q-item-label>外层图表</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item-label header>内嵌图表</q-item-label>
-          <q-item clickable
-            v-for="(layer, index) in value.layers"
-            :key="index"
-            @click="applyProps('layer-' + index)">
-            <q-item-section>
-              <q-item-label>{{layer.name}}</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item-label header>内嵌组件</q-item-label>
-          <q-item clickable>
-            <q-item-section>
-              <q-item-label>pa-tooltiip</q-item-label>
-            </q-item-section>
-          </q-item>
-        </q-list>
-      </q-btn-dropdown>
-    </q-toolbar>
+      <q-toolbar dark>
+        <q-toolbar-title>属性</q-toolbar-title>
+        <q-btn-dropdown class="realm-select"
+          stretch flat dark
+          :label="getLabel()"
+          menu-anchor="top left">
+          <q-list dark class="inspector-realm-menu bg-primary"
+            style="width:160px">
+            <q-item clickable
+              @click="applyProps('main')">
+              <q-item-section>
+                <q-item-label>外层图表</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item-label header>内嵌图表</q-item-label>
+            <q-item
+              v-for="(layer, index) in value.layers"
+              :key="index"
+              clickable
+              @click="applyProps('layer-' + index)">
+              <q-item-section>
+                <q-item-label>{{ layer.name }}</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item-label header>内嵌组件</q-item-label>
+            <q-item clickable>
+              <q-item-section>
+                <q-item-label>pa-tooltiip</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-btn-dropdown>
+      </q-toolbar>
       <q-tabs
         v-model="tab" dense inline-label
         align="right"
         :breakpoint="0">
-        <q-tab v-for="t in tabs" :key="t.name" :name="t.name" :label="t.label"></q-tab>
+        <q-tab v-for="t in tabs" :key="t.name" :name="t.name" :label="t.label" />
       </q-tabs>
       <q-tab-panels v-model="tab" animated="">
         <q-tab-panel v-for="t in tabs" :key="t.name" :name="t.name">
-          <q-list class="items" v-if="props.length > 0">
+          <q-list v-if="props.length > 0" class="items">
             <q-item
               v-for="(prop, index) in props.filter(p => p.category === t.name).sort((a, b) => a.order - b.order)"
               :key="index">
               <q-item-section>
-                <div class="prop-item" v-if="prop.input">
+                <div v-if="prop.input" class="prop-item">
                   <component
-                  :is="prop.input"
-                  :value="prop"
-                  @change="onPropChange(prop.name, $event)"
-                  @drawerRequired="callDrawer"></component>
+                    :is="prop.input"
+                    :value="prop"
+                    @change="onPropChange(prop.name, $event)"
+                    @drawerRequired="callDrawer"
+                  />
                 </div>
                 <div v-else class="prop-item-na">
-                  <h6>{{prop.label}}</h6>
+                  <h6>{{ prop.label }}</h6>
                   <p>尚未实现</p>
                 </div>
               </q-item-section>
@@ -69,12 +71,13 @@
     </div>
     <div class="drawer" :class="{'active': drawerActive}">
       <div class="color-picker-container">
-        <q-color dark
+        <q-color
           v-if="drawerColor"
+          dark
           :value="drawerColor"
-          @input="onColorPickerInput"
           class="color-picker"
-          ></q-color>
+          @input="onColorPickerInput"
+        />
       </div>
     </div>
   </div>
@@ -82,7 +85,7 @@
 
 <script>
 import './inspector.css'
-import { 
+import {
   QList, QItem, QItemSection, QItemLabel,
   QTabs, QTab, QTabPanels, QTabPanel, QColor,
   QToolbar, QToolbarTitle, QBtnDropdown, QSpace,
@@ -93,10 +96,12 @@ export default {
   name: 'PaInspector',
   props: {
     value: {
-      type: Object
+      type: Object,
+      default: () => ({})
     },
     uuid: {
-      type: String
+      type: String,
+      default: () => ''
     }
   },
   data () {

@@ -29,7 +29,7 @@ export default class PaAccessory extends Vue {
     return this.__parent
   }
 
-  set parent(parent: AccessoryHost) {
+  set parent (parent: AccessoryHost) {
     this.__parent = parent
   }
 

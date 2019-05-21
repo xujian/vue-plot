@@ -1,13 +1,12 @@
-import Vue, { VNode } from 'vue'
+import Vue from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 import { resolveSlot } from '../../core/accessories/slots'
 import Provider from '../../providers/echarts'
 import Bus from '../../core/shared/events/bus'
-import Styles, { StyleRules, StyleManager } from '../shared/styles'
+import { StyleRules, StyleManager } from '../shared/styles'
 import themes from '../shared/themes'
 import { PresetManager } from '../shared/presets'
 import { DataManager } from '../data'
-import accessories from '../accessories'
 import merge from 'lodash/merge'
 import normalizeProps from '../shared/props'
 import Inspectable, { PropTypes } from '../../../support/designtime/inspectable'
@@ -218,8 +217,8 @@ export default class PaChart extends Vue {
     // 将 slot 内容处理为 layers/accessories
     let slots = resolveSlot(this.$slots.default || [])
     let results: {
-      layers: PaChart[],
-      accessories: { [key: string]: PaAccessory }
+      layers: PaChart[];
+      accessories: { [key: string]: PaAccessory };
     } = {layers: [], accessories: {}}
     if (slots.length) {
       slots.forEach(s => {
@@ -279,7 +278,7 @@ export default class PaChart extends Vue {
   }
 
   private init () {
-    this.draw()
+    this.draw ()
     // watch 放在draw后面 不然会引起死循环
     let props = Object.keys(this.props)
     Object.keys(this.props).forEach((p: string) => {
@@ -310,7 +309,7 @@ export default class PaChart extends Vue {
     Bus.on('theme.changed', this.repaint)
   }
 
-  beforeDestroy() {
+  beforeDestroy () {
     Bus.off('theme.changed', this.repaint)
   }
 }
