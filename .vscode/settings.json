@@ -1,0 +1,22 @@
+{
+  "eslint.enable": true,
+  "eslint.validate": [
+    {
+      "language": "vue",
+      "autoFix": false
+    },
+    {
+      "language": "html",
+      "autoFix": false
+    },
+    {
+      "language": "javascript",
+      "autoFix": true
+    },
+    {
+      "language": "typescript",
+      "autoFix": true
+    }
+  ],
+  "vetur.validation.template": false
+}
