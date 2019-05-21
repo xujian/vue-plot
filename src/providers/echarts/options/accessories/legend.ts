@@ -1,4 +1,4 @@
-export default (props: any, providerOptions: any) => {
+export default (props: any) => {
   let input: any = props.accessories.legend
   if (input === false) {
     return {

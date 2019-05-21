@@ -27,8 +27,8 @@ var axisCommon = function () {
         color: contrastColor
       }
     }
-  };
-};
+  }
+}
 
 var colorPalette = [
   '#9b8bba',

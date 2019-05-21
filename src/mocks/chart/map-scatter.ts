@@ -384,7 +384,7 @@ var geoCoordMap: any = {
   大庆: [125.03, 46.58]
 }
 
-var convertData = function(data: any[]) {
+var convertData = function (data: any[]) {
   var res = []
   for (var i = 0; i < data.length; i++) {
     var geoCoord = geoCoordMap[data[i].name]

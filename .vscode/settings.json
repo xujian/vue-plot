@@ -17,6 +17,5 @@
       "language": "typescript",
       "autoFix": true
     }
-  ],
-  "vetur.validation.template": false
+  ]
 }

@@ -1,5 +1,3 @@
-import accessories from '@/core/accessories';
-
 export default {
   name: 'legend-right-vertical',
   props: {

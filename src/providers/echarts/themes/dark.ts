@@ -29,8 +29,8 @@ var axisCommon = function () {
         color: lineColor
       }
     }
-  };
-};
+  }
+}
 
 var colorPalette = [
   '#A0CE3A',
