@@ -1,6 +1,6 @@
 export default function (series: any[], props: any, options: any) {
   let item: any = {
-    barWidth: props.barWidth,
+    barWidth: props.barWidth+'%',
     barGap: props.barGap
   }
   if (props.stacked) {
@@ -19,7 +19,7 @@ export default function (series: any[], props: any, options: any) {
    */
   if (props.shadow) {
     if (typeof options.xAxis === 'object') {
-      options.xAxis = [options.xAxis, {
+      options.xAxis = [...options.xAxis, {
         type: 'category',
         axisTick: {
           show: false
@@ -30,11 +30,11 @@ export default function (series: any[], props: any, options: any) {
         axisLabel: {
           show: false
         },
-        data: options.xAxis.data
+        data: options.xAxis[0].data
       }]
     }
     // 阴影 插入一个表示阴影的series
-    let shadow :{ [key: string]: any, data: number[] } = {
+    let shadow: { [key: string]: any, data: number[] } = {
       type: 'bar',
       data: []
     }
@@ -46,20 +46,22 @@ export default function (series: any[], props: any, options: any) {
     let [m, pow] = max.toPrecision(2).split('e+')
     max = Math.ceil(parseFloat(m)) * Math.pow(10, parseInt(pow, 10))
     shadow.data = Array(props.data[0].length).fill(max)
-    shadow.barGap = props.barGap
+    shadow.barGap = '-100%'
     shadow.xAxisIndex = 1
     shadow.barCategoryGap = '-100%'
-    shadow.barWidth = props.barWidth
+    shadow.barWidth = ((props.barWidth)*(props.data.length+2))+'%'
     shadow.itemStyle = {
       normal: {color: 'rgba(255,255,255,0.2)'}
     }
-    let seriesWithSadows: any[] = []
-    series.forEach((s: any) => {
-      // Reflect.deleteProperty(s, 'barGap')
-      seriesWithSadows.push(shadow)
-      seriesWithSadows.push(s)
-    })
-    series = seriesWithSadows
+    
+    // let seriesWithSadows: any[] = []
+    // series.forEach((s: any) => {
+    //   Reflect.deleteProperty(s, 'barGap')
+    //   seriesWithSadows.push(shadow)
+    //   seriesWithSadows.push(s)
+    // })
+    // series = seriesWithSadows
+    series.push(shadow)
   }
   return series
 }
