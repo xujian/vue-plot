@@ -8,7 +8,7 @@ export default (props: any, providerOptions: any) => {
     trigger: 'axis',
     positon: tooltip.positon
   }
-  if (tooltip.foramtter) {
+  if (tooltip.formatter) {
     output.formatter = [
       '<div class="tooltip">',
       tooltip.formatter,
