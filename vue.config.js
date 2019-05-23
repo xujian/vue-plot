@@ -35,6 +35,8 @@ module.exports = {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
+        '@chartlib': path.resolve(__dirname, './src'),
+        '@ui': path.resolve(__dirname, './ui'),
         '@sb': path.resolve(__dirname, './.storybook'),
         vue$: '../designer/node_modules/vue/dist/vue.js'
       }

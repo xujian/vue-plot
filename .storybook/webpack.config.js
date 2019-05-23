@@ -8,9 +8,9 @@ module.exports = async ({ config, mode }) => {
 
   // Make whatever fine-grained changes you need
   config.module.rules.push({
-    test: /\.scss$/,
-    loaders: ['style-loader', 'css-loader', 'sass-loader'], 
-    include: path.resolve(__dirname, '../'),
+    test: /\.less$/,
+    exclude: /node_modules/,
+    loaders: ['style-loader', 'css-loader', 'less-loader']
   }, {
     test: /\.(ts|tsx)$/,
     use: [{

@@ -17,5 +17,6 @@
       "language": "typescript",
       "autoFix": true
     }
-  ]
+  ],
+  "vetur.format.defaultFormatter.js": "vscode-typescript",
 }

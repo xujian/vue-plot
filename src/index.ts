@@ -1,7 +1,7 @@
 import __Vue__ from 'vue'
 import { charts, plugins } from './charts'
 import accessories from './core/accessories'
-import globalConfigs, { setGlobalConfigs } from './core/shared/configs'
+import { setGlobalConfigs } from './core/shared/configs'
 import ThemeManager from './providers/echarts/themes'
 import $chartlib from './$chartlib'
 

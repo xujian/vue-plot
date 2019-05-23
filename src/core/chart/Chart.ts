@@ -18,7 +18,7 @@ import PaAccessory from '../accessories/Accessory'
  * 定义 chart 的 props 组
  */
 export declare type Props = {
-  [key: string]: any
+  [key: string]: any,
 }
 
 @Component({
@@ -121,7 +121,7 @@ export default class PaChart extends Vue {
 
   layers: PaChart[] = []
 
-  public accessories: { [key: string]: PaAccessory } = {}
+  public accessories: { [key: string]: PaAccessory, } = {}
 
   // hooks
   dataAvailable (data: any, props: any): any[] {
@@ -156,7 +156,7 @@ export default class PaChart extends Vue {
    * 用于生成 echart options
    */
   public get props (): any {
-    let accessories: { [key: string]: any } = {}
+    let accessories: { [key: string]: any, } = {}
     if (this.accessories) {
       Object.keys(this.accessories).forEach(a => {
         accessories[a] = this.accessories[a].props
@@ -191,7 +191,7 @@ export default class PaChart extends Vue {
     this.accessories = merge({}, this.accessories, accessories)
     let preset = PresetManager.get(this.preset)
     let theme = themes[this.theme || 'dark']
-    let assignedProps: {[key: string]: any} = {}
+    let assignedProps: {[key: string]: any,} = {}
     let props = this.props
     Object.keys(props).forEach(p => {
       if (props[p] !== undefined) { // 直接给定的props
@@ -217,8 +217,8 @@ export default class PaChart extends Vue {
     // 将 slot 内容处理为 layers/accessories
     let slots = resolveSlot(this.$slots.default || [])
     let results: {
-      layers: PaChart[];
-      accessories: { [key: string]: PaAccessory };
+      layers: PaChart[],
+      accessories: { [key: string]: PaAccessory, },
     } = {layers: [], accessories: {}}
     if (slots.length) {
       slots.forEach(s => {

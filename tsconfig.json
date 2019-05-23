@@ -24,6 +24,9 @@
       "@chartlib/*": [
         "src/*"
       ],
+      "@ui/*": [
+        "ui/*"
+      ],
       "@sb/*": [
         ".storybook/*"
       ],
@@ -47,6 +50,8 @@
     "src/**/*.vue",
     "support/**/*.ts",
     "support/**/*.vue",
+    "ui/**/*.ts",
+    "ui/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx", "src/index.js",
     "support/designtime/shared/codeeditor/CodeEditor.js"

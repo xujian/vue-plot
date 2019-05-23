@@ -3,7 +3,8 @@ import { configure, addParameters, addDecorator } from '@storybook/vue'
 import addons, { makeDecorator } from '@storybook/addons'
 import { withKnobs } from '@storybook/addon-knobs'
 import options from './options'
-import ChartLib from '../src/index'
+import Chartlib from '../src'
+import Uilib from '../ui'
 import $chartlib from '../src/$chartlib'
 import withLiveCode from './decorators/withLiveCode'
 import withProps from './decorators/withProps'
@@ -46,15 +47,19 @@ addDecorator(makeDecorator({
   }
 }))
 
-Vue.use(ChartLib, {
+Vue.use(Chartlib, {
   theme: 'dark'
 })
 
+Vue.use(Uilib)
+
 function loadStories() {
   require('../src/stories')
-  const req = require.context('../src/charts', true, /.stories.js$/)
-  let stories = req.keys().map(filename => req(filename).default)
-  return stories
+  const chartContext = require.context('../src/charts', true, /.stories.js$/)
+  let chartStories = chartContext.keys().map(filename => chartContext(filename).default)
+  const uiContext = require.context('../ui/elements', true, /.stories.js$/)
+  let uiStories = uiContext.keys().map(filename => uiContext(filename).default)
+  return [...chartStories, ...uiStories]
 }
 
 configure(loadStories, module)

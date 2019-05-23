@@ -11,7 +11,7 @@ import Pa3dBarChartPlugin, { Pa3dBarChart } from './3d'
 import PaLiquidChartPlugin, { PaLiquidChart } from './liquid'
 import PaGaugeChartPlugin, { PaGaugeChart } from './gauge'
 
-let plugins: {[name: string]: any} = {
+let plugins: {[name: string]: any,} = {
   PaBarChartPlugin,
   PaPieChartPlugin,
   PaLineChartPlugin,
