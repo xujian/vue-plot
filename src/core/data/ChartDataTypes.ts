@@ -31,3 +31,8 @@ export declare type RadarChartData = {
   name: string,
   value: number[]
 }[]
+
+export declare type GaugeChartData = {
+  name: string,
+  value: number[]
+}[]
