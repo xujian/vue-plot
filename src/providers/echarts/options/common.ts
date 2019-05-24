@@ -2,7 +2,7 @@
  * 负责组装echarts原生配置项
  */
 
- /**
+/**
   * 全体图表类型共用的基本配置
   */
 const common = {
@@ -36,7 +36,8 @@ const common = {
   tooltip: {
     trigger: 'axis',
     padding: 10,
-    borderWidth: 0,
+    borderWidth: 1,
+    borderColor: '#fff',
     backgroundColor: 'rgba(0,0,0,0.33)',
     textStyle: {
       fontSize: 12,
@@ -45,7 +46,7 @@ const common = {
       type: 'shadow'
     },
     extraCssText: [
-      'border-radius: 0',
+      'border-radius: 12px',
       'background-color： rgba(0,0,0,0.5)'
     ].join(';')
   }
@@ -53,7 +54,7 @@ const common = {
 
 declare type ProviderOptions = {
   series: any[],
-  data: any[]
+  data: any[],
 }
 
 export default common

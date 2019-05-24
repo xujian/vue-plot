@@ -9,6 +9,8 @@ export default (props: any, providerOptions: any) => {
     positon: tooltip.positon
   }
   if (tooltip.formatter) {
+    output.borderWidth = 0
+    output.extraCssText = ''
     output.formatter = [
       '<div class="tooltip">',
       tooltip.formatter,
