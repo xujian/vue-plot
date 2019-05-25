@@ -20,6 +20,12 @@ import { Component, Prop } from 'vue-property-decorator'
 })
 export default class PaTable extends PaElement {
   @Prop({
+    type: [Boolean, Array],
+    default: false
+  })
+  header?: boolean | string[]
+
+  @Prop({
     type: Array,
     default: []
   })
