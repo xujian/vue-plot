@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import PaComponent from './Component'
 import { Component, Prop } from 'vue-property-decorator'
 import { resolveSlot } from '../../core/accessories/slots'
 import Provider from '../../providers/echarts'
@@ -32,10 +32,8 @@ export declare type Props = {
       </div>
     </div>`
 })
-export default class PaChart extends Vue {
-  public uuid: string = ''
-  public type: string = ''
-  public subType: string = ''
+export default class PaChart extends PaComponent {
+
   private canvas: any = null
 
   /**
