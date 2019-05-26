@@ -3,7 +3,7 @@ import { Component, Prop } from 'vue-property-decorator'
 import { resolveSlot } from '../../core/accessories/slots'
 import Provider from '../../providers/echarts'
 import Bus from '../../core/shared/events/bus'
-import { StyleRules, StyleManager } from '../shared/styles'
+import { StyleManager } from '../shared/styles'
 import themes from '../shared/themes'
 import { PresetManager } from '../shared/presets'
 import { DataManager } from '../data'
@@ -13,13 +13,6 @@ import Inspectable, { PropTypes } from '../../../support/designtime/inspectable'
 import '../../css/chart.css'
 import '../../css/helpers.css'
 import PaAccessory from '../accessories/Accessory'
-
-/**
- * 定义 chart 的 props 组
- */
-export declare type Props = {
-  [key: string]: any,
-}
 
 @Component({
   template: `
@@ -73,16 +66,6 @@ export default class PaChart extends PaComponent {
   preset: string | undefined
 
   @Inspectable({
-    label: '配色主题',
-    type: PropTypes.Theme,
-    category: 'styles',
-    order: 1,
-    default: ''
-  })
-  @Prop({})
-  theme: string | undefined
-
-  @Inspectable({
     label: '颜色序列',
     type: PropTypes.Colors,
     order: 3,
@@ -90,15 +73,6 @@ export default class PaChart extends PaComponent {
   })
   @Prop({})
   colors: string | string[] | undefined
-
-  @Inspectable({
-    label: '样式定义',
-    type: PropTypes.Json,
-    category: 'styles',
-    default: {}
-  })
-  @Prop({})
-  styles: StyleRules | StyleRules[] | string | undefined
 
   @Prop({})
   data: string | any[] | undefined
@@ -278,7 +252,6 @@ export default class PaChart extends PaComponent {
   private init () {
     this.draw ()
     // watch 放在draw后面 不然会引起死循环
-    let props = Object.keys(this.props)
     Object.keys(this.props).forEach((p: string) => {
       if (!'layers,accessories'.split(',').includes(p)) {
         this.$watch(p, function () {

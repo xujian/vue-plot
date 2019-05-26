@@ -1,4 +1,5 @@
-import PaChart, { Props } from './Chart'
+import PaChart from './Chart'
+import { Props } from './Component'
 
 export default PaChart
 

@@ -2,7 +2,8 @@
   "recommendations": [
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
-    "editorconfig.editorconfig"
+    "editorconfig.editorconfig",
+    "gruntfuggly.todo-tree"
   ],
   "unwantedRecommendations": [
     "hookyqr.beautify",
