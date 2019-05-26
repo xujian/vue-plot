@@ -1,13 +1,13 @@
-import PaTable from './Table'
+import PaLabel from './Label'
 
 const Plugin = {
   install (Vue: any) {
-    Vue.component(PaTable.name, PaTable)
+    Vue.component(PaLabel.name, PaLabel)
   }
 }
 
 export default Plugin
 
 export {
-  PaTable
+  PaLabel
 }
