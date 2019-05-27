@@ -1,17 +1,14 @@
 <template>
-  <div class="prop-percent row">
+  <div class="prop-size row">
     <div class="col col-label">
       <div class="prop-label">{{ prop.label }}</div>
     </div>
     <div class="col col-input">
-      <q-input
-        square dense dark
-        standout="bg-secondary"
-        type="number"
-        suffix="%"
-        placeholder="(not set)"
-        :value="prop.value && prop.value.number"
-        @input="onInput" />
+      <q-select
+      :value="value"
+      :options="[
+        'tn', 'xs', 'sm', 'lg', 'xl'
+      ]" />
     </div>
   </div>
 </template>
@@ -21,15 +18,15 @@ import PropInput from './PropInput'
 import { Component } from 'vue-property-decorator'
 
 @Component({
-  name: 'PaPercentProp'
+  name: 'PaSizeProp'
 })
-export default class PaPercent extends PropInput {
+export default class PaSizeProp extends PropInput {
   onInput (value: number) {
     this.commit(value)
   }
   beforeMounted () {
     if (!this.prop.value) {
-      this.prop.value.number = 10
+      this.prop.value = 'sm'
     }
   }
 }

@@ -10,15 +10,6 @@ import { Component, Prop } from 'vue-property-decorator'
 })
 export default class PaLabel extends PaElement {
 
-  /**
-   * Icon's family (set)
-   */
-  @Prop({
-    type: String,
-    default: 'sm'
-  })
-  size?: string
-
   @Prop({
     type: String,
     default: 'Label'

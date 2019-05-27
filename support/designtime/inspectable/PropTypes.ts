@@ -16,7 +16,7 @@ namespace PropTypes {
     height: number | string | undefined
     constructor (input: {
       width: number | string,
-      height: number | string
+      height: number | string,
     }) {
       super()
       this.width = input.width
@@ -59,7 +59,7 @@ namespace PropTypes {
       }
       this.number = number
     }
-    
+
     valueOf () {
       return this.number + '%'
     }
@@ -133,6 +133,21 @@ namespace PropTypes {
   export class Colors extends PropValueType {
     value?: string[]
     constructor (input: string[]) {
+      super()
+      this.value = input
+    }
+
+    valueOf () {
+      return this.value
+    }
+  }
+
+  /**
+   * 尺码
+   */
+  export class Size extends PropValueType {
+    value?: string
+    constructor (input: string) {
       super()
       this.value = input
     }

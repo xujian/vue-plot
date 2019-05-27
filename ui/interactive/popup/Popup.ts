@@ -1,6 +1,7 @@
 import PaComponent from '../../../src/core/chart/Component'
 import { Component, Prop } from 'vue-property-decorator'
-import { Inspectable } from '../../../support'
+import Inspectable, { PropTypes } from '../../../support/designtime/inspectable'
+
 
 @Component({
   template: `<div class="pa-popup"
@@ -15,6 +16,11 @@ export default class PaPopup extends PaComponent {
 
   active: boolean = false
 
+  @Inspectable({
+    type: String,
+    label: '标识符',
+    order: 2
+  })
   @Prop({
     type: String,
     default: ''

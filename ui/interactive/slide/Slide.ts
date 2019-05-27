@@ -14,7 +14,7 @@ export default class PaSlide extends PaElement {
     type: Number,
     default: 2
   })
-  size?: number
+  count?: number
 
   beforeMount () {
   }

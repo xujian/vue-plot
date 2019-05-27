@@ -1,7 +1,28 @@
 import PaComponent from '../../src/core/chart/Component'
-import { Component } from 'vue-property-decorator'
+import { Component, Prop } from 'vue-property-decorator'
+import Inspectable, { PropTypes } from '../../support/designtime/inspectable'
 
 @Component({})
 export default class PaElement extends PaComponent {
+
+  @Inspectable({
+    type: String,
+    label: '颜色'
+  })
+  @Prop({
+    type: String,
+    default: '#fff'
+  })
+  color?: string
+
+  @Inspectable({
+    type: PropTypes.Size,
+    label: '尺码'
+  })
+  @Prop({
+    type: String,
+    default: 'sm' // tn, xs, sm, lg, xl
+  })
+  size?: string
 
 }

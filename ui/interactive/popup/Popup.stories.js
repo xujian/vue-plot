@@ -1,10 +1,9 @@
 import { storiesOf } from '@storybook/vue'
 let stories = storiesOf('UI|交互组件', module)
 
-
 stories.add('对话框', () => ({
   template: `<div>
-    <pa-button>弹出对话框</pa-button>
+    <pa-button class="round">弹出对话框</pa-button>
     <pa-popup
       name="conda">
       <pa-table

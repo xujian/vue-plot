@@ -51,6 +51,7 @@ module.exports = {
     'vue/html-indent': 0,
     'vue/singleline-html-element-content-newline': 0,
     'vue/html-closing-bracket-newline': 0,
-    'vue/order-in-components': 0
+    'vue/order-in-components': 0,
+    '@typescript-eslint/no-namespace': 0
   }
 }
