@@ -7,7 +7,7 @@ stories.add('Simple', () => ({
     :title="'简单表格'"
     :header="true"
     :theme="'dark'"
-    :border="true"
+    :class="'border-rows'"
     :data="[
       [100, 150, 500, 250, 400],
       [47, 100, 100, 430, 210]

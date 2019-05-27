@@ -1,4 +1,4 @@
-import PaComponent, { Props } from '../../src/core/chart/Component'
+import PaComponent from '../../src/core/chart/Component'
 import { Component } from 'vue-property-decorator'
 
 @Component({})

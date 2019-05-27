@@ -57,7 +57,7 @@ function loadStories() {
   require('../src/stories')
   const chartContext = require.context('../src/charts', true, /.stories.js$/)
   let chartStories = chartContext.keys().map(filename => chartContext(filename).default)
-  const uiContext = require.context('../ui/elements', true, /.stories.js$/)
+  const uiContext = require.context('../ui', true, /.stories.js$/)
   let uiStories = uiContext.keys().map(filename => uiContext(filename).default)
   return [...chartStories, ...uiStories]
 }

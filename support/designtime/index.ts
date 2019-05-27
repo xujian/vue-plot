@@ -1,7 +1,7 @@
 import Inspectable, {
   Prop,
   PropTypes
-  } from './inspectable'
+} from './inspectable'
 
 import Inspector from './inspector'
 

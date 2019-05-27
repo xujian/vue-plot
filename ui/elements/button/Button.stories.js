@@ -2,10 +2,10 @@ import { storiesOf } from '@storybook/vue'
 let stories = storiesOf('UI|用户界面元件', module)
 
 
-stories.add('Font Awesome', () => ({
-  template: `<pa-label
-    class="normal"
-    >政务服务运行监控</pa-label>`
+stories.add('按钮', () => ({
+  template: `<pa-button
+    :class="'round'"
+    >查看全部</pa-button>`
 }))
 
 export default stories
