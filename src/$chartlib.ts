@@ -3,6 +3,11 @@ import globalConfigs, { setGlobalConfigs } from './core/shared/configs'
 import Bus from './core/shared/events/bus'
 
 let $chartlib = new Vue({
+  data () {
+    return {
+      popups: []
+    }
+  },
   computed: {
     configs: {
       get: () => globalConfigs,
@@ -14,14 +19,19 @@ let $chartlib = new Vue({
       }
     },
     theme: {
-      get: function() {
+      get: function () {
         return globalConfigs.theme
       },
-      set: function(theme: string) {
+      set: function (theme: string) {
         globalConfigs.theme = theme
         setGlobalConfigs(globalConfigs)
         Bus.emit('theme.changed', { theme })
-      } 
+      }
+    }
+  },
+  methods: {
+    popup () {
+
     }
   }
 })

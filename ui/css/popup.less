@@ -1,10 +1,33 @@
 .pa-popup {
   display: none;
   position: fixed;
-  left: 10px;
-  top: 10px;
+  left: 50%;
+  top: 50%;
   min-width: 400px;
-  min-height: 300px;
+  min-height: 200px;
+  margin-top: -100px;
+  margin-left: -200px;
+  background-color: #ffffff88;
+  padding-top: 24px;
+
+  .x {
+    position: absolute;
+    text-decoration: none;
+    color: #666;
+    right: 0;
+    top: 0;
+    display: block;
+    height: 24px;
+    width: 24px;
+    text-align: center;
+    line-height: 24px;
+    transition: all 0.25s;
+
+    &:hover {
+      color: #fff;
+      background-color: #66666699;
+    }
+  }
 
   &.active {
     display: block;

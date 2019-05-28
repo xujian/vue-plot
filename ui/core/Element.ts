@@ -7,6 +7,17 @@ export default class PaElement extends PaComponent {
 
   @Inspectable({
     type: String,
+    label: '标识符',
+    order: 2
+  })
+  @Prop({
+    type: String,
+    default: ''
+  })
+  name?: string
+
+  @Inspectable({
+    type: String,
     label: '颜色'
   })
   @Prop({

@@ -1,7 +1,13 @@
+import { VueClass } from 'vue-class-component/lib/declarations';
+
 declare module 'vue-chartlib' {
   import Vue from 'vue'
   export default Vue
- 
+
+  export class PaComponent {
+    $chartlib: VueClass
+  }
+
   export class PaChart {
     uuid: string
     type: string
@@ -12,10 +18,10 @@ declare module 'vue-chartlib' {
 
   export class ChartFactory {
     static make (input: {
-      uuid?: string
+      uuid?: string,
       name: string,
-      props: { [key: string]: any },
-      layers?: any[]
+      props: { [key: string]: any, },
+      layers?: any[],
     }): PaChart
   }
 

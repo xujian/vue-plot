@@ -40,7 +40,7 @@ module.exports = {
       overrides: {
         interface: {
           multiline: {
-            delimiter: 'semi',
+            delimiter: 'comma',
             requireLast: true
           }
         }

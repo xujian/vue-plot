@@ -3,9 +3,11 @@ let stories = storiesOf('UI|交互组件', module)
 
 stories.add('对话框', () => ({
   template: `<div>
-    <pa-button class="round">弹出对话框</pa-button>
+    <pa-button
+      class="round"
+      :goto="'popup:departments'">弹出对话框</pa-button>
     <pa-popup
-      name="conda">
+      name="departments">
       <pa-table
       :title="'简单表格'"
       :header="true"

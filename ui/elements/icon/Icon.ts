@@ -21,12 +21,6 @@ export default class PaIcon extends PaElement {
 
   @Prop({
     type: String,
-    default: 'icon'
-  })
-  name?: string
-
-  @Prop({
-    type: String,
     default: '#fff'
   })
   color?: string
