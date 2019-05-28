@@ -143,6 +143,21 @@ namespace PropTypes {
   }
 
   /**
+   * 选项
+   */
+  export class Select extends PropValueType {
+    value?: string
+    constructor (input: string) {
+      super()
+      this.value = input
+    }
+
+    valueOf () {
+      return this.value
+    }
+  }
+
+  /**
    * 尺码
    */
   export class Size extends PropValueType {

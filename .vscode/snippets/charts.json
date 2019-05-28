@@ -1,0 +1,16 @@
+{
+  "prop": {
+    "prefix": "prop",
+    "body": [
+      "@Inspectable({",
+      "  label: '${1}',",
+      "  type: '${2}',",
+      "  default: ${3},",
+      "  order: 1",
+      "})",
+      "@Prop({})",
+      "${4}?: ${5}"
+    ],
+    "description": "Create a new prop"
+  }
+}
