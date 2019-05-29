@@ -170,4 +170,16 @@ stories.add('With hooks', () => ({
   }
 }))
 
+stories.add('Polar', () => ({
+  template: `<pa-polar-chart
+    :title="'极坐标图'"
+    :data="[[300, 250, 200, 150, 100]]"
+    :labelName="['喀什市','疏附县','疏勒县','英吉沙县','泽普县']"
+    ></pa-polar-chart>`,
+  props: {
+    beforePaint: (options) => {
+      console.log('/////////', options)
+    }
+  }
+}))
 export default stories
