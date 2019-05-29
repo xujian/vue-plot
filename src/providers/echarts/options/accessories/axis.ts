@@ -17,6 +17,12 @@ export default (props: any, providerOptions: any) => {
     type: 'value'
   }]
   yAxis.push(axis)
+  //添加yAxis name值 
+  if(input.yName){
+    yAxis.forEach((value: any,i: number) => {
+      value.name=input.yName[i]
+    });
+  }
   return {
     yAxis
   }

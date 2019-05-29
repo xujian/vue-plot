@@ -10,6 +10,8 @@ import PaRoseChartPlugin, { PaRoseChart } from './rose'
 import Pa3dBarChartPlugin, { Pa3dBarChart } from './3d'
 import PaLiquidChartPlugin, { PaLiquidChart } from './liquid'
 import PaGaugeChartPlugin, { PaGaugeChart } from './gauge'
+import PaPictorialBarPlugin, { PaPictorialBarChart } from './pictorialBar'
+import paFunnelChartPlugin, { PaFunnelChart } from './funnel'
 
 let plugins: {[name: string]: any,} = {
   PaBarChartPlugin,
@@ -23,7 +25,9 @@ let plugins: {[name: string]: any,} = {
   PaMapPlugin,
   Pa3dBarChartPlugin,
   PaLiquidChartPlugin,
-  PaGaugeChartPlugin
+  PaGaugeChartPlugin,
+  PaPictorialBarPlugin,
+  paFunnelChartPlugin
 }
 
 let charts = {
@@ -40,7 +44,9 @@ let charts = {
   PaBaiduMap,
   Pa3dBarChart,
   PaLiquidChart,
-  PaGaugeChart
+  PaGaugeChart,
+  PaPictorialBarChart,
+  PaFunnelChart
 }
 
 export {

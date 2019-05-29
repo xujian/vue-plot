@@ -3,6 +3,7 @@ import { linkTo } from '@storybook/addon-links'
 import population from './population' // 业务图表/人口
 import economics from './economics' // 业务图表/经济指标
 import credit from './credit' // 业务图表/商事信用
+import governmentInvestment from './governmentInvestment' // 业务图表/政府投资
 
 import Welcome from './Welcome.vue'
 

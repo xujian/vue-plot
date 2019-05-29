@@ -12,7 +12,7 @@ export default class PaAxis extends PaAccessory {
     type: String,
     default: 'right'
   })
-  position:'left' | 'right' | undefined
+  position: 'left' | 'right' | undefined
 
   @Prop(String)
   label: string | undefined
@@ -22,4 +22,7 @@ export default class PaAxis extends PaAccessory {
 
   @Prop(Array)
   data: string[] | number[] | undefined
+
+  @Prop(Array)
+  yName: string[] | number[] | undefined
 }
