@@ -88,4 +88,19 @@ stories.add('三大产业投资对比', () => ({
   ></pa-pie-chart>
   </pa-pie-chart>`
 }))
+stories.add('管理渠道分布', () => ({
+  template: `<pa-line-chart
+  :smooth="'smooth'"
+  :area="true"
+  :x=[2014,2015,2016,2017,2018]
+  :data="[
+    [1220, 1332, 1101, 1034, 910],
+    [2220, 1382, 1191, 2034, 2190],
+    [1250, 2332, 2101, 1054, 1190]
+  ]"
+  >
+  <pa-axis  :yName="['亿元']" :xName="['年']"></pa-axis>
+  <pa-legend :data="['基础设置投资', '房地产开发投资','更新改造投资']"></pa-legend>
+  </pa-line-chart>`
+}))
 export default stories

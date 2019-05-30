@@ -25,4 +25,7 @@ export default class PaAxis extends PaAccessory {
 
   @Prop(Array)
   yName: string[] | number[] | undefined
+
+  @Prop(Array)
+  xName: string[] | number[] | undefined
 }

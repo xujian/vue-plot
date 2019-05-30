@@ -1,4 +1,5 @@
 export default (props: any, providerOptions: any) => {
+  debugger
   let input: {[key: string]: any} = props.accessories.axis
   let axis:any = {}
   axis.position = input.position || 'right'
@@ -23,7 +24,14 @@ export default (props: any, providerOptions: any) => {
       value.name=input.yName[i]
     });
   }
+  //添加xAxis name值 
+  let xAxis = providerOptions.xAxis
+  if(input.xName){
+    xAxis.forEach((value: any,i: number) => {
+      value.name=input.xName[i]
+    });
+  }
   return {
-    yAxis
+    yAxis,xAxis
   }
 }
