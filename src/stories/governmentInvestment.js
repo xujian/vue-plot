@@ -60,4 +60,32 @@ stories.add('各区投资情况对比', () => ({
   :labelName="['福田','罗湖','南山','盐田','宝安','龙岗','龙华','坪山','光明','大鹏','深汕合作']">
   </pa-polar-chart>`
 }))
+stories.add('三大产业投资对比', () => ({
+  template: `<pa-pie-chart
+  :styles="{border:true}"
+  :labelShow="false"
+  :data="[[
+    { name: '第一产业', value: 335 },
+    { name: '第二产业', value: 679 },
+    { name: '第三产业', value: 1548 }
+  ]]"
+  >
+  <pa-tooltip
+  :position="[10, 10]"
+  :formatter="[
+    '{a}<br/>{b}:{c}({d}%)'
+  ].join('')"
+  :style="{}"></pa-tooltip>
+  <pa-pie-chart
+  :preset="'no-legend'"
+  :styles="{border:false}"
+  :radius="['68%', '75%']"
+  :labelShow="false"
+  :outPieColor="'#11bfe2'"
+  :data="[[
+    { name: '', value: 0 }
+  ]]"
+  ></pa-pie-chart>
+  </pa-pie-chart>`
+}))
 export default stories

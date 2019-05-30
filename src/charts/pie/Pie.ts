@@ -16,6 +16,14 @@ export default class PaPieChart extends PaChart {
   @Prop({})
   data: string | ChartDataTypes.PieChartData | undefined
 
+  @Prop({
+    default: true
+  })
+  labelShow: boolean |undefined
+  
+  @Prop()
+  outPieColor: string |undefined
+
   // hooks
   dataAvailable (data: any, props: any): any[] {
     // 计算出百分比值
@@ -26,9 +34,9 @@ export default class PaPieChart extends PaChart {
           .reduce((a: number, v: number) => a + v)
         let groupData = groupArray.map(
           (item: {value: number, name: string}) => ({
-          ...item,
-          percent: parseFloat((100 * (item.value / sum)).toPrecision(2))
-        }))
+            ...item,
+            percent: parseFloat((100 * (item.value / sum)).toPrecision(2))
+          }))
         dataWithPercent.push(groupData)
       })
       return dataWithPercent
@@ -37,7 +45,7 @@ export default class PaPieChart extends PaChart {
     }
   }
 
-  constructor() {
+  constructor () {
     super()
     this.type = 'pie'
   }

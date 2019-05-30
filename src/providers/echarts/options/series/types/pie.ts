@@ -1,8 +1,9 @@
-export default function (series: any[], props: any) {
+export default function (series: any[], props: any, options: any) {
   series.forEach((s: any) => {
     let item: any = {
       radius: props.radius || ['0%', '50%'],
       labelLine: {
+        show: true, 
         normal: {
           show: true,
           smooth: false,
@@ -13,6 +14,17 @@ export default function (series: any[], props: any) {
           show: true
         }
       }
+    }
+    if(!props.labelShow){
+      item.label={
+        normal:{
+          show:props.labelShow,
+        }
+      }
+    }
+    if(s.data[0].name===''||(s.data[0].name===' ')){
+      s.silent=true,
+      s.color=props.outPieColor||options.color[0]
     }
     if (props.name === 'PaRoseChart') {
       // 处理 pa-rose-chart
