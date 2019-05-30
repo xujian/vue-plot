@@ -18,6 +18,11 @@ const specs = [{
   features: [
     'symbol'
   ]
+},{
+  type: 'pictorialBar',
+  features: [
+    'area'
+  ]
 }]
 
 export default specs

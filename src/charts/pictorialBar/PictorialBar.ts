@@ -27,6 +27,9 @@ export default class PaPictorialBarChart extends PaChart {
   @Prop()
   titleColor: string|undefined
 
+  @Prop()
+  area: string[]|undefined
+
   constructor () {
     super()
     this.type='pictorialBar'
