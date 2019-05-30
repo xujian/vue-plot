@@ -90,7 +90,7 @@ stories.add('三大产业投资对比', () => ({
 }))
 stories.add('管理渠道分布', () => ({
   template: `<pa-line-chart
-  :smooth="'smooth'"
+  :smooth="true"
   :area="true"
   :x=[2014,2015,2016,2017,2018]
   :data="[

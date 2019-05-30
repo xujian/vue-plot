@@ -1,7 +1,6 @@
 export default (props: any, providerOptions: any) => {
-  debugger
   let input: {[key: string]: any} = props.accessories.axis
-  let axis:any = {}
+  let axis: any = {}
   axis.position = input.position || 'right'
   axis.type = input.type || 'value'
   axis.splitLine = {
