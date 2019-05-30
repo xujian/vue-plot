@@ -91,7 +91,7 @@ stories.add('三大产业投资对比', () => ({
 stories.add('管理渠道分布', () => ({
   template: `<pa-line-chart
   :smooth="true"
-  :area="true"
+  :area="[{ color: 'gradient:#0845EA;rgba(0,0,0,0)' },{ color: 'gradient:#0FD7DB;rgba(0,0,0,0)' },{ color: 'gradient:#F4C602;rgba(0,0,0,0)' }]"
   :x=[2014,2015,2016,2017,2018]
   :data="[
     [1220, 1332, 1101, 1034, 910],
@@ -99,6 +99,15 @@ stories.add('管理渠道分布', () => ({
     [1250, 2332, 2101, 1054, 1190]
   ]"
   >
+  <pa-tooltip
+  :position="[10, 10]"
+  :formatter="[
+    '{b}(年)<br>',
+    '{a0}: {c0} (亿元)<br>',
+    '{a1}: {c1} (亿元)<br>',
+    '{a2}: {c2} (亿元)',
+  ].join('')"
+  :style="{}"></pa-tooltip>
   <pa-axis  :yName="['亿元']" :xName="['年']" :xSplitLine="[true,'#5D667F','dashed']"></pa-axis>
   <pa-legend :data="['基础设置投资', '房地产开发投资','更新改造投资']"></pa-legend>
   </pa-line-chart>`
