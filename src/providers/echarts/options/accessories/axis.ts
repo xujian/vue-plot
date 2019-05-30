@@ -29,6 +29,18 @@ export default (props: any, providerOptions: any) => {
   if(input.xName){
     xAxis.forEach((value: any,i: number) => {
       value.name=input.xName[i]
+      if(input.xSplitLine){
+        let splitLineObj={
+          splitLine:{
+            show:input.xSplitLine[0]||false,
+            lineStyle:{
+              color:input.xSplitLine[1]||'rgba(255,255,255,0.7)',
+              type:input.xSplitLine[2]||'solid'
+            }
+          }
+        }
+        Object.assign(value,splitLineObj)
+      }
     });
   }
   return {

@@ -99,7 +99,7 @@ stories.add('管理渠道分布', () => ({
     [1250, 2332, 2101, 1054, 1190]
   ]"
   >
-  <pa-axis  :yName="['亿元']" :xName="['年']"></pa-axis>
+  <pa-axis  :yName="['亿元']" :xName="['年']" :xSplitLine="[true,'#5D667F','dashed']"></pa-axis>
   <pa-legend :data="['基础设置投资', '房地产开发投资','更新改造投资']"></pa-legend>
   </pa-line-chart>`
 }))
