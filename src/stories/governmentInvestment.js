@@ -160,4 +160,18 @@ stories.add('总投资趋势', () => ({
     :style="{}"></pa-tooltip>
   </pa-bar-chart>`
 }))
+
+stories.add('建筑性质分析', () => ({
+  template: `<pa-rose-chart
+  :preset="'no-legend,rich-label-percent'"
+  :radius="['0%', '80%']"
+  :data="[[
+    { name: '改建', value: 154 },
+    { name: '扩建', value: 200 },
+    { name: '新建', value: 205 },
+    { name: '技术改造', value: 325 },
+    { name: '其他', value: 400 }
+  ]]"
+  ></pa-rose-chart>`
+}))
 export default stories
