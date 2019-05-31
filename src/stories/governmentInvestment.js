@@ -24,6 +24,7 @@ stories.add('投资主体情况', () => ({
     ].join('')"></pa-tooltip>
     </pa-pictorialBar-chart>`
 }))
+
 stories.add('项目阶段', () => ({
   template: `<pa-funnel-chart
   :title="'漏斗图'"
@@ -39,6 +40,7 @@ stories.add('项目阶段', () => ({
   >
   </pa-funnel-chart>`
 }))
+
 stories.add('核准项目分析', () => ({
   template: `<pa-bar-chart
   :title="'琴键图'"
@@ -53,6 +55,7 @@ stories.add('核准项目分析', () => ({
   <pa-legend :data="['核准项目']"></pa-legend>
   </pa-bar-chart>`
 }))
+
 stories.add('各区投资情况对比', () => ({
   template: `<pa-polar-chart
   :title="'极坐标图'"
@@ -60,6 +63,7 @@ stories.add('各区投资情况对比', () => ({
   :labelName="['福田','罗湖','南山','盐田','宝安','龙岗','龙华','坪山','光明','大鹏','深汕合作']">
   </pa-polar-chart>`
 }))
+
 stories.add('三大产业投资对比', () => ({
   template: `<pa-pie-chart
   :styles="{border:true}"
@@ -88,6 +92,7 @@ stories.add('三大产业投资对比', () => ({
   ></pa-pie-chart>
   </pa-pie-chart>`
 }))
+
 stories.add('管理渠道分布', () => ({
   template: `<pa-line-chart
   :smooth="true"
@@ -111,5 +116,43 @@ stories.add('管理渠道分布', () => ({
   <pa-axis  :yName="['亿元']" :xName="['年']" :xSplitLine="[true,'#5D667F','dashed']"></pa-axis>
   <pa-legend :data="['基础设置投资', '房地产开发投资','更新改造投资']"></pa-legend>
   </pa-line-chart>`
+}))
+
+stories.add('总投资趋势', () => ({
+  template: `<pa-bar-chart
+  :round="false"
+  :bar-width="50"
+  :bar-gap="'1%'"
+  :x="[2014,2015,2016,2017,2018]"
+  :data="[
+    [5045, 5082, 4084, 4054, 4189]
+  ]">
+    <pa-axis
+      position="left"
+      :yName="['(亿元)']"
+      :xName="['年']"
+      :label="'Y'">
+    </pa-axis>
+    <pa-line-chart
+    :axis="'right'"
+    :styles="{
+      label: false,
+      line: 'dotted',
+      color: ['rgba(255,255,255,.7)']
+    }"
+      :data="[
+        [5145, 5982, 4584, 4654, 4589]
+      ]"
+    ></pa-line-chart>
+    <pa-legend :data="['完成投资额0', '投资计划']"></pa-legend>
+    <pa-tooltip
+    :position="[10, 10]"
+    :formatter="[
+      '{b}(年)<br>',
+      '{a0}: {c0} (亿元)<br>',
+      '{a1}: {c1} (亿元)',
+    ].join('')"
+    :style="{}"></pa-tooltip>
+  </pa-bar-chart>`
 }))
 export default stories
