@@ -10,6 +10,6 @@ export default function (rules: any) {
   }
   return {
     lineStyle: result,
-    color:rules.color&&rules.color[0]
+    color:rules.color && rules.color[0]
   }
 }
