@@ -18,7 +18,7 @@ export declare type MapData = number[]
 export declare type TreeChartData = {
   name: string,
   children: [
-    TreeChartData | {name: string, value: number}
+    TreeChartData | { name: string, value: number }
   ]
 }
 
@@ -33,6 +33,11 @@ export declare type RadarChartData = {
 }[]
 
 export declare type GaugeChartData = {
+  name: string,
+  value: number[]
+}[]
+
+export declare type NetworkChartData = {
   name: string,
   value: number[]
 }[]

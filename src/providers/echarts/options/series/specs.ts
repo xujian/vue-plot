@@ -9,12 +9,17 @@ const specs = [{
     'area',
     'marks'
   ]
-},{
+}, {
   type: 'bar',
   features: [
   ]
-},{
+}, {
   type: 'scatter',
+  features: [
+    'symbol'
+  ]
+}, {
+  type: 'network',
   features: [
     'symbol'
   ]

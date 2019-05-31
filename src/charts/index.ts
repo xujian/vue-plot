@@ -1,4 +1,4 @@
-import PaBarChartPlugin, { PaBarChart,PaPolarChart } from './bar'
+import PaBarChartPlugin, { PaBarChart, PaPolarChart } from './bar'
 import PaPieChartPlugin, { PaPieChart, PaRingChart } from './pie'
 import PaLineChartPlugin, { PaLineChart } from './line'
 import PaScatterChartPlugin, { PaScatterChart } from './scatter'
@@ -12,8 +12,9 @@ import PaLiquidChartPlugin, { PaLiquidChart } from './liquid'
 import PaGaugeChartPlugin, { PaGaugeChart } from './gauge'
 import PaPictorialBarPlugin, { PaPictorialBarChart } from './pictorialBar'
 import paFunnelChartPlugin, { PaFunnelChart } from './funnel'
+import PaNetworkChartPlugin, { PaNetworkChart } from './network'
 
-let plugins: {[name: string]: any,} = {
+let plugins: { [name: string]: any, } = {
   PaBarChartPlugin,
   PaPieChartPlugin,
   PaLineChartPlugin,
@@ -27,7 +28,8 @@ let plugins: {[name: string]: any,} = {
   PaLiquidChartPlugin,
   PaGaugeChartPlugin,
   PaPictorialBarPlugin,
-  paFunnelChartPlugin
+  paFunnelChartPlugin,
+  PaNetworkChartPlugin
 }
 
 let charts = {
@@ -47,7 +49,8 @@ let charts = {
   PaLiquidChart,
   PaGaugeChart,
   PaPictorialBarChart,
-  PaFunnelChart
+  PaFunnelChart,
+  PaNetworkChart
 }
 
 export {
