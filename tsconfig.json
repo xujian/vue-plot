@@ -30,12 +30,6 @@
       "@sb/*": [
         ".storybook/*"
       ],
-      "vue": [
-        "../designer/node_modules/vue"
-      ],
-      "vue/*": [
-        "../designer/node_modules/vue/*"
-      ]
     },
     "lib": [
       "esnext",
@@ -49,12 +43,13 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "support/**/*.ts",
+    "support/**/*.js",
     "support/**/*.vue",
     "ui/**/*.ts",
     "ui/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx", "src/index.js",
-    "support/designtime/shared/codeeditor/CodeEditor.js"
+    "tests/**/*.tsx",
+    "src/index.js",
   ],
   "exclude": [
     "node_modules"

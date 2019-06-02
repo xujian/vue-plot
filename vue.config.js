@@ -13,9 +13,6 @@ module.exports = {
   },
 
   chainWebpack: config => {
-    config.resolve.alias
-      .delete('vue$')
-      .set('vue$', '../designer/node_modules/vue/dist/vue.js')
     config
       .plugin('webpack-bundle-analyzer')
       .use(BundleAnalyzerPlugin)
@@ -24,6 +21,7 @@ module.exports = {
   configureWebpack: {
     output: {},
     externals: {
+      vue: 'vue',
       echarts: 'echarts',
       'echarts-gl': 'echarts-gl'
     },
@@ -38,7 +36,6 @@ module.exports = {
         '@chartlib': path.resolve(__dirname, './src'),
         '@ui': path.resolve(__dirname, './ui'),
         '@sb': path.resolve(__dirname, './.storybook'),
-        vue$: '../designer/node_modules/vue/dist/vue.js'
       }
     }
   },
