@@ -33,7 +33,7 @@ export default class PaRangeProp extends PropInput {
     return this.prop.value && this.prop.value.value ? {
       min: this.prop.value.value[0],
       max: this.prop.value.value[1]
-    }: {
+    } : {
       min: this.prop.default[0],
       max: this.prop.default[1]
     }

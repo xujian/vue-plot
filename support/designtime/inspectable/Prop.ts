@@ -20,7 +20,7 @@ export default class Prop<T extends PropTypes.PropValueType> {
   set value (v: any) {
     if (v === undefined) {
       this.__value = undefined
-    } else  if (false === v instanceof this.type) {
+    } else if (false === v instanceof this.type) {
       this.__value = new this.type(v)
     } else {
       this.__value = v
@@ -28,21 +28,21 @@ export default class Prop<T extends PropTypes.PropValueType> {
   }
 
   get primitive () {
-    return this.__value ? this.__value.valueOf(): undefined
+    return this.__value ? this.__value.valueOf() : undefined
   }
 
   constructor (input: {
     name: string,
     value: T,
-    default?: T
+    default?: T,
     order?: number,
-    category?: string, 
+    category?: string,
     label?: string,
     readonly?: boolean,
-    type?: string
+    type?: string,
   }) {
     Object.assign(this, input)
-    this.category =  input.category || 'props'
-    this.order =  input.order || 999
+    this.category = input.category || 'props'
+    this.order = input.order || 999
   }
 }
