@@ -13,6 +13,9 @@ module.exports = {
   },
 
   chainWebpack: config => {
+    config.resolve.alias
+      .delete('vue$')
+      .set('vue$', 'vue/dist/vue.esm.js')
     config
       .plugin('webpack-bundle-analyzer')
       .use(BundleAnalyzerPlugin)
@@ -21,8 +24,18 @@ module.exports = {
   configureWebpack: {
     output: {},
     externals: {
-      vue: 'vue',
-      echarts: 'echarts',
+      vue: {
+        commonjs: 'vue',
+        commonjs2: 'vue',
+        amd: 'vue',
+        root: 'Vue'
+      },
+      echarts: {
+        commonjs: 'echarts',
+        commonjs2: 'echarts',
+        amd: 'echarts',
+        root: 'window.echarts'
+      },
       'echarts-gl': 'echarts-gl'
     },
     optimization: {
@@ -36,6 +49,7 @@ module.exports = {
         '@chartlib': path.resolve(__dirname, './src'),
         '@ui': path.resolve(__dirname, './ui'),
         '@sb': path.resolve(__dirname, './.storybook'),
+        'vue$': 'vue/dist/vue.esm.js',
       }
     }
   },

@@ -1,7 +1,6 @@
 module.exports = {
   presets: [
     'vue',
-    '@quasar/babel-preset-app',
     '@babel/preset-env',
     '@babel/preset-typescript',
   ],
