@@ -6,11 +6,7 @@ stories.add('复合组件', () => ({
   template: `<pa-board
     :title="'服务建设'">
     <pa-bar-chart
-    style="top:0;left:0"
-    :background="'#000'"
-    :round="round"
-    :bar-width="barWidth"
-    :bar-gap="barGap"
+    style="top:0;left:0;width:200px;height:100px;"
     :data="[
       [100, 150, 500, 250, 400],
       [47, 100, 100, 430, 210]
