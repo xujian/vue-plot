@@ -17,6 +17,12 @@ export default class PaTooltip extends PaAccessory {
   formatter: string | undefined
 
   /**
+   * tooltip的坐标轴十字准星指示器
+   */
+  @Prop()
+  axisPointer: boolean | undefined
+
+  /**
    * 显示tooltip时的信息队列
    * 提前格式化好然后直接获取
    */
