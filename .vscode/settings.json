@@ -11,11 +11,11 @@
     },
     {
       "language": "javascript",
-      "autoFix": false
+      "autoFix": true
     },
     {
       "language": "typescript",
-      "autoFix": false
+      "autoFix": true
     }
   ],
   "vetur.format.defaultFormatter.js": "vscode-typescript"
