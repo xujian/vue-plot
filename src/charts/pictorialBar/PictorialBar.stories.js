@@ -10,7 +10,6 @@ let states = [
     :title="'冰山图'"
     :area="[{ color: 'gradient:#20B7E2;rgba(31,180,221,0)'}]"
     :data="'mocks:pictorialBar-simple'"
-    :symbol="'arrow'"
     >
     </pa-pictorialBar-chart>`
   },
