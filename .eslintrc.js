@@ -53,5 +53,6 @@ module.exports = {
     'space-infix-ops': 1,
     'no-multi-spaces': 1,
     'no-trailing-spaces': 1,
+    semi: [2, 'never'],
   },
-};
+}
