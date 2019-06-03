@@ -29,15 +29,10 @@
 import PropInput from './PropInput'
 import { QRange, QBanner } from 'quasar'
 import { Component } from 'vue-property-decorator'
-
-let PaCodeEditor = require('../../shared/codeeditor/CodeEditor.js')
+import { CodeEditor as PaCodeEditor } from '../../shared/codeeditor/CodeEditor.js'
 
 @Component({
-  name: 'PaJsonProp',
   components: {
-    QRange,
-    QBanner,
-    PaCodeEditor
   }
 })
 export default class PaJsonProp extends PropInput {
@@ -48,7 +43,7 @@ export default class PaJsonProp extends PropInput {
     return JSON.stringify(this.prop && this.prop.value && this.prop.value.value || {}, null, 2)
   }
   onSave () {
-    let content: string = this.$refs.input.editor.getValue()
+    let content: string = (this.$refs.input as any).editor.getValue()
     try {
       content = content.trim() || '{}'
       let parsed = JSON.parse(content)

@@ -1,6 +1,6 @@
 export default (props: any, providerOptions: any) => {
   let input: {[key: string]: any} = props.accessories.axis
-  let axis:any = {}
+  let axis: any = {}
   axis.position = input.position || 'right'
   axis.type = input.type || 'value'
   axis.splitLine = {
@@ -23,7 +23,26 @@ export default (props: any, providerOptions: any) => {
       value.name=input.yName[i]
     });
   }
+  //添加xAxis name值 
+  let xAxis = providerOptions.xAxis
+  if(input.xName){
+    xAxis.forEach((value: any,i: number) => {
+      value.name=input.xName[i]
+      if(input.xSplitLine){
+        let splitLineObj={
+          splitLine:{
+            show:input.xSplitLine[0]||false,
+            lineStyle:{
+              color:input.xSplitLine[1]||'rgba(255,255,255,0.7)',
+              type:input.xSplitLine[2]||'solid'
+            }
+          }
+        }
+        Object.assign(value,splitLineObj)
+      }
+    });
+  }
   return {
-    yAxis
+    yAxis,xAxis
   }
 }

@@ -1,31 +1,28 @@
-import { VueClass } from 'vue-class-component/lib/declarations';
+import mocks from '../src/mocks'
+import Chartlib from '../src'
 
-declare module 'vue-chartlib' {
-  import Vue from 'vue'
-  export default Vue
+export default Chartlib
 
-  export class PaComponent {
-    $chartlib: VueClass
-  }
+export class PaComponent {
+}
 
-  export class PaChart {
-    uuid: string
-    type: string
-    name: string
-    props: any
-    repaint (): void
-  }
+export class PaChart {
+  uuid: string
+  type: string
+  name: string
+  props: any
+  repaint (): void
+}
 
-  export class ChartFactory {
-    static make (input: {
-      uuid?: string,
-      name: string,
-      props: { [key: string]: any, },
-      layers?: any[],
-    }): PaChart
-  }
+export class ChartFactory {
+  static make (input: {
+    uuid?: string,
+    name: string,
+    props: { [key: string]: any, },
+    layers?: any[],
+  }): PaChart
+}
 
-  export {
-    mocks
-  }
+export {
+  mocks
 }

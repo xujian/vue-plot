@@ -3,21 +3,14 @@ module.exports = {
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 6,
-    sourceType: 'module'
+    sourceType: 'module',
   },
   env: {
     browser: true,
-    node: true
+    node: true,
   },
-  extends: [
-    'plugin:@typescript-eslint/recommended',
-    '@vue/typescript',
-    'plugin:vue/recommended',
-    'plugin:vue/base'
-  ],
-  plugins: [
-    'vue'
-  ],
+  extends: ['plugin:@typescript-eslint/recommended', '@vue/typescript', 'plugin:vue/recommended', 'plugin:vue/base'],
+  plugins: ['vue'],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
@@ -28,24 +21,27 @@ module.exports = {
     indent: 0,
     '@typescript-eslint/indent': [1, 2],
     '@typescript-eslint/explicit-function-return-type': 0,
-    '@typescript-eslint/member-delimiter-style': [1, {
-      multiline: {
-        delimiter: 'comma',
-        requireLast: true
+    '@typescript-eslint/member-delimiter-style': [
+      1,
+      {
+        multiline: {
+          delimiter: 'comma',
+          requireLast: true,
+        },
+        singleline: {
+          delimiter: 'comma',
+          requireLast: true,
+        },
+        overrides: {
+          interface: {
+            multiline: {
+              delimiter: 'comma',
+              requireLast: true,
+            },
+          },
+        },
       },
-      singleline: {
-        delimiter: 'comma',
-        requireLast: true
-      },
-      overrides: {
-        interface: {
-          multiline: {
-            delimiter: 'comma',
-            requireLast: true
-          }
-        }
-      }
-    }],
+    ],
     '@typescript-eslint/prefer-interface': 0,
     'vue/max-attributes-per-line': 0,
     'vue/html-indent': 0,
@@ -53,6 +49,9 @@ module.exports = {
     'vue/html-closing-bracket-newline': 0,
     'vue/order-in-components': 0,
     '@typescript-eslint/no-namespace': 0,
-    semi: [2, "never"]
-  }
-}
+    'vue/attributes-order': 0,
+    'space-infix-ops': 1,
+    'no-multi-spaces': 1,
+    'no-trailing-spaces': 1,
+  },
+};

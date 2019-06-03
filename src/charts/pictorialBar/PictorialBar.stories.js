@@ -8,6 +8,7 @@ let states = [
     name: 'Simple',
     template: `<pa-pictorialBar-chart
     :title="'冰山图'"
+    :area="[{ color: 'gradient:#20B7E2;rgba(31,180,221,0)'}]"
     :data="'mocks:pictorialBar-simple'"
     >
     </pa-pictorialBar-chart>`

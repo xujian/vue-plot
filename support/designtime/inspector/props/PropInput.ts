@@ -8,9 +8,12 @@ export default class PropInput extends Vue {
 
   @VueProp({})
   value?: Prop<any>
-  
+
   get prop () {
-    return this.value
+    return this.value || new Prop<any>({
+      name: '',
+      value: undefined
+    })
   }
 
   set prop (v) {

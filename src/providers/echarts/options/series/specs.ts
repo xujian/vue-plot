@@ -19,9 +19,9 @@ const specs = [{
     'symbol'
   ]
 }, {
-  type: 'network',
+  type: 'pictorialBar',
   features: [
-    'symbol'
+    'area'
   ]
 }]
 

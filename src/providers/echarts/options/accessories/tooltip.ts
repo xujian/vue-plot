@@ -5,8 +5,9 @@ export default (props: any, providerOptions: any) => {
     padding: 0,
     backgroundColor: 'transparent',
     show: true,
-    trigger: 'axis',
-    positon: tooltip.positon
+    trigger: props.type==='pie'?'item':'axis',
+    positon: tooltip.positon,
+    confine:true
   }
   if (tooltip.formatter) {
     output.borderWidth = 0
@@ -14,7 +15,7 @@ export default (props: any, providerOptions: any) => {
     output.formatter = [
       '<div class="tooltip">',
       tooltip.formatter,
-      '</di>'
+      '</div>'
     ].join('')
   }
   if (tooltip.data) {
@@ -38,7 +39,7 @@ export default (props: any, providerOptions: any) => {
           params[0].axisValueLabel,
           '年<br>',
           content,
-          '</di>'
+          '</div>'
         ].join('')
       }
   }

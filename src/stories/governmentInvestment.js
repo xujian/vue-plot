@@ -24,6 +24,7 @@ stories.add('投资主体情况', () => ({
     ].join('')"></pa-tooltip>
     </pa-pictorialBar-chart>`
 }))
+
 stories.add('项目阶段', () => ({
   template: `<pa-funnel-chart
   :title="'漏斗图'"
@@ -39,6 +40,7 @@ stories.add('项目阶段', () => ({
   >
   </pa-funnel-chart>`
 }))
+
 stories.add('核准项目分析', () => ({
   template: `<pa-bar-chart
   :title="'琴键图'"
@@ -53,11 +55,123 @@ stories.add('核准项目分析', () => ({
   <pa-legend :data="['核准项目']"></pa-legend>
   </pa-bar-chart>`
 }))
+
 stories.add('各区投资情况对比', () => ({
   template: `<pa-polar-chart
   :title="'极坐标图'"
   :data="[[100, 200, 300, 400, 500,600,700,800,900,1000,1112]]"
   :labelName="['福田','罗湖','南山','盐田','宝安','龙岗','龙华','坪山','光明','大鹏','深汕合作']">
   </pa-polar-chart>`
+}))
+
+stories.add('三大产业投资对比', () => ({
+  template: `<pa-pie-chart
+  :styles="{border:true}"
+  :labelShow="false"
+  :data="[[
+    { name: '第一产业', value: 335 },
+    { name: '第二产业', value: 679 },
+    { name: '第三产业', value: 1548 }
+  ]]"
+  >
+  <pa-tooltip
+  :position="[10, 10]"
+  :formatter="[
+    '{a}<br/>{b}:{c}({d}%)'
+  ].join('')"
+  :style="{}"></pa-tooltip>
+  <pa-pie-chart
+  :preset="'no-legend'"
+  :styles="{border:false}"
+  :radius="['68%', '75%']"
+  :labelShow="false"
+  :outPieColor="'#11bfe2'"
+  :data="[[
+    { name: '', value: 0 }
+  ]]"
+  ></pa-pie-chart>
+  </pa-pie-chart>`
+}))
+
+stories.add('管理渠道分布', () => ({
+  template: `<pa-line-chart
+  :smooth="true"
+  :area="[{ color: 'gradient:#0845EA;rgba(0,0,0,0)' },{ color: 'gradient:#0FD7DB;rgba(0,0,0,0)' },{ color: 'gradient:#F4C602;rgba(0,0,0,0)' }]"
+  :x=[2014,2015,2016,2017,2018]
+  :data="[
+    [1220, 1332, 1101, 1034, 910],
+    [2220, 1382, 1191, 2034, 2190],
+    [1250, 2332, 2101, 1054, 1190]
+  ]"
+  >
+  <pa-tooltip
+  :position="[10, 10]"
+  :formatter="[
+    '{b}(年)<br>',
+    '{a0}: {c0} (亿元)<br>',
+    '{a1}: {c1} (亿元)<br>',
+    '{a2}: {c2} (亿元)',
+  ].join('')"
+  :style="{}"></pa-tooltip>
+  <pa-axis  :yName="['亿元']" :xName="['年']" :xSplitLine="[true,'#5D667F','dashed']"></pa-axis>
+  <pa-legend :data="['基础设置投资', '房地产开发投资','更新改造投资']"></pa-legend>
+  </pa-line-chart>`
+}))
+
+stories.add('总投资趋势', () => ({
+  template: `<pa-bar-chart
+  :round="false"
+  :bar-width="50"
+  :bar-gap="'1%'"
+  :x="[2014,2015,2016,2017,2018]"
+  :styles="{
+    colors: [
+      'gradient:#00DBFF;#00B7FF'
+    ],
+  }"
+  :data="[
+    [5045, 5082, 4084, 4054, 4189]
+  ]">
+    <pa-axis
+      position="left"
+      :yName="['(亿元)']"
+      :xName="['年']"
+      :label="'Y'">
+    </pa-axis>
+    <pa-line-chart
+    :axis="'right'"
+    :styles="{
+      label: false,
+      line: 'dotted',
+      color: ['rgba(255,255,255,.7)']
+    }"
+      :data="[
+        [5145, 5982, 4584, 4654, 4589]
+      ]"
+    ></pa-line-chart>
+    <pa-legend :data="['完成投资额0', '投资计划']"></pa-legend>
+    <pa-tooltip
+    :position="[10, 10]"
+    :formatter="[
+      '{b}(年)<br>',
+      '{a0}: {c0} (亿元)<br>',
+      '{a1}: {c1} (亿元)',
+    ].join('')"
+    :style="{}"></pa-tooltip>
+  </pa-bar-chart>`
+}))
+
+stories.add('建筑性质分析', () => ({
+  template: `<pa-rose-chart
+  :preset="'no-legend,rich-label-percent'"
+  :radius="['0%', '80%']"
+  :data="[[
+    { name: '改建', value: 154 },
+    { name: '扩建', value: 200 },
+    { name: '新建', value: 205 },
+    { name: '技术改造', value: 325 },
+    { name: '其他', value: 400 }
+  ]]"
+  ></pa-rose-chart>`
 }))
 export default stories

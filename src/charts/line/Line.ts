@@ -47,7 +47,7 @@ export default class PaLineChart extends PaChart {
     label: '面积'
   })
   @Prop()
-  area: boolean | {} | undefined
+  area: boolean | [] | undefined
 
   constructor () {
     super()

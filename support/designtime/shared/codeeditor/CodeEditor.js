@@ -1,6 +1,6 @@
-var ace = require('brace')
+import ace from 'brace'
 
-module.exports = {
+export default Vue.extend({
   render: function (h) {
     var height = this.height ? this.px(this.height) : '100%'
     var width = this.width ? this.px(this.width) : '100%'
@@ -15,11 +15,18 @@ module.exports = {
       type: String,
       required: true
     },
-    lang: String,
-    theme: String,
-    height: true,
-    width: true,
-    options: Object
+    lang: {
+      type: String,
+      default: 'javascript'
+    },
+    theme: {
+      type: String,
+      default: 'solarized_dark'
+    },
+    options: {
+      type: Object,
+      default: () => ({})
+    }
   },
   data: function () {
     return {
@@ -91,4 +98,4 @@ module.exports = {
       vScrollBarAlwaysVisible: false
     })
   }
-}
+})
