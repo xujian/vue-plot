@@ -59,7 +59,19 @@ let states = [
       [150, 232, 201, 154, 190],
       [98, 77, 101, 99, 40]
     ]"
-    ></pa-bar-chart>`
+    >
+    <pa-legend :data="['北京', '上海', '广州', '深圳']"></pa-legend>
+    <pa-tooltip
+    :position="[10, 10]"
+    :formatter="[
+      '{b}<br>',
+      '{a0}: {c0}<br>',
+      '{a1}: {c1}<br>',
+      '{a2}: {c2}<br>',
+      '{a3}: {c3}<br>',
+    ].join('')"
+    :style="{}"></pa-tooltip>
+    </pa-bar-chart>`
   },
   {
     name: 'With gradients',
