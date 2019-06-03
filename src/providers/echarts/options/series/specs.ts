@@ -23,6 +23,12 @@ const specs = [{
   features: [
     'area'
   ]
-}]
+},
+{
+  type: 'network',
+  features: [
+    'symbol'
+  ]
+},]
 
 export default specs

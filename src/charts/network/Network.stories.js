@@ -1,7 +1,7 @@
-import { storiesOf } from '@storybook/vue';
-import { boolean, number, text } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/vue'
+import { boolean, number, text } from '@storybook/addon-knobs'
 
-let stories = storiesOf('基本图表|Network', module);
+let stories = storiesOf('基本图表|Network', module)
 
 let states = [
   {
@@ -12,16 +12,17 @@ let states = [
     :data="'mocks:network-simple'"
     ></pa-network-chart>`,
   },
-];
+]
 
 states.forEach(s => {
   stories.add(s.name, () => ({
     template: s.template,
     props: {
       symbol: {
-        default: number('symbol', 50),
+        default: number('symbol', 40),
       },
+      links: {},
     },
-  }));
-});
-export default stories;
+  }))
+})
+export default stories

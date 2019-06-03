@@ -8,8 +8,10 @@ export default class PaNetworkChart extends PaChart {
   @Prop()
   data: ChartDataTypes.NetworkChartData[] | undefined
 
-  @Prop({})
+  @Prop()
   symbol: number | string | object | undefined
+
+
 
   constructor() {
     super()
