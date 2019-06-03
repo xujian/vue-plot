@@ -149,8 +149,9 @@ stories.add('总投资趋势', () => ({
         [5145, 5982, 4584, 4654, 4589]
       ]"
     ></pa-line-chart>
-    <pa-legend :data="['完成投资额0', '投资计划']"></pa-legend>
+    <pa-legend :data="['完成投资额', '投资计划']"></pa-legend>
     <pa-tooltip
+    :axisPointer="true"
     :position="[10, 10]"
     :formatter="[
       '{b}(年)<br>',

@@ -43,6 +43,15 @@ export default (props: any, providerOptions: any) => {
         ].join('')
       }
   }
+  // tooltip的坐标轴十字准星指示器
+  if (tooltip.axisPointer) {
+    output.axisPointer = {
+      type: 'cross',
+      lineStyle: {
+        type: 'dotted'
+      }
+    }
+  }
   return {
     tooltip: output
   }

@@ -7,7 +7,7 @@ import PaChart, { Props } from '../../core/chart'
 export default class PaPictorialBarChart extends PaChart {
 
   @Prop()
-  data: string |  undefined
+  data: string | undefined
 
   @Prop()
   center: string[] | undefined
@@ -25,13 +25,16 @@ export default class PaPictorialBarChart extends PaChart {
   startEndAngle: number[] | undefined
 
   @Prop()
-  titleColor: string|undefined
+  titleColor: string | undefined
 
   @Prop()
-  area: string[]|undefined
+  area: string[] | undefined
+
+  @Prop()
+  symbol: string | undefined
 
   constructor () {
     super()
-    this.type='pictorialBar'
+    this.type = 'pictorialBar'
   }
 }
