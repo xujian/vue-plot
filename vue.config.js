@@ -23,21 +23,17 @@ module.exports = {
 
   configureWebpack: {
     output: {},
-    externals: {
-      vue: {
-        commonjs: 'vue',
-        commonjs2: 'vue',
-        amd: 'vue',
-        root: 'Vue'
+    externals: [
+      {
+        vue: {
+          commonjs: 'vue',
+          commonjs2: 'vue',
+          amd: 'vue',
+          root: 'Vue'
+        }
       },
-      echarts: {
-        commonjs: 'echarts',
-        commonjs2: 'echarts',
-        amd: 'echarts',
-        root: 'window.echarts'
-      },
-      'echarts-gl': 'echarts-gl'
-    },
+      /^echarts/, // 写成这样才能去掉echarts 缺德
+    ],
     optimization: {
       splitChunks: false
     },
