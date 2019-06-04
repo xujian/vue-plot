@@ -19,10 +19,13 @@ module.exports = {
     config
       .plugin('webpack-bundle-analyzer')
       .use(BundleAnalyzerPlugin)
+    config.output.filename(() => 'chartlib111.js')
   },
 
   configureWebpack: {
-    output: {},
+    output: {
+      filename: 'chartlib.js'
+    },
     externals: [
       {
         vue: {
