@@ -1,8 +1,8 @@
 const fs = require('fs')
 
 fs.rename(
-  'dist/chartlib.common.js',
-  'dist/lib.js',
+  'dist/support.common.js',
+  'dist/support.js',
   (err)=>{
     console.log(err)
   }
