@@ -30,7 +30,7 @@ module.exports = {
         },
         singleline: {
           delimiter: 'comma',
-          requireLast: true,
+          requireLast: false,
         },
         overrides: {
           interface: {
@@ -49,6 +49,7 @@ module.exports = {
     'vue/html-closing-bracket-newline': 0,
     'vue/order-in-components': 0,
     '@typescript-eslint/no-namespace': 0,
+    '@typescript-eslint/no-var-requires': 0,
     'vue/attributes-order': 0,
     'space-infix-ops': 1,
     'no-multi-spaces': 1,
