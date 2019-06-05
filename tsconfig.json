@@ -30,6 +30,12 @@
       "@sb/*": [
         ".storybook/*"
       ],
+      "vue": [
+        "../designer/node_modules/vue"
+      ],
+      "vue/*": [
+        "../designer/node_modules/vue/*"
+      ]
     },
     "lib": [
       "esnext",
