@@ -10,7 +10,10 @@ let options = {
   }],
   yAxis: [{
     show: false
-  }]
+  }],
+  tooltip: {
+    trigger: 'item'
+  }
   // xAxis: false,
   // yAxis: false,
   // coordinateSystem: 'cartesian2d'
