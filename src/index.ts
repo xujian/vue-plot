@@ -3,7 +3,7 @@ import { plugins } from './charts'
 import accessories from './core/accessories'
 import { setGlobalConfigs } from './core/shared/configs'
 import ThemeManager from './providers/echarts/themes'
-import $chartlib from './$chartlib'
+import Service from './Service'
 
 type PluginOptions = {
   theme: string,
@@ -20,7 +20,7 @@ const install: PluginFunction<PluginOptions> =
       let a = accessories[t]
       Vue.component(a.name, a)
     }
-    Vue.prototype['$chartlib'] = $chartlib
+    Vue.prototype['$chartlib'] = Service.instance
   }
 
 export const Chartlib: PluginObject<PluginOptions> = {

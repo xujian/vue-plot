@@ -5,7 +5,7 @@ import { withKnobs } from '@storybook/addon-knobs'
 import options from './options'
 import Chartlib from '../src'
 import Uilib from '../ui'
-import $chartlib from '../src/$chartlib'
+import Service from '../src/Service'
 import withLiveCode from './decorators/withLiveCode'
 import withProps from './decorators/withProps'
 import './global.css'
@@ -41,7 +41,7 @@ addDecorator(makeDecorator({
     const channel = addons.getChannel()
     channel.on('storybook-addon-chartlib/theme-changed', (data) => {
       console.log('config.js!!!!!!withTheme-onononononononononon--storybook-addon-chartlib/theme-changed', data)
-      $chartlib.theme = data.theme
+      Service.instance.theme = data.theme
     })
     return storyFn(context);
   }
