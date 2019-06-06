@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Inspector from './Inspector.vue'
-// import { Quasar } from 'quasar'
+import quasar from './quasar.js'
 
-// Vue.use(Quasar)
+// @ts-ignore
+Vue.use(quasar)
 
 export default Inspector
