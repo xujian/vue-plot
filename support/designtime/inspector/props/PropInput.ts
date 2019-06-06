@@ -6,7 +6,9 @@ import Prop from '../../inspectable/Prop'
 })
 export default class PropInput extends Vue {
 
-  @VueProp({})
+  @VueProp({
+    type: Object
+  })
   value?: Prop<any>
 
   get prop () {

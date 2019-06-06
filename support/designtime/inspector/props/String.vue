@@ -1,7 +1,7 @@
 <template>
   <div class="prop-string row">
     <div class="col">
-      <div class="prop-label">{{prop.label}}</div>
+      <div class="prop-label">{{ prop.label }}</div>
     </div>
     <div class="col">
       <q-input
@@ -9,7 +9,7 @@
         standout="bg-secondary"
         :value="prop.value || ''"
         placeholder="(未设置)"
-        @change="onInput"></q-input>
+        @change="onInput" />
     </div>
   </div>
 </template>

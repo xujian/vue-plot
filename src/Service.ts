@@ -3,13 +3,12 @@ import globalConfigs, { setGlobalConfigs } from './core/shared/configs'
 import Bus from './core/shared/events/bus'
 
 export default class Service {
-  private static __instance: Service
   private constructor () {
 
   }
   static get instance () {
-    if (!Service.__instance) {
-      Service.__instance = new Vue({
+    if (!Vue.prototype.$chartlib) {
+      Vue.prototype.$chartlib = new Vue({
         data () {
           return {
             popups: [],
@@ -41,12 +40,9 @@ export default class Service {
           popup () {
 
           }
-        },
-        created () {
-          console.log('$chartlib--------------------------created')
         }
       })
     }
-    return Service.__instance
+    return Vue.prototype.$chartlib
   }
 }

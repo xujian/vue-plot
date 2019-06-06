@@ -18,7 +18,6 @@ function setInspectableForTarget (
   target: any, prop: string, options: InspectableOptions
 ) {
   // 给 target 内部设置一个 inspectable 队列
-  console.log('INSPECTABLE_________________________SET///', prop, target)
   Inspectable.set(target, prop, options)
 }
 
@@ -37,7 +36,6 @@ export type InspectableBook = {
 
 Inspectable.set = function (control: any, field: string, options: InspectableOptions) {
   let __class = control.constructor.name
-  console.log('...INSPECTABLE_________________________SET__class333', __class)
   const service = Service.instance as any
   let book: InspectableBook = service.inspectable
   if (!Reflect.has(book, __class)) {
@@ -65,7 +63,6 @@ Inspectable.get = function (control: any): Prop<any>[] {
   let book: InspectableBook = service.inspectable
 
   // 沿原型链向上查找
-  console.log('INSPECTABLE________________///__///___///____GET///2233', book)
   while (proto.constructor.name.startsWith('Pa')) {
     let up = book[proto.constructor.name]
     if (up) {
