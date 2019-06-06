@@ -9,8 +9,9 @@ let states = [
     template: `<pa-network-chart
     :title="'网络图'"
     :symbol="symbol"
-    :data="'mocks:network-simple'"
-    ></pa-network-chart>`,
+    :data="'mocks:network-simple'">
+    <pa-lines-chart :data="'mocks:lines-simple'"></pa-lines-chart>
+    </pa-network-chart>`,
   },
 ]
 

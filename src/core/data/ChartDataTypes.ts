@@ -41,3 +41,5 @@ export declare type NetworkChartData = {
   name: string,
   value: number[]
 }[]
+
+export declare type LinesChartData = number[]
