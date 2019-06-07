@@ -2,6 +2,9 @@ import PaComponent from '../../src/core/chart/Component'
 import { Component, Prop } from 'vue-property-decorator'
 import Inspectable, { PropTypes } from '../../support/designtime/inspectable'
 
+/**
+ * Base class for UI elements
+ */
 @Component({})
 export default class PaElement extends PaComponent {
 

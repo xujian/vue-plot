@@ -1,9 +1,10 @@
-import PaComponent, { Props } from '../../../src/core/chart/Component'
+import PaContainer from '../../core/Container'
 import { Component, Prop } from 'vue-property-decorator'
 import Inspectable, { PropTypes } from '../../../support/designtime/inspectable'
 
 /**
  * 用于装载其他组件的空面板
+ * 子组件绝对定位
  */
 @Component({
   template: `<div class="pa-board">
@@ -15,7 +16,7 @@ import Inspectable, { PropTypes } from '../../../support/designtime/inspectable'
     </div>
   </div>`
 })
-export default class PaBoard extends PaComponent {
+export default class PaBoard extends PaContainer {
 
   @Inspectable({
     label: '标题',
