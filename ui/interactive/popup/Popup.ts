@@ -1,7 +1,7 @@
 import { Component, Prop } from 'vue-property-decorator'
 import Inspectable, { PropTypes } from '../../../support/designtime/inspectable'
-import Bus from '../../../src/core/shared/events/bus'
 import PaElement from '../../core/Element'
+import Bus from '../../../src/core/shared/events/bus'
 
 @Component({
   template: `<div class="pa-popup"

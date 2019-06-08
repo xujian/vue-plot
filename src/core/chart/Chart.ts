@@ -277,10 +277,10 @@ export default class PaChart extends PaComponent {
     this.$nextTick(() => {
       this.init()
     })
-    Bus.on('theme.changed', this.repaint)
+    this.bus.on('theme.changed', this.repaint)
   }
 
   beforeDestroy () {
-    Bus.off('theme.changed', this.repaint)
+    this.bus.off('theme.changed', this.repaint)
   }
 }

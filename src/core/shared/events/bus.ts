@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-const Bus = new Vue({
+const Bus: any = new Vue({
   methods: {
     emit (event: string, args: any) {
       this.$emit(event, args)

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 import Inspectable, { PropTypes } from '../../../support/designtime/inspectable'
 import { StyleRules } from '../shared/styles'
-import Bus from '../shared/events/bus'
+import Service from '../../Service'
 
 /**
  * 定义 chart 的 props 组
@@ -23,7 +23,7 @@ export default class PaComponent extends Vue {
   public subType: string = ''
 
   // event bus of all components/charts/elements
-  public bus: typeof Bus = Bus
+  public bus: any = Service.instance.bus
 
   @Inspectable({
     label: '配色主题',

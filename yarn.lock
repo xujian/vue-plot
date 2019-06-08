@@ -977,15 +977,16 @@
     error-stack-parser "^2.0.0"
     string-width "^2.0.0"
 
-"@storybook/addon-actions@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/addon-actions/download/@storybook/addon-actions-5.1.1.tgz#31aceab8f28903eda598234cfd337daee0d38840"
+"@storybook/addon-actions@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-5.1.3.tgz#2df95e91f6c2992ed0bec048fb5353b490d08218"
+  integrity sha512-ajOJ+hWvFFfj7GiLgV1auw9rmA9edUm1PP0fJxz2H1O8abqqOr+zVLFR15lxs2pFp1TCgRXTvQYiMj9ZxTZAwQ==
   dependencies:
-    "@storybook/addons" "5.1.1"
-    "@storybook/api" "5.1.1"
-    "@storybook/components" "5.1.1"
-    "@storybook/core-events" "5.1.1"
-    "@storybook/theming" "5.1.1"
+    "@storybook/addons" "5.1.3"
+    "@storybook/api" "5.1.3"
+    "@storybook/components" "5.1.3"
+    "@storybook/core-events" "5.1.3"
+    "@storybook/theming" "5.1.3"
     core-js "^3.0.1"
     fast-deep-equal "^2.0.1"
     global "^4.3.2"
@@ -996,24 +997,26 @@
     react-inspector "^3.0.2"
     uuid "^3.3.2"
 
-"@storybook/addon-backgrounds@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/addon-backgrounds/download/@storybook/addon-backgrounds-5.1.1.tgz#a4287c5ce993e89a5789656ec0cc50c2ee5bd2a7"
+"@storybook/addon-backgrounds@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-backgrounds/-/addon-backgrounds-5.1.3.tgz#caa0536ce6efb8b122e9551463c18862adf1b3e4"
+  integrity sha512-vgjTxokeQfD5GIk+Ao3q66zcIFnWNYvCIWFA5vgyZvwi7+zoa7arl8CpVXEIEEarqlfvcg2e8QRkNF7WlZGKCw==
   dependencies:
-    "@storybook/addons" "5.1.1"
-    "@storybook/api" "5.1.1"
-    "@storybook/client-logger" "5.1.1"
-    "@storybook/components" "5.1.1"
-    "@storybook/core-events" "5.1.1"
-    "@storybook/theming" "5.1.1"
+    "@storybook/addons" "5.1.3"
+    "@storybook/api" "5.1.3"
+    "@storybook/client-logger" "5.1.3"
+    "@storybook/components" "5.1.3"
+    "@storybook/core-events" "5.1.3"
+    "@storybook/theming" "5.1.3"
     core-js "^3.0.1"
     memoizerific "^1.11.3"
     react "^16.8.4"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-centered@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/addon-centered/download/@storybook/addon-centered-5.1.1.tgz#58301d844892e68228ff20502daf11a9af696773"
+"@storybook/addon-centered@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-centered/-/addon-centered-5.1.3.tgz#b9f7a1463d6b9a1a169da2518ecc6607ef701602"
+  integrity sha512-kDrxvXfO/vc7PnPuUm6eH6W5YWuEVUfJv4TRS1jVRlnwPDr/1HOJKBFFjx9xeO9igyWuQSR5H7F9Gq7idaUgSA==
   dependencies:
     core-js "^3.0.1"
     global "^4.3.2"
@@ -1023,14 +1026,15 @@
     preact "*"
     react "*"
 
-"@storybook/addon-info@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/addon-info/download/@storybook/addon-info-5.1.1.tgz#17230d82a5f3aaa3a74c35806f63ff1ce24e01fa"
+"@storybook/addon-info@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-info/-/addon-info-5.1.3.tgz#5e979edb69f5f7ac168b80cccaa35509a1ad3b0b"
+  integrity sha512-zI4s7ADtn+qxcqM/KmiF2kkMKL32YF1b2dp+ByBjLoUJIRw4sdkCyFgmX0Y2nQNd+UPGRlM0TIedSqoGjvAFXA==
   dependencies:
-    "@storybook/addons" "5.1.1"
-    "@storybook/client-logger" "5.1.1"
-    "@storybook/components" "5.1.1"
-    "@storybook/theming" "5.1.1"
+    "@storybook/addons" "5.1.3"
+    "@storybook/client-logger" "5.1.3"
+    "@storybook/components" "5.1.3"
+    "@storybook/theming" "5.1.3"
     core-js "^3.0.1"
     global "^4.3.2"
     marksy "^7.0.0"
@@ -1043,15 +1047,16 @@
     react-lifecycles-compat "^3.0.4"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-knobs@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/addon-knobs/download/@storybook/addon-knobs-5.1.1.tgz#8f29e4e75723ad6d5160427207e6e03a3ae1e095"
+"@storybook/addon-knobs@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-knobs/-/addon-knobs-5.1.3.tgz#238fdd72193c1936453a6824570c0a9d240051cf"
+  integrity sha512-ug64vIxA/Ly2lc3LYIrOvy6Cq3qocQu4N2lZzvy+BY4aG5aYmgNJupVjQnQ6qLLiYJsGaPyjG5+74cudgE5Nrg==
   dependencies:
-    "@storybook/addons" "5.1.1"
-    "@storybook/client-api" "5.1.1"
-    "@storybook/components" "5.1.1"
-    "@storybook/core-events" "5.1.1"
-    "@storybook/theming" "5.1.1"
+    "@storybook/addons" "5.1.3"
+    "@storybook/client-api" "5.1.3"
+    "@storybook/components" "5.1.3"
+    "@storybook/core-events" "5.1.3"
+    "@storybook/theming" "5.1.3"
     copy-to-clipboard "^3.0.8"
     core-js "^3.0.1"
     escape-html "^1.0.3"
@@ -1064,30 +1069,32 @@
     react-lifecycles-compat "^3.0.4"
     react-select "^2.2.0"
 
-"@storybook/addon-links@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/addon-links/download/@storybook/addon-links-5.1.1.tgz#a6474959b2bdc132d647efd326380a134d92a483"
+"@storybook/addon-links@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-5.1.3.tgz#80fa1c3322e92fde98fb0e69838a73db6b7ec5ef"
+  integrity sha512-DpLa4qgPcTtJbHjYdWEv2c1Xo0IOk7opybm/Gby9uUuUL0rCMBQoROoeXfwQGeaAK8vhwiyHb48OsVzbwbPoSw==
   dependencies:
-    "@storybook/addons" "5.1.1"
-    "@storybook/core-events" "5.1.1"
-    "@storybook/router" "5.1.1"
+    "@storybook/addons" "5.1.3"
+    "@storybook/core-events" "5.1.3"
+    "@storybook/router" "5.1.3"
     common-tags "^1.8.0"
     core-js "^3.0.1"
     global "^4.3.2"
     prop-types "^15.7.2"
     qs "^6.6.0"
 
-"@storybook/addon-notes@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/addon-notes/download/@storybook/addon-notes-5.1.1.tgz#d6ba934f8286c4296b2cbe4aa8f8b4f4be5683a4"
+"@storybook/addon-notes@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-notes/-/addon-notes-5.1.3.tgz#b1e5f57a137b0461e57f068100e30d639e873620"
+  integrity sha512-QCE3nfFjcxJrow88HZp8Y8Dqs4QuNHtc3qRsoScPE+snBjOvgrlS/J1o6LM5i18t9u1rt9SzwDDufvYGLVn3iw==
   dependencies:
-    "@storybook/addons" "5.1.1"
-    "@storybook/api" "5.1.1"
-    "@storybook/client-logger" "5.1.1"
-    "@storybook/components" "5.1.1"
-    "@storybook/core-events" "5.1.1"
-    "@storybook/router" "5.1.1"
-    "@storybook/theming" "5.1.1"
+    "@storybook/addons" "5.1.3"
+    "@storybook/api" "5.1.3"
+    "@storybook/client-logger" "5.1.3"
+    "@storybook/components" "5.1.3"
+    "@storybook/core-events" "5.1.3"
+    "@storybook/router" "5.1.3"
+    "@storybook/theming" "5.1.3"
     core-js "^3.0.1"
     global "^4.3.2"
     markdown-to-jsx "^6.9.3"
@@ -1095,19 +1102,21 @@
     prop-types "^15.7.2"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-options@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/addon-options/download/@storybook/addon-options-5.1.1.tgz#adcde1e06c68726459356b4f1bcea03b925fcee3"
+"@storybook/addon-options@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-options/-/addon-options-5.1.3.tgz#77ccd4dac7147afd539d8d825322734154429a3c"
+  integrity sha512-T3ityA3VuV77mA4F/3lA6y8tDA+wxGFRgIfXdeDXSmogtuiKpvBx2rXopx7di0tOIdTub69gkZN+Y74OdXY7dA==
   dependencies:
-    "@storybook/addons" "5.1.1"
+    "@storybook/addons" "5.1.3"
     core-js "^3.0.1"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-storyshots@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/addon-storyshots/download/@storybook/addon-storyshots-5.1.1.tgz#d1fdc2618341e0b28b509f973fabb7121a41c2bf"
+"@storybook/addon-storyshots@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-storyshots/-/addon-storyshots-5.1.3.tgz#806a306f33edc7130bba42606716d4838b0b2c7e"
+  integrity sha512-aaTuYCsztDCVciEoiiI1tVVvn7Mf/W3Crv5aSQiLIJNKgAy0PCNgIQBkv7PtIQM/+ZKDJwD1itwvGudeBTkXHg==
   dependencies:
-    "@storybook/addons" "5.1.1"
+    "@storybook/addons" "5.1.3"
     core-js "^3.0.1"
     glob "^7.1.3"
     global "^4.3.2"
@@ -1115,14 +1124,15 @@
     read-pkg-up "^6.0.0"
     regenerator-runtime "^0.12.1"
 
-"@storybook/addon-storysource@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/addon-storysource/download/@storybook/addon-storysource-5.1.1.tgz#793ae2f88cc1555760b7c486959bafc6b5a6f6c4"
+"@storybook/addon-storysource@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-storysource/-/addon-storysource-5.1.3.tgz#08ea7f67bc8a452cd886e04640b1cc71f8822972"
+  integrity sha512-vsKTgcw8qg5vniv8wwNf62rWFVAxgVKpTimALuO0sCpIEBh8D+uTBQfcgcc1skbUAVRBcqYDMWqT+GY5o5iwkw==
   dependencies:
-    "@storybook/addons" "5.1.1"
-    "@storybook/components" "5.1.1"
-    "@storybook/router" "5.1.1"
-    "@storybook/theming" "5.1.1"
+    "@storybook/addons" "5.1.3"
+    "@storybook/components" "5.1.3"
+    "@storybook/router" "5.1.3"
+    "@storybook/theming" "5.1.3"
     core-js "^3.0.1"
     estraverse "^4.2.0"
     loader-utils "^1.2.3"
@@ -1131,15 +1141,16 @@
     react-syntax-highlighter "^8.0.1"
     regenerator-runtime "^0.12.1"
 
-"@storybook/addon-viewport@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/addon-viewport/download/@storybook/addon-viewport-5.1.1.tgz#4430b647a2f75d89f13f82a0f817221b62e823c4"
+"@storybook/addon-viewport@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-viewport/-/addon-viewport-5.1.3.tgz#400ba7a5e2de009c374a31e74148d6b8ddeb81ea"
+  integrity sha512-uTP8R69N6och2Xd14Mn5pIXxbX3Zz7awzkTwmIiSiM0NgewTOgfPz4H5g1/naESboLGkZmDwO7lP1HlUKD9O1w==
   dependencies:
-    "@storybook/addons" "5.1.1"
-    "@storybook/client-logger" "5.1.1"
-    "@storybook/components" "5.1.1"
-    "@storybook/core-events" "5.1.1"
-    "@storybook/theming" "5.1.1"
+    "@storybook/addons" "5.1.3"
+    "@storybook/client-logger" "5.1.3"
+    "@storybook/components" "5.1.3"
+    "@storybook/core-events" "5.1.3"
+    "@storybook/theming" "5.1.3"
     core-js "^3.0.1"
     global "^4.3.2"
     memoizerific "^1.11.3"
@@ -1157,13 +1168,14 @@
     global "^4.3.2"
     util-deprecate "^1.0.2"
 
-"@storybook/addons@5.1.1", "@storybook/addons@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/addons/download/@storybook/addons-5.1.1.tgz#6457c4f60ae0cc49ad4919c45272b1cc181b217c"
+"@storybook/addons@5.1.3", "@storybook/addons@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-5.1.3.tgz#43181aa927e81d9f1747ae5dcbe7dbabf113f978"
+  integrity sha512-/xfpU9hIl2JRks3mrWGF/PuP91sflVY+w46KLJuLKXRVGn0slO8ijGs+x+HHBuZZ5MjOW7BCSrQgFjPE8B5Vjg==
   dependencies:
-    "@storybook/api" "5.1.1"
-    "@storybook/channels" "5.1.1"
-    "@storybook/client-logger" "5.1.1"
+    "@storybook/api" "5.1.3"
+    "@storybook/channels" "5.1.3"
+    "@storybook/client-logger" "5.1.3"
     core-js "^3.0.1"
     global "^4.3.2"
     util-deprecate "^1.0.2"
@@ -1192,15 +1204,16 @@
     telejson "^2.2.1"
     util-deprecate "^1.0.2"
 
-"@storybook/api@5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/api/download/@storybook/api-5.1.1.tgz#9f758fa694644a76a70b9d522d340ddafa9892af"
+"@storybook/api@5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/api/-/api-5.1.3.tgz#db809a1a153d7bb86a494b18866c81093dfa0084"
+  integrity sha512-jL7aFaVodzzJ9GJnxW6vgm5PVoF859pjIukg9gsyp1aEvO5HpE+YelmAR6GdEH0JGxpk3UH8L+3V/W2zUOG9lA==
   dependencies:
-    "@storybook/channels" "5.1.1"
-    "@storybook/client-logger" "5.1.1"
-    "@storybook/core-events" "5.1.1"
-    "@storybook/router" "5.1.1"
-    "@storybook/theming" "5.1.1"
+    "@storybook/channels" "5.1.3"
+    "@storybook/client-logger" "5.1.3"
+    "@storybook/core-events" "5.1.3"
+    "@storybook/router" "5.1.3"
+    "@storybook/theming" "5.1.3"
     core-js "^3.0.1"
     fast-deep-equal "^2.0.1"
     global "^4.3.2"
@@ -1214,12 +1227,13 @@
     telejson "^2.2.1"
     util-deprecate "^1.0.2"
 
-"@storybook/channel-postmessage@5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/channel-postmessage/download/@storybook/channel-postmessage-5.1.1.tgz#e322cbcdd9fbef48aadb93c52aa29cb7e1e7aa5c"
+"@storybook/channel-postmessage@5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/channel-postmessage/-/channel-postmessage-5.1.3.tgz#bd44302b1de729c2eeb84334935b8d2827d82de2"
+  integrity sha512-dmvZxzig2yP1qXT7btUHR5KncEEiC2HZMLyEOAZ2GPUSYUGGHGQQXD6OE4pRGj4IzCxrE7BUNQ/VDKqGGwO6rQ==
   dependencies:
-    "@storybook/channels" "5.1.1"
-    "@storybook/client-logger" "5.1.1"
+    "@storybook/channels" "5.1.3"
+    "@storybook/client-logger" "5.1.3"
     core-js "^3.0.1"
     global "^4.3.2"
     telejson "^2.2.1"
@@ -1230,9 +1244,10 @@
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/channels@5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/channels/download/@storybook/channels-5.1.1.tgz#a8947a9e1575dcceabf223c31fc3d49fcf69b442"
+"@storybook/channels@5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-5.1.3.tgz#25f2ff489a71fc58ee75d6d3e6b964790ba6193a"
+  integrity sha512-wZCLiR13edXyN0zw9fGNFAQIAppOAs/GmMLDPPBwujuTimmjLVK0OcTSR3TJzYeOeaUag5q5Rkt67Lq2rU0qcg==
   dependencies:
     core-js "^3.0.1"
 
@@ -1255,14 +1270,15 @@
     memoizerific "^1.11.3"
     qs "^6.6.0"
 
-"@storybook/client-api@5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/client-api/download/@storybook/client-api-5.1.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40storybook%2Fclient-api%2Fdownload%2F%40storybook%2Fclient-api-5.1.1.tgz#a29cc1e78ea15229aa2461a42006e4953b336f5a"
+"@storybook/client-api@5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/client-api/-/client-api-5.1.3.tgz#28724bbedcbe51a2c10e1fa8a76484797334e9af"
+  integrity sha512-KXuzzDl8w0C+n5qfs+xunaVzp0SaSfGboHYy17VLryRAmFRFw8E9om0mHpRWihXqHWfF0zlC7L6onH8V74d8Kw==
   dependencies:
-    "@storybook/addons" "5.1.1"
-    "@storybook/client-logger" "5.1.1"
-    "@storybook/core-events" "5.1.1"
-    "@storybook/router" "5.1.1"
+    "@storybook/addons" "5.1.3"
+    "@storybook/client-logger" "5.1.3"
+    "@storybook/core-events" "5.1.3"
+    "@storybook/router" "5.1.3"
     common-tags "^1.8.0"
     core-js "^3.0.1"
     eventemitter3 "^3.1.0"
@@ -1278,9 +1294,10 @@
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/client-logger@5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/client-logger/download/@storybook/client-logger-5.1.1.tgz#e62a214a801079e75b4b101afd73cc66c262701d"
+"@storybook/client-logger@5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/client-logger/-/client-logger-5.1.3.tgz#6d9f45fdac7d3f2f65d1238c35df11170c2f8b68"
+  integrity sha512-/86NGA7NPsAktpA0lSnw0NhgdqS7Grz08wE7Paz+qLDj1AxnttTvMZctWJ8bLAa3EeJ9wHXGak854CmGiVFnWA==
   dependencies:
     core-js "^3.0.1"
 
@@ -1308,12 +1325,13 @@
     recompose "^0.30.0"
     simplebar-react "^1.0.0-alpha.6"
 
-"@storybook/components@5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/components/download/@storybook/components-5.1.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40storybook%2Fcomponents%2Fdownload%2F%40storybook%2Fcomponents-5.1.1.tgz#4ca7343009ebd92cdfb79cfa373628d6f3bb12d0"
+"@storybook/components@5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-5.1.3.tgz#9c6898f8f66bf6b9dfdb3ecca73370f2d799e546"
+  integrity sha512-lM+iSdIl/UlmPlgH3vqo8NhMAdPUrWkgp40CVADfXsM6Yxai/23gpg8/HEoHiU5hFjNxowJUt76gTvwt9ak+gg==
   dependencies:
-    "@storybook/client-logger" "5.1.1"
-    "@storybook/theming" "5.1.1"
+    "@storybook/client-logger" "5.1.3"
+    "@storybook/theming" "5.1.3"
     core-js "^3.0.1"
     global "^4.3.2"
     markdown-to-jsx "^6.9.1"
@@ -1337,30 +1355,32 @@
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/core-events@5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/core-events/download/@storybook/core-events-5.1.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40storybook%2Fcore-events%2Fdownload%2F%40storybook%2Fcore-events-5.1.1.tgz#179ca9e49fb7e81c5ed4ce3a8eb93d90003f6478"
+"@storybook/core-events@5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-5.1.3.tgz#febed0fb83201a107fd1c25b5487e2daec911fa0"
+  integrity sha512-oO9b05G/+9rYdNIx1BoOpFW+jwJeIR60PuJbvNMr1lSo9LH0JsG0+TNADjNXrLCChHfk1KMp1+DcpsSdNNNUqg==
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/core@5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/core/download/@storybook/core-5.1.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40storybook%2Fcore%2Fdownload%2F%40storybook%2Fcore-5.1.1.tgz#f2697258fe1d7636e08e29206e8551f36f5d99b8"
+"@storybook/core@5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/core/-/core-5.1.3.tgz#4c0ec2082432eed97884d8cde99acc905d3f257f"
+  integrity sha512-D3R4EIypMjeSMQw5s9cJeABdX8ymPUJPZ9RclBoALlhdJRZgzrFOU7fytKVXIfnSbRAH58d1/siZhxINBqs3GA==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.3.3"
     "@babel/plugin-proposal-object-rest-spread" "^7.3.2"
     "@babel/plugin-syntax-dynamic-import" "^7.2.0"
     "@babel/plugin-transform-react-constant-elements" "^7.2.0"
     "@babel/preset-env" "^7.4.5"
-    "@storybook/addons" "5.1.1"
-    "@storybook/channel-postmessage" "5.1.1"
-    "@storybook/client-api" "5.1.1"
-    "@storybook/client-logger" "5.1.1"
-    "@storybook/core-events" "5.1.1"
-    "@storybook/node-logger" "5.1.1"
-    "@storybook/router" "5.1.1"
-    "@storybook/theming" "5.1.1"
-    "@storybook/ui" "5.1.1"
+    "@storybook/addons" "5.1.3"
+    "@storybook/channel-postmessage" "5.1.3"
+    "@storybook/client-api" "5.1.3"
+    "@storybook/client-logger" "5.1.3"
+    "@storybook/core-events" "5.1.3"
+    "@storybook/node-logger" "5.1.3"
+    "@storybook/router" "5.1.3"
+    "@storybook/theming" "5.1.3"
+    "@storybook/ui" "5.1.3"
     airbnb-js-shims "^1 || ^2"
     autoprefixer "^9.4.9"
     babel-plugin-add-react-displayname "^0.0.5"
@@ -1412,9 +1432,10 @@
     webpack-dev-middleware "^3.7.0"
     webpack-hot-middleware "^2.25.0"
 
-"@storybook/node-logger@5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/node-logger/download/@storybook/node-logger-5.1.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40storybook%2Fnode-logger%2Fdownload%2F%40storybook%2Fnode-logger-5.1.1.tgz#4874718697c8bc783b606724ce24dd0533ae52a0"
+"@storybook/node-logger@5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-5.1.3.tgz#c93e17d497ae83732fae5e06dbe1f2cf8fb074e2"
+  integrity sha512-Whdm/aPe04SZzgaxLUGsiyeN3z9IYtvJbxQs+3p3XXaiUWG1P5HJL2uUiCv+nzvJfovpN81mAPaGFEiXUR+42g==
   dependencies:
     chalk "^2.4.2"
     core-js "^3.0.1"
@@ -1432,9 +1453,10 @@
     memoizerific "^1.11.3"
     qs "^6.6.0"
 
-"@storybook/router@5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/router/download/@storybook/router-5.1.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40storybook%2Frouter%2Fdownload%2F%40storybook%2Frouter-5.1.1.tgz#bebdfd8ae8f80f38b91e6df8648afdf9e95660ba"
+"@storybook/router@5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/router/-/router-5.1.3.tgz#e87f7f368816f7a6b248d3aac39c57642c4f5083"
+  integrity sha512-ZTFVyJvmVzpMY7KKpqns9bPD61A0nhfEVspxe6auPzIszZ/NSqCazEINUNf6nwKc+pR61S29FdzpMFPys6E42Q==
   dependencies:
     "@reach/router" "^1.2.1"
     core-js "^3.0.1"
@@ -1461,13 +1483,14 @@
     prop-types "^15.7.2"
     react-inspector "^3.0.2"
 
-"@storybook/theming@5.1.1", "@storybook/theming@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/theming/download/@storybook/theming-5.1.1.tgz#605572b650049457dbd102aa5686933ff2202ace"
+"@storybook/theming@5.1.3", "@storybook/theming@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-5.1.3.tgz#705654392b020ef5654c6c500f4398cc7f067653"
+  integrity sha512-ScBAEMkpwY6pHPuD7SYqAwbQ3M4cOEYY2340HtLNR53M6EJ2mcd87rH2kwpTEgTzeA0VuUln6WXEoBz3WRBLYA==
   dependencies:
     "@emotion/core" "^10.0.9"
     "@emotion/styled" "^10.0.7"
-    "@storybook/client-logger" "5.1.1"
+    "@storybook/client-logger" "5.1.3"
     common-tags "^1.8.0"
     core-js "^3.0.1"
     deep-object-diff "^1.1.0"
@@ -1478,17 +1501,18 @@
     prop-types "^15.7.2"
     resolve-from "^5.0.0"
 
-"@storybook/ui@5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/ui/download/@storybook/ui-5.1.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40storybook%2Fui%2Fdownload%2F%40storybook%2Fui-5.1.1.tgz#8c285102e2f6bd9978ce13ead7141b066c032d6e"
+"@storybook/ui@5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/ui/-/ui-5.1.3.tgz#6bb07ada02196163a3df52cd3e7062e305eb869a"
+  integrity sha512-6DL0pHUXnJv4nsXld5vTerHGFAeDZ4ec38+/3oAcjztmnVzRm49P4v0aUGdCKxxra2h6Ytk6KHPmoqsFEX69CQ==
   dependencies:
-    "@storybook/addons" "5.1.1"
-    "@storybook/api" "5.1.1"
-    "@storybook/client-logger" "5.1.1"
-    "@storybook/components" "5.1.1"
-    "@storybook/core-events" "5.1.1"
-    "@storybook/router" "5.1.1"
-    "@storybook/theming" "5.1.1"
+    "@storybook/addons" "5.1.3"
+    "@storybook/api" "5.1.3"
+    "@storybook/client-logger" "5.1.3"
+    "@storybook/components" "5.1.3"
+    "@storybook/core-events" "5.1.3"
+    "@storybook/router" "5.1.3"
+    "@storybook/theming" "5.1.3"
     copy-to-clipboard "^3.0.8"
     core-js "^3.0.1"
     core-js-pure "^3.0.1"
@@ -1514,11 +1538,12 @@
     telejson "^2.2.1"
     util-deprecate "^1.0.2"
 
-"@storybook/vue@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npm.taobao.org/@storybook/vue/download/@storybook/vue-5.1.1.tgz#8c8105b8828304343eb235247937198e98b861bf"
+"@storybook/vue@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@storybook/vue/-/vue-5.1.3.tgz#787da8ee9131ecc5d8f1bf93858d7ea0c5d8623d"
+  integrity sha512-nsuUAtXP+01b3oN+/RKajX9+oN1UmlzyDoM9dnC51QDtJjBbmf2jNc63c7uElWx+53xIwJhuBSLvrZrjGAJiwg==
   dependencies:
-    "@storybook/core" "5.1.1"
+    "@storybook/core" "5.1.3"
     common-tags "^1.8.0"
     core-js "^3.0.1"
     global "^4.3.2"
@@ -8538,9 +8563,10 @@ prettier@^1.16.4:
   version "1.17.0"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.17.0.tgz#53b303676eed22cc14a9f0cec09b477b3026c008"
 
-prettier@^1.17.1:
-  version "1.17.1"
-  resolved "https://registry.npm.taobao.org/prettier/download/prettier-1.17.1.tgz#ed64b4e93e370cb8a25b9ef7fef3e4fd1c0995db"
+prettier@^1.18.2:
+  version "1.18.2"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.18.2.tgz#6823e7c5900017b4bd3acf46fe9ac4b4d7bda9ea"
+  integrity sha512-OeHeMc0JhFE9idD4ZdtNibzY0+TPHSpSSb9h8FqtP+YnoZZ1sl8Vc9b1sasjfymH3SonAF4QcA2+mzHPhMvIiw==
 
 pretty-error@^2.0.2, pretty-error@^2.1.1:
   version "2.1.1"

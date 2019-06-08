@@ -2,6 +2,13 @@ import Vue from 'vue'
 import globalConfigs, { setGlobalConfigs } from './core/shared/configs'
 import Bus from './core/shared/events/bus'
 
+/**
+ * Chartlib Service
+ * as a global API at Vue.prototype
+ * usage
+ *  this.$chartlib
+ *  Service.instance
+ */
 export default class Service {
   private constructor () {
 
@@ -33,6 +40,11 @@ export default class Service {
               globalConfigs.theme = theme
               setGlobalConfigs(globalConfigs)
               Bus.emit('theme.changed', { theme })
+            }
+          },
+          bus: {
+            get () {
+              return Bus
             }
           }
         },
