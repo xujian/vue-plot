@@ -52,6 +52,13 @@ stories.add('核准项目分析', () => ({
   <pa-visualMap :show="false" 
   :color=" ['#4a657a', '#308e92', '#b1cfa5', '#f5d69f', '#f5898b', '#ef5055']">
   </pa-visualMap>
+  <pa-markline :attr="{
+    type:['constom','min'],
+    data:[{'效率': 10}],
+    colors:['red','blue'],
+    style:[{line: 'solid'},{line: 'dotted'}],
+    unit:['%','万']
+  }" ></pa-markline>
   <pa-legend :data="['核准项目']"></pa-legend>
   </pa-bar-chart>`
 }))

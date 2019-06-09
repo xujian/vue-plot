@@ -5,6 +5,7 @@ import { PaMarks } from './marks'
 import { PaLegend } from './legend'
 import { PaMarkareas } from './markareas'
 import { PaVisualMap } from './visualMap'
+import { PaMarkline } from './markline'
 
 let accessories: {[name: string]: any} = {
   PaAxis,
@@ -13,7 +14,8 @@ let accessories: {[name: string]: any} = {
   PaMarks,
   PaLegend,
   PaMarkareas,
-  PaVisualMap
+  PaVisualMap,
+  PaMarkline
 }
 
 export default accessories

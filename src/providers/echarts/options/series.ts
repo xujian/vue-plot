@@ -1,4 +1,5 @@
 import specs from './series/specs'
+import atrrToSeries from './series/addToseries'
 import merge from 'lodash/merge'
 import makeSeriesStyles from './series/styles'
 import pack from '../../../utils/pack'
@@ -6,7 +7,7 @@ import pack from '../../../utils/pack'
 let types: { [name: string]: () => any } = pack(
   require.context('./series/types', true, /.ts$/))
 
-function buildFeatures(props: any, index?: number): {}[] {
+function buildFeatures (props: any, index?: number): {}[] {
   let features = [], fields = []
   // 查找某一图表类型的字段定义
   let spec = specs.find(s => s.type === (props.subType || props.type))
@@ -18,13 +19,13 @@ function buildFeatures(props: any, index?: number): {}[] {
   return features
 }
 
-function buildStyles(props: any, index: number) {
+function buildStyles (props: any, index: number) {
   let styles = props.styles ? props.styles.item(index) : null
   return makeSeriesStyles(styles, props, index)
 }
 
 // 将Y轴单位或formatter复制到图表
-function applyFormatterFromAxis(series: any[], options: any) {
+function applyFormatterFromAxis (series: any[], options: any) {
   return series.map(s => {
     let yAxisIndex = s.yAxisIndex || 0
     let yAxis = options.yAxis[yAxisIndex]
@@ -47,7 +48,7 @@ function applyFormatterFromAxis(series: any[], options: any) {
  * 将 data 组装为 series
  * @param props
  */
-export function makeSeries(layers: any[], options: any): any {
+export function makeSeries (layers: any[], options: any): any {
   // 输入的是多套 props/data 外层以及layers合并而来
   let final: any[] = [], seriesIndex = 0
   layers.forEach((layer: any) => {
@@ -62,19 +63,20 @@ export function makeSeries(layers: any[], options: any): any {
           name: layer.accessories && layer.accessories.legend
             ? layer.accessories.legend[dataIndex] : ''
         },
-          ...features,
-          styles) // 从props定义的属性
+        ...features,
+        styles) // 从props定义的属性
       })
     let typeFn = Reflect.get(types, layer.subType || layer.type)
     if (typeFn) {
       series = typeFn.call(null, series, layer, options)
     }
     series = applyFormatterFromAxis(series, options)
+    series = atrrToSeries(series, options)
     final.push(series)
   })
   return final
 }
 
-export function populateSeries(props: any, options: any) {
+export function populateSeries (props: any, options: any) {
   return options
 }
