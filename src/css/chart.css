@@ -1,6 +1,7 @@
 .chart-container {
   width: 600px;
   height: 240px;
+  position: relative;
 }
 
 .chart-container.full-width {

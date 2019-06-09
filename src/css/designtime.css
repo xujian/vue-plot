@@ -1,0 +1,31 @@
+.chart-container.designtime {
+}
+
+.chart-container .designtools {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 24px;
+  transition: all 0.25s;
+  opacity: 0;
+  z-index: 10;
+}
+
+.chart-container.designtime .designtools a.button {
+  text-decoration: none;
+  color: #666;
+  display: block;
+  line-height: 24px;
+  padding: 0px 12px;
+  cursor: pointer;
+}
+
+.chart-container.designtime:hover .designtools {
+  opacity: 1;
+  background-color: #00968888
+}
+
+.chart-container.designtime .designtools a.button:hover {
+  color: #fff;
+  background-color: #009688cc;
+}

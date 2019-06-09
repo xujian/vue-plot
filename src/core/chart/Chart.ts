@@ -9,19 +9,21 @@ import { PresetManager } from '../shared/presets'
 import { DataManager } from '../data'
 import merge from 'lodash/merge'
 import normalizeProps from '../shared/props'
-import Inspectable, { PropTypes } from '../../../support/designtime/inspectable'
+import Inspectable, { Prop as InspectableProp, PropTypes } from '../../../support/designtime/inspectable'
 import '../../css/chart.css'
 import '../../css/designtime.css'
 import '../../css/helpers.css'
 import PaAccessory from '../accessories/Accessory'
 import PaDesignTools from './DesignTools'
+import Service from '../../Service'
 
 @Component({
   template: `
     <div class="chart-container"
       :class="{'designtime': $chartlib.designtime}">
       <pa-design-tools
-        v-if="$chartlib.designtime" />
+        v-if="$chartlib.designtime"
+        @propsClick="onDesignToolsPropsClick" />
       <div class="chart-header">
         <h6 v-if="title">{{title}}</h6>
       </div>
@@ -136,7 +138,7 @@ export default class PaChart extends PaComponent {
    * 用于生成 echart options
    */
   public get props (): any {
-    let accessories: { [key: string]: any, } = {}
+    let accessories: { [key: string]: any } = {}
     if (this.accessories) {
       Object.keys(this.accessories).forEach(a => {
         accessories[a] = this.accessories[a].props
@@ -149,6 +151,29 @@ export default class PaChart extends PaComponent {
       type: this.type,
       subType: this.subType,
       layers: this.layers.map(l => l.props),
+      accessories
+    }
+  }
+
+  public get inspectable (): any {
+    let main: InspectableProp<any>[] = Inspectable.get(this)
+    let layers: {
+      name: string,
+      props: InspectableProp<any>[]
+    }[] = []
+    this.layers.forEach(l => {
+      layers.push({
+        name: l.type,
+        props: Inspectable.get(l)
+      })
+    })
+    let accessories: {
+      name: string,
+      props: InspectableProp<any>[]
+    }[] = []
+    return {
+      main,
+      layers,
       accessories
     }
   }
@@ -273,6 +298,14 @@ export default class PaChart extends PaComponent {
   public repaint () {
     this.canvas && this.canvas.dispose()
     this.draw()
+  }
+
+  private onDesignToolsPropsClick () {
+    let props = Inspectable.get(this)
+    Service.instance.bus.emit('props', {
+      uuid: this.uuid,
+      data: this.inspectable
+    })
   }
 
   created () {
