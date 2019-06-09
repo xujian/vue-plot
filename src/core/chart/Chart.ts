@@ -11,19 +11,27 @@ import merge from 'lodash/merge'
 import normalizeProps from '../shared/props'
 import Inspectable, { PropTypes } from '../../../support/designtime/inspectable'
 import '../../css/chart.css'
+import '../../css/designtime.css'
 import '../../css/helpers.css'
 import PaAccessory from '../accessories/Accessory'
+import PaDesignTools from './DesignTools'
 
 @Component({
   template: `
-    <div class="chart-container">
+    <div class="chart-container"
+      :class="{'designtime': $chartlib.designtime}">
+      <pa-design-tools
+        v-if="$chartlib.designtime" />
       <div class="chart-header">
         <h6 v-if="title">{{title}}</h6>
       </div>
       <div class="chart" ref="chart">
         <slot></slot>
       </div>
-    </div>`
+    </div>`,
+  components: {
+    PaDesignTools
+  }
 })
 export default class PaChart extends PaComponent {
 

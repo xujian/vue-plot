@@ -19,7 +19,8 @@ export default class Service {
         data () {
           return {
             popups: [],
-            inspectable: {}
+            inspectable: {},
+            dataDesigntime: false
           }
         },
         computed: {
@@ -45,6 +46,15 @@ export default class Service {
           bus: {
             get () {
               return Bus
+            }
+          },
+          designtime: {
+            get () {
+              return Reflect.get(this, 'dataDesigntime')
+            },
+            set (v) {
+              Reflect.set(this, 'dataDesigntime', v)
+              Bus.emit('designtime.toggled', v)
             }
           }
         },

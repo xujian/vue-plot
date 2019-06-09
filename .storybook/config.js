@@ -43,6 +43,10 @@ addDecorator(makeDecorator({
       console.log('config.js!!!!!!withTheme-onononononononononon--storybook-addon-chartlib/theme-changed', data)
       Service.instance.theme = data.theme
     })
+    channel.on('storybook-addon-chartlib/designtime-toggled', (data) => {
+      console.log('config.js!!!!!!Designtime-toggled-onononononononononon--storybook-addon-chartlib/theme-changed', data)
+      Service.instance.designtime = !Service.instance.designtime
+    })
     return storyFn(context);
   }
 }))
