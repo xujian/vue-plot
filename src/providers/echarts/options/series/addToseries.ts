@@ -1,4 +1,5 @@
 let data: string[] = ['markLine']
+
 export default
 (series: any,options: any): any=>{
   data.map((val: any)=>{
