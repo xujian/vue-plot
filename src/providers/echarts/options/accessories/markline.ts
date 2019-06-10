@@ -7,6 +7,7 @@ export default (props: any) => {
     lineStyle: any,
     label: any,
   }
+  
   let marklinedata: any[] = []
   let input: any = props.accessories.markline.attr
   input.type && input.type.map((v: any,i: number)=>{
