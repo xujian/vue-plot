@@ -10,7 +10,7 @@ let states = [
     :title="'网络图'"
     :symbol="symbol"
     :data="'mocks:network-simple'">
-    <pa-lines-chart :data="'mocks:lines-simple'"></pa-lines-chart>
+    <pa-flow :label="'%'"></pa-flow>
     </pa-network-chart>`,
   },
 ]
