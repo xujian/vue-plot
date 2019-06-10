@@ -300,6 +300,14 @@ export default class PaChart extends PaComponent {
     this.draw()
   }
 
+  public applyProps (data: any) {
+    if (data.uuid === this.uuid) {
+      data.props.forEach((prop: any) => {
+        Reflect.set(this, prop.name, prop.value)
+      })
+    }
+  }
+
   private onDesignToolsPropsClick () {
     Service.instance.bus.emit('props', {
       uuid: this.uuid,
@@ -318,12 +326,7 @@ export default class PaChart extends PaComponent {
       this.init()
     })
     Service.instance.bus.on('theme.changed', this.repaint)
-    Service.instance.bus.on('props.updated', (props: any[]) => {
-      console.log('Chart.ts____________props.updated', props)
-      props.forEach((prop: any) => {
-        Reflect.set(this, prop.name, prop.value)
-      })
-    })
+    Service.instance.bus.on('props.updated', this.applyProps)
   }
 
   beforeDestroy () {

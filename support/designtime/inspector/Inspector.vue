@@ -100,10 +100,6 @@ export default {
       type: Object,
       default: () => ({})
     },
-    uuid: {
-      type: String,
-      default: () => ''
-    }
   },
   data () {
     return {
@@ -131,6 +127,11 @@ export default {
     }
   },
   computed: {
+    uuid: {
+      get () {
+        return this.value.uuid
+      }
+    }
   },
   watch: {
     value: {
@@ -150,7 +151,7 @@ export default {
   methods: {
     onPropChange (name, prop) {
       // 更新本地数据并向上通知
-      console.log('Inspector.vue________________________onPropChange', prop)
+      console.log('Inspector.vue____///___///_________________onPropChange//', prop)
       let updated = [...this.props]
       updated.forEach(p => {
         if (p.name === name) {
@@ -159,7 +160,10 @@ export default {
       })
       this.props = updated
       this.$emit('change', [prop])
-      Service.instance.bus.emit('props.updated', [prop])
+      Service.instance.bus.emit('props.updated', {
+        uuid: this.uuid,
+        props: [prop]
+      })
     },
     applyProps (realm) {
       this.realm = realm || 'main'
