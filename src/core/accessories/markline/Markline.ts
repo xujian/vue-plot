@@ -1,5 +1,5 @@
 import { Prop, Component } from 'vue-property-decorator'
-import PaAccessory from '@/core/accessories/Accessory'
+import PaAccessory from '../../../core/accessories/Accessory'
 /**
  * MarkLine
  * 覆盖默认配置

@@ -2,7 +2,6 @@ import PaComponent from './Component'
 import { Component, Prop } from 'vue-property-decorator'
 import { resolveSlot } from '../../core/accessories/slots'
 import Provider from '../../providers/echarts'
-import Bus from '../../core/shared/events/bus'
 import { StyleManager } from '../shared/styles'
 import themes from '../shared/themes'
 import { PresetManager } from '../shared/presets'
@@ -103,7 +102,7 @@ export default class PaChart extends PaComponent {
 
   layers: PaChart[] = []
 
-  public accessories: { [key: string]: PaAccessory, } = {}
+  public accessories: { [key: string]: PaAccessory } = {}
 
   // hooks
   dataAvailable (data: any, props: any): any[] {
@@ -159,7 +158,7 @@ export default class PaChart extends PaComponent {
     let main: InspectableProp<any>[] = Inspectable.get(this)
     let layers: {
       name: string,
-      props: InspectableProp<any>[]
+      props: InspectableProp<any>[],
     }[] = []
     this.layers.forEach(l => {
       layers.push({
@@ -169,9 +168,10 @@ export default class PaChart extends PaComponent {
     })
     let accessories: {
       name: string,
-      props: InspectableProp<any>[]
+      props: InspectableProp<any>[],
     }[] = []
     return {
+      uuid: this.uuid,
       main,
       layers,
       accessories
@@ -196,7 +196,7 @@ export default class PaChart extends PaComponent {
     this.accessories = merge({}, this.accessories, accessories)
     let preset = PresetManager.get(this.preset)
     let theme = themes[this.theme || 'dark']
-    let assignedProps: {[key: string]: any,} = {}
+    let assignedProps: {[key: string]: any} = {}
     let props = this.props
     Object.keys(props).forEach(p => {
       if (props[p] !== undefined) { // 直接给定的props
@@ -223,7 +223,7 @@ export default class PaChart extends PaComponent {
     let slots = resolveSlot(this.$slots.default || [])
     let results: {
       layers: PaChart[],
-      accessories: { [key: string]: PaAccessory, },
+      accessories: { [key: string]: PaAccessory },
     } = {layers: [], accessories: {}}
     if (slots.length) {
       slots.forEach(s => {
@@ -301,7 +301,6 @@ export default class PaChart extends PaComponent {
   }
 
   private onDesignToolsPropsClick () {
-    let props = Inspectable.get(this)
     Service.instance.bus.emit('props', {
       uuid: this.uuid,
       data: this.inspectable
@@ -318,10 +317,16 @@ export default class PaChart extends PaComponent {
     this.$nextTick(() => {
       this.init()
     })
-    this.bus.on('theme.changed', this.repaint)
+    Service.instance.bus.on('theme.changed', this.repaint)
+    Service.instance.bus.on('props.updated', (props: any[]) => {
+      console.log('Chart.ts____________props.updated', props)
+      props.forEach((prop: any) => {
+        Reflect.set(this, prop.name, prop.value)
+      })
+    })
   }
 
   beforeDestroy () {
-    this.bus.off('theme.changed', this.repaint)
+    Service.instance.bus.off('theme.changed', this.repaint)
   }
 }

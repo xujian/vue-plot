@@ -91,6 +91,7 @@ import {
   QToolbar, QToolbarTitle, QBtnDropdown, QSpace,
   ClosePopup
 } from 'quasar'
+import Service from '../../../src/Service'
 
 export default {
   name: 'PaInspector',
@@ -158,6 +159,7 @@ export default {
       })
       this.props = updated
       this.$emit('change', [prop])
+      Service.instance.bus.emit('props.updated', [prop])
     },
     applyProps (realm) {
       this.realm = realm || 'main'
