@@ -168,7 +168,6 @@ export default class PaMarquee extends PaElement {
   }
   throttleToggleAnimation() {
     if (!this.pauseOnHover) return;
-    debugger
     clearTimeout(this.updatetimeoutId);
     debounce(this.toggleAnimation, this.transitionDelayNormalized, {
       leading: true
