@@ -4,14 +4,16 @@ import PaIconPlugin, { PaIcon } from './icon'
 import PaTablePlugin, { PaTable } from './table'
 import PaBoardPlugin, { PaBoard } from './board'
 import PaBoxPlugin, { PaBox } from './box'
+import PaMarqueePlugin, { PaMarquee } from './marquee'
 
-const plugins: {[name: string]: any} = {
+const plugins: { [name: string]: any } = {
   PaButtonPlugin,
   PaLabelPlugin,
   PaIconPlugin,
   PaTablePlugin,
   PaBoardPlugin,
   PaBoxPlugin,
+  PaMarqueePlugin,
 }
 
 const elements = {
@@ -20,7 +22,8 @@ const elements = {
   PaIcon,
   PaTable,
   PaBoard,
-  PaBox
+  PaBox,
+  PaMarquee,
 }
 
 export {
